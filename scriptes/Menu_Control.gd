@@ -21,9 +21,4 @@ func _on_Button_Settings_pressed():
 	pass
 
 
-func _on_Menu_Controller_ready():
-	#Centers the menu
-	OS.window_position = (OS.get_screen_size()*0.5 - OS.window_size*0.5)
-
-
 

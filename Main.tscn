@@ -45,7 +45,6 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="ready" from="Menu_Controller" to="Menu_Controller" method="_on_Menu_Controller_ready"]
 [connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Start" to="Menu_Controller" method="_on_Button_Start_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
