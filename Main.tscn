@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Menu_Control.gd" type="Script" id=1]
+[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
 
 [node name="root" type="Node"]
 
@@ -15,36 +20,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button_Start" type="Button" parent="Menu_Controller"]
+margin_left = 105.0
+margin_top = 180.0
+margin_right = 285.0
+margin_bottom = 250.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button_Settings" type="Button" parent="Menu_Controller"]
-margin_left = 84.2056
-margin_top = 259.253
-margin_right = 293.206
-margin_bottom = 356.253
+margin_left = 105.0
+margin_top = 300.0
+margin_right = 285.0
+margin_bottom = 370.0
 rect_pivot_offset = Vector2( 102.633, 49.9475 )
 text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_Start" type="Button" parent="Menu_Controller"]
-margin_left = 97.211
-margin_top = 128.748
-margin_right = 280.211
-margin_bottom = 193.748
-text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Button_Exit" type="Button" parent="Menu_Controller"]
-margin_left = 101.559
-margin_top = 422.695
-margin_right = 277.559
-margin_bottom = 488.695
+margin_left = 105.0
+margin_top = 420.0
+margin_right = 285.0
+margin_bottom = 490.0
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 316.357
+margin_top = 45.4757
+margin_right = 709.357
+margin_bottom = 132.476
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Party Minigames[/rainbow][/wave]"
+text = "Party Minigames"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Menu_Controller/Button_Start" to="Menu_Controller" method="_on_Button_Start_pressed"]
+[connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
