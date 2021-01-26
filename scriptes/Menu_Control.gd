@@ -13,7 +13,7 @@ func _on_Button_Exit_pressed():
 
 
 func _on_Button_Start_pressed():
-	pass
+	get_tree().change_scene("res://minigames/driving_demo/World.tscn")
 
 func _on_Button_Settings_pressed():
 	# Show the Option Menu
