@@ -1,18 +1,48 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scriptes/Menu_Control.gd" type="Script" id=1]
 
 [node name="root" type="Node"]
 
 [node name="Menu_Controller" type="Control" parent="."]
 anchor_bottom = 1.0
 margin_right = 255.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Other" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 255.0
+[node name="Button_Settings" type="Button" parent="Menu_Controller"]
+margin_left = 66.515
+margin_top = 302.083
+margin_right = 275.515
+margin_bottom = 399.083
+rect_pivot_offset = Vector2( 102.633, 49.9475 )
+text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button_Start" type="Button" parent="Menu_Controller"]
+margin_left = 41.3462
+margin_top = 169.715
+margin_right = 224.346
+margin_bottom = 234.715
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Exit" type="Button" parent="Menu_Controller"]
+margin_left = 74.5579
+margin_top = 439.455
+margin_right = 250.558
+margin_bottom = 505.455
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="ready" from="Menu_Controller" to="Menu_Controller" method="_on_Menu_Controller_ready"]
+[connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="Menu_Controller/Button_Start" to="Menu_Controller" method="_on_Button_pressed"]
+[connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
