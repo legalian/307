@@ -22,6 +22,7 @@ func _ready():
 	get_tree().set_group(wheel_group, "grip", grip)
 	get_tree().set_group(wheel_group, "steering_speed", steering_speed)
 	get_tree().set_group(wheel_group, "center_steering", center_steering)
+	
 
 
 func _process(delta):
