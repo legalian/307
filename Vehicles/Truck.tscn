@@ -1,9 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://minigames/driving_demo/Vehicles/Vehicle.gd" type="Script" id=1]
-[ext_resource path="res://minigames/driving_demo/Sprites/Vehicles/wheel.png" type="Texture" id=2]
-[ext_resource path="res://minigames/driving_demo/Vehicles/Wheel.gd" type="Script" id=3]
-[ext_resource path="res://minigames/driving_demo/Sprites/Vehicles/truck.png" type="Texture" id=4]
+[ext_resource path="res://Vehicles/Vehicle.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Vehicles/wheel.png" type="Texture" id=2]
+[ext_resource path="res://Vehicles/Wheel.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/Vehicles/truck.png" type="Texture" id=4]
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 

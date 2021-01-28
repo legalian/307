@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cone_straight.png-743094c23ebabf248f7d090be2084216.stex"
+path="res://.import/rock3.png-06242345066aa0ec4fd72669135f0a0e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/driving_demo/Sprites/Objects/cone_straight.png"
-dest_files=[ "res://.import/cone_straight.png-743094c23ebabf248f7d090be2084216.stex" ]
+source_file="res://Sprites/Objects/rock3.png"
+dest_files=[ "res://.import/rock3.png-06242345066aa0ec4fd72669135f0a0e.stex" ]
 
 [params]
 

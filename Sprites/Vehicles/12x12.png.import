@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rock3.png-7c051ee68004b129102461ce188a93f2.stex"
+path="res://.import/12x12.png-422b7d7e2396a65dc16f815de3c92685.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/driving_demo/Sprites/Objects/rock3.png"
-dest_files=[ "res://.import/rock3.png-7c051ee68004b129102461ce188a93f2.stex" ]
+source_file="res://Sprites/Vehicles/12x12.png"
+dest_files=[ "res://.import/12x12.png-422b7d7e2396a65dc16f815de3c92685.stex" ]
 
 [params]
 

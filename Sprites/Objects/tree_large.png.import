@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barrel_blue.png-9916fd624428971e567b96d792904db6.stex"
+path="res://.import/tree_large.png-d088f89d5b394d4a125ae58b2cd0dcc8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/driving_demo/Sprites/Objects/barrel_blue.png"
-dest_files=[ "res://.import/barrel_blue.png-9916fd624428971e567b96d792904db6.stex" ]
+source_file="res://Sprites/Objects/tree_large.png"
+dest_files=[ "res://.import/tree_large.png-d088f89d5b394d4a125ae58b2cd0dcc8.stex" ]
 
 [params]
 

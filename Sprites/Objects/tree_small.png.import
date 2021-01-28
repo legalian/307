@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wheel.png-1a1bf0483ad8e072b3074f59a6949bfe.stex"
+path="res://.import/tree_small.png-d3c50f4a0bcd6d5adf98d48e577bc7f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/driving_demo/Sprites/Vehicles/wheel.png"
-dest_files=[ "res://.import/wheel.png-1a1bf0483ad8e072b3074f59a6949bfe.stex" ]
+source_file="res://Sprites/Objects/tree_small.png"
+dest_files=[ "res://.import/tree_small.png-d3c50f4a0bcd6d5adf98d48e577bc7f8.stex" ]
 
 [params]
 

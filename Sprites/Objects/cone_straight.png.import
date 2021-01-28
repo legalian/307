@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/car.png-c96f63c652f57584e5cbf7b878fcc90d.stex"
+path="res://.import/cone_straight.png-cb9b5d095a8eb08cb3138e9ea3cfc4c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/driving_demo/Sprites/Vehicles/car.png"
-dest_files=[ "res://.import/car.png-c96f63c652f57584e5cbf7b878fcc90d.stex" ]
+source_file="res://Sprites/Objects/cone_straight.png"
+dest_files=[ "res://.import/cone_straight.png-cb9b5d095a8eb08cb3138e9ea3cfc4c2.stex" ]
 
 [params]
 
