@@ -31,12 +31,12 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          script: rm -rf /home/production
+          script: rm -rf production
       - name: Copy folder content recursively to remote
         uses: garygrossgarten/github-action-scp@release
         with:
           local: Server
-          remote: /home/production
+          remote: production
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
