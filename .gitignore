@@ -5,6 +5,13 @@
 bin/
 build/
 lib/
+Client/bin/
+Client/build/
+Client/lib/
+Server/bin/
+Server/build/
+Server/lib/
+
 
 # Mac folder properties
 .DS_Store

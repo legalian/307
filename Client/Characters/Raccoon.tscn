@@ -395,7 +395,7 @@ rotation = -5.58794e-09
 rest = Transform2D( 1, -5.58794e-09, 5.58794e-09, 1, 68.3932, 2.25259 )
 
 [node name="LeftEye" type="Bone2D" parent="Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 56.4327, -30.7288 )
+position = Vector2( 56.4326, -30.7288 )
 rest = Transform2D( 1, 0, 0, 1, 51.6162, -28.4799 )
 
 [node name="LeftEar" type="Bone2D" parent="Skeleton2D/Hip/Torso/Head"]
@@ -411,7 +411,7 @@ rest = Transform2D( 0.0150958, -0.999886, 0.999886, 0.0150958, 74.44, -15.2907 )
 default_length = 67.0
 
 [node name="RightEye" type="Bone2D" parent="Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 53.1086, 34.6712 )
+position = Vector2( 53.1086, 34.6713 )
 rest = Transform2D( 1, 0, 0, 1, 50.3848, 29.7126 )
 
 [node name="RightEar" type="Bone2D" parent="Skeleton2D/Hip/Torso/Head"]
