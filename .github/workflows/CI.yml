@@ -46,6 +46,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          script: ./deploy.sh
+          script: cd production;(/opt/Godot/Godot &);logout
 
 
