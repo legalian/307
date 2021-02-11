@@ -40,12 +40,11 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
+        uses: garygrossgarten/github-action-ssh@release
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: 22
-          script: /opt/Godot/Godot &
+         command: /opt/Godot/Godot &
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.SSH_USER }}
+         passphrase: ${{ secrets.SSH_PASSWORD }}
 
 
