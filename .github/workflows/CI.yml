@@ -42,7 +42,7 @@ jobs:
       - name: executing remote ssh commands using password
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: cd production;(/opt/Godot/Godot &);logout
+          command: cd production;(/opt/Godot/Godot > /dev/null 2>&1  &);logout
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
