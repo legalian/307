@@ -24,13 +24,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
+        uses: garygrossgarten/github-action-ssh@release
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          port: 22
-          script: pkill Godot ; rm -rf production
+          command: pkill Godot ; rm -rf production
       - name: Copy folder content recursively to remote
         uses: garygrossgarten/github-action-scp@release
         with:
@@ -42,7 +41,7 @@ jobs:
       - name: executing remote ssh commands using password
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: cd production;(/opt/Godot/Godot &);logout
+          command: cd production;(/opt/Godot/Godot > /dev/null 2>&1  &);exit
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
