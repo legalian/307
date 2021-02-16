@@ -1,6 +1,6 @@
 extends Node2D
 
-var vehiclePath = "res://minigames/driving_demo/Vehicles/"
+var vehiclePath = "res://Vehicles/"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

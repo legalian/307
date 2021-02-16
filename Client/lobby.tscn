@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 251.915
+margin_top = 110.352
+margin_right = 401.915
+margin_bottom = 167.352
+rect_scale = Vector2( 3.37513, 3.38248 )
+text = "Connecting to lobby..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
