@@ -18,8 +18,7 @@ func _ready():
 	input_pickable = true
 	set_process(true)
 	set_process_unhandled_input(true)
-	server = get_node("/root/Server/BattleRoyale")
-	print(get_node("/root/Server").get_children()[0].get_path())
+	server = get_node("/root/Server").get_children()[0]
 
 func _process(delta):
 	#set_rotation(get_rotation() + delta * 5)
