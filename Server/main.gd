@@ -59,7 +59,11 @@ remote func create_party():
 	var testParty = partyHandler.new_party(player_id)
 	print("Code: " + str(testParty.code))
 	print("Players: " + str(testParty.playerIDs))
-	
+
+remote func join_party(var partyID, var playerID):
+	print("Joining party")
+	partyHandler.join_party_by_id(playerID, partyID)
+
 func _Peer_Disconnected(player_id):
 	#var lobby = assigned_lobbies[player_id]
 	#lobby.remove_player(player_id)

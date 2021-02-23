@@ -23,7 +23,13 @@ func _on_Button_Settings_pressed():
 
 func _on_Button_Create_Party_pressed():
 	var server = get_node("/root/Server")
-	print(get_node("/root/Server"))
 	server.createParty()
 	print("Create party button pressed")
 
+func _on_Button_Join_Party_pressed():
+	get_tree().change_scene("res://lobby.tscn")
+	var player_id = get_tree().get_rpc_sender_id()
+	var server = get_node("/root/Server")
+	print("Joining with code: " + get_node("PartyCodeTextEdit").text)
+	server.join_party(get_node("PartyCodeTextEdit").text, player_id)
+	print("Join party button pressed")
