@@ -43,7 +43,7 @@ func StartServer():
 
 func make_new_lobby():#makes a new lobby object, inserts it into the tree, and returns it.
 	randomize()
-	var index = randi()%(game_types.size())
+	var index = 0
 	var scene = game_types[index]
 	var instance = scene.instance()
 	instance.name = game_typenames[index]
