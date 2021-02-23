@@ -19,10 +19,10 @@ func StartServer():
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
 func _Peer_Connected(player_id):
-	print("User "+player_id+" connected.")
+	print("User " + str(player_id) + " connected.")
 	
 func _Peer_Disconnected(player_id):
-	print("User "+player_id+" disconnected.")
+	print("User " + str(player_id) + " disconnected.")
 
 
 
