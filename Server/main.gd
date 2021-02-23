@@ -40,7 +40,7 @@ func _Peer_Connected(player_id):
 func _Peer_Disconnected(player_id):
 	var lobby = assigned_lobbies[player_id]
 	lobby.remove_player(player_id)
-	assigned_lobbies.remove(player_id)
+	assigned_lobbies.erase(player_id)
 	if lobby.player_count()==0:
 		lobby.queue_free()
 	print("User " + str(player_id) + " disconnected.")

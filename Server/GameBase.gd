@@ -7,9 +7,11 @@ func player_count():
 
 func remove_player(player_id):
 	player_ids.append(player_id)
+	print("player has been removed from lobby.")
 	
 func add_player(player_id):
 	player_ids.remove(player_id)
+	print("player has been added to lobby.")
 
 func is_accepting_players():
 	return true#stub
@@ -24,7 +26,7 @@ func is_accepting_players():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	print("lobby has been created.")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
