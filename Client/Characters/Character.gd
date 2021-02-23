@@ -12,8 +12,14 @@ var rotvel = 0
 
 var remotenode = null
 
+var server = null
+
 func _ready():
+	input_pickable = true
 	set_process(true)
+	set_process_unhandled_input(true)
+	server = get_node("/root/Server/BattleRoyale")
+	print(get_node("/root/Server").get_children()[0].get_path())
 
 func _process(delta):
 	#set_rotation(get_rotation() + delta * 5)
@@ -52,6 +58,10 @@ func _physics_process(delta):
 	
 	get_node("Camera").rotate(rotvel*delta)
 	
-
-	
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == BUTTON_LEFT:
+			server.shoot()
+			#print("rpc call happened.")
+			#rpc_id(1,"gameCall","shoot")
 	

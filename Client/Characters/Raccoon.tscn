@@ -516,7 +516,7 @@ position = Vector2( -119.849, 31.8065 )
 
 [node name="RightLeg" type="Bone2D" parent="Visible/Char/Skeleton2D/Hip"]
 position = Vector2( -18.2717, 30.7892 )
-rotation = 2.39592
+rotation = 2.37977
 rest = Transform2D( -0.73466, 0.678436, -0.678436, -0.73466, -18.2717, 30.7892 )
 script = ExtResource( 3 )
 targetpath = NodePath("../RightFootTarget")
@@ -529,7 +529,7 @@ rot_max_right = 167
 
 [node name="RightShin" type="Bone2D" parent="Visible/Char/Skeleton2D/Hip/RightLeg"]
 position = Vector2( 37.1874, 34.8864 )
-rotation = 0.717435
+rotation = 0.750492
 rest = Transform2D( 0.731354, 0.681999, -0.681999, 0.731354, 37.1874, 34.8864 )
 default_length = 49.0
 script = ExtResource( 4 )
@@ -546,7 +546,7 @@ position = Vector2( -119.986, -35.4206 )
 
 [node name="LeftLeg" type="Bone2D" parent="Visible/Char/Skeleton2D/Hip"]
 position = Vector2( -17.903, -33.9398 )
-rotation = 2.38406
+rotation = 2.38407
 rest = Transform2D( -0.733891, 0.679267, -0.679267, -0.733891, -17.903, -33.9398 )
 script = ExtResource( 3 )
 targetpath = NodePath("../LeftFootTarget")
@@ -559,7 +559,7 @@ rot_max_right = 167
 
 [node name="LeftShin" type="Bone2D" parent="Visible/Char/Skeleton2D/Hip/LeftLeg"]
 position = Vector2( 36.8605, 37.3123 )
-rotation = 0.750492
+rotation = 0.750491
 rest = Transform2D( 0.731354, 0.681998, -0.681998, 0.731354, 36.8605, 37.3123 )
 default_length = 49.0
 script = ExtResource( 4 )

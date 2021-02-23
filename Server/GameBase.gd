@@ -15,9 +15,7 @@ func add_player(player_id):
 
 func is_accepting_players():
 	return true#stub
-	
-	
-	
+
 
 # Declare member variables here. Examples:
 # var a = 2

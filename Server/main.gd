@@ -7,6 +7,7 @@ var max_players_per = 20
 var min_players_per = 10
 
 var game_types = [preload("res://BattleRoyale.tscn")]
+var game_typenames = ["BattleRoyale"]
 var assigned_lobbies = {}
 
 func _ready():
@@ -20,13 +21,14 @@ func StartServer():
 	network.connect("peer_connected",self,"_Peer_Connected")
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
-func make_new_lobby():
+func make_new_lobby():#makes a new lobby object, inserts it into the tree, and returns it.
 	randomize()
-	var scene = game_types[randi()%(game_types.size())]
+	var index = randi()%(game_types.size())
+	var scene = game_types[index]
 	var instance = scene.instance()
+	instance.name = game_typenames[index]
 	add_child(instance)
 	return instance
-
 
 func _Peer_Connected(player_id):
 	print("User " + str(player_id) + " connected.")
@@ -36,6 +38,7 @@ func _Peer_Connected(player_id):
 	var lobby = make_new_lobby();
 	assigned_lobbies[player_id] = lobby
 	lobby.add_player(player_id)
+	rpc_id(player_id,"setlobby",lobby.systemname())
 	
 func _Peer_Disconnected(player_id):
 	var lobby = assigned_lobbies[player_id]
