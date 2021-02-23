@@ -16,9 +16,11 @@ func _init():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-	
+
+
 func get_party_by_player(var memberID):
-	return player_objects[memberID].party
+	if player_objects.has(memberID):
+		return player_objects[memberID].party
 
 func new_party(var ownerID):
 	if (!player_objects.has(ownerID)):
@@ -44,6 +46,7 @@ func leave_party(var playerID):
 	if (player_objects.has(playerID)):
 		print("Player " + str(playerID) + " is leaving party " + str(player_objects.get(playerID).party.code))
 		player_objects.get(playerID).on_disconnect()
+		player_objects.erase(playerID)
 	pass
 
 func generate_code():

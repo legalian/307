@@ -27,7 +27,6 @@ func _on_Button_Create_Party_pressed():
 	print("Party created - code: " + str(code))
 
 func _on_Button_Join_Party_pressed():
-	get_tree().change_scene("res://lobby.tscn")
 	var player_id = get_tree().get_rpc_sender_id()
 	var server = get_node("/root/Server")
 	print("Joining with code: " + get_node("PartyCodeTextEdit").text)

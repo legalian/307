@@ -37,7 +37,8 @@ remote func setlobby(systemname,lobbyname):
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
 	add_child(instance)
-	
+	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
+
 	
 	
 	
