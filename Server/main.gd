@@ -60,9 +60,10 @@ remote func create_party():
 	print("Code: " + str(testParty.code))
 	print("Players: " + str(testParty.playerIDs))
 
-remote func join_party(var partyID, var playerID):
+remote func join_party(var partyID):
+	var player_id = get_tree().get_rpc_sender_id()
 	print("Joining party")
-	partyHandler.join_party_by_id(playerID, partyID)
+	partyHandler.join_party_by_id(player_id, partyID)
 
 func _Peer_Disconnected(player_id):
 	#var lobby = assigned_lobbies[player_id]
