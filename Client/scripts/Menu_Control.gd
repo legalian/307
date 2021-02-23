@@ -21,5 +21,9 @@ func _on_Button_Settings_pressed():
 	#get_node("Option_Control").show()
 	pass
 
-
+func _on_Button_Create_Party_pressed():
+	var server = get_node("/root/Server")
+	print(get_node("/root/Server"))
+	server.createParty()
+	print("Create party button pressed")
 
