@@ -516,7 +516,7 @@ position = Vector2( -119.849, 31.8065 )
 
 [node name="RightLeg" type="Bone2D" parent="Visible/Char/Skeleton2D/Hip"]
 position = Vector2( -18.2717, 30.7892 )
-rotation = 2.37978
+rotation = 2.37977
 rest = Transform2D( -0.73466, 0.678436, -0.678436, -0.73466, -18.2717, 30.7892 )
 script = ExtResource( 3 )
 targetpath = NodePath("../RightFootTarget")
