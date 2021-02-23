@@ -24,9 +24,9 @@ func _OnConnectionSucceeded():
 	#print("rpc call happened.")
 	#rpc_id(1,"gameCall","shoot")
 	
-remote func setlobby(systemname):
+remote func setlobby(systemname,lobbyname):
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
-	instance.name = systemname
+	instance.name = lobbyname
 	add_child(instance)
 	
 	

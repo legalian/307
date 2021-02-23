@@ -38,7 +38,7 @@ func _Peer_Connected(player_id):
 	var lobby = make_new_lobby();
 	assigned_lobbies[player_id] = lobby
 	lobby.add_player(player_id)
-	rpc_id(player_id,"setlobby",lobby.systemname())
+	rpc_id(player_id,"setlobby",lobby.systemname(),lobby.name)
 	
 func _Peer_Disconnected(player_id):
 	var lobby = assigned_lobbies[player_id]
