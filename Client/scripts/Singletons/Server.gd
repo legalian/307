@@ -24,6 +24,9 @@ func _OnConnectionSucceeded():
 	#print("rpc call happened.")
 	#rpc_id(1,"gameCall","shoot")
 	
+func attemptEnterGame():
+	rpc_id(1,"party_ready")
+
 remote func setlobby(systemname,lobbyname):
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
