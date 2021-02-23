@@ -21,11 +21,15 @@ func get_party_by_player(var memberID):
 	return player_objects[memberID].party
 
 func new_party(var ownerID):
-	var party = Party.new(ownerID)
-	party.code = generate_code()
-	parties[party.code] = party
-	player_objects[ownerID] = PartyPlayer.new(ownerID, party)
-	return party
+	if (!player_objects.has(ownerID)):
+		var party = Party.new(ownerID)
+		party.code = generate_code()
+		parties[party.code] = party
+		player_objects[ownerID] = PartyPlayer.new(ownerID, party)
+		return party
+	else:
+		print("Party not created - this player is already in a party: " + str(player_objects.get(ownerID).party.code))
+		return player_objects.get(ownerID).party
 
 func join_party_by_id(var playerID, var partyID):
 	print("Player " + str(playerID) + " is attempting to join party " + str(partyID))
@@ -37,8 +41,9 @@ func join_party_by_id(var playerID, var partyID):
 		return parties.get(invalid_party_id)
 
 func leave_party(var playerID):
-	print("Player " + str(playerID) + " is leaving party " + str(player_objects.get(playerID).party.code))
-	player_objects.get(playerID).on_disconnect()
+	if (player_objects.has(playerID)):
+		print("Player " + str(playerID) + " is leaving party " + str(player_objects.get(playerID).party.code))
+		player_objects.get(playerID).on_disconnect()
 	pass
 
 func generate_code():

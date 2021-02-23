@@ -66,7 +66,7 @@ func _Peer_Disconnected(player_id):
 	#assigned_lobbies.remove(player_id)
 	#if lobby.player_count()==0:
 	#	lobby.queue_free()
-	#partyHandler.leave_party(player_id)
+	partyHandler.leave_party(player_id)
 	print("User " + str(player_id) + " disconnected.")
 	
 
