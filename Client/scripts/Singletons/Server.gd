@@ -30,6 +30,9 @@ func attemptEnterGame():
 func createParty():
 	rpc_id(1, "create_party")
 
+func join_party(var partyID):
+	rpc_id(1, "join_party", partyID)
+
 remote func setlobby(systemname,lobbyname):
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
