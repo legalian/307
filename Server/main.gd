@@ -1,6 +1,9 @@
 extends Node2D
+const PartyHandler = preload("res://PartyHandler.gd")
+const PartyPlayer = preload("res://PartyPlayer.gd")
 
 var network = NetworkedMultiplayerENet.new()
+var partyHandler
 var port = 1909
 var max_players = 3000
 var max_players_per = 20
@@ -9,10 +12,27 @@ var min_players_per = 10
 var game_types = [preload("res://BattleRoyale.tscn")]
 var assigned_lobbies = {}
 
+#Note: This is a temporary variable I am using to test the party join/create system
+var test_party_code
+
 func _ready():
 	StartServer()
 	
 func StartServer():
+	partyHandler = PartyHandler.new()
+	
+	var testParty = partyHandler.new_party("TestOwnerID")
+	test_party_code = testParty.code
+	print("Code: " + str(testParty.code))
+	print("Players: " + str(testParty.playerIDs))
+	
+	
+	var testParty2 = partyHandler.new_party("TestOwnerID2")
+	print("Code: " + str(testParty2.code))
+	print("Players: " + str(testParty2.playerIDs))
+	
+	print("After join: " + str(partyHandler.join_party_by_id("JoiningPlayer", testParty2.code).playerIDs));
+	
 	network.create_server(port,max_players)
 	get_tree().set_network_peer(network)
 	print("Server started")
@@ -33,16 +53,30 @@ func _Peer_Connected(player_id):
 	#this part will need to be more complicated: all i'm doing here is making a new lobby for each player. This will need to be replaced with our party/lobby system.
 	#each lobby object returned by scene.instance() will have a add_player() method, remove_player() method, and a is_accepting_players() method. you can change this if needed.
 	#it would probably make more sense to make a party for each user, and have them leave that party and join a new one when a party code is submitted.
-	var lobby = make_new_lobby();
-	assigned_lobbies[player_id] = lobby
-	lobby.add_player(player_id)
+	#var lobby = make_new_lobby();
+	#assigned_lobbies[player_id] = lobby
+	#lobby.add_player(player_id)
+	
+	if (partyHandler.party_count() == 0):
+		print("Simulating party creation...")
+		var testParty = partyHandler.new_party(player_id)
+		print("Code: " + str(testParty.code))
+		print("Players: " + str(testParty.playerIDs))
+		test_party_code = testParty.code
+	else:
+		print("Simulating party join...")
+		var tp2 = partyHandler.join_party_by_id(player_id, test_party_code)
+		print("Code: " + str(tp2.code))
+		print("Players: " + str(tp2.playerIDs))
+		
 	
 func _Peer_Disconnected(player_id):
-	var lobby = assigned_lobbies[player_id]
-	lobby.remove_player(player_id)
-	assigned_lobbies.remove(player_id)
-	if lobby.player_count()==0:
-		lobby.queue_free()
+	#var lobby = assigned_lobbies[player_id]
+	#lobby.remove_player(player_id)
+	#assigned_lobbies.remove(player_id)
+	#if lobby.player_count()==0:
+	#	lobby.queue_free()
+	partyHandler.leave_party(player_id)
 	print("User " + str(player_id) + " disconnected.")
 	
 
