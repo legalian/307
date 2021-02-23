@@ -51,6 +51,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button_Create_Party" type="Button" parent="Menu_Controller"]
+margin_left = 314.304
+margin_top = 180.998
+margin_right = 494.304
+margin_bottom = 250.998
+text = "Create a Party"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 316.357
 margin_top = 45.4757
@@ -66,3 +76,4 @@ __meta__ = {
 [connection signal="pressed" from="Menu_Controller/Button_Start" to="Menu_Controller" method="_on_Button_Start_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
+[connection signal="pressed" from="Menu_Controller/Button_Create_Party" to="Menu_Controller" method="_on_Button_Create_Party_pressed"]
