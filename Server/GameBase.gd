@@ -3,7 +3,7 @@ extends Node
 var player_ids = []
 
 func player_count():
-	return player_ids.length()
+	return player_ids.size()
 
 func remove_player(player_id):
 	player_ids.append(player_id)

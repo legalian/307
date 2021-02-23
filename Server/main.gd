@@ -22,7 +22,7 @@ func StartServer():
 
 func make_new_lobby():
 	randomize()
-	var scene = game_types[randi()%(game_types.length())]
+	var scene = game_types[randi()%(game_types.size())]
 	var instance = scene.instance()
 	add_child(instance)
 	return instance
@@ -38,7 +38,6 @@ func _Peer_Connected(player_id):
 	lobby.add_player(player_id)
 	
 func _Peer_Disconnected(player_id):
-	print("User "+player_id+" disconnected.")
 	var lobby = assigned_lobbies[player_id]
 	lobby.remove_player(player_id)
 	assigned_lobbies.remove(player_id)
