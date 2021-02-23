@@ -28,8 +28,7 @@ func attemptEnterGame():
 	rpc_id(1,"party_ready")
 
 func createParty():
-	var player_id = get_tree().get_rpc_sender_id()
-	rpc_id(1, "create_party", player_id)
+	rpc_id(1, "create_party")
 
 remote func setlobby(systemname,lobbyname):
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()

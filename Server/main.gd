@@ -53,7 +53,8 @@ remote func party_ready():
 		lobby.add_player(pid)
 		rpc_id(pid,"setlobby",lobby.systemname(),lobby.name)
 
-remote func create_party(var player_id):
+remote func create_party():
+	var player_id = get_tree().get_rpc_sender_id()
 	print("Creating party...")
 	var testParty = partyHandler.new_party(player_id)
 	print("Code: " + str(testParty.code))
