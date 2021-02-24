@@ -10,7 +10,6 @@ var max_players_per = 20
 var min_players_per = 10
 
 var game_types = [preload("res://BattleRoyale.tscn")]
-var game_typenames = ["BattleRoyale"]
 var assigned_lobbies = {}
 
 var assigned_matches = [] # This needs to be changed from var to a node that takes care of pre-match.
@@ -30,7 +29,7 @@ func StartServer():
 	print("Server started")
 	
 	for iter in (max_players / min_players_per): # Assign all match ID slots to unoccupied.
-		assigned_matches[iter] = false
+		assigned_matches.append(false)
 	
 	network.connect("peer_connected",self,"_Peer_Connected")
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
@@ -40,10 +39,10 @@ func make_new_lobby():#makes a new lobby object, inserts it into the tree, and r
 	# TODO: Create random order of minigames.
 	
 	randomize()
-	var index = 0
+	var index = randi()%(game_types.size())
 	var scene = game_types[index]
 	var instance = scene.instance()
-	instance.name = game_typenames[index]
+	instance.name = instance.systemname()
 	add_child(instance)
 	return instance
 
@@ -124,8 +123,8 @@ remote func matchmake(party_list):
 # RETURNS
 # match_id:		A match_id that is reserved for the pre-match room. (Industry term is lobby but not sure if that's the same lobby as above.)
 ################################################################################
-func initialize_matchmaking():
-	while (true):
+#func initialize_matchmaking():
+	#while (true):
 		# Get first free match that hasn't started and < 20 players
 		
 		# Add party/players to that match if the result will still be within reqs
