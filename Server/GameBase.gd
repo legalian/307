@@ -5,6 +5,11 @@ var players = []
 func player_count():
 	return players.size()
 
+func add_player(newplayer):
+	players.append(newplayer)
+	print("player has been added to lobby.")
+	
+
 func remove_player(player_id):
 	for i in range(players.size()-1,-1,-1):
 		if players[i].playerID==player_id: players.remove(i)
