@@ -3,7 +3,7 @@ const Party = preload("res://Party.gd")
 const PartyPlayer = preload("res://PartyPlayer.gd")
 const invalid_party_id = 100000
 var codes_in_use = [invalid_party_id]
-var parties = {invalid_party_id : Party.new("defaultPartyOwner")}
+var parties = {str(invalid_party_id) : Party.new("defaultPartyOwner")}
 var player_objects = {}
 
 # Declare member variables here. Examples:
@@ -17,6 +17,11 @@ func _init():
 func _ready():
 	pass
 
+func get_players_in_party(var party):
+	var outp = []
+	for pid in party.playerIDs:
+			outp.append(player_objects.get(pid))
+	return outp
 
 func get_party_by_player(var memberID):
 	if player_objects.has(memberID):
@@ -26,7 +31,7 @@ func new_party(var ownerID):
 	if (!player_objects.has(ownerID)):
 		var party = Party.new(ownerID)
 		party.code = generate_code()
-		parties[party.code] = party
+		parties[str(party.code)] = party
 		player_objects[ownerID] = PartyPlayer.new(ownerID, party)
 		return party
 	else:
@@ -35,11 +40,12 @@ func new_party(var ownerID):
 
 func join_party_by_id(var playerID, var partyID):
 	print("Player " + str(playerID) + " is attempting to join party " + str(partyID))
-	if (parties.has(partyID)):
-		parties.get(partyID).playerIDs.append(playerID)
+	if (parties.has(str(partyID))):
+		parties.get(str(partyID)).playerIDs.append(playerID)
 		player_objects[playerID] = PartyPlayer.new(playerID, parties[partyID])
 		return parties.get(partyID)
 	else:
+		print("Party not found: " + str(partyID) + " in: " + str(parties))
 		return parties.get(invalid_party_id)
 
 func leave_party(var playerID):

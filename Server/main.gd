@@ -71,7 +71,7 @@ remote func create_party():
 remote func join_party(var partyID):
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Joining party")
-	partyHandler.join_party_by_id(player_id, partyID)
+	print("Players: " + str(partyHandler.join_party_by_id(player_id, partyID).playerIDs))
 
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
