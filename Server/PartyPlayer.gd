@@ -33,3 +33,6 @@ func pack():
 			'avatar':avatar,
 			'hat':hat
 		}
+
+func equals(var comparePlayer):
+	return playerID == comparePlayer.playerID

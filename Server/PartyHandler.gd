@@ -1,7 +1,7 @@
 extends Node
 const Party = preload("res://Party.gd")
 const PartyPlayer = preload("res://PartyPlayer.gd")
-const invalid_party_id = 100000
+const invalid_party_id = str(100000)
 var codes_in_use = [invalid_party_id]
 var parties = {str(invalid_party_id) : Party.new("defaultPartyOwner")}
 var player_objects = {}
@@ -43,10 +43,10 @@ func join_party_by_id(var playerID, var partyID):
 	if (parties.has(str(partyID))):
 		parties.get(str(partyID)).playerIDs.append(playerID)
 		player_objects[playerID] = PartyPlayer.new(playerID, parties[partyID])
-		return parties.get(partyID)
+		return parties.get(str(partyID))
 	else:
 		print("Party not found: " + str(partyID) + " in: " + str(parties))
-		return parties.get(invalid_party_id)
+		return parties.get(str(invalid_party_id))
 
 func leave_party(var playerID):
 	if (player_objects.has(playerID)):
