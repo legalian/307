@@ -51,9 +51,9 @@ func _Peer_Connected(player_id):
 	print("User " + str(player_id) + " connected.")
 
 func reassign_party_to_lobby(var party,var lobby):
-	for pid in party.playerIDs:
-		lobby.add_player(pid)
-		rpc_id(pid,"setlobby",lobby.systemname(),lobby.name)
+	for player in partyHandler.get_players_in_party(party):
+		lobby.add_player(player)
+		rpc_id(player.playerID,"setlobby",lobby.systemname(),lobby.name)
 	party.lobby.queue_free()
 	party.lobby = lobby
 
@@ -72,6 +72,7 @@ remote func create_party():
 	print("Code: " + str(newparty.code))
 	print("Players: " + str(newparty.playerIDs))
 	newparty.lobby = make_party_screen()
+	newparty.lobby.add_player(partyHandler.player_objects.get(player_id))
 	rpc_id(player_id,"setlobby",newparty.lobby.systemname(),newparty.lobby.name)
 
 remote func join_party(var partyID):

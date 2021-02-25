@@ -5,6 +5,9 @@ var ip = "127.0.0.1"
 #var ip = "64.227.13.167"
 var port = 1909
 
+const Player = preload("res://scripts/MinigameServers/Player.gd")
+
+var players = [Player.new({'id':get_tree().get_network_unique_id()})]
 
 func _ready():
 	ConnectToServer()
