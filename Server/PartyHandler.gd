@@ -20,7 +20,7 @@ func _ready():
 func get_players_in_party(var party):
 	var outp = []
 	for pid in party.playerIDs:
-			outp.append(player_objects.get(pid))
+		outp.append(player_objects.get(pid))
 	return outp
 
 func get_party_by_player(var memberID):

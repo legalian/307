@@ -1,4 +1,4 @@
-extends Node
+extends "res://scripts/MinigameServers/MinigameBase.gd"
 
 func _ready():
 	print("I have been added to a battle royale lobby")
@@ -6,6 +6,8 @@ func _ready():
 func shoot():
 	print("I am shooting")
 	rpc_id(1,"shoot")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func player_disconnected(player_id):
+	print("a peer has disconnected.")
+	pass
+
