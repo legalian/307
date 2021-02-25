@@ -7,7 +7,7 @@ var port = 1909
 
 const Player = preload("res://scripts/MinigameServers/Player.gd")
 
-var players = [Player.new({'id':get_tree().get_network_unique_id()})]
+var players = []
 
 func _ready():
 	ConnectToServer()
@@ -24,6 +24,7 @@ func _OnConnectionFailed():
 	
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
+	players.append(Player.new({'id':get_tree().get_network_unique_id()}))
 	#print("rpc call happened.")
 	#rpc_id(1,"gameCall","shoot")
 	
