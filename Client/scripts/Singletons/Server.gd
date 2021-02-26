@@ -29,6 +29,8 @@ func _OnConnectionSucceeded():
 	#rpc_id(1,"gameCall","shoot")
 	
 func attemptEnterGame():
+	# var lobby_id = rpc_id(1, "matchmake", party_list)
+	# rpc_id(1, "party_ready", lobby_id)
 	rpc_id(1,"party_ready")
 
 func createParty():
@@ -47,22 +49,3 @@ remote func setminigame(systemname,lobbyname):
 	add_child(instance)
 	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
 	print(get_children())
-
-	
-	
-	
-	
-	
-
-	
-
-
-
-
-
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
