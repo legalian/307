@@ -31,7 +31,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("rotate_left"):input_rotvel -= 1
 	if Input.is_action_pressed("rotate_right"):input_rotvel += 1
 		
-	input_velocity = (input_velocity.normalized() * speed)#.rotated(-get_node("Camera").rotation)
+	input_velocity = (input_velocity.normalized() * speed).rotated(get_node("Camera").rotation)
 	input_rotvel = input_rotvel * rotspeed
 	
 
