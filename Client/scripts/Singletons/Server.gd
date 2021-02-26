@@ -38,10 +38,15 @@ func join_party(var partyID):
 	rpc_id(1, "join_party", partyID)
 
 remote func setlobby(systemname,lobbyname):
+	for ms in get_children():
+		remove_child(ms)
+		ms.queue_free()
+	print(get_children())
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
 	add_child(instance)
 	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
+	print(get_children())
 
 	
 	

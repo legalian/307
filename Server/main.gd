@@ -71,6 +71,7 @@ func reassign_party_to_lobby(var party,var lobby):
 	for player in partyHandler.get_players_in_party(party):
 		lobby.add_player(player)
 		rpc_id(player.playerID,"setlobby",lobby.systemname(),lobby.name)
+		print("setting ")
 	party.lobby.queue_free()
 	party.lobby = lobby
 
