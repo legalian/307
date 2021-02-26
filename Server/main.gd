@@ -44,12 +44,13 @@ func make_new_minigame():#makes a new minigame object, inserts it into the tree,
 	var index = randi()%(game_types.size())
 	var scene = game_types[index]
 	var instance = scene.instance()
-
+	instance.name = instance.systemname()
 	add_child(instance)
 	return instance
 	
 func make_party_screen():
 	var instance = lobby_game_type.instance()
+	instance.name = instance.systemname()
 	add_child(instance)
 	return instance
 
@@ -59,8 +60,9 @@ func _Peer_Connected(player_id):
 func reassign_party_to_minigame(var party,var minigame):
 	for player in partyHandler.get_players_in_party(party):
 		minigame.add_player(player)
-		############################# setlobby cannot be changed because it is not changed clientside.####################
-		rpc_id(player.playerID,"setlobby",minigame.systemname(),minigame.name)
+
+		rpc_id(player.playerID,"setminigame",minigame.systemname(),minigame.name)
+		print("setting ",minigame.name,minigame.get_path())
 	party.minigame.queue_free()
 	party.minigame = minigame
 
@@ -80,8 +82,7 @@ remote func create_party():
 	print("Players: " + str(newparty.playerIDs))
 	newparty.minigame = make_party_screen()
 	newparty.minigame.add_player(partyHandler.player_objects.get(player_id))
-	##################### setlobby cannot be changed because it is not changed clientside.####################
-	rpc_id(player_id,"setlobby",newparty.minigame.systemname(),newparty.minigame.name)
+	rpc_id(player_id,"setminigame",newparty.minigame.systemname(),newparty.minigame.name)
 
 remote func join_party(var partyID):
 	var player_id = get_tree().get_rpc_sender_id()
