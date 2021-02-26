@@ -6,9 +6,9 @@
 [ext_resource path="res://minigames/BattleRoyale/racemap.tres" type="TileSet" id=4]
 
 [node name="WorldContainer" type="YSort"]
+script = ExtResource( 3 )
 
 [node name="World" type="YSort" parent="."]
-script = ExtResource( 3 )
 
 [node name="Node2D5" parent="World" instance=ExtResource( 2 )]
 position = Vector2( 1157.25, -337.092 )
