@@ -1,4 +1,5 @@
 extends Node2D
+# Party Management Variables ###################################################
 const PartyHandler = preload("res://PartyHandler.gd")
 const PartyPlayer = preload("res://PartyPlayer.gd")
 
@@ -13,11 +14,21 @@ var game_types = [preload("res://BattleRoyale.tscn")]
 var game_typenames = ["BattleRoyale"]
 var assigned_lobbies = {}
 
-var assigned_matches = [] # This needs to be changed from var to a node that takes care of pre-match.
-var player_queue = [] # GoDot does not have support for queues, using array instead. NOTE: This is a 2D array!!
-
 #Note: This is a temporary variable I am using to test the party join/create system
 var test_party_code
+
+# Lobby Management Variables ###################################################
+const LobbyHandler=preload("res://LobbyHandler.gd")
+
+var lobby_propagator
+
+var matchmaking_pool = [] # Array of parties that want to get into a lobby
+var pool_mutex
+
+var lobbyHandler
+
+
+
 
 func _ready():
 	StartServer()
@@ -25,12 +36,17 @@ func _ready():
 func StartServer():
 	partyHandler = PartyHandler.new()
 	
+	# Start async lobby checking service
+	lobby_propagator = Thread.new()
+	pool_mutex = Mutex.new()
+	lobby_propagator.start(self, "_lobby_director")
+	
+	# Create lobby handler
+	lobbyHandler = LobbyHandler.new()
+	
 	network.create_server(port,max_players)
 	get_tree().set_network_peer(network)
 	print("Server started")
-	
-	for iter in (max_players / min_players_per): # Assign all match ID slots to unoccupied.
-		assigned_matches[iter] = false
 	
 	network.connect("peer_connected",self,"_Peer_Connected")
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
@@ -43,6 +59,7 @@ func make_new_lobby():#makes a new lobby object, inserts it into the tree, and r
 	var index = 0
 	var scene = game_types[index]
 	var instance = scene.instance()
+	
 	instance.name = game_typenames[index]
 	add_child(instance)
 	return instance
@@ -80,18 +97,18 @@ func _Peer_Disconnected(player_id):
 	
 	
 ###############################################################################
-# DESCRIPTION 
-# This function can be called by rpc("matchmake", party_size) from the client.
+# @desc
+# This function can be called by rpc("matchmake", party_list) from the client.
 #
-# ARGUMENTS
+# @param
 # party_list:	The party list is a list of all players and their peer_ids'.
 #				This will be needed to communicate to all players their
 #				match_id. If the size of this list is <= 0, then an error will
 #				be thrown.
 #
-# RETURNS
-# match_id:		This id number will be unique per match. It should be used when
-#				creating the match instances later on. If match_id is null, then
+# @returns
+# lobby_id:		This id number will be unique per lobby. It should be used when
+#				creating the lobby instances later on. If lobby_id is null, then
 #				there was an error; you have not been placed in matchmaking.
 ###############################################################################
 remote func matchmake(party_list):
@@ -102,34 +119,32 @@ remote func matchmake(party_list):
 		print("FATAL ERROR @@ REMOTE FUNC MATCHMAKE(PARTY_SIZE): party_size is <= 0")
 		return null
 	
-	# TODO: Enqueue the list of IDs to the queue. The asynchronous script to 
-	#		place players together should immediately take action.
-	player_queue.append(party_list)
-	
-	while (true): # Keep looping until a free match_id is found. Need to implement cancellation.
-		for match_id_iter in assigned_matches:
-			if (!assigned_matches[match_id_iter]):
-				assigned_matches[match_id_iter] = true
-				return match_id_iter
-				
+	# Add the party to the matchmaking pool
+	pool_mutex.lock()
+	matchmaking_pool.append(party_list)
+	pool_mutex.unlock()
+	print("Added " + party_list + " to the matchmaking pool")
 	
 	
 ################################################################################
-# DESCRIPTION
+# @desc
 # This function initializes the infinite loop that will constantly try and place
 # players who are wating to be matchmaked into lobbies. It will be run async.
 #
 # Still need to do some research on how multithreading in gdscript works, not even sure if its supported tbh but it prolly is
 #
-# RETURNS
+# @returns
 # match_id:		A match_id that is reserved for the pre-match room. (Industry term is lobby but not sure if that's the same lobby as above.)
 ################################################################################
-func initialize_matchmaking():
-	while (true):
-		# Get first free match that hasn't started and < 20 players
-		
-		# Add party/players to that match if the result will still be within reqs
-		
-		# Repeat
-		
-		# yeh this line is red
+func _lobby_director():
+	while true: # Will the mutex unlock for the matchmake()?
+		pool_mutex.lock() # Lock the matchmaking pool queue
+		for party in matchmaking_pool: # Go through each party
+			var lobby_code = lobbyHandler.add_to_lobby(party)
+			# Try to send them to a lobby and get the code
+			if (lobby_code == null): # Cannot enter a lobby
+				break
+			
+			return lobby_code
+		pool_mutex.unlock() # Unlock the matchmaking pool queue
+		#sleep(1000) # TODO How to put a thread to sleep??
