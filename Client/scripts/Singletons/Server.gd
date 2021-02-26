@@ -5,6 +5,9 @@ var ip = "127.0.0.1"
 #var ip = "64.227.13.167"
 var port = 1909
 
+const Player = preload("res://scripts/MinigameServers/Player.gd")
+
+var players = []
 
 func _ready():
 	ConnectToServer()
@@ -21,6 +24,7 @@ func _OnConnectionFailed():
 	
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
+	players.append(Player.new({'id':get_tree().get_network_unique_id()}))
 	#print("rpc call happened.")
 	#rpc_id(1,"gameCall","shoot")
 	
@@ -30,11 +34,15 @@ func attemptEnterGame():
 func createParty():
 	rpc_id(1, "create_party")
 
+func join_party(var partyID):
+	rpc_id(1, "join_party", partyID)
+
 remote func setlobby(systemname,lobbyname):
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
 	add_child(instance)
-	
+	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
+
 	
 	
 	

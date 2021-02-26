@@ -61,15 +61,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Button_Join_Party" type="Button" parent="Menu_Controller"]
+margin_left = 313.765
+margin_top = 297.866
+margin_right = 493.765
+margin_bottom = 367.866
+text = "Join a Party"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartyCodeTextEdit" type="TextEdit" parent="Menu_Controller"]
+margin_left = 318.378
+margin_top = 380.622
+margin_right = 490.378
+margin_bottom = 420.622
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleText" type="RichTextLabel" parent="."]
 margin_left = 316.357
 margin_top = 45.4757
 margin_right = 709.357
 margin_bottom = 132.476
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Party Minigames[/rainbow][/wave]"
-text = "Party Minigames"
+bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Late to the Stage[/rainbow][/wave]"
+text = "Late to the Stage"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -77,3 +96,4 @@ __meta__ = {
 [connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Create_Party" to="Menu_Controller" method="_on_Button_Create_Party_pressed"]
+[connection signal="pressed" from="Menu_Controller/Button_Join_Party" to="Menu_Controller" method="_on_Button_Join_Party_pressed"]

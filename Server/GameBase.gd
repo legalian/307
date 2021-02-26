@@ -1,20 +1,42 @@
 extends Node
 
-var player_ids = []
+var players = []
 
 func player_count():
-	return player_ids.size()
+	return players.size()
+
+func add_player(newplayer):
+	players.append(newplayer)
+	print("player has been added to lobby.")
+	
 
 func remove_player(player_id):
-	player_ids.erase(player_id)
+	for i in range(players.size()-1,-1,-1):
+		if players[i].playerID==player_id: players.remove(i)
+		else:
+			rpc_id(players[i].playerID,"drop_player",player_id)
 	print("player has been removed from lobby.")
-	
-func add_player(player_id):
-	player_ids.append(player_id)
-	print("player has been added to lobby.")
 
-func is_accepting_players():
-	return true#stub
+func get_player(player_id):
+	for player in players:
+		if player.playerID==player_id: return player
+
+
+
+remote func addscore(amt):
+	var player_id = get_tree().get_rpc_sender_id()
+	var player = get_player(player_id)
+	player.score += 1
+	for p in players: rpc(p.playerID,"setscore",player_id,player.score)
+	
+remote func reducescore(amt):
+	var player_id = get_tree().get_rpc_sender_id()
+	var player = get_player(player_id)
+	player.score += 1
+	for p in players: rpc(p.playerID,"setscore",player_id,player.score)
+
+
+
 
 
 # Declare member variables here. Examples:

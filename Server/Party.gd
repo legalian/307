@@ -7,6 +7,7 @@ extends Node
 var code = "defaultCode"
 var playerIDs = []
 var ownerID = ""
+var lobby
 
 func _init(var partyOwnerID):
 	print("Party created with owner: " + str(partyOwnerID))

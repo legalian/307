@@ -10,9 +10,8 @@ var max_players = 3000
 var max_players_per = 20
 var min_players_per = 10
 
+var lobby_game_type = preload("res://PartyScreen.tscn")
 var game_types = [preload("res://BattleRoyale.tscn")]
-var game_typenames = ["BattleRoyale"]
-var assigned_lobbies = {}
 
 #Note: This is a temporary variable I am using to test the party join/create system
 var test_party_code
@@ -52,47 +51,59 @@ func StartServer():
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
 func make_new_lobby():#makes a new lobby object, inserts it into the tree, and returns it.
-	
-	# TODO: Create random order of minigames.
-	
 	randomize()
-	var index = 0
+	var index = randi()%(game_types.size())
 	var scene = game_types[index]
 	var instance = scene.instance()
+
+	add_child(instance)
+	return instance
 	
-	instance.name = game_typenames[index]
+func make_party_screen():
+	var instance = lobby_game_type.instance()
 	add_child(instance)
 	return instance
 
 func _Peer_Connected(player_id):
 	print("User " + str(player_id) + " connected.")
-	#this part will need to be more complicated: all i'm doing here is making a new lobby for each player. This will need to be replaced with our party/lobby system.
-	#each lobby object returned by scene.instance() will have a add_player() method, remove_player() method, and a is_accepting_players() method. you can change this if needed.
-	#it would probably make more sense to make a party for each user, and have them leave that party and join a new one when a party code is submitted.
-	
+
+func reassign_party_to_lobby(var party,var lobby):
+	for player in partyHandler.get_players_in_party(party):
+		lobby.add_player(player)
+		rpc_id(player.playerID,"setlobby",lobby.systemname(),lobby.name)
+	party.lobby.queue_free()
+	party.lobby = lobby
 
 remote func party_ready():
-	var player_id = get_tree().get_rpc_sender_id()
-	var lobby = make_new_lobby()
-	for pid in partyHandler.get_party_by_player(player_id).playerIDs:
-		assigned_lobbies[pid] = lobby
-		lobby.add_player(pid)
-		rpc_id(pid,"setlobby",lobby.systemname(),lobby.name)
+	var party = partyHandler.get_party_by_player(get_tree().get_rpc_sender_id())
+	if party!=null:
+		reassign_party_to_lobby(party,make_new_lobby())
+	else:
+		print("Attempted to mark a party as ready that does not exist.")
+		print("Player code: ",get_tree().get_rpc_sender_id())
 
 remote func create_party():
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Creating party...")
-	var testParty = partyHandler.new_party(player_id)
-	print("Code: " + str(testParty.code))
-	print("Players: " + str(testParty.playerIDs))
-	
+	var newparty = partyHandler.new_party(player_id)
+	print("Code: " + str(newparty.code))
+	print("Players: " + str(newparty.playerIDs))
+	newparty.lobby = make_party_screen()
+	newparty.lobby.add_player(partyHandler.player_objects.get(player_id))
+	rpc_id(player_id,"setlobby",newparty.lobby.systemname(),newparty.lobby.name)
+
+remote func join_party(var partyID):
+	var player_id = get_tree().get_rpc_sender_id()
+	print("Joining party")
+	partyHandler.join_party_by_id(player_id, partyID)
+
 func _Peer_Disconnected(player_id):
-	#var lobby = assigned_lobbies[player_id]
-	#lobby.remove_player(player_id)
-	#assigned_lobbies.remove(player_id)
-	#if lobby.player_count()==0:
-	#	lobby.queue_free()
-	#partyHandler.leave_party(player_id)
+	var party = partyHandler.get_party_by_player(player_id)
+	if party!=null:
+		var lobby = party.lobby
+		lobby.remove_player(player_id)
+		if lobby.player_count()==0: lobby.queue_free()
+		partyHandler.leave_party(player_id)
 	print("User " + str(player_id) + " disconnected.")
 	
 	
