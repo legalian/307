@@ -21,9 +21,6 @@ const LobbyHandler=preload("res://LobbyHandler.gd")
 
 var lobby_propagator
 
-var matchmaking_pool = [] # Array of parties that want to get into a lobby
-var pool_mutex
-
 var lobbyHandler
 
 func _ready():
@@ -31,11 +28,6 @@ func _ready():
 	
 func StartServer():
 	partyHandler = PartyHandler.new()
-	
-	# Start async lobby checking service
-	lobby_propagator = Thread.new()
-	pool_mutex = Mutex.new()
-	lobby_propagator.start(self, "_lobby_director")
 	
 	# Create lobby handler
 	lobbyHandler = LobbyHandler.new()
@@ -105,21 +97,49 @@ func _Peer_Disconnected(player_id):
 		partyHandler.leave_party(player_id)
 	print("User " + str(player_id) + " disconnected.")
 	
-	
+###############################################################################
+# @desc
+# This function can be called by rpc("delete_lobby", lobby_id) from the client.
+# This will free up the lobby from the server.
+#
+# @param
+# lobby_id:		This parameter should be given from the functional call by the
+#				client with rpc("matchmake", party_list).
+###############################################################################
+remote func delete_lobby(var lobby_id):
+	lobbyHandler.delete_lobby(lobby_id)
+
+###############################################################################
+# @desc
+# This function can be called by rpc("get_lobby", lobby_id) from the client.
+# This will return a Lobby.gd object that contains the minigame order, lobby_id,
+# and the lobby's players consisting of PlayerParty.gd objects.
+#
+# @param
+# lobby_id:		This parameter should be given from the functional call by the
+#				client with rpc("matchmake", party_list).
+#
+# @returns
+# Lobby:		A Lobby.gd object that matches the given lobby_id. If no
+#				lobby_id matches, then null is returned instead.
+###############################################################################
+remote func get_lobby(var lobby_id):
+	return lobbyHandler.get_lobby(lobby_id)
+
 ###############################################################################
 # @desc
 # This function can be called by rpc("matchmake", party_list) from the client.
+# When called, the function must be given an array of PartyPlayer objects.
 #
 # @param
-# party_list:	The party list is a list of all players and their peer_ids'.
-#				This will be needed to communicate to all players their
-#				match_id. If the size of this list is <= 0, then an error will
-#				be thrown.
+# party_list:	The party list is a list of PartyPlayer objects, each of which
+#				represent a player in the party.
 #
 # @returns
-# lobby_id:		This id number will be unique per lobby. It should be used when
-#				creating the lobby instances later on. If lobby_id is null, then
-#				there was an error; you have not been placed in matchmaking.
+# lobby_id:		This will contain the id of either a new lobby or existing
+#				lobby. The Lobby object will be stored inside LobbyHandler.gd,
+#				and can be accessed via LobbyHandler.get_lobby(lobby_id), which
+#				returns a Lobby.gd object. 
 ###############################################################################
 remote func matchmake(party_list):
 	print(str(party_list.size()) + "player(s) have requested to matchmake. Party list:" + party_list)
@@ -129,36 +149,15 @@ remote func matchmake(party_list):
 		print("FATAL ERROR @@ REMOTE FUNC MATCHMAKE(PARTY_SIZE): party_size is <= 0")
 		return null
 	
-	# Add the party to the matchmaking pool
-	pool_mutex.lock()
-	matchmaking_pool.append(party_list)
-	pool_mutex.unlock()
 	print("Added " + party_list + " to the matchmaking pool")
 	
-	
-################################################################################
-# @desc
-# This function initializes the infinite loop that will constantly try and place
-# players who are wating to be matchmaked into lobbies. It will be run async.
-#
-# Still need to do some research on how multithreading in gdscript works, not even sure if its supported tbh but it prolly is
-#
-# @returns
-# lobby_code:	A code to the lobby (and thus, the match). Lobby and match are,
-# 				although different (lobby is pre-match, match is the actual
-#				game consisting of minigames), the ID that they use will be the
-#				same. So, lobby_code = match_id, as you cannot have two lobbies
-#				in one match. You can have multiple parties in a lobby.
-################################################################################
-func _lobby_director():
-	while true: # Will the mutex unlock for the matchmake()?
-		pool_mutex.lock() # Lock the matchmaking pool queue
-		for party in matchmaking_pool: # Go through each party
-			var lobby_code = lobbyHandler.add_to_lobby(party)
-			# Try to send them to a lobby and get the code
-			if (lobby_code == null): # Cannot enter a lobby
-				break
-			
+	while true: # Constantly try to add to a lobby
+		var lobby_code = lobbyHandler.add_to_lobby(party_list)
+		# Try to send them to a lobby and get the code
+		if (lobby_code != null): # Cannot enter a lobby
 			return lobby_code
-		pool_mutex.unlock() # Unlock the matchmaking pool queue
-		#sleep(1000) # TODO How to put a thread to sleep??
+		
+		for player in party_list:
+			if (rpc_id(player.playerID,"get_lobby_cstatus")):
+				# Implement this clientside; check if any player has cancelled
+				return null

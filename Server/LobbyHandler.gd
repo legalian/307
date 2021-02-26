@@ -11,6 +11,12 @@ func _init(): # Called when LobbyHandler.new() is done
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 
+func get_lobby(var lobby_id):
+	return lobbies[lobby_id]
+
+func delete_lobby(var lobby_id):
+	lobbies[lobby_id] = null
+
 ################################################################################
 # @desc
 # Creates a new Lobby object, creates a unique code, and inserts it to the dict.
@@ -41,7 +47,6 @@ func create_lobby():
 #
 # @returns
 # Returns the lobby code on successful addition; null otherwise.
-#
 ################################################################################
 func add_to_lobby(var party):
 	for lobby_code in lobbies.keys():
