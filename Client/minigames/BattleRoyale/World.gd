@@ -1,5 +1,5 @@
 extends YSort
-
+var path = "res://objects"
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -8,9 +8,12 @@ extends YSort
 var camera = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	camera = find_node("Camera")
-
-
+	var tree = load(path + "tree")	
+	var tree1 = tree.instance()
+	var root = get_node(".")
+	root.add_child(tree1);
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#pass
