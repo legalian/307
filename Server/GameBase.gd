@@ -7,7 +7,7 @@ func player_count():
 
 func add_player(newplayer):
 	players.append(newplayer)
-	print("player has been added to lobby.")
+	print("player has been added to minigame.")
 	
 
 func remove_player(player_id):
@@ -15,7 +15,7 @@ func remove_player(player_id):
 		if players[i].playerID==player_id: players.remove(i)
 		else:
 			rpc_id(players[i].playerID,"drop_player",player_id)
-	print("player has been removed from lobby.")
+	print("player has been removed from minigame.")
 
 func get_player(player_id):
 	for player in players:
@@ -46,7 +46,7 @@ remote func reducescore(amt):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("lobby has been created.")
+	print("minigame has been created.")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

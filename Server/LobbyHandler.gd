@@ -10,7 +10,7 @@ var max_lobbies = 150
 func _init(): # Called when LobbyHandler.new() is done
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	
+
 ################################################################################
 # @desc
 # Creates a new Lobby object, creates a unique code, and inserts it to the dict.

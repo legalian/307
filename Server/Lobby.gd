@@ -5,8 +5,28 @@ var players = []
 
 var max_lobby_players = 20
 
+var minigame_list = [preload("res://BattleRoyale.tscn")]
+var minigame_order = []
+
+var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!
+
+var rng
+
 func _init(var code):
 	lobby_code = code
+	
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
+	if (minigames_per_match > minigame_list.size()):
+		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
+		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
+		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
+		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
+		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
+		return
+	
+	scramble_minigames()
 
 func set_lobby_code(var code):
 	lobby_code = code
@@ -17,6 +37,19 @@ func get_lobby_code():
 func add_party(var party):
 	players.append(party)
 	
+################################################################################
+# @desc
+# Adds minigames in a random order from minigame_list.
+################################################################################
+func scramble_minigames():
+	while (minigame_order.size() != minigames_per_match):
+		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive
+		if (!minigame_order.has(minigame_list.get(rand))):
+			minigame_order.append(minigame_list.get(rand)) # Keep appending until size is correct
+
+func get_minigame_order():
+	return minigame_order
+
 ################################################################################
 # @desc
 # This function removes a player given to it. If the player is not in the lobby,

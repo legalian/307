@@ -26,9 +26,6 @@ var pool_mutex
 
 var lobbyHandler
 
-
-
-
 func _ready():
 	StartServer()
 	
@@ -50,7 +47,7 @@ func StartServer():
 	network.connect("peer_connected",self,"_Peer_Connected")
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
-func make_new_lobby():#makes a new lobby object, inserts it into the tree, and returns it.
+func make_new_minigame():#makes a new minigame object, inserts it into the tree, and returns it.
 	randomize()
 	var index = randi()%(game_types.size())
 	var scene = game_types[index]
@@ -67,17 +64,18 @@ func make_party_screen():
 func _Peer_Connected(player_id):
 	print("User " + str(player_id) + " connected.")
 
-func reassign_party_to_lobby(var party,var lobby):
+func reassign_party_to_minigame(var party,var minigame):
 	for player in partyHandler.get_players_in_party(party):
-		lobby.add_player(player)
-		rpc_id(player.playerID,"setlobby",lobby.systemname(),lobby.name)
-	party.lobby.queue_free()
-	party.lobby = lobby
+		minigame.add_player(player)
+		############################# setlobby cannot be changed because it is not changed clientside.####################
+		rpc_id(player.playerID,"setlobby",minigame.systemname(),minigame.name)
+	party.minigame.queue_free()
+	party.minigame = minigame
 
 remote func party_ready():
 	var party = partyHandler.get_party_by_player(get_tree().get_rpc_sender_id())
 	if party!=null:
-		reassign_party_to_lobby(party,make_new_lobby())
+		reassign_party_to_minigame(party,make_new_minigame())
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
@@ -88,9 +86,10 @@ remote func create_party():
 	var newparty = partyHandler.new_party(player_id)
 	print("Code: " + str(newparty.code))
 	print("Players: " + str(newparty.playerIDs))
-	newparty.lobby = make_party_screen()
-	newparty.lobby.add_player(partyHandler.player_objects.get(player_id))
-	rpc_id(player_id,"setlobby",newparty.lobby.systemname(),newparty.lobby.name)
+	newparty.minigame = make_party_screen()
+	newparty.minigame.add_player(partyHandler.player_objects.get(player_id))
+	##################### setlobby cannot be changed because it is not changed clientside.####################
+	rpc_id(player_id,"setlobby",newparty.minigame.systemname(),newparty.minigame.name)
 
 remote func join_party(var partyID):
 	var player_id = get_tree().get_rpc_sender_id()
@@ -100,9 +99,9 @@ remote func join_party(var partyID):
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
 	if party!=null:
-		var lobby = party.lobby
-		lobby.remove_player(player_id)
-		if lobby.player_count()==0: lobby.queue_free()
+		var minigame = party.minigame
+		minigame.remove_player(player_id)
+		if minigame.player_count()==0: minigame.queue_free()
 		partyHandler.leave_party(player_id)
 	print("User " + str(player_id) + " disconnected.")
 	
@@ -145,7 +144,11 @@ remote func matchmake(party_list):
 # Still need to do some research on how multithreading in gdscript works, not even sure if its supported tbh but it prolly is
 #
 # @returns
-# match_id:		A match_id that is reserved for the pre-match room. (Industry term is lobby but not sure if that's the same lobby as above.)
+# lobby_code:	A code to the lobby (and thus, the match). Lobby and match are,
+# 				although different (lobby is pre-match, match is the actual
+#				game consisting of minigames), the ID that they use will be the
+#				same. So, lobby_code = match_id, as you cannot have two lobbies
+#				in one match. You can have multiple parties in a lobby.
 ################################################################################
 func _lobby_director():
 	while true: # Will the mutex unlock for the matchmake()?
