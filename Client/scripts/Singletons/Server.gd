@@ -37,7 +37,7 @@ func createParty():
 func join_party(var partyID):
 	rpc_id(1, "join_party", partyID)
 
-remote func setlobby(systemname,lobbyname):
+remote func setminigame(systemname,lobbyname):
 	for ms in get_children():
 		remove_child(ms)
 		ms.queue_free()
