@@ -39,14 +39,10 @@ func StartServer():
 	network.connect("peer_connected",self,"_Peer_Connected")
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
-func make_new_minigame():#makes a new minigame object, inserts it into the tree, and returns it.
-	randomize()
-	var index = randi()%(game_types.size())
-	var scene = game_types[index]
-	var instance = scene.instance()
-	instance.name = instance.systemname()
-	add_child(instance)
-	return instance
+func make_new_minigame(var minigame):#makes a new minigame object, inserts it into the tree, and returns it.	
+	minigame.instance().name = minigame.instance().systemname()
+	add_child(minigame.instance())
+	return minigame.instance()
 	
 func make_party_screen():
 	var instance = lobby_game_type.instance()
@@ -66,10 +62,10 @@ func reassign_party_to_minigame(var party,var minigame):
 	party.minigame.queue_free()
 	party.minigame = minigame
 
-remote func party_ready():
+remote func party_ready(var lobby):
 	var party = partyHandler.get_party_by_player(get_tree().get_rpc_sender_id())
 	if party!=null:
-		reassign_party_to_minigame(party,make_new_minigame())
+		reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
