@@ -93,8 +93,9 @@ func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
 	if party!=null:
 		var minigame = party.minigame
-		minigame.remove_player(player_id)
-		if minigame.player_count()==0: minigame.queue_free()
+		if minigame!=null:
+			minigame.remove_player(player_id)
+			if minigame.player_count()==0: minigame.queue_free()
 		partyHandler.leave_party(player_id)
 	print("User " + str(player_id) + " disconnected.")
 	
