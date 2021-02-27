@@ -49,3 +49,15 @@ remote func setminigame(systemname,lobbyname):
 	add_child(instance)
 	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
 	print(get_children())
+
+
+remote func receive_party_code(var recPartyID):
+	print("Party created - code: " + str(recPartyID))
+	#while (get_tree().current_scene.filename != "res://minigames/PartyScreen/World.tscn"):
+		#print(get_tree().current_scene.filename)
+		#continue
+		#Do nothing
+	#if (str(recPartyID) != str(100000)):
+	#	get_tree().get_root().find_node("/root/Node2D/MainPartyCreationScreenLabel").text = recPartyID
+	#else:
+	#	get_tree().get_root().find_node("/root/Node2D/MainPartyCreationScreenLabel").text = "Invalid Code"

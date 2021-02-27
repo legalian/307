@@ -12,11 +12,10 @@ var specificserver = null
 func _ready():
 	generalserver = get_node("/root/Server")
 	specificserver = generalserver.get_children()[0]
+	print(get_node("MainPartyCreationScreenLabel").get_path())
+	
 
 
 func _on_Button_pressed():
 	generalserver.attemptEnterGame()
-
-
-
 
