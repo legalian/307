@@ -2,8 +2,7 @@ extends YSort
 var path = "res://objects"
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+enum Objects {TREE, FENCE, CAR}
 
 var camera = null
 var world = null
@@ -17,7 +16,7 @@ func _ready():
 	var car = preload("res://car.tscn")
 	
 	object_map = find_node("Objects")
-	var object_positions = object_map.get_used_cells_by_id(4)
+	var object_positions = object_map.get_used_cells_by_id(Objects.CAR)
 	for obj in object_positions:
 		var instance = car.instance()
 		instance.position = object_map.map_to_world(obj)

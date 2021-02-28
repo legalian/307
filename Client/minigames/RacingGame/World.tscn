@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://minigames/RacingGame/racemap.tres" type="TileSet" id=1]
 [ext_resource path="res://minigames/RacingGame/World.gd" type="Script" id=2]
+[ext_resource path="res://minigames/RacingGame/objects.tres" type="TileSet" id=3]
 [ext_resource path="res://car.tscn" type="PackedScene" id=4]
 
 [node name="WorldContainer" type="YSort"]
@@ -11,10 +12,10 @@ script = ExtResource( 2 )
 
 [node name="Objects" type="TileMap" parent="World"]
 z_index = -9
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( 786422, 4, 327681, 917500, 4, 327681, 1179644, 4, 327681, 1245173, 4, 327681, 3997733, 4, 1048576, 4325437, 4, 1048576, 4784174, 4, 1048576 )
+tile_data = PoolIntArray( 851956, 2, 0, 917500, 2, 0, 1179645, 2, 0, 1245172, 2, 0 )
 
 [node name="Track" type="TileMap" parent="World"]
 z_index = -10
@@ -34,6 +35,6 @@ tile_data = PoolIntArray( -131099, 1610612739, 851968, -131098, 1610612739, 8519
 position = Vector2( -1140.89, 1941.57 )
 
 [node name="Camera" type="Camera2D" parent="World"]
-position = Vector2( -960.828, 1939.61 )
+position = Vector2( -646.538, 1944.1 )
 current = true
 zoom = Vector2( 2, 2 )
