@@ -96,3 +96,7 @@ rotate_right={
 [physics]
 
 2d/default_gravity=0
+
+[rendering]
+
+environment/default_clear_color=Color( 0.301961, 0.623529, 1, 1 )
