@@ -7,11 +7,22 @@ var path = "res://objects"
 
 var camera = null
 var world = null
+var object_map = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera = find_node("Camera")
 	world = get_node("World")
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
+	
+	var car = preload("res://car.tscn")
+	
+	object_map = find_node("Objects")
+	var object_positions = object_map.get_used_cells_by_id(4)
+	for obj in object_positions:
+		var instance = car.instance()
+		instance.position = object_map.map_to_world(obj)
+		world.add_child(instance)
+	
 
 
 
