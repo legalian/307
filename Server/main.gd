@@ -78,7 +78,9 @@ remote func create_party():
 	print("Players: " + str(newparty.playerIDs))
 	newparty.minigame = make_party_screen()
 	newparty.minigame.add_player(partyHandler.player_objects.get(player_id))
+	print("Systemname: " + newparty.minigame.systemname())
 	rpc_id(player_id,"setminigame",newparty.minigame.systemname(),newparty.minigame.name)
+	send_party_code_to_client(player_id, newparty.code)
 
 remote func join_party(var partyID):
 	var player_id = get_tree().get_rpc_sender_id()
@@ -86,15 +88,21 @@ remote func join_party(var partyID):
 	var joined_party = partyHandler.join_party_by_id(player_id, partyID)
 	if (str(joined_party.code) != str(PartyHandler.invalid_party_id)):
 		print("Players: " + str(joined_party.playerIDs))
+		send_party_code_to_client(player_id, joined_party.code)
 	else:
 		print("Lobby code invalid: " + str(partyID))
+		send_party_code_to_client(player_id, joined_party.code)
+
+func send_party_code_to_client(var clientID, var partyID):
+	rpc_id(clientID, "receive_party_code", partyID)
 
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
 	if party!=null:
 		var minigame = party.minigame
-		minigame.remove_player(player_id)
-		if minigame.player_count()==0: minigame.queue_free()
+		if minigame!=null:
+			minigame.remove_player(player_id)
+			if minigame.player_count()==0: minigame.queue_free()
 		partyHandler.leave_party(player_id)
 	print("User " + str(player_id) + " disconnected.")
 	

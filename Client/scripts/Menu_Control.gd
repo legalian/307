@@ -24,7 +24,6 @@ func _on_Button_Settings_pressed():
 func _on_Button_Create_Party_pressed():
 	var server = get_node("/root/Server")
 	var code = server.createParty()
-	print("Party created - code: " + str(code))
 
 func _on_Button_Join_Party_pressed():
 	var player_id = get_tree().get_rpc_sender_id()
