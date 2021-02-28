@@ -15,21 +15,21 @@ __meta__ = {
 }
 
 [node name="Button_Start" type="Button" parent="Menu_Controller"]
-margin_left = 309.107
-margin_top = 162.361
-margin_right = 489.107
-margin_bottom = 232.361
+margin_left = 527.67
+margin_top = 168.676
+margin_right = 726.67
+margin_bottom = 238.676
 theme = ExtResource( 2 )
-text = "Start"
+text = "QuickPlay"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button_Settings" type="Button" parent="Menu_Controller"]
-margin_left = 309.107
-margin_top = 282.361
-margin_right = 489.107
-margin_bottom = 352.361
+margin_left = 313.779
+margin_top = 255.664
+margin_right = 493.779
+margin_bottom = 325.664
 rect_pivot_offset = Vector2( 102.633, 49.9475 )
 theme = ExtResource( 2 )
 text = "Settings"
@@ -37,11 +37,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button_Profile" type="Button" parent="Menu_Controller"]
+margin_left = 315.781
+margin_top = 168.9
+margin_right = 495.781
+margin_bottom = 238.9
+rect_pivot_offset = Vector2( 102.633, 49.9475 )
+theme = ExtResource( 2 )
+text = "Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button_Exit" type="Button" parent="Menu_Controller"]
-margin_left = 309.107
-margin_top = 402.361
-margin_right = 489.107
-margin_bottom = 472.361
+margin_left = 311.777
+margin_top = 358.979
+margin_right = 491.777
+margin_bottom = 428.979
 theme = ExtResource( 2 )
 text = "Exit"
 __meta__ = {
@@ -49,10 +61,10 @@ __meta__ = {
 }
 
 [node name="Button_Create_Party" type="Button" parent="Menu_Controller"]
-margin_left = 518.411
-margin_top = 163.359
-margin_right = 698.411
-margin_bottom = 233.359
+margin_left = 528.0
+margin_top = 259.0
+margin_right = 722.0
+margin_bottom = 329.0
 theme = ExtResource( 2 )
 text = "Create a Party"
 __meta__ = {
@@ -60,10 +72,10 @@ __meta__ = {
 }
 
 [node name="Button_Join_Party" type="Button" parent="Menu_Controller"]
-margin_left = 517.872
-margin_top = 280.227
-margin_right = 697.872
-margin_bottom = 350.227
+margin_left = 530.009
+margin_top = 363.122
+margin_right = 722.009
+margin_bottom = 433.122
 theme = ExtResource( 2 )
 text = "Join a Party"
 __meta__ = {
@@ -71,10 +83,10 @@ __meta__ = {
 }
 
 [node name="PartyCodeTextEdit" type="TextEdit" parent="Menu_Controller"]
-margin_left = 522.485
-margin_top = 362.983
-margin_right = 694.485
-margin_bottom = 402.983
+margin_left = 738.244
+margin_top = 376.348
+margin_right = 976.244
+margin_bottom = 421.348
 theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -94,6 +106,7 @@ __meta__ = {
 }
 [connection signal="pressed" from="Menu_Controller/Button_Start" to="Menu_Controller" method="_on_Button_Start_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="Menu_Controller/Button_Profile" to="Menu_Controller" method="_on_Button_Profile_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Create_Party" to="Menu_Controller" method="_on_Button_Create_Party_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Join_Party" to="Menu_Controller" method="_on_Button_Join_Party_pressed"]
