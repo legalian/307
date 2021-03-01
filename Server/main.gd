@@ -40,9 +40,10 @@ func StartServer():
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
 func make_new_minigame(var minigame):#makes a new minigame object, inserts it into the tree, and returns it.	
-	minigame.instance().name = minigame.instance().systemname()
-	add_child(minigame.instance())
-	return minigame.instance()
+	var instance = minigame.instance()#it's really important that this method isn't called more than once- it has side effects.
+	instance.name = instance.systemname()
+	add_child(instance)
+	return instance
 	
 func make_party_screen():
 	var instance = lobby_game_type.instance()
@@ -56,16 +57,25 @@ func _Peer_Connected(player_id):
 func reassign_party_to_minigame(var party,var minigame):
 	for player in partyHandler.get_players_in_party(party):
 		minigame.add_player(player)
-
 		rpc_id(player.playerID,"setminigame",minigame.systemname(),minigame.name)
 		print("setting ",minigame.name,minigame.get_path())
 	party.minigame.queue_free()
 	party.minigame = minigame
 
-remote func party_ready(var lobby):
+remote func party_ready():
 	var party = partyHandler.get_party_by_player(get_tree().get_rpc_sender_id())
 	if party!=null:
-		reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
+		reassign_party_to_minigame(party,make_new_minigame(preload("res://BattleRoyale.tscn")))
+		#so- passing the lobby object from the client actually isn't possible, unless you plan to serialize and unserialize the object, or associate it with an ID.
+		#we should avoid doing it that way for a bunch of reasons- I think it would be best to use a similar system to how the partyHandler identifies which party is in question.
+		#we have the player ID from the rpc_sender_id- we currently are using that to get the party
+		   #we could store the lobby on the party object that we're retrieving above
+		   #we could store the lobby on the player object and retrieve that by ID
+		   #we could have an association in LobbyHandler between playerIDs and the lobby
+		
+		#for now though I'm just going to switch it out with just the same scene each time so things that are merged into main can work properly
+		
+		#reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
@@ -117,6 +127,8 @@ func _Peer_Disconnected(player_id):
 ###############################################################################
 remote func delete_lobby(var lobby_id):
 	lobbyHandler.delete_lobby(lobby_id)
+	print("we cannot rely on the client notifying the server when to garbage-collect")
+	print("there's a model for this behavior in the user disconnect function, for when parties are deleted.")
 
 ###############################################################################
 # @desc
@@ -132,8 +144,14 @@ remote func delete_lobby(var lobby_id):
 # Lobby:		A Lobby.gd object that matches the given lobby_id. If no
 #				lobby_id matches, then null is returned instead.
 ###############################################################################
-remote func get_lobby(var lobby_id):
-	return lobbyHandler.get_lobby(lobby_id)
+
+#objects like this cannot be returned or passed via RPC. the client doesn't have an object definition for it.
+#you could theoretically pass an ID, but ideally the client wouldn't need any information about the lobby/party system,
+#only the other players in the game.
+
+#remote func get_lobby(var lobby_id):     
+#	
+#	return lobbyHandler.get_lobby(lobby_id)
 
 ###############################################################################
 # @desc

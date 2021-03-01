@@ -71,7 +71,7 @@ func _calc_ik222(node, ik_node, target_node, parrot, index = 0):
 		
 		parrot = parrot + rotation_offsets[index]
 		
-		rot = max(rotclamp(deg2rad(rotmin)),min(rotclamp(deg2rad(rotmax)),rotclamp(rot-parrot)))+parrot
+		rot = max(deg2rad(rotmin),min(deg2rad(rotmax),rot-parrot))+parrot
 		
 		var pos = (transforms[index+1].get_origin() - (Vector2.RIGHT * length).rotated(rot))
 		transforms[index] = Transform2D(rot, pos)

@@ -10,6 +10,8 @@ var discrim = null
 func _ready():
 	#set_process(true)
 	discrim = get_node(orient)
+	
+	
 func isFacingLeft():
 	return discrim.position.x>=thresh
 # Called every frame. 'delta' is the elapsed time since the previous frame.

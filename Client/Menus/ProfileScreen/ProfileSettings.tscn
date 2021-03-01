@@ -1,0 +1,205 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Theme.tres" type="Theme" id=3]
+[ext_resource path="res://Menus/ProfileScreen/ProfileSettings.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 1 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Button_Back" type="Button" parent="."]
+margin_left = 454.726
+margin_top = 611.135
+margin_right = 657.726
+margin_bottom = 684.135
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_ConfirmUsername" type="Button" parent="."]
+margin_left = 458.018
+margin_top = 389.719
+margin_right = 644.018
+margin_bottom = 435.719
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_ChooseCharacter" type="Button" parent="."]
+margin_left = 79.5916
+margin_top = 389.719
+margin_right = 265.592
+margin_bottom = 435.719
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "Change"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="."]
+margin_left = 412.645
+margin_top = 22.3258
+margin_right = 657.645
+margin_bottom = 99.3258
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "Set Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 958.237
+margin_top = 657.156
+margin_right = 1250.24
+margin_bottom = 701.156
+theme = ExtResource( 3 )
+text = "debug: remove score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 956.23
+margin_top = 599.484
+margin_right = 1196.23
+margin_bottom = 643.484
+theme = ExtResource( 3 )
+text = "debug: add score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 500.0
+margin_top = 274.0
+margin_right = 583.0
+margin_bottom = 297.0
+theme = ExtResource( 3 )
+text = "Username:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentName" type="Label" parent="."]
+margin_left = 412.665
+margin_top = 297.665
+margin_right = 670.665
+margin_bottom = 324.665
+theme = ExtResource( 3 )
+text = "Current Username"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentAvatar" type="Label" parent="."]
+margin_left = 42.0
+margin_top = 360.0
+margin_right = 300.0
+margin_bottom = 383.0
+theme = ExtResource( 3 )
+text = "Current Avatar"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UsernameInput" type="LineEdit" parent="."]
+margin_left = 352.256
+margin_top = 329.0
+margin_right = 755.256
+margin_bottom = 379.0
+theme = ExtResource( 3 )
+max_length = 20
+clear_button_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 979.16
+margin_top = 133.072
+margin_right = 1147.16
+margin_bottom = 156.072
+theme = ExtResource( 3 )
+text = "Scoreboard goes here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raccoon" parent="." instance=ExtResource( 2 )]
+position = Vector2( 167.902, 346.28 )
+
+[node name="Avatar Menu" type="Control" parent="."]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Avatar Menu"]
+margin_left = 283.663
+margin_top = 22.0023
+margin_right = 1253.66
+margin_bottom = 699.002
+color = Color( 0.393555, 0.586552, 0.8125, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainPartyCreationScreenLabel2" type="RichTextLabel" parent="Avatar Menu/ColorRect"]
+margin_left = 302.984
+margin_top = 8.67194
+margin_right = 646.984
+margin_bottom = 85.6719
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "Choose Avatar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar0" type="Button" parent="Avatar Menu/ColorRect"]
+margin_left = 51.355
+margin_top = 103.414
+margin_right = 206.355
+margin_bottom = 297.414
+text = "Avatar 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar1" type="Button" parent="Avatar Menu/ColorRect"]
+margin_left = 258.922
+margin_top = 103.414
+margin_right = 413.922
+margin_bottom = 297.414
+text = "Avatar 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
+[connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
+[connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
+[connection signal="text_changed" from="UsernameInput" to="." method="_on_UsernameInput_text_changed"]
+[connection signal="pressed" from="Avatar Menu/ColorRect/Avatar0" to="." method="_on_ChangeAvatar_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/Avatar1" to="." method="_on_ChangeAvatar_pressed" binds= [ 1 ]]

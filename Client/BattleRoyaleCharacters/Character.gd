@@ -10,15 +10,18 @@ var rotfriction = 0.2
 var rotacceleration = 0.1
 var rotvel = 0
 
-var remotenode = null
-
 var server = null
+var body = null
 
 func _ready():
 	input_pickable = true
 	set_process_unhandled_input(true)
 	server = get_node("/root/Server").get_children()[0]
-
+	body = get_node("Raccoon")
+	
+func _process(delta):
+	body.set_look_pos(get_global_mouse_position())
+	
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
@@ -30,7 +33,7 @@ func _physics_process(delta):
 	var input_rotvel = 0
 	if Input.is_action_pressed("rotate_left"):input_rotvel -= 1
 	if Input.is_action_pressed("rotate_right"):input_rotvel += 1
-		
+
 	input_velocity = (input_velocity.normalized() * speed).rotated(get_node("Camera").rotation)
 	input_rotvel = input_rotvel * rotspeed
 	

@@ -16,6 +16,4 @@ remote func setavatar(player_id,avatar):
 	
 remote func sethat(player_id,hat):
 	get_player(player_id).hat = hat
-	
-remote func shoot():
-	print("Shoot called")
+
