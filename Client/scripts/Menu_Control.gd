@@ -31,3 +31,7 @@ func _on_Button_Join_Party_pressed():
 	print("Joining with code: " + get_node("PartyCodeTextEdit").text)
 	server.join_party(get_node("PartyCodeTextEdit").text)
 	print("Join party button pressed")
+
+
+func _on_Button_Profile_pressed():
+	get_tree().change_scene("res://Menus/ProfileScreen/ProfileSettings.tscn")

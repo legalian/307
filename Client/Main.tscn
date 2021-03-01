@@ -1,91 +1,103 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Menu_Control.gd" type="Script" id=1]
-[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 2 )
+[ext_resource path="res://UI/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=3]
 
 [node name="root" type="Node"]
 
 [node name="Menu_Controller" type="Control" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -200.0
-margin_right = 200.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button_Start" type="Button" parent="Menu_Controller"]
-margin_left = 105.0
-margin_top = 180.0
-margin_right = 285.0
-margin_bottom = 250.0
-text = "Start"
+margin_left = 527.67
+margin_top = 168.676
+margin_right = 726.67
+margin_bottom = 238.676
+theme = ExtResource( 2 )
+text = "QuickPlay"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button_Settings" type="Button" parent="Menu_Controller"]
-margin_left = 105.0
-margin_top = 300.0
-margin_right = 285.0
-margin_bottom = 370.0
+margin_left = 313.779
+margin_top = 255.664
+margin_right = 493.779
+margin_bottom = 325.664
 rect_pivot_offset = Vector2( 102.633, 49.9475 )
+theme = ExtResource( 2 )
 text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button_Profile" type="Button" parent="Menu_Controller"]
+margin_left = 315.781
+margin_top = 168.9
+margin_right = 495.781
+margin_bottom = 238.9
+rect_pivot_offset = Vector2( 102.633, 49.9475 )
+theme = ExtResource( 2 )
+text = "Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button_Exit" type="Button" parent="Menu_Controller"]
-margin_left = 105.0
-margin_top = 420.0
-margin_right = 285.0
-margin_bottom = 490.0
+margin_left = 311.777
+margin_top = 358.979
+margin_right = 491.777
+margin_bottom = 428.979
+theme = ExtResource( 2 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button_Create_Party" type="Button" parent="Menu_Controller"]
-margin_left = 314.304
-margin_top = 180.998
-margin_right = 494.304
-margin_bottom = 250.998
+margin_left = 528.0
+margin_top = 259.0
+margin_right = 722.0
+margin_bottom = 329.0
+theme = ExtResource( 2 )
 text = "Create a Party"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button_Join_Party" type="Button" parent="Menu_Controller"]
-margin_left = 313.765
-margin_top = 297.866
-margin_right = 493.765
-margin_bottom = 367.866
+margin_left = 530.009
+margin_top = 363.122
+margin_right = 722.009
+margin_bottom = 433.122
+theme = ExtResource( 2 )
 text = "Join a Party"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PartyCodeTextEdit" type="TextEdit" parent="Menu_Controller"]
-margin_left = 318.378
-margin_top = 380.622
-margin_right = 490.378
-margin_bottom = 420.622
+margin_left = 738.244
+margin_top = 376.348
+margin_right = 976.244
+margin_bottom = 421.348
+theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleText" type="RichTextLabel" parent="."]
+[node name="TitleText" type="RichTextLabel" parent="Menu_Controller"]
 margin_left = 316.357
 margin_top = 45.4757
 margin_right = 709.357
 margin_bottom = 132.476
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Late to the Stage[/rainbow][/wave]"
 text = "Late to the Stage"
@@ -94,6 +106,7 @@ __meta__ = {
 }
 [connection signal="pressed" from="Menu_Controller/Button_Start" to="Menu_Controller" method="_on_Button_Start_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="Menu_Controller/Button_Profile" to="Menu_Controller" method="_on_Button_Profile_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Create_Party" to="Menu_Controller" method="_on_Button_Create_Party_pressed"]
 [connection signal="pressed" from="Menu_Controller/Button_Join_Party" to="Menu_Controller" method="_on_Button_Join_Party_pressed"]
