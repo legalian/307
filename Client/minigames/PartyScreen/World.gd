@@ -19,6 +19,7 @@ func _on_UsernameInput_text_changed(new_username):
 
 func _on_Button_Back_pressed():
 	#generalserver.attemptEnterGame()
+	print("need to implement leave party functionality")
 	get_tree().change_scene("Main.tscn")
 
 
