@@ -9,12 +9,11 @@ func _ready():
 	set_process(true)
 	animPlayer = get_node("AnimationTree")
 	headRef = find_node("Headref")
-
-func _process(delta):
+	
+#get_global_mouse_position()
+func set_look_pos(gpos):
 	var glt = get_global_transform_with_canvas()
-	var cpos = headRef.global_position-get_global_mouse_position()
-	cpos.x = cpos.x*-1
-	var rot = cpos.angle()
+	var rot = -(gpos-headRef.global_position).angle()
 	animPlayer.set("parameters/lookX/seek_position", .5+.5*cos(rot))
 	animPlayer.set("parameters/lookY/seek_position", .5+.5*sin(rot))
 	glt.origin = Vector2(0,0);

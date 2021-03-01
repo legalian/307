@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Sprites/Characters/raccoon_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Guns/basicGun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/IK.gd" type="Script" id=3]
 [ext_resource path="res://Characters/IKlimit.gd" type="Script" id=4]
 [ext_resource path="res://Characters/VisChar.gd" type="Script" id=5]
@@ -384,7 +385,7 @@ polygons = [ PoolIntArray( 8, 9, 6, 7 ), PoolIntArray( 9, 10, 5, 6 ), PoolIntArr
 bones = [ NodePath("Hip"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/TorsoParallax"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/RightArm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/RightArm/RightHand"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/LeftArm"), PoolRealArray( 0, 0, 0.14, 0.28, 0.42, 0.58, 0.82, 1, 1, 0.82, 0.58, 0.42, 0.28, 0.14 ), NodePath("Hip/Torso/LeftArm/LeftHand"), PoolRealArray( 0.91, 0.91, 0.78, 0.65, 0.52, 0.39, 0.26, 0, 0, 0.26, 0.39, 0.52, 0.65, 0.78 ), NodePath("Hip/Torso/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/LeftEye"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/LeftEar"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/LeftBrow"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/RightEye"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/RightEar"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/RightBrow"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/Nose"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Tail"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Tail/TailSeg2"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Tail/TailSeg2/TailSeg3"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/RightLeg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/RightLeg/RightShin"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/LeftLeg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/LeftLeg/LeftShin"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/HipParallax"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="RightArm" type="Polygon2D" parent="Char/Polygons"]
-position = Vector2( 231.524, 188.022 )
+position = Vector2( 231.524, 187.673 )
 rotation = -1.57511
 offset = Vector2( -199.275, -334.296 )
 texture = ExtResource( 1 )
@@ -394,8 +395,23 @@ uv = PoolVector2Array( 185.267, 471.78, 184.441, 449.742, 184.165, 429.356, 184.
 polygons = [ PoolIntArray( 6, 7, 8, 5 ), PoolIntArray( 5, 4, 9, 8 ), PoolIntArray( 4, 3, 10, 9 ), PoolIntArray( 3, 2, 11, 10 ), PoolIntArray( 2, 1, 12, 11 ), PoolIntArray( 1, 0, 13, 12 ) ]
 bones = [ NodePath("Hip"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/RightArm"), PoolRealArray( 0, 0.18, 0.36, 0.54, 0.72, 0.9, 1, 1, 0.9, 0.72, 0.54, 0.36, 0.18, 0 ), NodePath("Hip/Torso/RightArm/RightHand"), PoolRealArray( 1, 0.9, 0.72, 0.54, 0.36, 0.18, 0, 0, 0.18, 0.36, 0.54, 0.72, 0.9, 1 ), NodePath("Hip/Torso/LeftArm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/LeftArm/LeftHand"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/LeftEye"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/LeftEar"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/LeftBrow"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/RightEye"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/RightEar"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/RightBrow"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Torso/Head/Nose"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Tail"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Tail/TailSeg2"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/Tail/TailSeg2/TailSeg3"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/RightLeg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/RightLeg/RightShin"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/LeftLeg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hip/LeftLeg/LeftShin"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
+[node name="RightFootTarget" type="Position2D" parent="Char"]
+position = Vector2( 13.048, 2.04827 )
+rotation = -1.59149
+scale = Vector2( 0.35, 0.35 )
+
+[node name="LeftFootTarget" type="Position2D" parent="Char"]
+position = Vector2( -10.4755, 2.58309 )
+rotation = -1.59149
+scale = Vector2( 0.35, 0.35 )
+
+[node name="LeftArmTarget" type="Position2D" parent="Char"]
+position = Vector2( -55.3807, -79.9719 )
+
+[node name="RightArmTarget" type="Position2D" parent="Char"]
+position = Vector2( 57.0925, -81.2163 )
+
 [node name="Skeleton2D" type="Skeleton2D" parent="Char"]
-visible = false
 position = Vector2( -67.2811, -146.538 )
 scale = Vector2( 0.35, 0.35 )
 
@@ -403,10 +419,6 @@ scale = Vector2( 0.35, 0.35 )
 position = Vector2( 195.232, 305.367 )
 rotation = -1.59149
 rest = Transform2D( -0.0206922, -0.999786, 0.999786, -0.0206922, 195.232, 305.367 )
-
-[node name="TailPointTarget" type="Position2D" parent="Char/Skeleton2D/Hip"]
-position = Vector2( -0.318405, 202.937 )
-rotation = 1.59149
 
 [node name="Tailroot" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -435,35 +447,67 @@ rest = Transform2D( 1, 0, 0, 1, 58.8322, 0.483429 )
 default_length = 22.0
 
 [node name="TorsoParallax" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
-position = Vector2( -0.12795, -10.9013 )
+position = Vector2( -0.126663, -10.9635 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="RightArm" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
-position = Vector2( 58.2853, 42.104 )
-rotation = -3.72529e-09
-rest = Transform2D( 1, -3.72529e-09, 3.72529e-09, 1, 58.2853, 42.104 )
+position = Vector2( 56.0417, 36.0011 )
+rotation = -0.0118465
+rest = Transform2D( 1, -3.72529e-09, 3.72529e-09, 1, 56.0417, 36.0011 )
+script = ExtResource( 3 )
+targetpath = NodePath("../../../../RightArmTarget")
+ikpath = NodePath("RightHand/RightHandPoint")
+body = NodePath("../../../..")
+rot_min_left = -360
+rot_max_left = 360
+rot_min_right = -360
+rot_max_right = 360
 
 [node name="RightHand" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/RightArm"]
 position = Vector2( -0.476807, 61.8062 )
-rotation = 1.58096
+rotation = 1.58003
 rest = Transform2D( -0.0101635, 0.999948, -0.999948, -0.0101635, -0.476807, 61.8062 )
 default_length = 58.0
+script = ExtResource( 4 )
+rot_min_left = -360
+rot_max_left = 360
+rot_min_right = -360
+rot_max_right = 360
 
 [node name="RightHandPoint" type="Position2D" parent="Char/Skeleton2D/Hip/Torso/RightArm/RightHand"]
+position = Vector2( 57.2537, -0.0868835 )
 
 [node name="LeftArm" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
-position = Vector2( 59.7798, -45.7353 )
-rotation = 3.13902
-rest = Transform2D( -0.999997, 0.00257268, -0.00257268, -0.999997, 59.7798, -45.7353 )
+position = Vector2( 57.1985, -35.5191 )
+rotation = -3.1231
+rest = Transform2D( -0.999997, 0.00257269, -0.00257269, -0.999997, 57.1985, -35.5191 )
+script = ExtResource( 3 )
+targetpath = NodePath("../../../../LeftArmTarget")
+ikpath = NodePath("LeftHand/LeftHandPoint")
+body = NodePath("../../../..")
+rot_min_left = -360
+rot_max_left = 360
+rot_min_right = -360
+rot_max_right = 360
 
 [node name="LeftHand" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/LeftArm"]
 position = Vector2( -0.0841675, 61.3398 )
-rotation = 1.57561
+rotation = 1.56653
 rest = Transform2D( -0.0048137, 0.999988, -0.999988, -0.0048137, -0.0841675, 61.3398 )
 default_length = 58.0
+script = ExtResource( 4 )
+rot_min_left = -360
+rot_max_left = 360
+rot_min_right = -360
+rot_max_right = 360
 
 [node name="LeftHandPoint" type="Position2D" parent="Char/Skeleton2D/Hip/Torso/LeftArm/LeftHand"]
 position = Vector2( 56.1465, 0.316437 )
+
+[node name="Gun" parent="Char/Skeleton2D/Hip/Torso/LeftArm/LeftHand/LeftHandPoint" instance=ExtResource( 2 )]
+position = Vector2( -0.000488281, -0.000411987 )
+rotation = -1.5433
+scale = Vector2( 1.75, 1.75 )
 
 [node name="Head" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
 position = Vector2( 68.3932, 2.25259 )
@@ -471,7 +515,7 @@ rotation = -5.58794e-09
 rest = Transform2D( 1, -5.58794e-09, 5.58794e-09, 1, 68.3932, 2.25259 )
 
 [node name="LeftEye" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 59.1763, -61.5234 )
+position = Vector2( 43.9876, -61.8104 )
 rest = Transform2D( 1, 0, 0, 1, 51.6162, -28.4799 )
 
 [node name="LeftEar" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
@@ -481,14 +525,14 @@ rest = Transform2D( 0.821149, -0.570714, 0.570714, 0.821149, 109.332, -43.3763 )
 default_length = 38.0
 
 [node name="LeftBrow" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 76.4095, -40.7287 )
+position = Vector2( 65.2596, -40.8671 )
 rotation = -1.5557
-scale = Vector2( 0.602172, 1 )
+scale = Vector2( 0.600007, 1 )
 rest = Transform2D( 0.0150958, -0.999886, 0.999886, 0.0150958, 74.44, -15.2907 )
 default_length = 67.0
 
 [node name="RightEye" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 55.8507, 5.85973 )
+position = Vector2( 40.6621, 5.59122 )
 rest = Transform2D( 1, 0, 0, 1, 50.3848, 29.7126 )
 
 [node name="RightEar" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
@@ -498,29 +542,26 @@ rest = Transform2D( 0.820152, 0.572146, -0.572146, 0.820152, 106.729, 53.199 )
 default_length = 38.0
 
 [node name="RightBrow" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 75.3994, -5.56576 )
+position = Vector2( 64.2494, -5.68765 )
 rotation = 1.5708
-scale = Vector2( 1.23865, 1 )
+scale = Vector2( 1.23995, 1 )
 rest = Transform2D( -3.61999e-06, 1, -1, -3.61999e-06, 73.4293, 16.8299 )
 default_length = 67.0
 
 [node name="Nose" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 27.9407, -36.9009 )
+position = Vector2( 12.2969, -37.1041 )
 rotation = -0.0144584
 rest = Transform2D( 0.999895, -0.0144579, 0.0144579, 0.999895, 14.2556, 0.450226 )
 
 [node name="Headref" type="Position2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
 position = Vector2( 62.6189, 0.0917816 )
 
-[node name="RightFootTarget" type="Position2D" parent="Char/Skeleton2D/Hip"]
-position = Vector2( -119.849, 31.8065 )
-
 [node name="RightLeg" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 position = Vector2( -18.2717, 30.7892 )
-rotation = 2.40995
+rotation = 2.37978
 rest = Transform2D( -0.73466, 0.678436, -0.678436, -0.73466, -18.2717, 30.7892 )
 script = ExtResource( 3 )
-targetpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/RightFootTarget")
+targetpath = NodePath("../../../RightFootTarget")
 ikpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/RightLeg/RightShin/RightFoot")
 body = NodePath("../../../../../Raccoon/Char")
 rot_min_left = 105
@@ -530,7 +571,7 @@ rot_max_right = 167
 
 [node name="RightShin" type="Bone2D" parent="Char/Skeleton2D/Hip/RightLeg"]
 position = Vector2( 37.1874, 34.8864 )
-rotation = 0.68868
+rotation = 0.750492
 rest = Transform2D( 0.731354, 0.681999, -0.681999, 0.731354, 37.1874, 34.8864 )
 default_length = 49.0
 script = ExtResource( 4 )
@@ -542,15 +583,12 @@ rot_max_right = 135
 [node name="RightFoot" type="Position2D" parent="Char/Skeleton2D/Hip/RightLeg/RightShin"]
 position = Vector2( 50.1374, -0.0209656 )
 
-[node name="LeftFootTarget" type="Position2D" parent="Char/Skeleton2D/Hip"]
-position = Vector2( -119.986, -35.4206 )
-
 [node name="LeftLeg" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 position = Vector2( -17.903, -33.9398 )
-rotation = 2.40281
+rotation = 2.38407
 rest = Transform2D( -0.733891, 0.679267, -0.679267, -0.733891, -17.903, -33.9398 )
 script = ExtResource( 3 )
-targetpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/LeftFootTarget")
+targetpath = NodePath("../../../LeftFootTarget")
 ikpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/LeftLeg/LeftShin/LeftFoot")
 body = NodePath("../../../../../Raccoon/Char")
 rot_min_left = 105
@@ -560,7 +598,7 @@ rot_max_right = 167
 
 [node name="LeftShin" type="Bone2D" parent="Char/Skeleton2D/Hip/LeftLeg"]
 position = Vector2( 36.8605, 37.3123 )
-rotation = 0.70898
+rotation = 0.750491
 rest = Transform2D( 0.731354, 0.681998, -0.681998, 0.731354, 36.8605, 37.3123 )
 default_length = 49.0
 script = ExtResource( 4 )
@@ -573,12 +611,8 @@ rot_max_right = 135
 position = Vector2( 48.4534, -0.000671387 )
 
 [node name="HipParallax" type="Bone2D" parent="Char/Skeleton2D/Hip"]
-position = Vector2( -0.12795, -10.9013 )
+position = Vector2( -0.126663, -10.9635 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="SkeletonIK" type="SkeletonIK" parent="Char/Skeleton2D"]
-process_priority = 1
-target_node = NodePath("../Hip/Torso/LeftArm/LeftHand/Hand")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LookSide = SubResource( 12 )
@@ -592,5 +626,5 @@ active = true
 parameters/Add2/add_amount = 1.0
 parameters/TimeScale/scale = 0.0
 "parameters/TimeScale 2/scale" = 0.0
-parameters/lookX/seek_position = 0.0309718
-parameters/lookY/seek_position = 0.673241
+parameters/lookX/seek_position = -1.0
+parameters/lookY/seek_position = -1.0
