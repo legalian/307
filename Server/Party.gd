@@ -8,6 +8,7 @@ var code = "defaultCode"
 var playerIDs = []
 var ownerID = ""
 var minigame
+var lobby_code = "defaultCode"
 
 func _init(var partyOwnerID):
 	print("Party created with owner: " + str(partyOwnerID))

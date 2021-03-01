@@ -26,6 +26,7 @@ func _init(var code):
 		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
 		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
 		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
+		debug_print()
 		return
 	
 	scramble_minigames()
@@ -46,17 +47,21 @@ func get_lobby_code():
 	return lobby_code
 
 func add_party(var party):
+	print("Adding party " + str(party.code) + " to lobby " + str(lobby_code))
 	parties.append(party)
+	
+	debug_print()
 	
 ################################################################################
 # @desc
 # Adds minigames in a random order from minigame_list.
 ################################################################################
 func scramble_minigames():
+	print("Entered minigame scrambling")
 	while (minigame_order.size() != minigames_per_match):
-		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive
-		if (!minigame_order.has(minigame_list.get(rand))):
-			minigame_order.append(minigame_list.get(rand)) # Keep appending until size is correct
+		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
+		if (minigame_order.find(minigame_list[rand]) == -1):
+			minigame_order.append(minigame_list[rand]) # Keep appending until size is correct
 
 ################################################################################
 # @desc
@@ -88,54 +93,40 @@ func get_current_minigame():
 #		after all minigames are satisfied in the order.
 ################################################################################
 func go_to_next_minigame():
+	print("Incrementing current_minigame!")
 	current_minigame = current_minigame + 1
 	if (current_minigame >= minigame_order.size()):
 		print("FATAL ERROR @@ FUNC GET_NEXT_MINIGAME(): trying to get next" + 
 			  "minigame despite having finished all minigames")
+		debug_print()
 		return null
 
 
 ################################################################################
 # @desc
-# This function removes a player given to it. If the player is not in the lobby,
-# this function will return false.
+# This function removes a party given to it. If the party is not found, then
+# the function returns false.
+#
+# NOTE: Because these are party objects, removing a player should be done via
+#		the party. Removing a player from a party object will update it here
+#		as well.
 #
 # @param
-# playerToRemove:	A PartyPlayer object that will be compared with the internal
-#					array of parties, and then compared with the array of
-#					players per party, and removed if matched.
+# party_code:	The party code of the party you want to remove from the lobby.
 #
 # @return
-# Returns false if the player is not in the lobby; true if successfully removed.
+# Returns false if the party is not in the lobby; true if removed.
 ################################################################################
-func remove_player(var playerToRemove):
-	for party in parties:
-		for player in party:
-			#if (player.equals(playerToRemove)):  TODO
-				print("WARN @@ REMOVE_PLAYER(): Function waiting on player.equals()")
-				party.erase(player)
-				return true
+func remove_party(var in_party):
 	
-	return false
-
-################################################################################
-# @desc
-# This function removes a party given to it. If the party is not in the lobby,
-# this function will return false.
-#
-# @param
-# playerToRemove:	An array of PartyPlayer objects that will be compared with
-#					the internal array of parties, and removed if matched.
-#
-# @return
-# Returns false if the party is not in the lobby; true if successfully removed.
-################################################################################
-func remove_party(var partyToRemove):
 	for party in parties:
-		if (party == partyToRemove):
+		if (party.code == in_party.code):
+			print("Removing Party " + str(party.code) + " from lobby " + str(lobby_code))
 			parties.erase(party)
+			debug_print()
 			return true
 	
+	debug_print()
 	return false
 
 func get_parties():
@@ -153,5 +144,21 @@ func get_avail_size():
 	
 	for party in parties:
 		occupied += party.size()
-	
+
 	return max_lobby_players - occupied
+	
+	
+func debug_print():
+	print("\n ========= LOBBY DEBUG =========")
+	print("LOBBY: " + str(lobby_code))
+	print("CURRENT MINIGAME: " + str(current_minigame))
+	
+	print("\n~PARTY LIST~")
+	var partycount = 0
+	for party in parties:
+		partycount += 1
+		print("PARTY " + str(party.code) + ":")
+		for playerID in party.playerIDs:
+			print("\tPlayerID: " + str(playerID))
+	
+	print("\n ========= LOBBY DEBUG =========\n")
