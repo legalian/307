@@ -11,6 +11,8 @@ func _process(delta):
 	#var mobo = global_rotation
 	#var gltp = atan2(glt[0][1]/.44,glt[0][0])
 	var mobo = global_rotation+get_viewport().canvas_transform.scaled(Vector2(.44,1)).get_rotation()
+	if mobo>PI: mobo-=2*PI
+	if mobo<-PI: mobo+=2*PI
 	var rang = 1.5
 	var gltp = max(-rang,min(rang,mobo))
 	var diffapply = atan2(sin(gltp)*.44,cos(gltp))-gltp
