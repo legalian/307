@@ -23,11 +23,12 @@ func _ready():
 	object_map.visible = false
 	
 	for id in Object_ids.values():
-		var positions = object_map.get_used_cells_by_id(id)
-		for obj in positions:
-			var instance = object_scenes[id].instance()
-			instance.position = object_map.map_to_world(obj)
-			world.add_child(instance)
+		if object_scenes.has(id):
+			var positions = object_map.get_used_cells_by_id(id)
+			for obj in positions:
+				var instance = object_scenes[id].instance()
+				instance.position = object_map.map_to_world(obj)
+				world.add_child(instance)
 
 	
 	
