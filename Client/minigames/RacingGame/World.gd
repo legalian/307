@@ -3,11 +3,12 @@ var path = "res://objects"
 var objectsPath = "res://minigames/racing/objects"
 
 # Declare member variables here. Examples:
-enum Objects {TREE, FENCE, CAR}
+enum Object_ids {TREE, FENCE, CAR}
 
 var camera = null
 var world = null
 var object_map = null
+var object_scenes = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	minigame = "RACINGGAME"
@@ -15,21 +16,19 @@ func _ready():
 	world = get_node("World")
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
 	
-	var car = preload("res://car.tscn")
+	object_scenes[Object_ids.FENCE] = preload("objects/fence.tscn")
+	object_scenes[Object_ids.CAR] = preload("res://car.tscn")
 	
 	object_map = find_node("Objects")
 	object_map.visible = false
-	var car_positions = object_map.get_used_cells_by_id(Objects.CAR)
-	for obj in car_positions:
-		var instance = car.instance()
-		instance.position = object_map.map_to_world(obj)
-		world.add_child(instance)
-	var fence = preload("objects/fence.tscn")
-	var fence_positions = object_map.get_used_cells_by_id(Objects.FENCE)
-	for obj in fence_positions:
-		var instance = fence.instance()
-		instance.position = object_map.map_to_world(obj)
-		world.add_child(instance)
+	
+	for id in Object_ids.values():
+		var positions = object_map.get_used_cells_by_id(id)
+		for obj in positions:
+			var instance = object_scenes[id].instance()
+			instance.position = object_map.map_to_world(obj)
+			world.add_child(instance)
+
 	
 	
 	
