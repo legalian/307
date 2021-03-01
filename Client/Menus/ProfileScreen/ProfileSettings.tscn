@@ -17,9 +17,9 @@ font_data = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Button_Back" type="Button" parent="."]
-margin_left = 40.259
+margin_left = 454.726
 margin_top = 611.135
-margin_right = 243.259
+margin_right = 657.726
 margin_bottom = 684.135
 rect_pivot_offset = Vector2( 159.38, 30.3461 )
 theme = ExtResource( 3 )
@@ -90,12 +90,36 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 512.418
-margin_top = 287.532
-margin_right = 595.418
-margin_bottom = 310.532
+margin_left = 500.0
+margin_top = 274.0
+margin_right = 583.0
+margin_bottom = 297.0
 theme = ExtResource( 3 )
-text = "Username"
+text = "Username:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentName" type="Label" parent="."]
+margin_left = 412.665
+margin_top = 297.665
+margin_right = 670.665
+margin_bottom = 324.665
+theme = ExtResource( 3 )
+text = "Current Username"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentAvatar" type="Label" parent="."]
+margin_left = 42.0
+margin_top = 360.0
+margin_right = 300.0
+margin_bottom = 383.0
+theme = ExtResource( 3 )
+text = "Current Avatar"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,7 +130,7 @@ margin_top = 329.0
 margin_right = 755.256
 margin_bottom = 379.0
 theme = ExtResource( 3 )
-max_length = 16
+max_length = 20
 clear_button_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,7 +148,58 @@ __meta__ = {
 }
 
 [node name="Raccoon" parent="." instance=ExtResource( 2 )]
-position = Vector2( 171.239, 367.637 )
+position = Vector2( 167.902, 346.28 )
+
+[node name="Avatar Menu" type="Control" parent="."]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Avatar Menu"]
+margin_left = 283.663
+margin_top = 22.0023
+margin_right = 1253.66
+margin_bottom = 699.002
+color = Color( 0.393555, 0.586552, 0.8125, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainPartyCreationScreenLabel2" type="RichTextLabel" parent="Avatar Menu/ColorRect"]
+margin_left = 302.984
+margin_top = 8.67194
+margin_right = 646.984
+margin_bottom = 85.6719
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "Choose Avatar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar0" type="Button" parent="Avatar Menu/ColorRect"]
+margin_left = 51.355
+margin_top = 103.414
+margin_right = 206.355
+margin_bottom = 297.414
+text = "Avatar 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar1" type="Button" parent="Avatar Menu/ColorRect"]
+margin_left = 258.922
+margin_top = 103.414
+margin_right = 413.922
+margin_bottom = 297.414
+text = "Avatar 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
+[connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
 [connection signal="text_changed" from="UsernameInput" to="." method="_on_UsernameInput_text_changed"]
+[connection signal="pressed" from="Avatar Menu/ColorRect/Avatar0" to="." method="_on_ChangeAvatar_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/Avatar1" to="." method="_on_ChangeAvatar_pressed" binds= [ 1 ]]

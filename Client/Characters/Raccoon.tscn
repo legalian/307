@@ -6,7 +6,7 @@
 [ext_resource path="res://Characters/VisChar.gd" type="Script" id=5]
 [ext_resource path="res://Characters/Visible.gd" type="Script" id=6]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=1]
 resource_name = "LookSide"
 loop = true
 tracks/0/type = "bezier"
@@ -150,7 +150,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "LookVertical"
 loop = true
 tracks/0/type = "bezier"
@@ -204,7 +204,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.500742, 1 )
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 resource_name = "WalkLeft"
 
 [sub_resource type="AnimationNodeAdd2" id=4]
@@ -240,7 +240,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 10 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 660, 160 )
-node_connections = [ "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "lookY", 0, "TimeScale", "TimeScale 2", 0, "Animation", "lookX", 0, "TimeScale 2", "output", 0, "Add2" ]
+node_connections = [ "output", 0, "Add2", "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "TimeScale 2", 0, "Animation", "lookX", 0, "TimeScale 2", "lookY", 0, "TimeScale" ]
 
 [node name="Raccoon" type="Node2D"]
 script = ExtResource( 6 )
@@ -435,7 +435,7 @@ rest = Transform2D( 1, 0, 0, 1, 58.8322, 0.483429 )
 default_length = 22.0
 
 [node name="TorsoParallax" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
-position = Vector2( -0.12795, -10.9013 )
+position = Vector2( -0.129799, -10.812 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="RightArm" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
@@ -471,7 +471,7 @@ rotation = -5.58794e-09
 rest = Transform2D( 1, -5.58794e-09, 5.58794e-09, 1, 68.3932, 2.25259 )
 
 [node name="LeftEye" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 59.1763, -61.5234 )
+position = Vector2( 60.8146, -61.1657 )
 rest = Transform2D( 1, 0, 0, 1, 51.6162, -28.4799 )
 
 [node name="LeftEar" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
@@ -481,14 +481,14 @@ rest = Transform2D( 0.821149, -0.570714, 0.570714, 0.821149, 109.332, -43.3763 )
 default_length = 38.0
 
 [node name="LeftBrow" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 76.4095, -40.7287 )
+position = Vector2( 77.585, -40.5297 )
 rotation = -1.5557
-scale = Vector2( 0.602172, 1 )
+scale = Vector2( 0.605283, 1 )
 rest = Transform2D( 0.0150958, -0.999886, 0.999886, 0.0150958, 74.44, -15.2907 )
 default_length = 67.0
 
 [node name="RightEye" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 55.8507, 5.85973 )
+position = Vector2( 57.4891, 6.19441 )
 rest = Transform2D( 1, 0, 0, 1, 50.3848, 29.7126 )
 
 [node name="RightEar" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
@@ -498,14 +498,14 @@ rest = Transform2D( 0.820152, 0.572146, -0.572146, 0.820152, 106.729, 53.199 )
 default_length = 38.0
 
 [node name="RightBrow" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 75.3994, -5.56576 )
+position = Vector2( 76.5748, -5.39062 )
 rotation = 1.5708
-scale = Vector2( 1.23865, 1 )
+scale = Vector2( 1.23678, 1 )
 rest = Transform2D( -3.61999e-06, 1, -1, -3.61999e-06, 73.4293, 16.8299 )
 default_length = 67.0
 
 [node name="Nose" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
-position = Vector2( 27.9407, -36.9009 )
+position = Vector2( 29.9752, -36.6089 )
 rotation = -0.0144584
 rest = Transform2D( 0.999895, -0.0144579, 0.0144579, 0.999895, 14.2556, 0.450226 )
 
@@ -517,7 +517,7 @@ position = Vector2( -119.849, 31.8065 )
 
 [node name="RightLeg" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 position = Vector2( -18.2717, 30.7892 )
-rotation = 2.40995
+rotation = 2.38422
 rest = Transform2D( -0.73466, 0.678436, -0.678436, -0.73466, -18.2717, 30.7892 )
 script = ExtResource( 3 )
 targetpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/RightFootTarget")
@@ -530,7 +530,7 @@ rot_max_right = 167
 
 [node name="RightShin" type="Bone2D" parent="Char/Skeleton2D/Hip/RightLeg"]
 position = Vector2( 37.1874, 34.8864 )
-rotation = 0.68868
+rotation = 0.741379
 rest = Transform2D( 0.731354, 0.681999, -0.681999, 0.731354, 37.1874, 34.8864 )
 default_length = 49.0
 script = ExtResource( 4 )
@@ -547,7 +547,7 @@ position = Vector2( -119.986, -35.4206 )
 
 [node name="LeftLeg" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 position = Vector2( -17.903, -33.9398 )
-rotation = 2.40281
+rotation = 2.38407
 rest = Transform2D( -0.733891, 0.679267, -0.679267, -0.733891, -17.903, -33.9398 )
 script = ExtResource( 3 )
 targetpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/LeftFootTarget")
@@ -560,7 +560,7 @@ rot_max_right = 167
 
 [node name="LeftShin" type="Bone2D" parent="Char/Skeleton2D/Hip/LeftLeg"]
 position = Vector2( 36.8605, 37.3123 )
-rotation = 0.70898
+rotation = 0.750491
 rest = Transform2D( 0.731354, 0.681998, -0.681998, 0.731354, 36.8605, 37.3123 )
 default_length = 49.0
 script = ExtResource( 4 )
@@ -573,7 +573,7 @@ rot_max_right = 135
 position = Vector2( 48.4534, -0.000671387 )
 
 [node name="HipParallax" type="Bone2D" parent="Char/Skeleton2D/Hip"]
-position = Vector2( -0.12795, -10.9013 )
+position = Vector2( -0.129799, -10.812 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="SkeletonIK" type="SkeletonIK" parent="Char/Skeleton2D"]
@@ -581,9 +581,9 @@ process_priority = 1
 target_node = NodePath("../Hip/Torso/LeftArm/LeftHand/Hand")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/LookSide = SubResource( 12 )
-anims/LookVertical = SubResource( 3 )
-anims/WalkLeft = SubResource( 13 )
+anims/LookSide = SubResource( 1 )
+anims/LookVertical = SubResource( 2 )
+anims/WalkLeft = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 11 )
@@ -592,5 +592,5 @@ active = true
 parameters/Add2/add_amount = 1.0
 parameters/TimeScale/scale = 0.0
 "parameters/TimeScale 2/scale" = 0.0
-parameters/lookX/seek_position = 0.0309718
-parameters/lookY/seek_position = 0.673241
+parameters/lookX/seek_position = 0.0475983
+parameters/lookY/seek_position = 0.712915

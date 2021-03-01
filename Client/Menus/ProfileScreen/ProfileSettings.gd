@@ -1,12 +1,11 @@
 extends Node2D
 
-var regex = RegEx.new()
 var UsernameInput = null
+var AvatarSelected = 0
 
 var generalserver = null
 var specificserver = null
-
-
+var AvatarMenuOpen = false
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -31,9 +30,26 @@ func _on_Button_ConfirmUsername_pressed():
 	#var result = regex.search(UsernameInput)
 	#var validCharacters = (result.get_string() == UsernameInput)
 	
-	if (UsernameInput.length() >= 3 and UsernameInput.length() <= 16): #and validCharacters):
-		print(true)
+	if (UsernameInput.length() >= 3 and UsernameInput.length() <= 20): #and validCharacters):
+		get_node("CurrentName").text = UsernameInput
 	else:
-		print(false)
+		print("Username is Invalid")
 
 
+
+
+func _on_ChangeAvatar_pressed(AvatarType):
+	print(AvatarType)
+	AvatarSelected = AvatarType
+	get_node("CurrentAvatar").text = "Avatar - " + str(AvatarSelected)
+
+
+func _on_Button_ChooseCharacter_pressed():
+	if (AvatarMenuOpen):
+		get_node("Button_ChooseCharacter").text = "Change"
+		get_node("Avatar Menu").hide()
+		AvatarMenuOpen = false
+	else:
+		get_node("Button_ChooseCharacter").text = "Close"
+		get_node("Avatar Menu").show()
+		AvatarMenuOpen = true
