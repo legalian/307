@@ -5,7 +5,14 @@ var parties = []
 
 var max_lobby_players = 20
 
+# You can change this preload to manually change games.
+# If you change minigames_per_match to 2, then Lobby.gd will attempt to create
+# a random order out of 2 minigames.
+
+# If minigames_per_match is has a number > size of minigame_list, everything will break.
+# There is a check to make sure this does not happen.
 var minigame_list = [preload("res://BattleRoyale.tscn")]
+
 var minigame_order = []
 
 var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!

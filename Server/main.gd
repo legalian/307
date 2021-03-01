@@ -10,7 +10,7 @@ var max_players = 3000
 var max_players_per = 20
 var min_players_per = 10
 
-var lobby_game_type = preload("res://PartyScreen.tscn")
+var party_screen = preload("res://PartyScreen.tscn")
 var game_types = [preload("res://BattleRoyale.tscn")]
 
 #Note: This is a temporary variable I am using to test the party join/create system
@@ -46,7 +46,7 @@ func make_new_minigame(var minigame):#makes a new minigame object, inserts it in
 	return instance
 	
 func make_party_screen():
-	var instance = lobby_game_type.instance()
+	var instance = party_screen.instance()
 	instance.name = instance.systemname()
 	add_child(instance)
 	return instance

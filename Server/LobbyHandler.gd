@@ -12,6 +12,10 @@ func _init(): # Called when LobbyHandler.new() is done
 	rng.randomize()
 
 func get_lobby(var lobby_id):
+	if (str(lobby_id) == "defaultCode"):
+		print("get_lobby() is called on the party screen!")
+		# We're on the party screen, return nothing
+		return
 	return lobbies[lobby_id]
 
 func delete_lobby(var lobby_id):
@@ -58,6 +62,10 @@ func remove_from_lobby(var party):
 	if (party == null):
 		print("Attempted to remove a null party from the lobby.")
 		debug_print()
+		return false
+	
+	if (party.lobby_code == "defaultCode"):
+		print("Attempting to remove from 'PartyScreen' minigame; returning false")
 		return false
 	
 	var lobby = get_lobby(party.lobby_code)
