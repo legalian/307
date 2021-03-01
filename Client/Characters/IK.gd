@@ -64,14 +64,23 @@ func _calc_ik222(node, ik_node, target_node, parrot, index = 0):
 		#print(body)
 		#print(get_node(body))
 		#print(get_node(body).isFacingLeft())
-		var rotmin = node.rot_min_left if leftbody.isFacingLeft() else node.rot_min_right
-		var rotmax = node.rot_max_left if leftbody.isFacingLeft() else node.rot_max_right
+		var rotmin = deg2rad(node.rot_min_left if leftbody.isFacingLeft() else node.rot_min_right)
+		var rotmax = deg2rad(node.rot_max_left if leftbody.isFacingLeft() else node.rot_max_right)
 		#print(rotmin,",",rotmax)
 		var rot = (transforms[index+1].get_origin() - glob_pos(node)).angle()
 		
 		parrot = parrot + rotation_offsets[index]
+		rot = rot-parrot
+		#if (rot<)
+		while rotmin+rotmax>rot+PI:
+			rotmin-=2*PI
+			rotmax-=2*PI
+		while rotmin+rotmax<rot-PI:
+			rotmin+=2*PI
+			rotmax+=2*PI
 		
-		rot = max(deg2rad(rotmin),min(deg2rad(rotmax),rot-parrot))+parrot
+		
+		rot = max(rotmin,min(rotmax,rot))+parrot
 		
 		var pos = (transforms[index+1].get_origin() - (Vector2.RIGHT * length).rotated(rot))
 		transforms[index] = Transform2D(rot, pos)
