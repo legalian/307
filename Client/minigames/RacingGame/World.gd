@@ -24,7 +24,7 @@ func _ready():
 		var instance = car.instance()
 		instance.position = object_map.map_to_world(obj)
 		world.add_child(instance)
-	var fence = preload("objects/Fence.tscn")
+	var fence = preload("objects/fence.tscn")
 	var fence_positions = object_map.get_used_cells_by_id(Objects.FENCE)
 	for obj in fence_positions:
 		var instance = fence.instance()
