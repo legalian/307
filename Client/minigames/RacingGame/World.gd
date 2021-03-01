@@ -18,6 +18,7 @@ func _ready():
 	var car = preload("res://car.tscn")
 	
 	object_map = find_node("Objects")
+	object_map.visible = false
 	var car_positions = object_map.get_used_cells_by_id(Objects.CAR)
 	for obj in car_positions:
 		var instance = car.instance()
