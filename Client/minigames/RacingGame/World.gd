@@ -1,7 +1,6 @@
 extends "res://minigame.gd"
 var path = "res://objects"
-
-
+var objectsPath = "res://minigames/racing/objects"
 
 # Declare member variables here. Examples:
 enum Objects {TREE, FENCE, CAR}
@@ -19,11 +18,19 @@ func _ready():
 	var car = preload("res://car.tscn")
 	
 	object_map = find_node("Objects")
-	var object_positions = object_map.get_used_cells_by_id(Objects.CAR)
-	for obj in object_positions:
+	var car_positions = object_map.get_used_cells_by_id(Objects.CAR)
+	for obj in car_positions:
 		var instance = car.instance()
 		instance.position = object_map.map_to_world(obj)
 		world.add_child(instance)
+	var fence = preload("objects/Fence.tscn")
+	var fence_positions = object_map.get_used_cells_by_id(Objects.FENCE)
+	for obj in fence_positions:
+		var instance = fence.instance()
+		instance.position = object_map.map_to_world(obj)
+		world.add_child(instance)
+	
+	
 	
 
 

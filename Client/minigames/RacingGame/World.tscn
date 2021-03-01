@@ -15,7 +15,7 @@ z_index = -9
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( 851956, 2, 0, 917500, 2, 0, 1179645, 2, 0, 1245172, 2, 0 )
+tile_data = PoolIntArray( 589812, 1, 0, 589813, 1, 0, 589814, 1, 0, 589815, 1, 0, 589816, 1, 0, 589817, 1, 0, 589818, 1, 0, 589819, 1, 0, 589820, 1, 0, 589821, 1, 0, 851956, 2, 0, 917500, 2, 0, 1179645, 2, 0, 1245172, 2, 0 )
 
 [node name="Track" type="TileMap" parent="World"]
 z_index = -10
