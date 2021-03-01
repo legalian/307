@@ -1,5 +1,5 @@
 tool
-extends Node2D
+extends RigidBody2D
 
 
 func _ready():
@@ -12,7 +12,5 @@ func _process(delta):
 	get_node("Visible/Sprite").frame = 63-(int(64+64*gltp/(2*PI))%64);
 	
 	glt.origin = Vector2(0,0);
-	var invscale = 1/(glt.get_scale().x*glt.get_scale().y)
-	glt = glt.scaled(Vector2(invscale,invscale))
 	get_node("Visible").transform = glt.affine_inverse();
 

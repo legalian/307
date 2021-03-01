@@ -3,7 +3,7 @@
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Theme.tres" type="Theme" id=3]
-[ext_resource path="res://Menus/ProfileScreen/ProfileSettings.gd" type="Script" id=4]
+[ext_resource path="res://minigames/PartyScreen/World.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -17,10 +17,10 @@ font_data = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Button_Back" type="Button" parent="."]
-margin_left = 454.726
-margin_top = 611.135
-margin_right = 657.726
-margin_bottom = 684.135
+margin_left = 75.3504
+margin_top = 485.954
+margin_right = 278.35
+margin_bottom = 558.954
 rect_pivot_offset = Vector2( 159.38, 30.3461 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
@@ -68,10 +68,10 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 958.237
-margin_top = 657.156
-margin_right = 1250.24
-margin_bottom = 701.156
+margin_left = 709.152
+margin_top = 520.479
+margin_right = 1001.15
+margin_bottom = 564.479
 theme = ExtResource( 3 )
 text = "debug: remove score"
 __meta__ = {
@@ -79,10 +79,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 956.23
-margin_top = 599.484
-margin_right = 1196.23
-margin_bottom = 643.484
+margin_left = 755.685
+margin_top = 448.756
+margin_right = 995.685
+margin_bottom = 492.756
 theme = ExtResource( 3 )
 text = "debug: add score"
 __meta__ = {
@@ -137,10 +137,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 979.16
-margin_top = 133.072
-margin_right = 1147.16
-margin_bottom = 156.072
+margin_left = 809.271
+margin_top = 127.963
+margin_right = 977.271
+margin_bottom = 150.963
 theme = ExtResource( 3 )
 text = "Scoreboard goes here"
 __meta__ = {
@@ -197,9 +197,21 @@ text = "Avatar 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EnterGameButton" type="Button" parent="."]
+margin_left = 468.646
+margin_top = 493.204
+margin_right = 627.646
+margin_bottom = 537.204
+theme = ExtResource( 3 )
+text = "Enter game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
 [connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
 [connection signal="text_changed" from="UsernameInput" to="." method="_on_UsernameInput_text_changed"]
 [connection signal="pressed" from="Avatar Menu/ColorRect/Avatar0" to="." method="_on_ChangeAvatar_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="Avatar Menu/ColorRect/Avatar1" to="." method="_on_ChangeAvatar_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="EnterGameButton" to="." method="_on_EnterGameButton_pressed"]

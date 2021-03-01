@@ -1,17 +1,15 @@
 extends Node2D
 
-var UsernameInput = null
+var UsernameInput = ""
 var AvatarSelected = 0
 
 var generalserver = null
 var specificserver = null
 var AvatarMenuOpen = false
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-	#generalserver = get_node("/root/Server")
-	#specificserver = generalserver.get_children()[0]
-	#print(get_node("MainPartyCreationScreenLabel").get_path())
+func _ready():
+	generalserver = get_node("/root/Server")
+	specificserver = generalserver.get_children()[0]
 	
 
 func _on_UsernameInput_text_changed(new_username):
@@ -53,3 +51,7 @@ func _on_Button_ChooseCharacter_pressed():
 		get_node("Button_ChooseCharacter").text = "Close"
 		get_node("Avatar Menu").show()
 		AvatarMenuOpen = true
+
+
+func _on_EnterGameButton_pressed():
+	generalserver.attemptEnterGame()
