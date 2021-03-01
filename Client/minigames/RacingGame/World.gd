@@ -1,5 +1,7 @@
-extends YSort
+extends "res://minigame.gd"
 var path = "res://objects"
+
+
 
 # Declare member variables here. Examples:
 enum Objects {TREE, FENCE, CAR}
@@ -9,6 +11,7 @@ var world = null
 var object_map = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	minigame = "RACINGGAME"
 	camera = find_node("Camera")
 	world = get_node("World")
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
@@ -40,4 +43,3 @@ func _process(delta):
 	world.rotation = -camera.rotation
 	
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
-

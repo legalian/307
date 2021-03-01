@@ -1,7 +1,7 @@
 [gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://exported/blasters_lowres/blasterH/diffuse.png" type="Texture" id=1]
-[ext_resource path="res://objects/gun.gd" type="Script" id=2]
+[ext_resource path="res://minigames/BattleRoyale/objects/gun.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4

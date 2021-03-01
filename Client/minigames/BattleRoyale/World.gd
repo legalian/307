@@ -1,5 +1,7 @@
-extends YSort
+extends "res://minigame.gd"
 var path = "res://objects"
+
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -11,6 +13,7 @@ var world = null
 func _ready():
 	camera = find_node("Camera")
 	world = get_node("World")
+	minigame = "BATTLEROYALE"
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
 
 
@@ -30,4 +33,3 @@ func _process(delta):
 	world.rotation = -camera.rotation
 	
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
-
