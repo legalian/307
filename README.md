@@ -1,4 +1,10 @@
-# Godot Main Menu example 
-A simple Main Menu in Godot.
+# Late to the Stage
+Multiplayer party game made with Godot.
 
-<img src="https://i.imgur.com/8cBgsdw.png">
+## Team Members
+- Chen Kai Chuang 
+- Garner Newton 
+- Evan Dunning 
+- Mitchell Augustin 
+- Lenny Meng 
+- Parker Lawrence 
