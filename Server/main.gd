@@ -8,7 +8,7 @@ var partyHandler
 var port = 1909
 var max_players = 3000
 
-var party_screen = preload("res://PartyScreen.tscn")
+var party_screen = preload("res://PartyScreen/World.tscn")
 
 # Lobby Management Variables ###################################################
 

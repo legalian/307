@@ -1,4 +1,4 @@
-extends "res://rotatedObject.gd"
+extends "res://objects/rotatedObject.gd"
 
 
 # Declare member variables here. Examples:

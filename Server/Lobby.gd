@@ -11,7 +11,7 @@ var max_lobby_players = 20
 
 # If minigames_per_match is has a number > size of minigame_list, everything will break.
 # There is a check to make sure this does not happen.
-var minigame_list = [preload("res://BattleRoyale.tscn")]
+var minigame_list = [preload("res://BattleRoyale/World.tscn")]
 
 var minigame_order = []
 
