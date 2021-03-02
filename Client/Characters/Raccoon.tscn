@@ -7,7 +7,7 @@
 [ext_resource path="res://Characters/VisChar.gd" type="Script" id=5]
 [ext_resource path="res://Characters/Visible.gd" type="Script" id=6]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=1]
 resource_name = "LookSide"
 loop = true
 tracks/0/type = "bezier"
@@ -151,7 +151,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "LookVertical"
 loop = true
 tracks/0/type = "bezier"
@@ -205,7 +205,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.500742, 1 )
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 resource_name = "WalkLeft"
 
 [sub_resource type="AnimationNodeAdd2" id=4]
@@ -241,7 +241,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 10 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 660, 160 )
-node_connections = [ "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "lookY", 0, "TimeScale", "TimeScale 2", 0, "Animation", "lookX", 0, "TimeScale 2", "output", 0, "Add2" ]
+node_connections = [ "Add2", 0, "lookX", "Add2", 1, "lookY", "lookX", 0, "TimeScale 2", "TimeScale", 0, "Animation 2", "lookY", 0, "TimeScale", "TimeScale 2", 0, "Animation", "output", 0, "Add2" ]
 
 [node name="Raccoon" type="Node2D"]
 script = ExtResource( 6 )
@@ -615,9 +615,9 @@ position = Vector2( -0.126663, -10.9635 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/LookSide = SubResource( 12 )
-anims/LookVertical = SubResource( 3 )
-anims/WalkLeft = SubResource( 13 )
+anims/LookSide = SubResource( 1 )
+anims/LookVertical = SubResource( 2 )
+anims/WalkLeft = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 11 )

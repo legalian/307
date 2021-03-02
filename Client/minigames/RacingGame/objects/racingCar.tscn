@@ -4,4 +4,4 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Node2D" parent="." instance=ExtResource( 1 )]
+[node name="Car" parent="." instance=ExtResource( 1 )]
