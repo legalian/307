@@ -64,8 +64,9 @@ func remove_from_lobby(var party):
 		debug_print()
 		return false
 	
-	if (party.lobby_code == "defaultCode"):
+	if (str(party.lobby_code) == "defaultCode"):
 		print("Attempting to remove from 'PartyScreen' minigame; returning false")
+		debug_print()
 		return false
 	
 	var lobby = get_lobby(party.lobby_code)

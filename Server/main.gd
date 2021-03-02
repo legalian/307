@@ -7,20 +7,11 @@ var network = NetworkedMultiplayerENet.new()
 var partyHandler
 var port = 1909
 var max_players = 3000
-var max_players_per = 20
-var min_players_per = 10
 
 var party_screen = preload("res://PartyScreen.tscn")
-var game_types = [preload("res://BattleRoyale.tscn")]
-
-#Note: This is a temporary variable I am using to test the party join/create system
-var test_party_code
 
 # Lobby Management Variables ###################################################
 const LobbyHandler=preload("res://LobbyHandler.gd")
-
-var lobby_propagator
-
 var lobbyHandler
 
 func _ready():
