@@ -7,13 +7,16 @@ enum Object_ids {TREE, FENCE, CAR}
 
 var camera = null
 var world = null
+var player
 var object_map = null
 var object_scenes = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	minigame = "RACINGGAME"
-	camera = find_node("Camera")
 	world = get_node("World")
+	player = find_node("Player")
+	camera = player.get_node("Camera")
+	camera.current = true
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
 	
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/RacingGame/objects/fence.tscn")
@@ -29,10 +32,6 @@ func _ready():
 				var instance = object_scenes[id].instance()
 				instance.position = object_map.map_to_world(obj)
 				world.add_child(instance)
-
-	
-	
-	
 
 
 
