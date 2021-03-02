@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sprites/Characters/raccoon_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Guns/basicGun.tscn" type="PackedScene" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Characters/IKlimit.gd" type="Script" id=4]
 [ext_resource path="res://Characters/VisChar.gd" type="Script" id=5]
 [ext_resource path="res://Characters/Visible.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/light.png" type="Texture" id=7]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=1]
 resource_name = "LookSide"
 loop = true
 tracks/0/type = "bezier"
@@ -151,7 +152,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "LookVertical"
 loop = true
 tracks/0/type = "bezier"
@@ -205,7 +206,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.500742, 1 )
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 resource_name = "WalkLeft"
 
 [sub_resource type="AnimationNodeAdd2" id=4]
@@ -241,7 +242,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 10 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 660, 160 )
-node_connections = [ "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "lookY", 0, "TimeScale", "TimeScale 2", 0, "Animation", "lookX", 0, "TimeScale 2", "output", 0, "Add2" ]
+node_connections = [ "TimeScale", 0, "Animation 2", "TimeScale 2", 0, "Animation", "Add2", 0, "lookX", "Add2", 1, "lookY", "lookX", 0, "TimeScale 2", "lookY", 0, "TimeScale", "output", 0, "Add2" ]
 
 [node name="Raccoon" type="Node2D"]
 script = ExtResource( 6 )
@@ -408,6 +409,10 @@ scale = Vector2( 0.35, 0.35 )
 [node name="LeftArmTarget" type="Position2D" parent="Char"]
 position = Vector2( -55.3807, -79.9719 )
 
+[node name="Sprite" type="Sprite" parent="Char/LeftArmTarget"]
+scale = Vector2( 0.03824, 0.0389403 )
+texture = ExtResource( 7 )
+
 [node name="RightArmTarget" type="Position2D" parent="Char"]
 position = Vector2( 57.0925, -81.2163 )
 
@@ -508,6 +513,9 @@ position = Vector2( 56.1465, 0.316437 )
 position = Vector2( -0.000488281, -0.000411987 )
 rotation = -1.5433
 scale = Vector2( 1.75, 1.75 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Char/Skeleton2D/Hip/Torso/LeftArm/LeftHand/LeftHandPoint/Gun"]
+scale = Vector2( 1.45138, 13.7152 )
 
 [node name="Head" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
 position = Vector2( 68.3932, 2.25259 )
@@ -615,9 +623,9 @@ position = Vector2( -0.126663, -10.9635 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/LookSide = SubResource( 12 )
-anims/LookVertical = SubResource( 3 )
-anims/WalkLeft = SubResource( 13 )
+anims/LookSide = SubResource( 1 )
+anims/LookVertical = SubResource( 2 )
+anims/WalkLeft = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 11 )

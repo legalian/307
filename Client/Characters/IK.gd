@@ -24,7 +24,8 @@ func rotclamp(amt):
 	return amt
 
 func glob_rot(node):
-	return node.global_rotation-leftbody.global_rotation
+	#return (leftbody.get_global_transform_with_canvas().affine_inverse()*node.get_global_transform_with_canvas()).get_rotation()
+	return rotclamp(node.global_rotation-leftbody.global_rotation)
 	
 func glob_pos(node):
 	#print(node.global_position)
@@ -67,7 +68,9 @@ func _calc_ik222(node, ik_node, target_node, parrot, index = 0):
 		var rotmin = deg2rad(node.rot_min_left if leftbody.isFacingLeft() else node.rot_min_right)
 		var rotmax = deg2rad(node.rot_max_left if leftbody.isFacingLeft() else node.rot_max_right)
 		#print(rotmin,",",rotmax)
-		var rot = (transforms[index+1].get_origin() - glob_pos(node)).angle()
+		var adj = transforms[index+1].get_origin() - glob_pos(node)
+		#adj.y/=.44
+		var rot = adj.angle()
 		
 		parrot = parrot + rotation_offsets[index]
 		rot = rot-parrot
