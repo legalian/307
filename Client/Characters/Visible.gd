@@ -13,16 +13,19 @@ func _ready():
 	lefthand = find_node("LeftArmTarget")
 	righthand = find_node("RightArmTarget")
 
-
-func set_look_pos(gpos):
+func _process(delta):
 	var glt = get_global_transform_with_canvas()
 	glt.origin = Vector2(0,0)
 	get_node("Char").transform = glt.affine_inverse()
 
-	var rot = -get_viewport().canvas_transform.scaled(Vector2(.44,1)).get_rotation()-(gpos-headRef.global_position).angle()
+func set_look_pos(gpos):
+	#gpos.y/=.44
+	var cpos = gpos-headRef.global_position
+	#cpos.y*=.44
+	var rot = -get_viewport().canvas_transform.scaled(Vector2(.44,1)).get_rotation()-cpos.angle()
 	animPlayer.set("parameters/lookX/seek_position", .5+.5*cos(rot))
 	animPlayer.set("parameters/lookY/seek_position", .5+.5*sin(rot))
-	
+	#gpos.y*=.44
 	lefthand.global_position = gpos
 
 

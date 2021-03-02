@@ -43,12 +43,10 @@ remote func setminigame(systemname,lobbyname):
 	for ms in get_children():
 		remove_child(ms)
 		ms.queue_free()
-	print(get_children())
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
 	add_child(instance)
 	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
-	print(get_children())
 
 
 remote func receive_party_code(var recPartyID):
@@ -57,6 +55,12 @@ remote func receive_party_code(var recPartyID):
 		#print(get_tree().current_scene.filename)
 		#continue
 		#Do nothing
+	for node in get_tree().get_root().get_node("root/Menu_Controller").get_children():
+		print("node:",node.name)
+	#print(current_minigame.get_node("MainPartyCreationScreenLabel"))
+	#print(get_tree().get_root().find_node("/root"))
+	#print(get_tree().get_root().find_node("/root/Node2D"))
+	#print(get_tree().get_root().find_node("/root/Node2D/MainPartyCreationScreenLabel"))
 	#if (str(recPartyID) != str(100000)):
 	#	get_tree().get_root().find_node("/root/Node2D/MainPartyCreationScreenLabel").text = recPartyID
 	#else:

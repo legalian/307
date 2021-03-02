@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Guns/BlueFlare.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Guns/MuzzleFlare.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FiringAnim"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0576171, 0.123815, 0.192135, 0.25989 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "nextFrame"
+}, {
+"args": [  ],
+"method": "nextFrame"
+}, {
+"args": [  ],
+"method": "nextFrame"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[node name="Flare" type="AnimatedSprite"]
+frames = ExtResource( 1 )
+frame = 12
+script = ExtResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/FiringAnim = SubResource( 1 )
