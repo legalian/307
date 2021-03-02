@@ -17,7 +17,7 @@ func _ready():
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
 	
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/RacingGame/objects/fence.tscn")
-	object_scenes[Object_ids.CAR] = preload("res://objects/car.tscn")
+	object_scenes[Object_ids.CAR] = preload("res://minigames/RacingGame/objects/racingCar.tscn")
 	
 	object_map = find_node("Objects")
 	object_map.visible = false
