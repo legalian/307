@@ -11,14 +11,8 @@ var max_players = 3000
 var party_screen = preload("res://PartyScreen.tscn")
 
 # Lobby Management Variables ###################################################
-<<<<<<< HEAD
-const LobbyHandler = preload("res://LobbyHandler.gd")
 
-var lobby_propagator
-
-=======
 const LobbyHandler=preload("res://LobbyHandler.gd")
->>>>>>> ef9c22493474691bbbfd0d26b306d83e99e54e5d
 var lobbyHandler
 
 func _ready():
