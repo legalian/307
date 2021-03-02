@@ -7,20 +7,18 @@ var network = NetworkedMultiplayerENet.new()
 var partyHandler
 var port = 1909
 var max_players = 3000
-var max_players_per = 20
-var min_players_per = 10
 
-var lobby_game_type = preload("res://PartyScreen.tscn")
-var game_types = [preload("res://BattleRoyale.tscn")]
-
-#Note: This is a temporary variable I am using to test the party join/create system
-var test_party_code
+var party_screen = preload("res://PartyScreen.tscn")
 
 # Lobby Management Variables ###################################################
+<<<<<<< HEAD
 const LobbyHandler = preload("res://LobbyHandler.gd")
 
 var lobby_propagator
 
+=======
+const LobbyHandler=preload("res://LobbyHandler.gd")
+>>>>>>> ef9c22493474691bbbfd0d26b306d83e99e54e5d
 var lobbyHandler
 
 func _ready():
@@ -46,7 +44,7 @@ func make_new_minigame(var minigame):#makes a new minigame object, inserts it in
 	return instance
 	
 func make_party_screen():
-	var instance = lobby_game_type.instance()
+	var instance = party_screen.instance()
 	instance.name = instance.systemname()
 	add_child(instance)
 	return instance
@@ -65,17 +63,22 @@ func reassign_party_to_minigame(var party,var minigame):
 remote func party_ready():
 	var party = partyHandler.get_party_by_player(get_tree().get_rpc_sender_id())
 	if party!=null:
-		reassign_party_to_minigame(party,make_new_minigame(preload("res://BattleRoyale.tscn")))
-		#so- passing the lobby object from the client actually isn't possible, unless you plan to serialize and unserialize the object, or associate it with an ID.
-		#we should avoid doing it that way for a bunch of reasons- I think it would be best to use a similar system to how the partyHandler identifies which party is in question.
-		#we have the player ID from the rpc_sender_id- we currently are using that to get the party
-		   #we could store the lobby on the party object that we're retrieving above
-		   #we could store the lobby on the player object and retrieve that by ID
-		   #we could have an association in LobbyHandler between playerIDs and the lobby
+		var lobby_code = matchmake(party)
 		
-		#for now though I'm just going to switch it out with just the same scene each time so things that are merged into main can work properly
+		if (lobby_code == null):
+			print("Matchmaking failed")
+			print("lobby_code = NULL @@ party_ready()")
+			return
 		
-		#reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
+		var lobby = lobbyHandler.get_lobby(lobby_code)
+		
+		if (lobby == null):
+			print("Lobby not created properly")
+			print("lobby_code = " + lobby_code)
+			print("lobby = null @@ party_ready()")
+		
+		reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
+		# No need to return anything; reassign_party_to_minigame will call the client
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
@@ -108,50 +111,19 @@ func send_party_code_to_client(var clientID, var partyID):
 
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
+		
 	if party!=null:
 		var minigame = party.minigame
 		if minigame!=null:
 			minigame.remove_player(player_id)
-			if minigame.player_count()==0: minigame.queue_free()
+			if minigame.player_count()==0:minigame.queue_free()
 		partyHandler.leave_party(player_id)
-	print("User " + str(player_id) + " disconnected.")
+		
+		if (party.playerIDs.size() == 0):
+			print("Party size detected to be empty, removing from lobby")
+			lobbyHandler.remove_from_lobby(party)
 	
-###############################################################################
-# @desc
-# This function can be called by rpc("delete_lobby", lobby_id) from the client.
-# This will free up the lobby from the server.
-#
-# @param
-# lobby_id:		This parameter should be given from the functional call by the
-#				client with rpc("matchmake", party_list).
-###############################################################################
-remote func delete_lobby(var lobby_id):
-	lobbyHandler.delete_lobby(lobby_id)
-	print("we cannot rely on the client notifying the server when to garbage-collect")
-	print("there's a model for this behavior in the user disconnect function, for when parties are deleted.")
-
-###############################################################################
-# @desc
-# This function can be called by rpc("get_lobby", lobby_id) from the client.
-# This will return a Lobby.gd object that contains the minigame order, lobby_id,
-# and the lobby's players consisting of PlayerParty.gd objects.
-#
-# @param
-# lobby_id:		This parameter should be given from the functional call by the
-#				client with rpc("matchmake", party_list).
-#
-# @returns
-# Lobby:		A Lobby.gd object that matches the given lobby_id. If no
-#				lobby_id matches, then null is returned instead.
-###############################################################################
-
-#objects like this cannot be returned or passed via RPC. the client doesn't have an object definition for it.
-#you could theoretically pass an ID, but ideally the client wouldn't need any information about the lobby/party system,
-#only the other players in the game.
-
-#remote func get_lobby(var lobby_id):     
-#	
-#	return lobbyHandler.get_lobby(lobby_id)
+	print("User " + str(player_id) + " disconnected.")
 
 ###############################################################################
 # @desc
@@ -159,8 +131,7 @@ remote func delete_lobby(var lobby_id):
 # When called, the function must be given an array of PartyPlayer objects.
 #
 # @param
-# party_list:	The party list is a list of PartyPlayer objects, each of which
-#				represent a player in the party.
+# party:		This a Party object that has the playerIDs filled out.
 #
 # @returns
 # lobby_id:		This will contain the id of either a new lobby or existing
@@ -168,23 +139,29 @@ remote func delete_lobby(var lobby_id):
 #				and can be accessed via LobbyHandler.get_lobby(lobby_id), which
 #				returns a Lobby.gd object. 
 ###############################################################################
-remote func matchmake(party_list):
-	print(str(party_list.size()) + "player(s) have requested to matchmake. Party list:" + party_list)
+remote func matchmake(party):
+	print("\n\n" + str(party.playerIDs.size()) + " player(s) have requested to matchmake.\n")
+	print("Here are the players that have requested to matchmake under party " + str(party.code) + ":")
+	for playerID in party.playerIDs:
+		print("\tPlayerID:" + str(playerID) + "\n")
 	
 	# Check if party list size is less than 0.
-	if (party_list.size() <= 0):
+	if (party.playerIDs.size() <= 0):
 		print("FATAL ERROR @@ REMOTE FUNC MATCHMAKE(PARTY_SIZE): party_size is <= 0")
 		return null
 	
-	print("Added " + party_list + " to the matchmaking pool")
-	
-	while true: # Constantly try to add to a lobby
-		var lobby_code = lobbyHandler.add_to_lobby(party_list)
+	print("Added Party " + str(party.code) + " to the matchmaking pool")
+
+	while true:
 		# Try to send them to a lobby and get the code
-		if (lobby_code != null): # Cannot enter a lobby
+		var lobby_code = lobbyHandler.add_to_lobby(party)
+		
+		if (lobby_code != null): # We've gotten a lobby
+			print("Set lobby code " + str(lobby_code) + " to party " + str(party.code))
+			party.lobby_code = lobby_code
 			return lobby_code
 		
-		for player in party_list:
-			if (rpc_id(player.playerID,"get_lobby_cstatus")):
+		for player_id in party.playerIDs:
+			if (rpc_id(player_id,"get_lobby_cstatus")):
 				# Implement this clientside; check if any player has cancelled
 				return null
