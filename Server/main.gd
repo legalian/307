@@ -17,7 +17,7 @@ var game_types = [preload("res://BattleRoyale.tscn")]
 var test_party_code
 
 # Lobby Management Variables ###################################################
-const LobbyHandler=preload("res://LobbyHandler.gd")
+const LobbyHandler = preload("res://LobbyHandler.gd")
 
 var lobby_propagator
 
