@@ -3,6 +3,7 @@ extends Node2D
 
 export var sideoffset = 0
 
+var Bullet = preload("res://Guns/BasicRedBullet.tscn")
 var sprite
 var viscontainer
 var posfix
@@ -46,8 +47,21 @@ func _process(delta):
 		posfix.hookX
 	))
 
-func fire():
+func fire(var origpl,var targetpos):
+	var b = Bullet.instance()
+	var parent = origpl.get_parent()
+	#b.transform = parent.global_transform.affine_inverse()*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
+	b.position = parent.global_transform.xform_inv(posfix.global_position)#*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
+	b.rotation = (b.position-targetpos).angle()
+	b.position -= Vector2(0,-90/.44).rotated(origpl.rotation)
+	
+	parent.add_child(b)
+	#b.start()
 	flare.fire()
+	
+	
+	
+
 
 
 

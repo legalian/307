@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Guns/Bullet.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Bullet" type="KinematicBody2D"]
+script = ExtResource( 1 )
+height = 90.0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Body" type="Polygon2D" parent="."]
+position = Vector2( 0, -90 )
+color = Color( 0.839216, 0.690196, 0.247059, 1 )
+polygon = PoolVector2Array( -4.99907, 3.21219, -7.20987, 1.16515, -7.29175, -1.37317, -5.24472, -3.42021, 4.90858, -3.33833, 5.72739, -1.45505, 5.56363, 1.65644, 4.8267, 3.29407 )
+
+[node name="Trail" type="Polygon2D" parent="Body"]
+show_behind_parent = true
+color = Color( 0.92549, 0.784314, 0.14902, 1 )
+polygon = PoolVector2Array( -0.00430298, -1.7007, -0.0861893, 1.65644, 4.66293, 1.73833, 4.74482, -1.7007 )

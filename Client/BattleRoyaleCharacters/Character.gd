@@ -59,7 +59,7 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == BUTTON_LEFT:
-			gun.fire()
+			gun.fire(self,$Target.global_position)
 			server.shoot()
 			#print("rpc call happened.")
 			#rpc_id(1,"gameCall","shoot")

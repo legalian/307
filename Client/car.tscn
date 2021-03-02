@@ -1,7 +1,7 @@
 [gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://exported/cars/race/diffuse.png" type="Texture" id=1]
-[ext_resource path="res://rotatedObject.gd" type="Script" id=65]
+[ext_resource path="res://objects/rotatedObject.gd" type="Script" id=65]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
