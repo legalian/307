@@ -7,4 +7,5 @@
 [node name="Car" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera" type="Camera2D" parent="."]
+rotation = 3.14159
 zoom = Vector2( 1, 2 )
