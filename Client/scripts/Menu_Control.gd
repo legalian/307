@@ -16,21 +16,57 @@ func _MUT_recieve_partycode():
 	
 	
 func _ready():
-	if OS.get_environment("MULTI_USER_TESTING")=="TRUE":
-		var screen = int(OS.get_environment("DESIREDSCREEN"))%int(OS.get_screen_count())
+	var multi_user_testing = false;
+	var active_corner = -1;
+	var desired_screen = -1;
+	
+	if (OS.get_name() == "Windows"):
+		# Windows Argument Parsing
+		for argument in OS.get_cmdline_args():
+			if argument.find("=") > -1:
+				var arg = argument.split("=")[0].lstrip("-")
+				var val = argument.split("=")[1]
+				
+				if (arg == "MULTI_USER_TESTING"):
+					multi_user_testing = val
+				if (arg == "ACTIVECORNER"):
+					active_corner = val
+				if (arg == "DESIREDSCREEN"):
+					desired_screen = val
+	else:
+		# Linux Argument Parsing
+		multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
+		active_corner = OS.get_environment("ACTIVECORNER")
+		desired_screen = OS.get_environment("DESIREDSCREEN")
+	
+	print("MULTI_USER_TESTING: " + str(multi_user_testing))
+	print("ACTIVE_CORNER: " + str(active_corner))
+	print("DESIRED_SCREEN: " + str(desired_screen))
+	
+	if str(multi_user_testing) == "TRUE":
+		print("in user testing!")
+		var screen = int(desired_screen)%int(OS.get_screen_count())
 		OS.set_current_screen(screen)
 		var windowdecoration = OS.get_real_window_size()-OS.window_size
 		var realwindowsize = OS.get_screen_size(screen)/2
 		OS.window_size = realwindowsize - windowdecoration
-		if OS.get_environment("ACTIVECORNER")=="1":
+		
+		# Window splitting
+		if str(active_corner) == "1":
+			print("active_corner 1 activated")
 			OS.window_position = OS.get_screen_position(screen)+Vector2(0,0)
-		if OS.get_environment("ACTIVECORNER")=="2":
+		if str(active_corner) == "2":
+			print("active_corner 2 activated")
 			OS.window_position = OS.get_screen_position(screen)+Vector2(realwindowsize.x,0)
-		if OS.get_environment("ACTIVECORNER")=="3":
+		if str(active_corner) == "3":
+			print("active_corner 3 activated")
 			OS.window_position = OS.get_screen_position(screen)+Vector2(0,realwindowsize.y)
-		if OS.get_environment("ACTIVECORNER")=="4":
+		if str(active_corner) == "4":			
+			print("active_corner 4 activated")
 			OS.window_position = OS.get_screen_position(screen)+realwindowsize
-		if OS.get_environment("ACTIVECORNER")=="1":
+
+		# $MUT_test_flow
+		if active_corner == "1":
 			$MUT_test_flow.play("Multi_User_Testing_Partylead")
 		else:
 			$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
