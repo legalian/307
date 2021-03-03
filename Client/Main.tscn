@@ -30,14 +30,11 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_Button_Create_Party_pressed"
-}, {
-"args": [  ],
-"method": "_MUT_send_partycode"
 } ]
 }
 
@@ -98,9 +95,9 @@ __meta__ = {
 }
 
 [node name="Button_Create_Party" type="Button" parent="Menu_Controller"]
-margin_left = 527.0
+margin_left = 528.0
 margin_top = 259.0
-margin_right = 721.0
+margin_right = 722.0
 margin_bottom = 329.0
 theme = ExtResource( 2 )
 text = "Create a Party"

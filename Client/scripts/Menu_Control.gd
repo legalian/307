@@ -7,13 +7,6 @@
 extends Control
 
 
-func _MUT_send_partycode():
-	var partycode = "ABRACADABRA"
-	var file = File.new()
-	file.open("user://saved_partycode.dat", file.WRITE)
-	file.store_string(partycode)
-	file.close()
-
 func _MUT_recieve_partycode():
 	var file = File.new()
 	file.open("user://saved_partycode.dat", file.READ)
@@ -24,7 +17,7 @@ func _MUT_recieve_partycode():
 	
 func _ready():
 	if OS.get_environment("MULTI_USER_TESTING")=="TRUE":
-		var screen = int(OS.get_environment("DESIREDSCREEN"))
+		var screen = int(OS.get_environment("DESIREDSCREEN"))%int(OS.get_screen_count())
 		OS.set_current_screen(screen)
 		var windowdecoration = OS.get_real_window_size()-OS.window_size
 		var realwindowsize = OS.get_screen_size(screen)/2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
@@ -12,6 +12,26 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 50
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Multi_User_Testing_Partyfollow"
+
+[sub_resource type="Animation" id=3]
+resource_name = "Multi_User_Testing_Partylead"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_MUT_send_partycode"
+} ]
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -208,6 +228,10 @@ text = "Enter game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MUT_test_flow" type="AnimationPlayer" parent="."]
+anims/Multi_User_Testing_Partyfollow = SubResource( 4 )
+anims/Multi_User_Testing_Partylead = SubResource( 3 )
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
 [connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
