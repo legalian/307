@@ -1,6 +1,3 @@
-
-
-
 cd Server
 /Applications/Godot.app/Contents/MacOS/Godot &
 cd ..
