@@ -57,8 +57,6 @@ func add_party(var party):
 	print("Adding party " + str(party.code) + " to lobby " + str(lobby_code))
 	parties.append(party)
 	
-	debug_print()
-	
 ################################################################################
 # @desc
 # Adds minigames in a random order from minigame_list.
@@ -105,7 +103,6 @@ func go_to_next_minigame():
 	if (current_minigame >= minigame_order.size()):
 		print("FATAL ERROR @@ FUNC GET_NEXT_MINIGAME(): trying to get next" + 
 			  "minigame despite having finished all minigames")
-		debug_print()
 		return null
 
 
@@ -130,10 +127,8 @@ func remove_party(var in_party):
 		if (party.code == in_party.code):
 			print("Removing Party " + str(party.code) + " from lobby " + str(lobby_code))
 			parties.erase(party)
-			debug_print()
 			return true
 	
-	debug_print()
 	return false
 
 func get_parties():

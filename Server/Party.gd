@@ -26,6 +26,8 @@ func _ready():
 	# Generate a code for the minigame
 	pass # Replace with function body.
 
+func size():
+	return playerIDs.size()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
