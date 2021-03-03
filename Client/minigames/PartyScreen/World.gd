@@ -9,15 +9,19 @@ var AvatarMenuOpen = false
 
 
 func _MUT_send_partycode():
-	var partycode = "ABRACADABRA"
+	var partycode = $PartyCode.text
 	var file = File.new()
 	file.open("user://saved_partycode.dat", file.WRITE)
 	file.store_string(partycode)
 	file.close()
 
+func _MUT_set_username():
+	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
+
 func _ready():
 	generalserver = get_node("/root/Server")
 	specificserver = generalserver.get_children()[0]
+	$PartyCode.text = str(generalserver.partycode)
 	if OS.get_environment("MULTI_USER_TESTING")=="TRUE":
 		if OS.get_environment("ACTIVECORNER")=="1":
 			$MUT_test_flow.play("Multi_User_Testing_Partylead")

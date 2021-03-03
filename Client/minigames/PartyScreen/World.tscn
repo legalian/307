@@ -13,10 +13,30 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Multi_User_Testing_Partyfollow"
-
 [sub_resource type="Animation" id=3]
+resource_name = "Multi_User_Testing_Partyfollow"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_MUT_set_username"
+}, {
+"args": [  ],
+"method": "_on_Button_ConfirmUsername_pressed"
+}, {
+"args": [  ],
+"method": "_on_EnterGameButton_pressed"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
 resource_name = "Multi_User_Testing_Partylead"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -25,11 +45,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.1, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_MUT_send_partycode"
+}, {
+"args": [  ],
+"method": "_MUT_set_username"
+}, {
+"args": [  ],
+"method": "_on_Button_ConfirmUsername_pressed"
+}, {
+"args": [  ],
+"method": "_on_EnterGameButton_pressed"
 } ]
 }
 
@@ -76,13 +105,13 @@ __meta__ = {
 }
 
 [node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="."]
-margin_left = 412.645
-margin_top = 22.3258
-margin_right = 657.645
-margin_bottom = 99.3258
+margin_left = 413.0
+margin_top = 22.0
+margin_right = 721.0
+margin_bottom = 99.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
-text = "Set Profile"
+text = "Party screen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -229,9 +258,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PartyCodeLabel" type="Label" parent="."]
+margin_left = 330.508
+margin_top = 164.742
+margin_right = 401.508
+margin_bottom = 178.742
+rect_scale = Vector2( 2.71146, 2.91496 )
+text = "Party code:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartyCode" type="Label" parent="."]
+margin_left = 535.157
+margin_top = 163.719
+margin_right = 599.157
+margin_bottom = 177.719
+rect_scale = Vector2( 3.00754, 2.93724 )
+text = "undefined"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MUT_test_flow" type="AnimationPlayer" parent="."]
-anims/Multi_User_Testing_Partyfollow = SubResource( 4 )
-anims/Multi_User_Testing_Partylead = SubResource( 3 )
+anims/Multi_User_Testing_Partyfollow = SubResource( 3 )
+anims/Multi_User_Testing_Partylead = SubResource( 4 )
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
 [connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]

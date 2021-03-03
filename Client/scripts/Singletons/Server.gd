@@ -5,6 +5,8 @@ var ip = "127.0.0.1"
 #var ip = "64.227.13.167"
 var port = 1909
 
+var partycode = "undefined"
+
 const Player = preload("res://scripts/MinigameServers/Player.gd")
 
 var players = []
@@ -51,12 +53,13 @@ remote func setminigame(systemname,lobbyname):
 
 remote func receive_party_code(var recPartyID):
 	print("Party created - code: " + str(recPartyID))
+	partycode = recPartyID
 	#while (get_tree().current_scene.filename != "res://minigames/PartyScreen/World.tscn"):
 		#print(get_tree().current_scene.filename)
 		#continue
 		#Do nothing
-	for node in get_tree().get_root().get_node("root/Menu_Controller").get_children():
-		print("node:",node.name)
+	var node = get_tree().get_root().get_node_or_null("root/Node2D/PartyCode")
+	if node!=null: node.text = str(recPartyID)
 	#print(current_minigame.get_node("MainPartyCreationScreenLabel"))
 	#print(get_tree().get_root().find_node("/root"))
 	#print(get_tree().get_root().find_node("/root/Node2D"))

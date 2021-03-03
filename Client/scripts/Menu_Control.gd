@@ -12,7 +12,7 @@ func _MUT_recieve_partycode():
 	file.open("user://saved_partycode.dat", file.READ)
 	var partycode = file.get_as_text()
 	file.close()
-	print("RECIEVED PARTYCODE: ",partycode)
+	$PartyCodeTextEdit.text = partycode
 	
 	
 func _ready():

@@ -48,8 +48,8 @@ func _Peer_Connected(player_id):
 
 func reassign_party_to_minigame(var party,var minigame):
 	for player in partyHandler.get_players_in_party(party):
-		minigame.add_player(player)
 		rpc_id(player.playerID,"setminigame",minigame.systemname(),minigame.name)
+		minigame.add_player(player)
 		print("setting ",minigame.name,minigame.get_path())
 	party.minigame.queue_free()
 	party.minigame = minigame
@@ -86,9 +86,9 @@ remote func create_party():
 	print("Code: " + str(newparty.code))
 	print("Players: " + str(newparty.playerIDs))
 	newparty.minigame = make_party_screen()
+	rpc_id(player_id,"setminigame",newparty.minigame.systemname(),newparty.minigame.name)
 	newparty.minigame.add_player(partyHandler.player_objects.get(player_id))
 	print("Systemname: " + newparty.minigame.systemname())
-	rpc_id(player_id,"setminigame",newparty.minigame.systemname(),newparty.minigame.name)
 	send_party_code_to_client(player_id, newparty.code)
 
 remote func join_party(var partyID):
@@ -97,10 +97,10 @@ remote func join_party(var partyID):
 	var joined_party = partyHandler.join_party_by_id(player_id, partyID)
 	if (str(joined_party.code) != str(PartyHandler.invalid_party_id)):
 		print("Players: " + str(joined_party.playerIDs))
+		rpc_id(player_id,"setminigame",joined_party.minigame.systemname(),joined_party.minigame.name)
 		send_party_code_to_client(player_id, joined_party.code)
 	else:
 		print("Lobby code invalid: " + str(partyID))
-		send_party_code_to_client(player_id, joined_party.code)
 
 func send_party_code_to_client(var clientID, var partyID):
 	rpc_id(clientID, "receive_party_code", partyID)
