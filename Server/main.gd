@@ -71,6 +71,8 @@ remote func party_ready():
 			print("lobby_code = " + lobby_code)
 			print("lobby = null @@ party_ready()")
 		
+		debug_print_lobbies()
+		
 		reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
 		# No need to return anything; reassign_party_to_minigame will call the client
 	else:
@@ -116,6 +118,7 @@ func _Peer_Disconnected(player_id):
 		if (party.playerIDs.size() == 0):
 			print("Party size detected to be empty, removing from lobby")
 			lobbyHandler.remove_from_lobby(party)
+			debug_print_lobbies()
 	
 	print("User " + str(player_id) + " disconnected.")
 
@@ -159,3 +162,9 @@ remote func matchmake(party):
 			if (rpc_id(player_id,"get_lobby_cstatus")):
 				# Implement this clientside; check if any player has cancelled
 				return null
+
+func debug_print_lobbies():
+	lobbyHandler.debug_print()
+	
+	for lobby in lobbyHandler.get_lobbies().values():
+		lobby.debug_print()
