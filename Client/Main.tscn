@@ -61,9 +61,9 @@ __meta__ = {
 }
 
 [node name="Button_Create_Party" type="Button" parent="Menu_Controller"]
-margin_left = 528.0
+margin_left = 527.0
 margin_top = 259.0
-margin_right = 722.0
+margin_right = 721.0
 margin_bottom = 329.0
 theme = ExtResource( 2 )
 text = "Create a Party"
