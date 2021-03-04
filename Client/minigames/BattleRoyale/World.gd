@@ -17,7 +17,6 @@ func _ready():
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#pass
@@ -32,5 +31,8 @@ func _process(delta):
 	get_viewport().canvas_transform = pret*get_viewport().canvas_transform*post
 	rotation = ctr
 	world.rotation = -ctr
+	
+	if (get_node("World/Circle").isInCircle(get_node("World/Player").position)):
+		print("Damage taken")
 	
 	#get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(Vector2(2,1))
