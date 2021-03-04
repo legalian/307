@@ -3,7 +3,7 @@ var path = "res://objects"
 var objectsPath = "res://minigames/racing/objects"
 
 # Declare member variables here. Examples:
-enum Object_ids {TREE, FENCE, CAR, FENCE2}
+enum Object_ids {TREE, FENCE, CAR, FENCE2, FLAG}
 
 var camera = null
 var world = null
@@ -22,7 +22,7 @@ func _ready():
 	object_scenes[Object_ids.FENCE2] = preload("res://minigames/RacingGame/objects/fence.tscn")
 	object_scenes[Object_ids.CAR] = preload("res://minigames/RacingGame/objects/racingCar.tscn")
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
-	
+	object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
 	object_map = find_node("Objects")
 	object_map.visible = false
 	
