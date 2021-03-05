@@ -8,6 +8,7 @@ var sprite
 var viscontainer
 var posfix
 var flare
+var server
 
 func _ready():
 	set_process(true)
@@ -15,6 +16,7 @@ func _ready():
 	viscontainer = get_node("Visible")
 	posfix = get_node("PositionFix")
 	flare = get_node("PositionFix/Flare")
+	server = get_node("/root/Server").get_children()[0]
 
 func _process(delta):
 	var glt = get_global_transform_with_canvas()
@@ -58,6 +60,15 @@ func fire(var origpl,var targetpos):
 	parent.add_child(b)
 	#b.start()
 	flare.fire()
+	
+	randomize()
+	var code = int(rand_range(100000, 999999))
+	while (code in server.gameinstance.bullets):
+		code = int(rand_range(100000, 999999))
+	b.id = code
+	server.gameinstance.bullets[b.id] = b
+		
+	return b
 	
 	
 	
