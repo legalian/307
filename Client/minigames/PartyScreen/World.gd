@@ -3,10 +3,9 @@ extends Node2D
 var UsernameInput = ""
 var AvatarSelected = 0
 
-var generalserver = null
+onready var generalserver = get_node("/root/Server")
 var specificserver = null
 var AvatarMenuOpen = false
-
 
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
@@ -18,7 +17,7 @@ func _MUT_send_partycode():
 func _MUT_set_username():
 	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
-func _ready():
+func _ready():	
 	generalserver = get_node("/root/Server")
 	specificserver = generalserver.get_children()[0]
 	$PartyCode.text = str(generalserver.partycode)
@@ -52,8 +51,6 @@ func _on_Button_ConfirmUsername_pressed():
 		print("Username is Invalid")
 
 
-
-
 func _on_ChangeAvatar_pressed(AvatarType):
 	print(AvatarType)
 	AvatarSelected = AvatarType
@@ -72,4 +69,6 @@ func _on_Button_ChooseCharacter_pressed():
 
 
 func _on_EnterGameButton_pressed():
+	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
 	generalserver.attemptEnterGame()
+	

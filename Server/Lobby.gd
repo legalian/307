@@ -3,7 +3,7 @@ extends Node
 var lobby_code
 var parties = []
 
-var max_lobby_players = 20
+var max_lobby_players = 1
 
 # You can change this preload to manually change games.
 # If you change minigames_per_match to 2, then Lobby.gd will attempt to create

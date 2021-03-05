@@ -59,6 +59,8 @@ remote func party_ready():
 	if party!=null:
 		var lobby_code = matchmake(party)
 		
+		# Checking for cstatus here will not work.
+		
 		if (lobby_code == null):
 			print("Matchmaking failed")
 			print("lobby_code = NULL @@ party_ready()")
@@ -100,7 +102,7 @@ remote func join_party(var partyID):
 		rpc_id(player_id,"setminigame",joined_party.minigame.systemname(),joined_party.minigame.name)
 		send_party_code_to_client(player_id, joined_party.code)
 	else:
-		print("Lobby code invalid: " + str(partyID))
+		print("Party code invalid: " + str(partyID))
 
 func send_party_code_to_client(var clientID, var partyID):
 	rpc_id(clientID, "receive_party_code", partyID)
@@ -120,12 +122,12 @@ func _Peer_Disconnected(player_id):
 			lobbyHandler.remove_from_lobby(party)
 			debug_print_lobbies()
 	
-	print("User " + str(player_id) + " disconnected.")
+	print("User " + str(player_id) + " disconnected.")	
 
 ###############################################################################
 # @desc
-# This function can be called by rpc("matchmake", party_list) from the client.
-# When called, the function must be given an array of PartyPlayer objects.
+# This function can be called by going through party_ready(). This should be done
+# for solo queue as well as party queue.
 #
 # @param
 # party:		This a Party object that has the playerIDs filled out.
@@ -136,7 +138,7 @@ func _Peer_Disconnected(player_id):
 #				and can be accessed via LobbyHandler.get_lobby(lobby_id), which
 #				returns a Lobby.gd object. 
 ###############################################################################
-remote func matchmake(party):
+func matchmake(var party):
 	print("\n\n" + str(party.playerIDs.size()) + " player(s) have requested to matchmake.\n")
 	print("Here are the players that have requested to matchmake under party " + str(party.code) + ":")
 	for playerID in party.playerIDs:
@@ -149,19 +151,17 @@ remote func matchmake(party):
 	
 	print("Added Party " + str(party.code) + " to the matchmaking pool")
 
-	while true:
+	while (true): # Trying to check for party.cstatus here will not work.
 		# Try to send them to a lobby and get the code
 		var lobby_code = lobbyHandler.add_to_lobby(party)
+		
+		# Trying to check for cstatus here will not work.
 		
 		if (lobby_code != null): # We've gotten a lobby
 			print("Set lobby code " + str(lobby_code) + " to party " + str(party.code))
 			party.lobby_code = lobby_code
 			return lobby_code
-		
-		for player_id in party.playerIDs:
-			if (rpc_id(player_id,"get_lobby_cstatus")):
-				# Implement this clientside; check if any player has cancelled
-				return null
+	
 
 func debug_print_lobbies():
 	lobbyHandler.debug_print()

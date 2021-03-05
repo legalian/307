@@ -10,10 +10,11 @@ var partycode = "undefined"
 const Player = preload("res://scripts/MinigameServers/Player.gd")
 
 var players = []
+# players[0] is yourself.
 
 func _ready():
 	ConnectToServer()
-	
+
 func ConnectToServer():
 	network.create_client(ip,port)
 	get_tree().set_network_peer(network)
@@ -49,7 +50,6 @@ remote func setminigame(systemname,lobbyname):
 	instance.name = lobbyname
 	add_child(instance)
 	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
-
 
 remote func receive_party_code(var recPartyID):
 	print("Party created - code: " + str(recPartyID))
