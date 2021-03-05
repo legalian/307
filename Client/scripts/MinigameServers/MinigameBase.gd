@@ -13,6 +13,7 @@ func get_player(player_id):
 		if player.playerID==player_id: return player
 
 func player_disconnected(player_id):
+	print("a peer has disconnected.")
 	pass
 
 remote func setscore(player_id,score):
