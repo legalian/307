@@ -1,10 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://BattleRoyale/World.gd" type="Script" id=1]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 28.4847
-height = 24.4371
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 5.88695
@@ -42,13 +38,6 @@ height = 125.323
 script = ExtResource( 1 )
 
 [node name="World" type="Node2D" parent="."]
-
-[node name="Player" type="KinematicBody2D" parent="World"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player"]
-position = Vector2( 0.261574, 0.184528 )
-rotation = 1.56123
-shape = SubResource( 1 )
 
 [node name="Node2D2" type="StaticBody2D" parent="World"]
 position = Vector2( -475.812, -19.8663 )
