@@ -1,6 +1,4 @@
 
-
-
 cd Server
 godot &
 cd ..
