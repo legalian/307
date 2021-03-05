@@ -74,7 +74,6 @@ func _physics_process(delta):
 		rotvel = rotvel*(1-rotacceleration) + rotacceleration*input_rotvel
 	else:
 		rotvel = rotvel*(1-rotfriction) + rotfriction*0
-	server.syncUpdate(pack())
 	rotate(rotvel*delta)
 	
 func _unhandled_input(event):
