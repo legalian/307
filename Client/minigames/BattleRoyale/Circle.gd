@@ -2,9 +2,9 @@ extends Node2D
 
 var center: Vector2 = Vector2(0, 0)
 var color: Color = Color(1, 0, 0, 0.2)
-var radius: float = 3000
+var radius: float = 10000
 
-const zone_line_width = 1000
+const zone_line_width = 10000
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -44,6 +44,6 @@ func _draw():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (radius >= 0):
+	if (radius >= zone_line_width / 2):
 		update()
 	pass
