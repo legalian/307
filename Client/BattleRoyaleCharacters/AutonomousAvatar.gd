@@ -5,11 +5,15 @@ var velocity = Vector2.ZERO
 var rotvel = 0
 var lookoffset = Vector2.ZERO
 
+var last_position
+
 func _ready():
 	pass # Replace with function body.
 
 func unpack(package):
-	position = Vector2(package['x'],package['y'])
+	if (last_position == null || position.distance_to(last_position) >= 1):
+		position = Vector2(package['x'],package['y'])
+		last_position = position
 	rotation = package['r']
 	velocity = Vector2(package['vx'],package['vy'])
 	rotvel = package['vr']
