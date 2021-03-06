@@ -4,7 +4,6 @@ var UsernameInput = ""
 var AvatarSelected = 0
 
 onready var generalserver = get_node("/root/Server")
-var specificserver = null
 var AvatarMenuOpen = false
 
 func _MUT_send_partycode():
@@ -19,13 +18,6 @@ func _MUT_set_username():
 
 func _ready():	
 	generalserver = get_node("/root/Server")
-	specificserver = generalserver.get_children()[0]
-	$PartyCode.text = str(generalserver.partycode)
-	if OS.get_environment("MULTI_USER_TESTING")=="TRUE":
-		if OS.get_environment("ACTIVECORNER")=="1":
-			$MUT_test_flow.play("Multi_User_Testing_Partylead")
-		else:
-			$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
 	
 
 func _on_UsernameInput_text_changed(new_username):
