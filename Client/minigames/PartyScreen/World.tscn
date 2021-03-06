@@ -259,9 +259,9 @@ __meta__ = {
 }
 
 [node name="PartyCodeLabel" type="Label" parent="."]
-margin_left = 330.508
+margin_left = 349.196
 margin_top = 164.742
-margin_right = 401.508
+margin_right = 420.196
 margin_bottom = 178.742
 rect_scale = Vector2( 2.71146, 2.91496 )
 text = "Party code:"
@@ -270,9 +270,9 @@ __meta__ = {
 }
 
 [node name="PartyCode" type="Label" parent="."]
-margin_left = 535.157
+margin_left = 550.508
 margin_top = 163.719
-margin_right = 599.157
+margin_right = 614.508
 margin_bottom = 177.719
 rect_scale = Vector2( 3.00754, 2.93724 )
 text = "undefined"
