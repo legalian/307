@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+var id
 var body
 var trail
 export(float) var height
@@ -9,6 +9,19 @@ var velocity = Vector2()
 var trailLen = 0
 var trailLenMax = 300
 
+
+func pack():
+	return {
+		'id':id,
+		'x':position.x,
+		'y':position.y,
+		'r':rotation
+	}
+
+func unpack(package):
+	position = Vector2(package['x'],package['y'])
+	rotation = package['r']
+	velocity = Vector2(-speed, 0).rotated(rotation)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,8 +44,8 @@ func _physics_process(delta):
 	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		velocity = velocity.bounce(collision.normal)
-		rotation = velocity.angle()+PI
+		#velocity = velocity.bounce(collision.normal)
+		#rotation = velocity.angle()+PI
 		trailLen = 0
 		#if collision.collider.has_method("hit"):
 		#	collision.collider.hit()

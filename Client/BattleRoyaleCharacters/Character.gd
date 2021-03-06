@@ -14,6 +14,7 @@ var lookoffset = Vector2.ZERO
 var server = null
 var body = null
 var gun = null
+var dying = false
 
 func _ready():
 	input_pickable = true
@@ -79,8 +80,30 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == BUTTON_LEFT:
-			gun.fire(self,$Target.global_position)
-			server.shoot()
+			var bullet = gun.fire(self,$Target.global_position)
+			if bullet!=null:
+				server.shoot(bullet.pack())
 			#print("rpc call happened.")
 			#rpc_id(1,"gameCall","shoot")
 	
+
+func damage():
+	pass#this is where an animation would go
+	
+func die():
+	dying = true
+	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying
+	#$Body.die_anim() for when there's an animation
+	var _timer = Timer.new()
+	add_child(_timer)
+	_timer.connect("timeout", self, "finish_dying")
+	_timer.set_wait_time(0.05)#normally wait for the animation to finish
+	_timer.start()
+
+func finish_dying():
+	server.showlose()
+
+
+
+
+

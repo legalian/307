@@ -51,7 +51,10 @@ func reassign_party_to_minigame(var party,var minigame):
 		rpc_id(player.playerID,"setminigame",minigame.systemname(),minigame.name)
 		minigame.add_player(player)
 		print("setting ",minigame.name,minigame.get_path())
-	party.minigame.queue_free()
+	if (party.minigame != null):
+		party.minigame.queue_free()
+	else:
+		print("Attempted to queue_free() null minigame")
 	party.minigame = minigame
 
 remote func party_ready():
@@ -97,10 +100,10 @@ remote func join_party(var partyID):
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Joining party")
 	var joined_party = partyHandler.join_party_by_id(player_id, partyID)
-	if (str(joined_party.code) != str(PartyHandler.invalid_party_id)):
+	send_party_code_to_client(player_id, joined_party.code)
+	if (joined_party.minigame != null && str(joined_party.code) != str(PartyHandler.invalid_party_id)):
 		print("Players: " + str(joined_party.playerIDs))
 		rpc_id(player_id,"setminigame",joined_party.minigame.systemname(),joined_party.minigame.name)
-		send_party_code_to_client(player_id, joined_party.code)
 	else:
 		print("Party code invalid: " + str(partyID))
 
