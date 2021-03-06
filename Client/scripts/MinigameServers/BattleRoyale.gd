@@ -108,10 +108,23 @@ remote func win(playerID):
 		get_tree().change_scene("res://minigames/BattleRoyale/WinScreen.tscn")
 	else:
 		get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
+
+remote func update_radius(var rad: float):
+	if (gameinstance != null):
+		#print("Updating radius to " + str(rad))
+		gameinstance.get_node("World/Circle").update_radius(rad)
+	
+	
+remote func update_health_bar(var health: float):
+	if (gameinstance != null):
+		print("hv val: " + str(gameinstance.get_node("World/Player").get_node("HealthBar").get_value()))
+		print("health: " + str(health))
+		gameinstance.get_node("World/Player").get_node("HealthBar").set_value(health*100)
+	print("Health bar updated")
+	
 	
 func showlose():
 	get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
-	
 	
 	
 

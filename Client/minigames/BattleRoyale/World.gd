@@ -34,6 +34,6 @@ func _process(delta):
 	rotation = ctr
 	world.rotation = -ctr
 	
-	if (get_node("World/Circle").isInCircle(get_node("World/Player").position)):
-		print("Damage taken")
+	#if (get_node("World/Circle").isInCircle(get_node("World/Player").position)):
+	#	print("Damage taken")
 	

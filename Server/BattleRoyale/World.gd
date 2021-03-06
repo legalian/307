@@ -65,7 +65,18 @@ remote func shoot(package):
 
 	print(str(player_id)+" is shooting.")
 
-
+func _process(delta):
+	for player in players:
+		if (player.playerID != 0 && ingame.has(player.playerID)):
+			#print("Calling update radius")
+			var circle = get_node("World/Circle")
+			rpc_id(player.playerID, "update_radius", circle.radius)
+			if (circle.isInCircle(ingame[player.playerID].position)):
+				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
+				print(str(player.playerID) + " Damaged from server")
+				ingame[player.playerID].health -= .001
+				if (ingame[player.playerID].health <= 0):
+					_on_die(ingame[player.playerID])
 
 func _on_strike(bullet,object):
 	if object==null:
@@ -77,7 +88,10 @@ func _on_strike(bullet,object):
 		object.queue_free()
 	elif object.get('entity_type')=='player':
 		object.health -= 0.1
-		for player in players: rpc_id(player.playerID,"strike",bullet.pack(),{'type':'player','obj':object.pack()})
+		for player in players:
+			rpc_id(player.playerID,"strike",bullet.pack(),{'type':'player','obj':object.pack()})
+			if (ingame.has(player.playerID)):
+				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
 		if object.health<=0: _on_die(object)
 	bullets.erase(bullet.id)
 	$World.remove_child(bullet)

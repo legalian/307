@@ -32,6 +32,7 @@ func _physics_process(delta):
 	rotate(rotvel*delta)
 
 func damage():
+	print("Damage taken from bullet")
 	pass#this is where an animation would go
 	
 func die():

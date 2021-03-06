@@ -32,3 +32,13 @@ position = Vector2( -176.983, -80.7922 )
 scale = Vector2( 0.232647, 0.220887 )
 texture = SubResource( 2 )
 script = ExtResource( 4 )
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = 219.0
+margin_top = 510.919
+margin_right = 505.0
+margin_bottom = 655.919
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

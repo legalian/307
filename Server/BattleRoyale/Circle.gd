@@ -36,16 +36,11 @@ func draw_circle_arc(center, radius, angle_from, angle_to, color):
 	for index_point in range(nb_points):
 		draw_line(points_arc[index_point], points_arc[index_point + 1], color, zone_line_width)
 
-
-func _draw():
-	draw_circle_arc(center, radius, 0, 365, color)
-	radius = radius - .6
-	
-func update_radius(var rad: float):
-	radius = rad
-	if (radius >= zone_line_width / 2):
-		update()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var player_id = get_tree().get_rpc_sender_id()
+	#Don't do any drawing on the serverside
+	#draw_circle_arc(center, radius, 0, 365, color)
+	radius = radius - .6
 	pass
