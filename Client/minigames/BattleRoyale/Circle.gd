@@ -37,9 +37,9 @@ func draw_circle_arc(center, radius, angle_from, angle_to, color):
 		draw_line(points_arc[index_point], points_arc[index_point + 1], color, zone_line_width)
 
 
-#func _draw():
-#	draw_circle_arc(center, radius, 0, 365, color)
-#	radius = radius - .6
+func _draw():
+	draw_circle_arc(center, radius, 0, 365, color)
+	radius = radius - .6
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
