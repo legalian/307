@@ -108,10 +108,14 @@ remote func win(playerID):
 		get_tree().change_scene("res://minigames/BattleRoyale/WinScreen.tscn")
 	else:
 		get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
+
+remote func update_radius(var rad: float):
+	if (gameinstance != null):
+		#print("Updating radius to " + str(rad))
+		gameinstance.get_node("World/Circle").update_radius(rad)
 	
 func showlose():
 	get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
-	
 	
 	
 

@@ -65,7 +65,17 @@ remote func shoot(package):
 
 	print(str(player_id)+" is shooting.")
 
-
+func _process(delta):
+	for player in players:
+		if (player.playerID != 0 && ingame.has(player.playerID)):
+			#print("Calling update radius")
+			var circle = get_node("World/Circle")
+			rpc_id(player.playerID, "update_radius", circle.radius)
+			if (circle.isInCircle(ingame[player.playerID].position)):
+				print(str(player.playerID) + " Damaged from server")
+				ingame[player.playerID].health -= .001
+				if (ingame[player.playerID].health <= 0):
+					_on_die(ingame[player.playerID])
 
 func _on_strike(bullet,object):
 	if object==null:
