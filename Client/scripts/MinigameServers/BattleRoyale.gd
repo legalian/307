@@ -70,29 +70,38 @@ remote func frameUpdate(s_players,s_bullets):
 		gameinstance.bullets.erase(bullet)
 
 remote func other_shoot(package):
-	if package['id'] in gameinstance.bullets: return
-	gameinstance.bullets[package['id']] = preload("res://Guns/BasicRedBullet.tscn").instance()
-	gameinstance.bullets[package['id']].unpack(package)
-	gameinstance.get_node("World").add_child(gameinstance.bullets[package['id']])
+	if (gameinstance != null):
+		if package['id'] in gameinstance.bullets: return
+		gameinstance.bullets[package['id']] = preload("res://Guns/BasicRedBullet.tscn").instance()
+		gameinstance.bullets[package['id']].unpack(package)
+		gameinstance.get_node("World").add_child(gameinstance.bullets[package['id']])
+	else:
+		print("null gameinstance in BattleRoyale.other_shoot()")
 
 remote func strike(bullet,object):
-	print("STRIKING",bullet,object,gameinstance.bullets)
-	if bullet['id'] in gameinstance.bullets:
-		gameinstance.get_node("World").remove_child(gameinstance.bullets[bullet['id']])
-		gameinstance.bullets[bullet['id']].queue_free()
-		gameinstance.bullets.erase(bullet['id'])
-	if object==null: pass
-	elif object['type']=='bullet':
-		gameinstance.get_node("World").remove_child(gameinstance.bullets[object['obj']['id']])
-		gameinstance.bullets[object['obj']['id']].queue_free()
-		gameinstance.bullets.erase(object['obj']['id'])
-	elif object['type']=='player':
-		gameinstance.players[object['obj']['id']].unpack(object['obj'])
-		gameinstance.players[object['obj']['id']].damage()
+	if (gameinstance != null):
+		print("STRIKING",bullet,object,gameinstance.bullets)
+		if bullet['id'] in gameinstance.bullets:
+			gameinstance.get_node("World").remove_child(gameinstance.bullets[bullet['id']])
+			gameinstance.bullets[bullet['id']].queue_free()
+			gameinstance.bullets.erase(bullet['id'])
+		if object==null: pass
+		elif object['type']=='bullet':
+			gameinstance.get_node("World").remove_child(gameinstance.bullets[object['obj']['id']])
+			gameinstance.bullets[object['obj']['id']].queue_free()
+			gameinstance.bullets.erase(object['obj']['id'])
+		elif object['type']=='player':
+			gameinstance.players[object['obj']['id']].unpack(object['obj'])
+			gameinstance.players[object['obj']['id']].damage()
+	else:
+		print("null gameinstance in BattleRoyale.strike()")
 
 remote func die(package):
-	gameinstance.players[package['id']].unpack(package)
-	gameinstance.players[package['id']].die()
+	if (gameinstance != null):
+		gameinstance.players[package['id']].unpack(package)
+		gameinstance.players[package['id']].die()
+	else:
+		print("null gameinstance in BattleRoyale.die()")
 	
 remote func win(playerID):
 	if playerID==players[0].playerID:

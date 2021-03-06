@@ -48,7 +48,8 @@ remote func spawn(x,y):
 	
 remote func syncUpdate(package):
 	var player_id = get_tree().get_rpc_sender_id()
-	ingame[player_id].unpack(package)
+	if (ingame.has(player_id)):
+		ingame[player_id].unpack(package)
 
 remote func shoot(package):
 	var player_id = get_tree().get_rpc_sender_id()

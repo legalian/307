@@ -45,7 +45,7 @@ func die():
 	_timer.start()
 
 func finish_dying():
-	server.gameinstance.erase(id)
+	server.gameinstance.players.erase(id)
 	get_parent().remove_child(self)
 	queue_free()
 
