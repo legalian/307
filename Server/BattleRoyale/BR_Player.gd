@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var entity_type = 'player'
+
 var id
 var health = 1.0
 var lx=0
