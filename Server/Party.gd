@@ -28,6 +28,16 @@ func _ready():
 
 func size():
 	return playerIDs.size()
+	
+func debug_print():
+	print("Party Code: " + str(code))
+	print("# Players: " + str(playerIDs.size()))
+	print("Owner: " + str(ownerID))
+	print("Lobby code: " + str(lobby_code) + "\n")
+	
+	print("~PLAYER LIST~")
+	for playerID in playerIDs:
+		print("Player ID: " + str(playerID))
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
