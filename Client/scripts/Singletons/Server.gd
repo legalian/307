@@ -51,7 +51,8 @@ remote func setminigame(systemname,lobbyname):
 		ms.queue_free()
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
-	add_child(instance)
+	print("created associate node: ",lobbyname," ",instance.name)
+	add_child(instance,true)
 	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
 
 remote func receive_party_code(var recPartyID):

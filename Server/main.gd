@@ -36,13 +36,13 @@ func StartServer():
 func make_new_minigame(var minigame):#makes a new minigame object, inserts it into the tree, and returns it.	
 	var instance = minigame.instance()#it's really important that this method isn't called more than once- it has side effects.
 	instance.name = instance.systemname()
-	add_child(instance)
+	add_child(instance,true)
 	return instance
 	
 func make_party_screen():
 	var instance = party_screen.instance()
 	instance.name = instance.systemname()
-	add_child(instance)
+	add_child(instance,true)
 	return instance
 
 func _Peer_Connected(player_id):

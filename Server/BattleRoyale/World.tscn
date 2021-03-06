@@ -2,6 +2,10 @@
 
 [ext_resource path="res://BattleRoyale/World.gd" type="Script" id=1]
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.88695
+height = 125.323
+
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 5.88695
 height = 125.323
@@ -30,10 +34,6 @@ height = 125.323
 radius = 5.88695
 height = 125.323
 
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 5.88695
-height = 125.323
-
 [node name="WorldContainer" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -45,14 +45,14 @@ rotation = -2.54483
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D2"]
 rotation = 1.5602
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Node2D" type="StaticBody2D" parent="World"]
 position = Vector2( -342.551, 22.5303 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D"]
 rotation = 1.5602
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Node2D3" type="StaticBody2D" parent="World"]
 position = Vector2( -494.518, 210.622 )
@@ -60,14 +60,14 @@ rotation = -2.54483
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D3"]
 rotation = 1.5602
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Node2D4" type="StaticBody2D" parent="World"]
 position = Vector2( -361.257, 253.018 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D4"]
 rotation = 1.5602
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Node2D5" type="StaticBody2D" parent="World"]
 position = Vector2( -296.714, 326.025 )
@@ -75,7 +75,7 @@ rotation = 1.79297
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D5"]
 rotation = 1.5602
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Node2D6" type="StaticBody2D" parent="World"]
 position = Vector2( -368.527, 403.967 )
@@ -83,7 +83,7 @@ rotation = 2.87148
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D6"]
 rotation = 1.5602
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Node2D7" type="StaticBody2D" parent="World"]
 position = Vector2( -606.625, 210.622 )
@@ -91,7 +91,7 @@ rotation = -0.375192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D7"]
 rotation = 1.5602
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Node2D8" type="StaticBody2D" parent="World"]
 position = Vector2( -488.403, 393.836 )
@@ -99,4 +99,4 @@ rotation = 0.434867
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D8"]
 rotation = 1.5602
-shape = SubResource( 9 )
+shape = SubResource( 8 )

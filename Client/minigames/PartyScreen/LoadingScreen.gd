@@ -1,8 +1,11 @@
-extends "res://minigames/PartyScreen/World.gd"
+extends Node2D
 
+var generalserver
+var specificserver
 
 func _ready():
-	pass # Replace with function body.
+	generalserver = get_node("/root/Server")
+	specificserver = generalserver.get_children()[0]
 
 func _on_Button_pressed():
 	# Cancel matchmaking on server side
