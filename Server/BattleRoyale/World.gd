@@ -90,7 +90,8 @@ func _on_strike(bullet,object):
 		object.health -= 0.1
 		for player in players:
 			rpc_id(player.playerID,"strike",bullet.pack(),{'type':'player','obj':object.pack()})
-			rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
+			if (ingame.has(player.playerID)):
+				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
 		if object.health<=0: _on_die(object)
 	bullets.erase(bullet.id)
 	$World.remove_child(bullet)
