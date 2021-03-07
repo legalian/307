@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HatTest.svg-fb661c1de2951a4516889dc01371b51e.stex"
+path="res://.import/White Hat.svg-2c67911b4ce8264a64e6d1b3265948ee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hats/HatTest.svg"
-dest_files=[ "res://.import/HatTest.svg-fb661c1de2951a4516889dc01371b51e.stex" ]
+source_file="res://Hats/Assets/White Hat.svg"
+dest_files=[ "res://.import/White Hat.svg-2c67911b4ce8264a64e6d1b3265948ee.stex" ]
 
 [params]
 
