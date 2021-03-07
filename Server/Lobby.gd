@@ -3,9 +3,16 @@ extends Node
 var lobby_code
 var parties = []
 
-var max_lobby_players = 20
+var max_lobby_players = 1
 
-var minigame_list = [preload("res://BattleRoyale.tscn")]
+# You can change this preload to manually change games.
+# If you change minigames_per_match to 2, then Lobby.gd will attempt to create
+# a random order out of 2 minigames.
+
+# If minigames_per_match is has a number > size of minigame_list, everything will break.
+# There is a check to make sure this does not happen.
+var minigame_list = [preload("res://BattleRoyale/World.tscn")]
+
 var minigame_order = []
 
 var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!
@@ -49,8 +56,6 @@ func get_lobby_code():
 func add_party(var party):
 	print("Adding party " + str(party.code) + " to lobby " + str(lobby_code))
 	parties.append(party)
-	
-	debug_print()
 	
 ################################################################################
 # @desc
@@ -98,7 +103,6 @@ func go_to_next_minigame():
 	if (current_minigame >= minigame_order.size()):
 		print("FATAL ERROR @@ FUNC GET_NEXT_MINIGAME(): trying to get next" + 
 			  "minigame despite having finished all minigames")
-		debug_print()
 		return null
 
 
@@ -123,10 +127,8 @@ func remove_party(var in_party):
 		if (party.code == in_party.code):
 			print("Removing Party " + str(party.code) + " from lobby " + str(lobby_code))
 			parties.erase(party)
-			debug_print()
 			return true
 	
-	debug_print()
 	return false
 
 func get_parties():

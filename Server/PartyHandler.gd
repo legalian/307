@@ -6,6 +6,8 @@ var codes_in_use = [invalid_party_id]
 var parties = {str(invalid_party_id) : Party.new("defaultPartyOwner")}
 var player_objects = {}
 
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

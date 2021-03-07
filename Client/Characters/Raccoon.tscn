@@ -241,7 +241,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 10 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 660, 160 )
-node_connections = [ "Add2", 0, "lookX", "Add2", 1, "lookY", "lookX", 0, "TimeScale 2", "TimeScale", 0, "Animation 2", "lookY", 0, "TimeScale", "TimeScale 2", 0, "Animation", "output", 0, "Add2" ]
+node_connections = [ "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "TimeScale 2", 0, "Animation", "lookX", 0, "TimeScale 2", "lookY", 0, "TimeScale", "output", 0, "Add2" ]
 
 [node name="Raccoon" type="Node2D"]
 script = ExtResource( 6 )
@@ -249,7 +249,7 @@ script = ExtResource( 6 )
 [node name="Char" type="Node2D" parent="."]
 script = ExtResource( 5 )
 thresh = -0.36
-orient = NodePath("../../Raccoon/Char/Skeleton2D/Hip/HipParallax")
+orient = NodePath("Skeleton2D/Hip/HipParallax")
 
 [node name="Polygons" type="Node2D" parent="Char"]
 position = Vector2( -67.2811, -146.538 )
@@ -452,7 +452,7 @@ rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="RightArm" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
 position = Vector2( 56.0417, 36.0011 )
-rotation = -0.0118465
+rotation = -0.0118485
 rest = Transform2D( 1, -3.72529e-09, 3.72529e-09, 1, 56.0417, 36.0011 )
 script = ExtResource( 3 )
 targetpath = NodePath("../../../../RightArmTarget")
@@ -562,8 +562,8 @@ rotation = 2.37978
 rest = Transform2D( -0.73466, 0.678436, -0.678436, -0.73466, -18.2717, 30.7892 )
 script = ExtResource( 3 )
 targetpath = NodePath("../../../RightFootTarget")
-ikpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/RightLeg/RightShin/RightFoot")
-body = NodePath("../../../../../Raccoon/Char")
+ikpath = NodePath("RightShin/RightFoot")
+body = NodePath("../../..")
 rot_min_left = 105
 rot_max_left = 210
 rot_min_right = 62
@@ -589,8 +589,8 @@ rotation = 2.38407
 rest = Transform2D( -0.733891, 0.679267, -0.679267, -0.733891, -17.903, -33.9398 )
 script = ExtResource( 3 )
 targetpath = NodePath("../../../LeftFootTarget")
-ikpath = NodePath("../../../../../Raccoon/Char/Skeleton2D/Hip/LeftLeg/LeftShin/LeftFoot")
-body = NodePath("../../../../../Raccoon/Char")
+ikpath = NodePath("LeftShin/LeftFoot")
+body = NodePath("../../..")
 rot_min_left = 105
 rot_max_left = 210
 rot_min_right = 62

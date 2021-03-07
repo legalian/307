@@ -1,12 +1,70 @@
-#################################################
-# @Author : Elisto								#
-# @mail : elisto@protonmail.com				   	#	
-# @Github : https://github.com/Elisto		   	#
-#################################################
-
 extends Control
 
 
+func _MUT_recieve_partycode():
+	var file = File.new()
+	file.open("user://saved_partycode.dat", file.READ)
+	var partycode = file.get_as_text()
+	file.close()
+	$PartyCodeTextEdit.text = partycode
+	
+	
+func _ready():
+	var multi_user_testing = false;
+	var active_corner = -1;
+	var desired_screen = -1;
+	
+	if (OS.get_name() == "Windows"):
+		# Windows Argument Parsing
+		for argument in OS.get_cmdline_args():
+			if argument.find("=") > -1:
+				var arg = argument.split("=")[0].lstrip("-")
+				var val = argument.split("=")[1]
+				
+				if (arg == "MULTI_USER_TESTING"):
+					multi_user_testing = val
+				if (arg == "ACTIVECORNER"):
+					active_corner = val
+				if (arg == "DESIREDSCREEN"):
+					desired_screen = val
+	else:
+		# Linux Argument Parsing
+		multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
+		active_corner = OS.get_environment("ACTIVECORNER")
+		desired_screen = OS.get_environment("DESIREDSCREEN")
+	
+	print("MULTI_USER_TESTING: " + str(multi_user_testing))
+	print("ACTIVE_CORNER: " + str(active_corner))
+	print("DESIRED_SCREEN: " + str(desired_screen))
+	
+	if str(multi_user_testing) == "TRUE":
+		print("in user testing!")
+		var screen = int(desired_screen)%int(OS.get_screen_count())
+		OS.set_current_screen(screen)
+		var windowdecoration = OS.get_real_window_size()-OS.window_size
+		var realwindowsize = OS.get_screen_size(screen)/2
+		OS.window_size = realwindowsize - windowdecoration
+		
+		# Window splitting
+		if str(active_corner) == "1":
+			print("active_corner 1 activated")
+			OS.window_position = OS.get_screen_position(screen)+Vector2(0,0)
+		if str(active_corner) == "2":
+			print("active_corner 2 activated")
+			OS.window_position = OS.get_screen_position(screen)+Vector2(realwindowsize.x,0)
+		if str(active_corner) == "3":
+			print("active_corner 3 activated")
+			OS.window_position = OS.get_screen_position(screen)+Vector2(0,realwindowsize.y)
+		if str(active_corner) == "4":			
+			print("active_corner 4 activated")
+			OS.window_position = OS.get_screen_position(screen)+realwindowsize
+
+		# $MUT_test_flow
+		if active_corner == "1":
+			$MUT_test_flow.play("Multi_User_Testing_Partylead")
+		else:
+			$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
+	
 func _on_Button_Exit_pressed():
 	# Exit the game
 	get_tree().quit()

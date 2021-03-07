@@ -13,7 +13,6 @@ remote func setusername(player_id,name):
 
 remote func setavatar(player_id,avatar):
 	get_player(player_id).avatar = avatar
-	
+
 remote func sethat(player_id,hat):
 	get_player(player_id).hat = hat
-
