@@ -43,6 +43,10 @@ rotation = 4.88692
 scale = Vector2( 1, 0.999553 )
 
 [node name="UI" parent="World" instance=ExtResource( 5 )]
+margin_left = -1427.91
+margin_top = 1423.76
+margin_right = -1427.91
+margin_bottom = 1423.76
 
 [node name="Path2D" type="Path2D" parent="World"]
 curve = SubResource( 1 )

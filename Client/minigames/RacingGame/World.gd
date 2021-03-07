@@ -34,7 +34,7 @@ func _ready():
 				for obj in positions:
 					var fences = object_scenes[Object_ids.FENCE].instance()
 					fences.position = object_map.map_to_world(obj)
-					if(object_map.is_cell_transposed(obj[0], obj[1])) :
+					if(object_map.is_cell_transposed(obj[0], obj[1])) :	
 						fences.rotate(PI / 2)
 					world.add_child(fences)
 					
