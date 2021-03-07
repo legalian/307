@@ -9,6 +9,7 @@ var colors = [Color8(247, 37, 133), Color8(114, 9, 183), Color8(58, 12, 163), \
 			  Color8(200, 85, 61), Color8(249, 110, 70)]
 var positionSuffix = ["ST","ND","RD","TH","TH","TH","TH","TH","TH","TH","TH","TH", "TH","TH","TH","TH","TH","TH","TH","TH"]
 var rank = 3;
+var numPlayers = 20;
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
