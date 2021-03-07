@@ -145,7 +145,7 @@ func _Peer_Disconnected(player_id):
 #				and can be accessed via LobbyHandler.get_lobby(lobby_id), which
 #				returns a Lobby.gd object. 
 ###############################################################################
-var test_bool = true
+var test_bool = false
 # Use this boolean to simulate matchmaking failing.
 func matchmake(var party):
 	print("\n\n" + str(party.playerIDs.size()) + " player(s) have requested to matchmake.\n")

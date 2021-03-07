@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://minigames/ScoreBoard/ScoreBoard.gd" type="Script" id=2]
+[ext_resource path="res://minigames/ScoreBoard/PlayerList.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+theme = ExtResource( 1 )
+custom_constants/margin_right = 300
+custom_constants/margin_top = 50
+custom_constants/margin_left = 300
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+margin_left = 300.0
+margin_top = 50.0
+margin_right = 724.0
+margin_bottom = 550.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 417.0
+margin_bottom = 493.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_right = 410.0
+margin_bottom = 23.0
+text = "SCOREBOARD"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 410.0
+margin_bottom = 33.0
+custom_constants/separation = 10
+script = ExtResource( 3 )
