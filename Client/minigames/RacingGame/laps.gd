@@ -1,1 +1,0 @@
-var currentLap = 1
