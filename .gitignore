@@ -25,3 +25,6 @@ export_presets.cfg
 # OS specific plugin files
 git_api.gdnlib
 git_api.gdns
+
+# Logs
+logs/
