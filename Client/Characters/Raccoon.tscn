@@ -241,7 +241,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 10 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 660, 160 )
-node_connections = [ "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "TimeScale 2", 0, "Animation", "lookX", 0, "TimeScale 2", "lookY", 0, "TimeScale", "output", 0, "Add2" ]
+node_connections = [ "output", 0, "Add2", "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "TimeScale 2", 0, "Animation", "lookY", 0, "TimeScale", "lookX", 0, "TimeScale 2" ]
 
 [node name="Raccoon" type="Node2D"]
 script = ExtResource( 6 )
@@ -558,7 +558,7 @@ position = Vector2( 62.6189, 0.0917816 )
 
 [node name="RightLeg" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 position = Vector2( -18.2717, 30.7892 )
-rotation = 2.37978
+rotation = 2.37977
 rest = Transform2D( -0.73466, 0.678436, -0.678436, -0.73466, -18.2717, 30.7892 )
 script = ExtResource( 3 )
 targetpath = NodePath("../../../RightFootTarget")

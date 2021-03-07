@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
@@ -11,16 +11,28 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
+use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Button_Back" type="Button" parent="."]
-margin_left = 75.3504
-margin_top = 485.954
-margin_right = 278.35
-margin_bottom = 558.954
+margin_left = 788.154
+margin_top = 493.296
+margin_right = 991.153
+margin_bottom = 566.296
 rect_pivot_offset = Vector2( 159.38, 30.3461 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
@@ -42,19 +54,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_ChooseCharacter" type="Button" parent="."]
-margin_left = 79.5916
-margin_top = 389.719
-margin_right = 265.592
-margin_bottom = 435.719
-rect_pivot_offset = Vector2( 159.38, 30.3461 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Change"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="."]
 margin_left = 363.0
 margin_top = 22.0
@@ -63,6 +62,32 @@ margin_bottom = 99.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 text = "Profile screen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_ChooseCharacter" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 309.0
+margin_right = 289.0
+margin_bottom = 355.0
+rect_pivot_offset = Vector2( 196.333, 32.0074 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "Select Animal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_ChooseHat" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 373.74
+margin_right = 289.0
+margin_bottom = 419.74
+rect_pivot_offset = Vector2( 196.333, 32.0074 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "Select Hat"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -91,10 +116,10 @@ __meta__ = {
 }
 
 [node name="CurrentAvatar" type="Label" parent="."]
-margin_left = 42.0
-margin_top = 360.0
-margin_right = 300.0
-margin_bottom = 383.0
+margin_left = 39.9977
+margin_top = 125.736
+margin_right = 297.998
+margin_bottom = 148.736
 theme = ExtResource( 3 )
 text = "Current Avatar"
 align = 1
@@ -115,7 +140,7 @@ __meta__ = {
 }
 
 [node name="Raccoon" parent="." instance=ExtResource( 2 )]
-position = Vector2( 167.902, 346.28 )
+position = Vector2( 170.572, 291.552 )
 
 [node name="Avatar Menu" type="Control" parent="."]
 visible = false
@@ -124,20 +149,30 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Avatar Menu"]
-margin_left = 283.663
-margin_top = 22.0023
-margin_right = 1253.66
-margin_bottom = 699.002
-color = Color( 0.393555, 0.586552, 0.8125, 1 )
+margin_left = 18.0
+margin_top = 15.0
+margin_right = 1008.0
+margin_bottom = 584.0
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainPartyCreationScreenLabel2" type="RichTextLabel" parent="Avatar Menu/ColorRect"]
-margin_left = 302.984
-margin_top = 8.67194
-margin_right = 646.984
-margin_bottom = 85.6719
+[node name="ButtonSelection" type="ColorRect" parent="Avatar Menu/ColorRect"]
+margin_left = 34.0
+margin_top = 81.0
+margin_right = 950.0
+margin_bottom = 517.0
+color = Color( 0.172549, 0.172549, 0.172549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choose Avatar Text" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 261.658
+margin_top = -79.3416
+margin_right = 620.658
+margin_bottom = -2.34161
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 text = "Choose Avatar"
@@ -145,28 +180,220 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Avatar0" type="Button" parent="Avatar Menu/ColorRect"]
-margin_left = 51.355
-margin_top = 103.414
-margin_right = 206.355
-margin_bottom = 297.414
-text = "Avatar 0"
+[node name="Avatar0" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 20.0
+margin_top = 42.0
+margin_right = 200.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Avatar1" type="Button" parent="Avatar Menu/ColorRect"]
-margin_left = 258.922
-margin_top = 103.414
-margin_right = 413.922
-margin_bottom = 297.414
-text = "Avatar 1"
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar0" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar0"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+text = "Racoon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar4" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 20.0
+margin_top = 260.0
+margin_right = 200.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar4" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar4"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+text = "Racoon 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar5" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 250.0
+margin_top = 260.0
+margin_right = 430.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar5" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar5"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar6" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 485.0
+margin_top = 260.0
+margin_right = 665.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar6" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar6"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar7" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 715.0
+margin_top = 260.0
+margin_right = 895.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar7" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar7"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar1" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 250.0
+margin_top = 42.0
+margin_right = 430.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar1" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar1"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar2" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 485.0
+margin_top = 42.0
+margin_right = 665.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar2" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar2"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar3" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
+margin_left = 715.0
+margin_top = 42.0
+margin_right = 895.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar3" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar3"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseAvatarMenu" type="Button" parent="Avatar Menu"]
+margin_left = 893.989
+margin_top = 35.0
+margin_right = 965.989
+margin_bottom = 74.0
+text = "Close"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
 [connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
+[connection signal="pressed" from="Button_ChooseHat" to="." method="_on_Button_ChooseHat_pressed"]
 [connection signal="text_changed" from="UsernameInput" to="." method="_on_UsernameInput_text_changed"]
-[connection signal="pressed" from="Avatar Menu/ColorRect/Avatar0" to="." method="_on_ChangeAvatar_pressed" binds= [ 0 ]]
-[connection signal="pressed" from="Avatar Menu/ColorRect/Avatar1" to="." method="_on_ChangeAvatar_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar0" to="." method="_on_ChangeAvatar_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar4" to="." method="_on_ChangeAvatar_pressed" binds= [ 4 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar5" to="." method="_on_ChangeAvatar_pressed" binds= [ 5 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar6" to="." method="_on_ChangeAvatar_pressed" binds= [ 6 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar7" to="." method="_on_ChangeAvatar_pressed" binds= [ 7 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar1" to="." method="_on_ChangeAvatar_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar2" to="." method="_on_ChangeAvatar_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar3" to="." method="_on_ChangeAvatar_pressed" binds= [ 3 ]]
+[connection signal="pressed" from="Avatar Menu/CloseAvatarMenu" to="." method="_on_Button_ChooseCharacter_pressed"]
