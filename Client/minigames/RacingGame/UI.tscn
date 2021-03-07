@@ -9,6 +9,25 @@ __meta__ = {
 
 [node name="UI" type="MarginContainer" parent="."]
 anchor_right = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 20.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/HBoxContainer"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position and laps" type="VBoxContainer" parent="UI/HBoxContainer"]
+margin_left = 4.0
+margin_right = 4.0
