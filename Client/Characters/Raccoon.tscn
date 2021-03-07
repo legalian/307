@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sprites/Characters/raccoon_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Guns/basicGun.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Characters/IKlimit.gd" type="Script" id=4]
 [ext_resource path="res://Characters/VisChar.gd" type="Script" id=5]
 [ext_resource path="res://Characters/Visible.gd" type="Script" id=6]
+[ext_resource path="res://Hats/Paperhat.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "LookSide"
@@ -241,7 +242,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 10 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 660, 160 )
-node_connections = [ "output", 0, "Add2", "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale", 0, "Animation 2", "TimeScale 2", 0, "Animation", "lookX", 0, "TimeScale 2", "lookY", 0, "TimeScale" ]
+node_connections = [ "output", 0, "Add2", "lookX", 0, "TimeScale 2", "TimeScale", 0, "Animation 2", "Add2", 0, "lookX", "Add2", 1, "lookY", "TimeScale 2", 0, "Animation", "lookY", 0, "TimeScale" ]
 
 [node name="Raccoon" type="Node2D"]
 script = ExtResource( 6 )
@@ -601,7 +602,7 @@ rot_max_right = 167
 
 [node name="LeftShin" type="Bone2D" parent="Char/Skeleton2D/Hip/LeftLeg"]
 position = Vector2( 36.8605, 37.3123 )
-rotation = 0.750491
+rotation = 0.750492
 rest = Transform2D( 0.731354, 0.681998, -0.681998, 0.731354, 36.8605, 37.3123 )
 default_length = 49.0
 script = ExtResource( 4 )
@@ -631,3 +632,6 @@ parameters/TimeScale/scale = 0.0
 "parameters/TimeScale 2/scale" = 0.0
 parameters/lookX/seek_position = -1.0
 parameters/lookY/seek_position = -1.0
+
+[node name="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0.875549, -110.92 )

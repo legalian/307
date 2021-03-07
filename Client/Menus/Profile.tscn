@@ -117,11 +117,25 @@ __meta__ = {
 
 [node name="CurrentAvatar" type="Label" parent="."]
 margin_left = 39.9977
-margin_top = 125.736
+margin_top = 81.0189
 margin_right = 297.998
-margin_bottom = 148.736
+margin_bottom = 104.019
+rect_pivot_offset = Vector2( 170.506, 30.3965 )
 theme = ExtResource( 3 )
 text = "Current Avatar"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentHat" type="Label" parent="."]
+margin_left = 41.0
+margin_top = 106.0
+margin_right = 299.0
+margin_bottom = 129.0
+rect_pivot_offset = Vector2( 170.506, 30.3965 )
+theme = ExtResource( 3 )
+text = "Current Hat"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -383,6 +397,245 @@ text = "Close"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Hat Menu" type="Control" parent="."]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Hat Menu"]
+margin_left = 18.0
+margin_top = 15.0
+margin_right = 1008.0
+margin_bottom = 584.0
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSelection" type="ColorRect" parent="Hat Menu/ColorRect"]
+margin_left = 34.0
+margin_top = 81.0
+margin_right = 950.0
+margin_bottom = 517.0
+color = Color( 0.172549, 0.172549, 0.172549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choose Avatar Text" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 261.658
+margin_top = -79.3416
+margin_right = 620.658
+margin_bottom = -2.34161
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar0" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 20.0
+margin_top = 42.0
+margin_right = 200.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar0" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar0"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar4" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 20.0
+margin_top = 260.0
+margin_right = 200.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar4" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar4"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar5" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 250.0
+margin_top = 260.0
+margin_right = 430.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar5" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar5"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar6" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 485.0
+margin_top = 260.0
+margin_right = 665.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar6" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar6"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar7" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 715.0
+margin_top = 260.0
+margin_right = 895.0
+margin_bottom = 420.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar7" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar7"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar1" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 250.0
+margin_top = 42.0
+margin_right = 430.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar1" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar1"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar2" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 485.0
+margin_top = 42.0
+margin_right = 665.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar2" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar2"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar3" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
+margin_left = 715.0
+margin_top = 42.0
+margin_right = 895.0
+margin_bottom = 202.0
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar3" instance=ExtResource( 2 )]
+position = Vector2( 95.5964, 140.234 )
+
+[node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar3"]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseAvatarMenu" type="Button" parent="Hat Menu"]
+margin_left = 893.989
+margin_top = 35.0
+margin_right = 965.989
+margin_bottom = 74.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
 [connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
@@ -397,3 +650,12 @@ __meta__ = {
 [connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar2" to="." method="_on_ChangeAvatar_pressed" binds= [ 2 ]]
 [connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar3" to="." method="_on_ChangeAvatar_pressed" binds= [ 3 ]]
 [connection signal="pressed" from="Avatar Menu/CloseAvatarMenu" to="." method="_on_Button_ChooseCharacter_pressed"]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar0" to="." method="_on_ChangeHat_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar4" to="." method="_on_ChangeHat_pressed" binds= [ 4 ]]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar5" to="." method="_on_ChangeHat_pressed" binds= [ 5 ]]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar6" to="." method="_on_ChangeHat_pressed" binds= [ 6 ]]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar7" to="." method="_on_ChangeHat_pressed" binds= [ 7 ]]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar1" to="." method="_on_ChangeHat_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar2" to="." method="_on_ChangeHat_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar3" to="." method="_on_ChangeHat_pressed" binds= [ 3 ]]
+[connection signal="pressed" from="Hat Menu/CloseAvatarMenu" to="." method="_on_Button_ChooseHat_pressed"]

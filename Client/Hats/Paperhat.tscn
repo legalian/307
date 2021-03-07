@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Hats/Assets/Paper Hat.svg" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Paper Hat" type="Sprite" parent="."]
+position = Vector2( 0.0544739, -20.3059 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
