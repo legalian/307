@@ -40,9 +40,29 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 margin_top = 33.0
 margin_right = 410.0
-margin_bottom = 33.0
+margin_bottom = 56.0
+custom_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 92.0
+margin_right = 168.0
+margin_bottom = 23.0
+text = "PLAYER ID"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 268.0
+margin_right = 318.0
+margin_bottom = 23.0
+text = "SCORE"
+
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 410.0
+margin_bottom = 66.0
 custom_constants/separation = 10
+alignment = 1
 script = ExtResource( 3 )

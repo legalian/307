@@ -9,6 +9,8 @@ margin_right = 420.125
 margin_bottom = 257.757
 rect_scale = Vector2( 5.38105, 6.27415 )
 text = "You Win!"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
