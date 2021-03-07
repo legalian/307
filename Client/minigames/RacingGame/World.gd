@@ -7,7 +7,8 @@ enum Object_ids {TREE, FENCE, CAR, FENCE2, FLAG}
 
 var camera = null
 var world = null
-var playerInfo = players[0];
+#var playerInfo = players[0];
+var player
 var object_map = null
 var object_scenes = {}
 # Called when the node enters the scene tree for the first time.
