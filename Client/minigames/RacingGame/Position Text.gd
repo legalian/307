@@ -1,14 +1,14 @@
 extends Label
 
-var colors = [Color(247, 37, 133), Color(114, 9, 183), Color(58, 12, 163), \
-			  Color(67, 97, 238), Color(76, 201, 240),Color(252, 231, 98), \
-			  Color(255, 253, 237), Color(255, 177, 122),Color(227, 197, 187), \
-			  Color(223, 226, 207), Color(142, 164, 210), Color(98, 121, 184), \
-			  Color(73, 81, 111), Color(73, 111, 93), Color(76, 159, 112), \
-			  Color(235, 81, 96), Color(255, 213, 194), Color(242, 143, 59), \
-			  Color(200, 85, 61), Color(249, 110, 70)]
+var colors = [Color8(247, 37, 133), Color8(114, 9, 183), Color8(58, 12, 163), \
+			  Color8(67, 97, 238), Color8(76, 201, 240),Color8(252, 231, 98), \
+			  Color8(255, 253, 237), Color8(255, 177, 122),Color8(227, 197, 187), \
+			  Color8(223, 226, 207), Color8(142, 164, 210), Color8(98, 121, 184), \
+			  Color8(73, 81, 111), Color8(73, 111, 93), Color8(76, 159, 112), \
+			  Color8(235, 81, 96), Color8(255, 213, 194), Color8(242, 143, 59), \
+			  Color8(200, 85, 61), Color8(249, 110, 70)]
 var positionSuffix = ["ST","ND","RD","TH","TH","TH","TH","TH","TH","TH","TH","TH", "TH","TH","TH","TH","TH","TH","TH","TH"]
-var rank = 1;
+var rank = 3;
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
