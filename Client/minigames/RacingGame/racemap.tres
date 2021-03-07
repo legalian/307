@@ -3,10 +3,10 @@
 [ext_resource path="res://Sprites/spritesheet_tiles.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 21, 4.80249, 22, 5.80249, 28, 36.8025, 50, 78.8025, 92, 102.802, 119, 110.802, 128, 128, 60, 115.802, 21, 86.8025, 3, 39.8025, 2, 8.80249 )
+points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
+points = PoolVector2Array( 21, 4.80249, 22, 5.80249, 28, 36.8025, 50, 78.8025, 92, 102.802, 119, 110.802, 128, 128, 60, 115.802, 21, 86.8025, 3, 39.8025, 2, 8.80249 )
 
 [resource]
 0/name = "spritesheet_tiles.png 0"

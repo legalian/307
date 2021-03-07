@@ -1,5 +1,9 @@
 extends Node
 
+# THIS SCRIPT CONTAINS INFO ABOUT THIS PLAYER
+# INCLUDING: Name, position/rank, checkpoints, 
+
+
 
 # Declare member variables here. Examples:
 # var a = 2
