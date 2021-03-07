@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://objects/car.tscn" type="PackedScene" id=1]
 [ext_resource path="res://minigames/RacingGame/objects/racingPlayer.gd" type="Script" id=2]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 90.465
+height = 81.321
+
+[node name="Node2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
@@ -20,3 +24,8 @@ text = "Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.513, -16.106 )
+rotation = -0.0191986
+shape = SubResource( 1 )
