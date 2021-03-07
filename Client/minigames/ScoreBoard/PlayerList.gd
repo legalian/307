@@ -5,6 +5,7 @@ func _ready():
 
 func add_scoreboard(var players):	
 	self.visible = true
+	print("Adding " + str(players.size()) + " players to the scoreboard")
 	for player in players:
 		var player_row = HBoxContainer.new()
 		

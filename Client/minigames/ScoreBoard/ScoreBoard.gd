@@ -24,6 +24,7 @@ func _process(delta):
 
 func _open_player_list():
 	if (!pressed): # First press
+		print("generalserver.players size = " + str(generalserver.players.size()))
 		player_list.add_scoreboard(generalserver.players) # Add the data
 	self.visible = true
 
