@@ -30,10 +30,21 @@ func _ready():
 	for id in Object_ids.values():
 		if object_scenes.has(id):
 			var positions = object_map.get_used_cells_by_id(id)
-			for obj in positions:
-				var instance = object_scenes[id].instance()
-				instance.position = object_map.map_to_world(obj)
-				world.add_child(instance)
+			if(id == 1):
+				for obj in positions:
+					var fences = object_scenes[Object_ids.FENCE].instance()
+					fences.position = object_map.map_to_world(obj)
+					if(object_map.is_cell_transposed(obj[0], obj[1])):
+						fences.rotate(PI / 2)
+					world.add_child(fences)
+					
+
+			else:	
+				for obj in positions:
+					var instance = object_scenes[id].instance()
+					instance.position = object_map.map_to_world(obj)
+					world.add_child(instance)
+			
 
 
 
