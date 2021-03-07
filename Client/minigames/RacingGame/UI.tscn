@@ -1,8 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://minigames/RacingGame/objects/Youtube Star.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://minigames/RacingGame/Position Text.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,13 +30,42 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1004.0
-margin_bottom = 20.0
+margin_bottom = 60.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/HBoxContainer"]
+[node name="Superpowers and minimap" type="VBoxContainer" parent="UI/HBoxContainer"]
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Position and laps" type="VBoxContainer" parent="UI/HBoxContainer"]
 margin_left = 4.0
-margin_right = 4.0
+margin_right = 104.0
+margin_bottom = 40.0
+
+[node name="Position" type="MarginContainer" parent="UI/HBoxContainer/Position and laps"]
+margin_right = 100.0
+margin_bottom = 40.0
+
+[node name="Background" type="NinePatchRect" parent="UI/HBoxContainer/Position and laps/Position"]
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+
+[node name="Position" type="Label" parent="UI/HBoxContainer/Position and laps/Position/Background"]
+anchor_left = -0.0103088
+anchor_top = -0.0150887
+anchor_right = 0.919691
+anchor_bottom = 2.25991
+margin_left = -24.0
+margin_top = -20.0
+margin_right = 16.0
+margin_bottom = -6.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.0588235, 0.0588235, 1 )
+text = "1ST"
+percent_visible = -0.333333
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
