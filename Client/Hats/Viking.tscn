@@ -5,6 +5,5 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Top Hat" type="Sprite" parent="."]
-position = Vector2( -0.181522, -21.0138 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 0.290402, -68.4435 )
 texture = ExtResource( 1 )

@@ -7,6 +7,7 @@ var lefthand = null
 var righthand = null
 
 func _ready():
+	#set_Hat("res://Hats/Whitehat.tscn")
 	set_process(true)
 	animPlayer = get_node("AnimationTree")
 	headRef = find_node("Headref")
@@ -28,7 +29,17 @@ func set_look_pos(gpos):
 	#gpos.y*=.44
 	lefthand.global_position = gpos
 
-
+func set_Hat(hatPath):
+	var headbone = find_node("Head")
+	var currentHat = headbone.get_node_or_null("Hat")
+	if currentHat!=null:
+		headbone.remove_child(currentHat)
+		currentHat.queue_free()
+	if hatPath != null:
+		var newHat = load(hatPath).instance()
+		newHat.name = "Hat"
+		headbone.add_child(newHat,true)#second parameter is important here- must be true
+		newHat.position = Vector2(0,-35)
 
 
 

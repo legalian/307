@@ -10,6 +10,12 @@ var HatMenuOpen = false
 
 var AvatarStyles = ["Racoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
+var HatLocation = [null, 
+"res://Hats/Tophat.tscn",
+"res://Hats/Whitehat.tscn",
+"res://Hats/Viking.tscn",
+"res://Hats/Paperhat.tscn",
+"res://Hats/Headphones.tscn"]
 
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
@@ -57,6 +63,8 @@ func _on_ChangeHat_pressed(HatType):
 	print(HatType)
 	HatSelected = HatType
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
+	find_node("Avatar").set_Hat(HatLocation[HatType])
+
 
 func _on_Button_ChooseHat_pressed():
 	if (HatMenuOpen):

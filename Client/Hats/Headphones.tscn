@@ -5,6 +5,5 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Headphones" type="Sprite" parent="."]
-position = Vector2( -0.181488, -0.0126648 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 0.526398, -0.720581 )
 texture = ExtResource( 1 )

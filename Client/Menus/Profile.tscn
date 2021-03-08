@@ -1,9 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Theme.tres" type="Theme" id=3]
 [ext_resource path="res://Menus/Profile.gd" type="Script" id=4]
+[ext_resource path="res://Hats/Tophat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hats/Viking.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hats/Whitehat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hats/Headphones.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hats/Paperhat.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -153,7 +158,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Raccoon" parent="." instance=ExtResource( 2 )]
+[node name="Avatar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 170.572, 291.552 )
 
 [node name="Avatar Menu" type="Control" parent="."]
@@ -446,6 +451,7 @@ __meta__ = {
 }
 
 [node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar0" instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 95.5964, 140.234 )
 
 [node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar0"]
@@ -469,9 +475,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar4" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
-
 [node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar4"]
 margin_left = 1.33258
 margin_top = -39.6696
@@ -483,6 +486,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Node2D" parent="Hat Menu/ColorRect/ButtonSelection/Avatar4" instance=ExtResource( 9 )]
+position = Vector2( 93.2345, 133.451 )
+
 [node name="Avatar5" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
 margin_left = 250.0
 margin_top = 260.0
@@ -492,9 +498,6 @@ custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar5" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
 
 [node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar5"]
 margin_left = 1.33258
@@ -506,6 +509,9 @@ custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D" parent="Hat Menu/ColorRect/ButtonSelection/Avatar5" instance=ExtResource( 8 )]
+position = Vector2( 90.8242, 76.0526 )
 
 [node name="Avatar6" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
 margin_left = 485.0
@@ -565,9 +571,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar1" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
-
 [node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar1"]
 margin_left = 1.33258
 margin_top = -39.6696
@@ -579,6 +582,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Node2D" parent="Hat Menu/ColorRect/ButtonSelection/Avatar1" instance=ExtResource( 5 )]
+position = Vector2( 89.434, 131.482 )
+
 [node name="Avatar2" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
 margin_left = 485.0
 margin_top = 42.0
@@ -588,9 +594,6 @@ custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar2" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
 
 [node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar2"]
 margin_left = 1.33258
@@ -603,6 +606,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Node2D" parent="Hat Menu/ColorRect/ButtonSelection/Avatar2" instance=ExtResource( 7 )]
+position = Vector2( 92.0905, 127.198 )
+
 [node name="Avatar3" type="Button" parent="Hat Menu/ColorRect/ButtonSelection"]
 margin_left = 715.0
 margin_top = 42.0
@@ -612,9 +618,6 @@ custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AvatarDisplay" parent="Hat Menu/ColorRect/ButtonSelection/Avatar3" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
 
 [node name="AvatarType" type="RichTextLabel" parent="Hat Menu/ColorRect/ButtonSelection/Avatar3"]
 margin_left = 1.33258
@@ -626,6 +629,9 @@ custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D" parent="Hat Menu/ColorRect/ButtonSelection/Avatar3" instance=ExtResource( 6 )]
+position = Vector2( 89.0127, 132.537 )
 
 [node name="CloseAvatarMenu" type="Button" parent="Hat Menu"]
 margin_left = 893.989
