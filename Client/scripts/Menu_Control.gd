@@ -92,4 +92,4 @@ func _on_Button_Join_Party_pressed():
 
 
 func _on_Button_Profile_pressed():
-	get_tree().change_scene("res://Menus/ProfileScreen/ProfileSettings.tscn")
+	get_tree().change_scene("res://Menus/Profile.tscn")
