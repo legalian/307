@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-var maxSpeed = 500
+var maxSpeed = 750
 var speed = 0
 var acceleration = 25
-var rotSpeed = 0.1
+var rotSpeed = 0.05
 
 var id
 var velocity = Vector2.ZERO

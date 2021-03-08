@@ -59,7 +59,7 @@ func _process(delta):
 	var yhalf = get_viewport().size.y/2
 	var pret = Transform2D(Vector2(1,0),Vector2(0,.44),Vector2(xhalf,yhalf))*Transform2D(-ctr,Vector2(0,0))
 	var post = Transform2D(Vector2(1,0),Vector2(0,1),Vector2(-xhalf,-yhalf))
-	get_viewport().canvas_transform = pret*get_viewport().canvas_transform*post
+	get_viewport().canvas_transform = pret*get_viewport().canvas_transform.scaled(Vector2(0.7,0.7))*post
 	rotation = ctr
 	world.rotation = -ctr
 

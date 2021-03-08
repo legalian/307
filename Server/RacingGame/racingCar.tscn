@@ -3,8 +3,8 @@
 [ext_resource path="res://RacingGame/racingCar.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 90.465
-height = 81.321
+radius = 45.0
+height = 40.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
