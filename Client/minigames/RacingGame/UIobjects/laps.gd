@@ -1,5 +1,7 @@
-extends "res://objects/rotatedObject.gd"
+extends Label
 
+var totalLaps = 2
+var currentLap = 1
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,6 +12,7 @@ extends "res://objects/rotatedObject.gd"
 func _ready():
 	pass # Replace with function body.
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(_delta):
+	self.text = str(currentLap) + "/" + str(totalLaps)
