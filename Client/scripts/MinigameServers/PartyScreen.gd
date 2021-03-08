@@ -6,6 +6,7 @@ func _ready():
 	print("I have been added to a party creation screen")
 
 remote func add_player(packed):
+	print("PLAYER ADDED:",packed)
 	players.append(Player.new(packed))
 
 remote func setusername(player_id,name):

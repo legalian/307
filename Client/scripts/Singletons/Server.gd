@@ -9,7 +9,8 @@ var partycode = "undefined"
 
 const Player = preload("res://scripts/MinigameServers/Player.gd")
 
-var players = []
+var selfplayer = Player.new({'id':null})
+var players = [selfplayer]
 # players[0] is yourself.
 
 func _ready():
@@ -27,7 +28,7 @@ func _OnConnectionFailed():
 	
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
-	players.append(Player.new({'id':get_tree().get_network_unique_id()}))
+	players[0].playerID = get_tree().get_network_unique_id()
 	#print("rpc call happened.")
 	#rpc_id(1,"gameCall","shoot")
 	
