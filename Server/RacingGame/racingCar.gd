@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 200
+var speed = 150
 var rotSpeed = 0.1
 
 var id
