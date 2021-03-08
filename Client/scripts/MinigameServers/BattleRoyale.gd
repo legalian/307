@@ -27,6 +27,8 @@ func syncUpdate():
 		rpc_unreliable_id(1,"syncUpdate",gameinstance.players[players[0].playerID].pack())
 
 remote func frameUpdate(s_players,s_bullets):
+	print(players)
+	print(get_parent().players)
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance==null: return
