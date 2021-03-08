@@ -32,6 +32,7 @@ func _send_rpc_update():
 func spawn(player_id):
 	print("spawn called")
 	ingame[player_id] = car.instance()
+	ingame[player_id].name = "Player_" + str(player_id)
 	ingame[player_id].id = player_id
 	ingame[player_id].position = Vector2(-1555.4,1893.06)
 	$World.add_child(ingame[player_id])
