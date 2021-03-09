@@ -79,9 +79,8 @@ remote func party_ready():
 			matchmaking_pool.erase(party)
 			# Start the game!
 			var lobby = lobbyHandler.get_lobby(lobby_code)
-			var minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
-				reassign_party_to_minigame(parties, minigame)
+				reassign_party_to_minigame(parties, make_new_minigame(lobby.get_current_minigame()))
 		# The party should be removed from matchmaking pool within lobbyHandler.
 		# We don't call reassign here. We'll call it from within the lobby.
 	else:
@@ -151,9 +150,8 @@ func matchmake_pool():
 			matchmaking_pool.erase(party)
 			# Start the game!
 			var lobby = lobbyHandler.get_lobby(lobby_code)
-			var minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
-				reassign_party_to_minigame(parties, minigame)
+				reassign_party_to_minigame(parties, make_new_minigame(lobby.get_current_minigame()))
 		# Adding will automatically try to start the minigame.
 	
 ################################################################################
@@ -164,14 +162,16 @@ func matchmake_pool():
 ################################################################################
 remote func cancel_matchmaking():
 	var playerID = get_tree().get_rpc_sender_id()
-	var lobby = lobbyHandler.get_lobby_by_player(playerID)
 	var party = partyHandler.get_party_by_player(playerID)
 	
 	# There are two places the player can be in: the pool, or an unstarted lobby.
 	# We want to remove from the pool,
 	# or remove from the lobby; but do not remove from party.
 	matchmaking_pool.erase(party)
-	lobby.remove_party(party)
+	print("      Removing party from lobby")
+	lobbyHandler.remove_from_lobby(party)
+	
+	debug_print_lobbies()
 	debug_print_matchmaking_pool()
 
 func debug_print_matchmaking_pool():

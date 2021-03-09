@@ -54,7 +54,13 @@ func get_lobby_code():
 
 func add_party(var party):
 	print("Adding party " + str(party.code) + " to lobby " + str(lobby_code))
+	if (parties.has(party)):
+		print("Lobby already has this party!")
+		return false
+	
 	parties.append(party)
+	
+	party.lobby_code = lobby_code
 	
 	if (parties.size() >= min_players_per_lobby):
 		return true
