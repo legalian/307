@@ -35,7 +35,6 @@ func draw_circle_arc(center, radius, angle_from, angle_to, color):
 
 func _draw():
 	draw_circle_arc(center, radius, 0, 365, color)
-	radius = radius - .6
 	
 func update_radius(var rad: float):
 	radius = rad
