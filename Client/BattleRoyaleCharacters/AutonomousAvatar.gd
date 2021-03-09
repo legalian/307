@@ -9,9 +9,11 @@ var lookoffset = Vector2.ZERO
 var last_position
 var dying = false
 var server = null
+var body
 
 func _ready():
 	server = get_node("/root/Server").get_children()[0]
+	body = get_node("Body")
 
 func unpack(package):
 	if (last_position == null || position.distance_to(last_position) >= 1):
@@ -32,17 +34,17 @@ func _physics_process(delta):
 	rotate(rotvel*delta)
 
 func damage():
-	print("Damage taken from bullet")
-	pass#this is where an animation would go
+	body.ouch()
 	
 func die():
 	dying = true
+	velocity = 0
 	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying
-	#$Body.die_anim()
+	body.rip()
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "finish_dying")
-	_timer.set_wait_time(0.05)#normally wait for animation to finish
+	_timer.set_wait_time(1.5)#normally wait for the animation to finish
 	_timer.start()
 
 func finish_dying():

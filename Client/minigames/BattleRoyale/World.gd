@@ -33,7 +33,5 @@ func _process(delta):
 	get_viewport().canvas_transform = pret*get_viewport().canvas_transform*post
 	rotation = ctr
 	world.rotation = -ctr
-	
-	#if (get_node("World/Circle").isInCircle(get_node("World/Player").position)):
-	#	print("Damage taken")
+
 	

@@ -4,7 +4,6 @@ var clientstatus = "UNSPAWNED"
 var gameinstance
 
 func _ready():
-	print("I have been added to a battle royale lobby")
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 	var _timer = Timer.new()
 	add_child(_timer)
@@ -14,11 +13,9 @@ func _ready():
 	_timer.start()
 
 func shoot(package):
-	print("I am shooting")
 	rpc_id(1,"shoot",package)
 
 func spawn():
-	print("spawn called")
 	rpc_id(1,"spawn",0,0)
 
 func syncUpdate():
@@ -27,8 +24,6 @@ func syncUpdate():
 		rpc_unreliable_id(1,"syncUpdate",gameinstance.players[players[0].playerID].pack())
 
 remote func frameUpdate(s_players,s_bullets):
-	print(players)
-	print(get_parent().players)
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance==null: return
@@ -72,38 +67,32 @@ remote func frameUpdate(s_players,s_bullets):
 		gameinstance.bullets.erase(bullet)
 
 remote func other_shoot(package):
-	if (gameinstance != null):
-		if package['id'] in gameinstance.bullets: return
-		gameinstance.bullets[package['id']] = preload("res://Guns/BasicRedBullet.tscn").instance()
-		gameinstance.bullets[package['id']].unpack(package)
-		gameinstance.get_node("World").add_child(gameinstance.bullets[package['id']])
-	else:
-		print("null gameinstance in BattleRoyale.other_shoot()")
+	if gameinstance == null: return
+	if package['id'] in gameinstance.bullets: return
+	gameinstance.bullets[package['id']] = preload("res://Guns/BasicRedBullet.tscn").instance()
+	gameinstance.bullets[package['id']].unpack(package)
+	gameinstance.get_node("World").add_child(gameinstance.bullets[package['id']])
+
 
 remote func strike(bullet,object):
-	if (gameinstance != null):
-		print("STRIKING",bullet,object,gameinstance.bullets)
-		if bullet['id'] in gameinstance.bullets:
-			gameinstance.get_node("World").remove_child(gameinstance.bullets[bullet['id']])
-			gameinstance.bullets[bullet['id']].queue_free()
-			gameinstance.bullets.erase(bullet['id'])
-		if object==null: pass
-		elif object['type']=='bullet':
-			gameinstance.get_node("World").remove_child(gameinstance.bullets[object['obj']['id']])
-			gameinstance.bullets[object['obj']['id']].queue_free()
-			gameinstance.bullets.erase(object['obj']['id'])
-		elif object['type']=='player':
-			gameinstance.players[object['obj']['id']].unpack(object['obj'])
-			gameinstance.players[object['obj']['id']].damage()
-	else:
-		print("null gameinstance in BattleRoyale.strike()")
+	if gameinstance == null: return
+	if bullet['id'] in gameinstance.bullets:
+		gameinstance.get_node("World").remove_child(gameinstance.bullets[bullet['id']])
+		gameinstance.bullets[bullet['id']].queue_free()
+		gameinstance.bullets.erase(bullet['id'])
+	if object==null: pass
+	elif object['type']=='bullet':
+		gameinstance.get_node("World").remove_child(gameinstance.bullets[object['obj']['id']])
+		gameinstance.bullets[object['obj']['id']].queue_free()
+		gameinstance.bullets.erase(object['obj']['id'])
+	elif object['type']=='player':
+		gameinstance.players[object['obj']['id']].unpack(object['obj'])
+		gameinstance.players[object['obj']['id']].damage()
 
 remote func die(package):
-	if (gameinstance != null):
-		gameinstance.players[package['id']].unpack(package)
-		gameinstance.players[package['id']].die()
-	else:
-		print("null gameinstance in BattleRoyale.die()")
+	if gameinstance == null: return
+	gameinstance.players[package['id']].unpack(package)
+	gameinstance.players[package['id']].die()
 	
 remote func win(playerID):
 	if playerID==players[0].playerID:
@@ -112,17 +101,14 @@ remote func win(playerID):
 		get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
 
 remote func update_radius(var rad: float):
-	if (gameinstance != null):
-		#print("Updating radius to " + str(rad))
-		gameinstance.get_node("World/Circle").update_radius(rad)
+	if gameinstance == null: return
+	gameinstance.get_node("World/Circle").update_radius(rad)
 	
 	
 remote func update_health_bar(var health: float):
-	if (gameinstance != null):
-		print("hv val: " + str(gameinstance.get_node("World/Player").get_node("HealthBar").get_value()))
-		print("health: " + str(health))
-		gameinstance.get_node("World/Player").get_node("HealthBar").set_value(health*100)
-	print("Health bar updated")
+	if gameinstance == null: return
+	gameinstance.get_node("World/Player").get_node("HealthBar").set_value(health*100)
+
 	
 	
 func showlose():

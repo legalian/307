@@ -3,10 +3,11 @@ extends "res://scripts/MinigameServers/MinigameBase.gd"
 const Player = preload("res://scripts/MinigameServers/Player.gd")
 
 func _ready():
-	print("I have been added to a party creation screen")
+	rpc_id(1,'setusername',players[0].username)
+	rpc_id(1,'setavatar',players[0].avatar)
+	rpc_id(1,'sethat',players[0].hat)
 
 remote func add_player(packed):
-	print("PLAYER ADDED:",packed)
 	players.append(Player.new(packed))
 
 remote func setusername(player_id,name):
