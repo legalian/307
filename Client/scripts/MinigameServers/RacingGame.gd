@@ -8,7 +8,7 @@ func _ready():
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "syncUpdate")
-	_timer.set_wait_time(0.1)#10 rpc updates per second
+	_timer.set_wait_time(0.02)#50 rpc updates per second
 	_timer.set_one_shot(false) # Make sure it loops
 	_timer.start()
 
