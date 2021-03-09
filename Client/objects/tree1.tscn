@@ -336,6 +336,6 @@ script = ExtResource( 2 )
 
 [node name="Visible" type="Node2D" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Visible"]
+[node name="Sprite" type="AnimatedSprite" parent="Visible"]
 position = Vector2( -1.85486, -0.927429 )
 frames = SubResource( 65 )
