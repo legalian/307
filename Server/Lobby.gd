@@ -11,8 +11,6 @@ var parties = []
 # There is a check to make sure this does not happen.
 var minigame_list = [preload("res://BattleRoyale/World.tscn")]
 
-onready var server = get_node("Server")
-
 var minigame_order = []
 
 var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!
@@ -22,7 +20,6 @@ var current_minigame = 0
 var started
 
 var rng
-
 
 var max_players_per_lobby = 20
 var min_players_per_lobby = 2
@@ -37,6 +34,8 @@ func _init(var code):
 		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
 		debug_print()
 		return
+	
+	scramble_minigames()
 
 func get_scoreboard():
 	var scoreboard = []
@@ -58,11 +57,9 @@ func add_party(var party):
 	parties.append(party)
 	
 	if (parties.size() >= min_players_per_lobby):
-		# Start the game!
-		started = true
-		for party in parties:
-			server.reassign_party_to_minigame(party, server.make_new_minigame(get_current_minigame()))
+		return true
 	
+	return false
 ################################################################################
 # @desc
 # Adds minigames in a random order from minigame_list.
@@ -154,7 +151,17 @@ func get_occupied():
 		occupied += party.size()
 
 	return occupied
+
+func has_player(var playerID):
+	for party in parties:
+		if (party.playerIDs.has(playerID)):
+			return true
 	
+	return false
+
+func has_party(var party_in):
+	return parties.has(party_in)
+
 func debug_print():
 	print("\n ========= LOBBY DEBUG =========")
 	print("LOBBY: " + str(lobby_code))

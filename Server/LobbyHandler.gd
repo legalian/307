@@ -108,18 +108,27 @@ func add_to_lobby(var party):
 			# Checks if adding the party would make the lobby size too big,
 			# and checks if the lobby hasn't started yet.
 			
-			lobby.add_party(party)
+			if (lobby.add_party(party)):
+				return lobby.lobby_code
 	
 	# Lobbies that are already created are all full; create a new one	
 	var fresh_lobby_code = create_lobby()
 	
 	if (fresh_lobby_code != null): # New lobby was created successfully
-		lobbies.get(fresh_lobby_code).add_party(party)
+		if (lobbies.get(fresh_lobby_code).add_party(party)):
+			return fresh_lobby_code
 	
 	# New lobby was not created successfully; too many lobbies
 	# we DO NOT remove from the pool
 	return null
 	
+
+func get_lobby_by_player(var playerID):
+	for lobby in lobbies.values():
+		if lobby.has_player(playerID):
+			return lobby
+	
+	return null
 
 func key_taken(var key):
 	return lobbies.has(key)
