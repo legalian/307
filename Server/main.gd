@@ -75,17 +75,27 @@ remote func party_ready():
 		
 		matchmaking_pool.append(party)
 		var lobby_code = lobbyHandler.add_to_lobby(party)
+		debug_print_lobbies()
+		debug_print_matchmaking_pool()
 		if (lobby_code != null):
 			matchmaking_pool.erase(party)
+			print("\n\n\nGAME STARTING\n\n\n")
+			debug_print_lobbies()
+			debug_print_matchmaking_pool()
 			# Start the game!
 			var lobby = lobbyHandler.get_lobby(lobby_code)
+			var minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
-				reassign_party_to_minigame(parties, make_new_minigame(lobby.get_current_minigame()))
+				matchmaking_pool.erase(parties)
+				reassign_party_to_minigame(parties, minigame)
 		# The party should be removed from matchmaking pool within lobbyHandler.
 		# We don't call reassign here. We'll call it from within the lobby.
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
+		
+		debug_print_lobbies()
+		debug_print_matchmaking_pool()
 
 remote func create_party():
 	var player_id = get_tree().get_rpc_sender_id()
@@ -150,8 +160,10 @@ func matchmake_pool():
 			matchmaking_pool.erase(party)
 			# Start the game!
 			var lobby = lobbyHandler.get_lobby(lobby_code)
+			var minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
-				reassign_party_to_minigame(parties, make_new_minigame(lobby.get_current_minigame()))
+				matchmaking_pool.erase(parties)
+				reassign_party_to_minigame(parties, minigame)
 		# Adding will automatically try to start the minigame.
 	
 ################################################################################
