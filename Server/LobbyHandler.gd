@@ -73,14 +73,19 @@ func remove_from_lobby(var party):
 		print("Attempted to get lobby from invalid lobby code @@ remove_from_lobby()")
 		return false
 	
-	if (lobby.remove_party(party)):
-		if (lobby.get_parties().size() == 0):
-			print("Lobby is detected to be empty, deleting from dictionary")
-			# Lobby is empty
-			delete_lobby(lobby.get_lobby_code())
-			return true
+	if (!lobby.remove_party(party)):
+		print("Error! Party was not removed correctly from the party!")
+		# lobby.remove_party(party) should return true on success!	
+		return false
 	
-	# lobby.remove_party(party) should return true on success!	
+	if (lobby.get_parties().size() < lobby.min_players_per_lobby):
+		print("Lobby is detected to not have enough parties, deleting from dictionary")
+		
+		
+		delete_lobby(lobby.get_lobby_code())
+		return true
+	
+	print("Some error occurred!")
 	return false
 
 ################################################################################
@@ -95,21 +100,26 @@ func remove_from_lobby(var party):
 # Returns the lobby code on successful addition; null otherwise.
 ################################################################################
 func add_to_lobby(var party):
-	for lobby_code in lobbies.keys():
+	for lobby in lobbies.values():
 		# Loop through the lobbies that are created
-		if (lobbies.get(lobby_code).get_avail_size() >= party.size()):
-			lobbies.get(lobby_code).add_party(party)
-			return lobby_code
+		if ((lobby.max_players_per_lobby - lobby.get_occupied()) >= party.size() &&
+			!lobby.started):
+			
+			# Checks if adding the party would make the lobby size too big,
+			# and checks if the lobby hasn't started yet.
+			
+			lobby.add_party(party)
 	
-	# Lobbies that are already created are all full; create a new one
+	# Lobbies that are already created are all full; create a new one	
 	var fresh_lobby_code = create_lobby()
 	
 	if (fresh_lobby_code != null): # New lobby was created successfully
 		lobbies.get(fresh_lobby_code).add_party(party)
-		return fresh_lobby_code
 	
-	# New lobby was not created successfully
+	# New lobby was not created successfully; too many lobbies
+	# we DO NOT remove from the pool
 	return null
+	
 
 func key_taken(var key):
 	return lobbies.has(key)

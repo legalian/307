@@ -3,8 +3,6 @@ extends Node
 var lobby_code
 var parties = []
 
-var max_lobby_players = 1
-
 # You can change this preload to manually change games.
 # If you change minigames_per_match to 2, then Lobby.gd will attempt to create
 # a random order out of 2 minigames.
@@ -13,13 +11,21 @@ var max_lobby_players = 1
 # There is a check to make sure this does not happen.
 var minigame_list = [preload("res://BattleRoyale/World.tscn")]
 
+onready var server = get_node("Server")
+
 var minigame_order = []
 
 var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!
 
 var current_minigame = 0
 
+var started
+
 var rng
+
+
+var max_players_per_lobby = 20
+var min_players_per_lobby = 2
 
 func _init(var code):
 	lobby_code = code
@@ -29,14 +35,8 @@ func _init(var code):
 	
 	if (minigames_per_match > minigame_list.size()):
 		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
-		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
-		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
-		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
-		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
 		debug_print()
 		return
-	
-	scramble_minigames()
 
 func get_scoreboard():
 	var scoreboard = []
@@ -56,6 +56,12 @@ func get_lobby_code():
 func add_party(var party):
 	print("Adding party " + str(party.code) + " to lobby " + str(lobby_code))
 	parties.append(party)
+	
+	if (parties.size() >= min_players_per_lobby):
+		# Start the game!
+		started = true
+		for party in parties:
+			server.reassign_party_to_minigame(party, server.make_new_minigame(get_current_minigame()))
 	
 ################################################################################
 # @desc
@@ -140,15 +146,14 @@ func get_players():
 		players.append(party)
 	
 	return players
-	
-func get_avail_size():
+
+func get_occupied():
 	var occupied = 0
 	
 	for party in parties:
 		occupied += party.size()
 
-	return max_lobby_players - occupied
-	
+	return occupied
 	
 func debug_print():
 	print("\n ========= LOBBY DEBUG =========")
