@@ -27,7 +27,7 @@ func unpack(package):
 	id = package['id']
 
 func _process(delta):
-	$Body.set_look_pos(get_parent().global_transform.xform(lookoffset+global_position))
+	$Body.set_look_pos(get_parent().global_transform.xform(lookoffset+global_position), velocity)
 
 func _physics_process(delta):
 	velocity = move_and_slide(velocity)
