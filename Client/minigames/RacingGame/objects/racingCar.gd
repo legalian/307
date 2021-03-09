@@ -3,9 +3,23 @@ extends KinematicBody2D
 var server = null
 var id
 var input_vector = Vector2.ZERO
+var checkpoint = 0.0
+var num_checkpoints = 10
+var checkpoint_div = 1/float(num_checkpoints)
+var progress = 0.0
+var lap = 1
+
+var path
+var path_length
+var gui
+var label
 
 func _ready():
 	server = get_node("/root/Server").get_children()[0]
+	path = get_parent().get_node("TrackPath")
+	path_length = path.curve.get_baked_length()
+	gui = find_node("GUI")
+	label = gui.find_node("laps")
 
 func unpack(package):
 	position = Vector2(package['x'],package['y'])
@@ -19,3 +33,15 @@ func _process(delta):
 	if Input.is_action_pressed("move_left"):input_vector.x -= 1
 	if Input.is_action_pressed("move_down"):input_vector.y += 1
 	if Input.is_action_pressed("move_up"):input_vector.y -= 1
+	
+	progress = path.curve.get_closest_offset(position)/path_length
+	var potential_checkpoint = progress - fmod(progress, checkpoint_div)
+	if is_equal_approx(potential_checkpoint, checkpoint + checkpoint_div):
+		checkpoint = potential_checkpoint
+	elif is_equal_approx(potential_checkpoint, 0.0) and is_equal_approx(checkpoint, (1 - checkpoint_div)):
+		checkpoint = 0.0
+		lap += 1
+	
+	label.currentLap = lap
+		
+	
