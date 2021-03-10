@@ -15,6 +15,7 @@ var server = null
 var body = null
 var gun = null
 var dying = false
+var setted = false;
 
 func _ready():
 	input_pickable = true
@@ -22,6 +23,7 @@ func _ready():
 	server = get_node("/root/Server").get_children()[0]
 	body = get_node("Body")
 	gun = body.find_node("Gun")
+	
 
 func pack():
 	return {
@@ -36,7 +38,9 @@ func pack():
 	}
 
 func unpack(package):
-	#position = Vector2(package['x'],package['y'])
+	if(!setted):
+		position = Vector2(package['x'],package['y'])
+		setted = true;
 	#rotation = package['r']
 	pass#will need up set position or rotation if it's too far away
 	

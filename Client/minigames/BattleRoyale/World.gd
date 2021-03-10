@@ -11,7 +11,7 @@ var server = null
 func _ready():
 	world = get_node("World")
 	minigame = "BATTLEROYALE"
-	camera = get_node("dropdown").get_node("camera");
+	camera = get_node("World/dropdown/camera");
 
 	
 	

@@ -9,7 +9,7 @@ var timer
 # Called when the node enters the scene tree for the first time.
 func _on_timer_timeout():
 	get_parent().get_parent().current = false;
-	get_parent().get_parent().get_parent().spawnRandom();
+	get_parent().get_parent().get_parent()._spawnRandom();
 	
 func _ready():
 	timer = Timer.new()

@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var spawned;
+var spawned = false;
 
 func _spawnRandom():
 	if(!spawned) :
@@ -16,6 +16,7 @@ func _spawnRandom():
 		get_parent().get_parent().server.spawn(x,y)
 		get_node("camera").current = false;
 		get_parent().get_parent().camera = null;
+		spawned = true;
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,19 +25,21 @@ func _ready():
 
 
 func _input(event):
-	if(event is InputEventMouse):
-		var pos = event.global_position
-		var space_state = get_world_2d().direct_space_state
-		var collidingWith = space_state.intersect_point(pos);
-		if(collidingWith.get_overlapping_bodies().empty()):
-			get_parent().get_parent().server.spawn(pos[0], pos[1]);
-			get_node("camera").current = false;
-			get_parent().get_parent().camera = null; 
-			spawned = true;
+	if(!spawned):
+		if(event is InputEventMouseButton):
+			var pos = event.global_position
+			var space_state = get_world_2d().direct_space_state
+			var collidingWith = space_state.intersect_point(pos);
+			if(collidingWith.empty() || collidingWith[0].shape == 0):
+				get_parent().get_parent().server.spawn(pos[0], pos[1]);
+				get_node("camera").current = false;
+				get_parent().get_parent().camera = null; 
+				spawned = true;
 			
 		
 		
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(_delta):
+	if(spawned == true):
+		queue_free()
