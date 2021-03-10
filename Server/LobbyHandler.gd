@@ -16,7 +16,9 @@ func get_lobby(var lobby_id):
 		print("get_lobby() is called on the party screen!")
 		# We're on the party screen, return nothing
 		return
-	return lobbies[lobby_id]
+	if lobbies.has(lobby_id):
+		return lobbies[lobby_id]
+	return null
 
 func get_lobbies():
 	return lobbies
@@ -24,14 +26,6 @@ func get_lobbies():
 func delete_lobby(var lobby_id):
 	lobbies.erase(lobby_id)
 
-################################################################################
-# @desc
-# Creates a new Lobby object, creates a unique code, and inserts it to the dict.
-#
-# @returns
-# Returns the lobby code of the newly created lobby, null if there's too many
-# lobbies.
-################################################################################
 func create_lobby():	
 	var tempLobby = Lobby.new(rng.randi_range(100000, 999999))
 	while (key_taken(tempLobby.get_lobby_code())): # If taken,
@@ -45,20 +39,6 @@ func create_lobby():
 	
 	return null
 
-################################################################################
-# @desc
-# Removes players/parties from the given lobby_id.
-#
-# @params
-# party:	THIS MUST BE AN ARRAY OF PLAYER OBJECTS, NOT PEER IDs. To remove one
-#			player, pass in an array of size 1. For a party, pass in an array of
-#			player objects.
-# lobby_id:	Lobby code that you want the player to be removed from. ALthough this
-#			isn't technically needed, it speeds up performance.
-#
-# @returns
-# Returns false if there were any errors, true on success.
-################################################################################
 func remove_from_lobby(var party):
 	if (party == null):
 		print("Attempted to remove a null party from the lobby.")
@@ -80,7 +60,12 @@ func remove_from_lobby(var party):
 	
 	if (lobby.get_parties().size() < lobby.min_players_per_lobby):
 		print("Lobby is detected to not have enough parties, deleting from dictionary")
-		
+				
+		# Disconnect all peers
+		for party in lobby.get_parties():
+			for playerID in party.playerIDs:
+				print("Kicking player " + str(playerID) + " out")
+				party.minigame.remove_player(playerID)
 		
 		delete_lobby(lobby.get_lobby_code())
 		return true
@@ -88,17 +73,6 @@ func remove_from_lobby(var party):
 	print("Some error occurred!")
 	return false
 
-################################################################################
-# @desc
-# Adds a party to the nearest available lobby.
-#
-# @params
-# party:	A PartyPlayer array (a solo player would just be an array of 1) that
-#			is to be placed into a lobby
-#
-# @returns
-# Returns the lobby code on successful addition; null otherwise.
-################################################################################
 func add_to_lobby(var party):
 	for lobby in lobbies.values():
 		# Loop through the lobbies that are created

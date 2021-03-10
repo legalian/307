@@ -123,6 +123,19 @@ remote func join_party(var partyID):
 func send_party_code_to_client(var clientID, var partyID):
 	rpc_id(clientID, "receive_party_code", partyID)
 
+remote func go_to_next_minigame():
+	var player_id = get_tree().get_rpc_sender_id()
+	var party = partyHandler.get_party_by_player(player_id)
+	var lobby = lobbyHandler.get_lobby(party.lobby_code)
+	
+	if (lobby.go_to_next_minigame() != null):
+		# There were no errors
+		var minigame = make_new_minigame(lobby.get_current_minigame())
+		for parties in lobby.get_parties():
+			reassign_party_to_minigame(parties, minigame)
+	
+	print("\n\n Go To Next Minigame failed!\n\n")
+
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
 		
@@ -144,13 +157,6 @@ func _Peer_Disconnected(player_id):
 	
 	print("User " + str(player_id) + " disconnected.")	
 
-################################################################################
-# @desc
-# Goes through the entire pool and tries to get as many players into lobbies
-# as possible. First come first serve.
-# This should be called whenever a party disconnects.
-################################################################################
-
 func matchmake_pool():
 	print("Attempting to matchmake as many players in the pool as possible")
 	var ret
@@ -166,12 +172,6 @@ func matchmake_pool():
 				reassign_party_to_minigame(parties, minigame)
 		# Adding will automatically try to start the minigame.
 	
-################################################################################
-# @desc
-# Removes a party from the matchmaking pool. If called while matchmake_pool()
-# has found a lobby, matchmake_pool() will override this, and the party
-# will be forced into the game.
-################################################################################
 remote func cancel_matchmaking():
 	var playerID = get_tree().get_rpc_sender_id()
 	var party = partyHandler.get_party_by_player(playerID)
@@ -182,6 +182,8 @@ remote func cancel_matchmaking():
 	matchmaking_pool.erase(party)
 	print("      Removing party from lobby")
 	lobbyHandler.remove_from_lobby(party)
+	
+	# Here, we DON'T want to iterate through the lobby and disconnect everyone else.
 	
 	debug_print_lobbies()
 	debug_print_matchmaking_pool()
