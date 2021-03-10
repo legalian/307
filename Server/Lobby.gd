@@ -15,6 +15,7 @@ var rng
 
 var max_players_per_lobby = 20
 var min_players_per_lobby = 2
+# Change this to 1 for debugging
 
 func _init(var code):
 	lobby_code = code

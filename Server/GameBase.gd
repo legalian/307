@@ -21,8 +21,6 @@ func get_player(player_id):
 	for player in players:
 		if player.playerID==player_id: return player
 
-
-
 remote func addscore(amt):
 	var player_id = get_tree().get_rpc_sender_id()
 	var player = get_player(player_id)

@@ -51,7 +51,7 @@ func _ready():
 			OS.window_position = OS.get_screen_position(screen)+realwindowsize
 
 		# $MUT_test_flow
-		if active_corner == "1":
+		if str(active_corner) == "1":
 			$MUT_test_flow.play("Multi_User_Testing_Partylead")
 		else:
 			$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
