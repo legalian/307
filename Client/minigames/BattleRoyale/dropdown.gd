@@ -5,16 +5,17 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var spawned;
 
 func _spawnRandom():
-	var rng = RandomNumberGenerator.new();
-	rng.randomize()
-	var x = rng.randf_range(-100.0, 100.0)
-	var y = rng.randf_range(-100.0, 100.0)
-	get_parent().get_parent().server.spawn(x,y)
-	get_node("camera").current = false;
-	get_parent().get_parent().camera = null;
-	
+	if(!spawned) :
+		var rng = RandomNumberGenerator.new();
+		rng.randomize()
+		var x = rng.randf_range(-100.0, 100.0)
+		var y = rng.randf_range(-100.0, 100.0)
+		get_parent().get_parent().server.spawn(x,y)
+		get_node("camera").current = false;
+		get_parent().get_parent().camera = null;
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +31,8 @@ func _input(event):
 		if(collidingWith.get_overlapping_bodies().empty()):
 			get_parent().get_parent().server.spawn(pos[0], pos[1]);
 			get_node("camera").current = false;
-			get_parent().get_parent().camera = null;
+			get_parent().get_parent().camera = null; 
+			spawned = true;
 			
 		
 		
