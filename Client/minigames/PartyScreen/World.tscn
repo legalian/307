@@ -78,6 +78,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button_CopyCode" type="Button" parent="."]
+margin_left = 769.303
+margin_top = 151.584
+margin_right = 918.303
+margin_bottom = 204.584
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "Copy code"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button_ConfirmUsername" type="Button" parent="."]
 margin_left = 458.018
 margin_top = 389.719
@@ -186,12 +199,12 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 809.271
-margin_top = 127.963
-margin_right = 977.271
-margin_bottom = 150.963
+margin_left = 805.266
+margin_top = 69.23
+margin_right = 973.266
+margin_bottom = 92.23
 theme = ExtResource( 3 )
-text = "Scoreboard goes here"
+text = "Party List goes here"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -284,6 +297,7 @@ __meta__ = {
 anims/Multi_User_Testing_Partyfollow = SubResource( 3 )
 anims/Multi_User_Testing_Partylead = SubResource( 4 )
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
+[connection signal="pressed" from="Button_CopyCode" to="." method="_on_Button_CopyCode_pressed"]
 [connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
 [connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
 [connection signal="text_changed" from="UsernameInput" to="." method="_on_UsernameInput_text_changed"]

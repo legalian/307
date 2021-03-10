@@ -42,5 +42,5 @@ func _process(delta):
 	var player_id = get_tree().get_rpc_sender_id()
 	#Don't do any drawing on the serverside
 	#draw_circle_arc(center, radius, 0, 365, color)
-	radius = radius - .6
+	radius = radius - .1
 	pass

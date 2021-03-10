@@ -16,7 +16,9 @@ func get_lobby(var lobby_id):
 		print("get_lobby() is called on the party screen!")
 		# We're on the party screen, return nothing
 		return
-	return lobbies[lobby_id]
+	if lobbies.has(lobby_id):
+		return lobbies[lobby_id]
+	return null
 
 func get_lobbies():
 	return lobbies
@@ -24,14 +26,6 @@ func get_lobbies():
 func delete_lobby(var lobby_id):
 	lobbies.erase(lobby_id)
 
-################################################################################
-# @desc
-# Creates a new Lobby object, creates a unique code, and inserts it to the dict.
-#
-# @returns
-# Returns the lobby code of the newly created lobby, null if there's too many
-# lobbies.
-################################################################################
 func create_lobby():	
 	var tempLobby = Lobby.new(rng.randi_range(100000, 999999))
 	while (key_taken(tempLobby.get_lobby_code())): # If taken,
@@ -45,20 +39,6 @@ func create_lobby():
 	
 	return null
 
-################################################################################
-# @desc
-# Removes players/parties from the given lobby_id.
-#
-# @params
-# party:	THIS MUST BE AN ARRAY OF PLAYER OBJECTS, NOT PEER IDs. To remove one
-#			player, pass in an array of size 1. For a party, pass in an array of
-#			player objects.
-# lobby_id:	Lobby code that you want the player to be removed from. ALthough this
-#			isn't technically needed, it speeds up performance.
-#
-# @returns
-# Returns false if there were any errors, true on success.
-################################################################################
 func remove_from_lobby(var party):
 	if (party == null):
 		print("Attempted to remove a null party from the lobby.")
@@ -73,42 +53,54 @@ func remove_from_lobby(var party):
 		print("Attempted to get lobby from invalid lobby code @@ remove_from_lobby()")
 		return false
 	
-	if (lobby.remove_party(party)):
-		if (lobby.get_parties().size() == 0):
-			print("Lobby is detected to be empty, deleting from dictionary")
-			# Lobby is empty
-			delete_lobby(lobby.get_lobby_code())
-			return true
+	if (!lobby.remove_party(party)):
+		print("Error! Party was not removed correctly from the party!")
+		# lobby.remove_party(party) should return true on success!	
+		return false
 	
-	# lobby.remove_party(party) should return true on success!	
+	if (lobby.get_parties().size() < lobby.min_players_per_lobby):
+		print("Lobby is detected to not have enough parties, deleting from dictionary")
+				
+		# Disconnect all peers
+		for party in lobby.get_parties():
+			for playerID in party.playerIDs:
+				print("Kicking player " + str(playerID) + " out")
+				party.minigame.remove_player(playerID)
+		
+		delete_lobby(lobby.get_lobby_code())
+		return true
+	
+	print("Some error occurred!")
 	return false
 
-################################################################################
-# @desc
-# Adds a party to the nearest available lobby.
-#
-# @params
-# party:	A PartyPlayer array (a solo player would just be an array of 1) that
-#			is to be placed into a lobby
-#
-# @returns
-# Returns the lobby code on successful addition; null otherwise.
-################################################################################
 func add_to_lobby(var party):
-	for lobby_code in lobbies.keys():
+	for lobby in lobbies.values():
 		# Loop through the lobbies that are created
-		if (lobbies.get(lobby_code).get_avail_size() >= party.size()):
-			lobbies.get(lobby_code).add_party(party)
-			return lobby_code
+		if ((lobby.max_players_per_lobby - lobby.get_occupied()) >= party.size() &&
+			!lobby.started):
+			
+			# Checks if adding the party would make the lobby size too big,
+			# and checks if the lobby hasn't started yet.
+			
+			if (lobby.add_party(party)):
+				return lobby.lobby_code
 	
-	# Lobbies that are already created are all full; create a new one
+	# Lobbies that are already created are all full; create a new one	
 	var fresh_lobby_code = create_lobby()
 	
 	if (fresh_lobby_code != null): # New lobby was created successfully
-		lobbies.get(fresh_lobby_code).add_party(party)
-		return fresh_lobby_code
+		if (lobbies.get(fresh_lobby_code).add_party(party)):
+			return fresh_lobby_code
 	
-	# New lobby was not created successfully
+	# New lobby was not created successfully; too many lobbies
+	return null
+	
+
+func get_lobby_by_player(var playerID):
+	for lobby in lobbies.values():
+		if lobby.has_player(playerID):
+			return lobby
+	
 	return null
 
 func key_taken(var key):

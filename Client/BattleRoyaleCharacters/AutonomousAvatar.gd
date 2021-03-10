@@ -27,7 +27,7 @@ func unpack(package):
 	id = package['id']
 
 func _process(delta):
-	$Body.set_look_pos(get_parent().global_transform.xform(lookoffset+global_position))
+	$Body.set_look_pos(get_parent().global_transform.xform(lookoffset+global_position), velocity)
 
 func _physics_process(delta):
 	velocity = move_and_slide(velocity)
@@ -38,7 +38,7 @@ func damage():
 	
 func die():
 	dying = true
-	velocity = 0
+	velocity = Vector2.ZERO
 	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying
 	body.rip()
 	var _timer = Timer.new()

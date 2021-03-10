@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BattleRoyaleCharacters/Character.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/crosshairs_tilesheet_white@2.png" type="Texture" id=3]
 [ext_resource path="res://BattleRoyaleCharacters/Target.gd" type="Script" id=4]
+[ext_resource path="res://minigames/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 28.4847
@@ -27,18 +28,43 @@ shape = SubResource( 1 )
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 
-[node name="Target" type="Sprite" parent="."]
-position = Vector2( -176.983, -80.7922 )
-scale = Vector2( 0.232647, 0.220887 )
-texture = SubResource( 2 )
-script = ExtResource( 4 )
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 219.0
-margin_top = 510.919
-margin_right = 505.0
-margin_bottom = 655.919
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -286.0
+margin_top = -40.0
+mouse_filter = 2
 value = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreBoard" parent="HUD/CenterContainer" instance=ExtResource( 5 )]
+position = Vector2( 11.1904, -1.96066 )
+
+[node name="MapOverlay" type="CanvasLayer" parent="HUD"]
+follow_viewport_enable = true
+
+[node name="Target" type="Sprite" parent="HUD/MapOverlay"]
+position = Vector2( 511.694, 319.932 )
+scale = Vector2( 0.232647, 0.220887 )
+texture = SubResource( 2 )
+script = ExtResource( 4 )

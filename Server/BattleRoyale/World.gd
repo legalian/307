@@ -40,7 +40,8 @@ func _send_rpc_update():
 remote func spawn(x,y):
 	print("spawn called")
 	var player_id = get_tree().get_rpc_sender_id()
-	if status[player_id] != "UNSPAWNED": return
+	if (status.has(player_id)):
+		if status[player_id] != "UNSPAWNED": return
 	status[player_id] = "INGAME"
 	ingame[player_id] = BRPlayer.instance()
 	ingame[player_id].id = player_id

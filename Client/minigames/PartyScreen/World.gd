@@ -7,6 +7,8 @@ onready var generalserver = get_node("/root/Server")
 var specificserver = null
 var AvatarMenuOpen = false
 
+var scoreboard = preload("res://minigames/ScoreBoard/ScoreBoard.tscn")
+
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
 	var file = File.new()
@@ -73,11 +75,5 @@ func _on_EnterGameButton_pressed():
 	generalserver.attemptEnterGame()
 	
 	
-	
-	
-	
-
-	
-	
-	
-	
+func _on_Button_CopyCode_pressed():
+	OS.set_clipboard($PartyCode.text)
