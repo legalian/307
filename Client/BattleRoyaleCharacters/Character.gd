@@ -23,7 +23,6 @@ func _ready():
 	server = get_node("/root/Server").get_children()[0]
 	body = get_node("Body")
 	gun = body.find_node("Gun")
-	
 
 func pack():
 	return {
