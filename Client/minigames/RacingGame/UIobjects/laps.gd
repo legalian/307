@@ -1,7 +1,7 @@
 extends Label
 
-var totalLaps = 2
-var currentLap = 1
+var totalLaps = 3
+var currentLap = 0
 
 # Declare member variables here. Examples:
 # var a = 2

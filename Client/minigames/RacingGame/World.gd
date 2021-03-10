@@ -10,6 +10,7 @@ var server = null
 var players = {}
 
 var player
+var gui
 var object_map = null
 var object_scenes = {}
 
@@ -48,11 +49,16 @@ func _process(delta):
 		server = get_node("/root/Server").get_children()[0]
 	if server==null: return
 	if camera==null:
-		var player = get_node_or_null("World/Player_" + str(get_tree().get_network_unique_id()))
+		player = get_node_or_null("World/Player_" + str(get_tree().get_network_unique_id()))
 		if player==null: return
 		camera = player.find_node("Camera")
 		camera.current = true
 		if camera==null: return
+	
+	if gui==null:
+		gui = player.find_node("GUI")
+		gui.visible = true
+	#print("Progress="+str(player.progress)+", Checkpoint="+str(player.checkpoint)+", Lap="+str(player.lap))
 	
 	var ctr = camera.global_rotation
 	var xhalf = get_viewport().size.x/2
