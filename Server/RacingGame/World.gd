@@ -43,7 +43,8 @@ func spawn(player_id):
 	ingame[player_id] = car.instance()
 	ingame[player_id].name = "Player_" + str(player_id)
 	ingame[player_id].id = player_id
-	ingame[player_id].position = Vector2(-1555.4 + rng.randi_range(-100,100),1893.06 + rng.randi_range(-100,100))
+	ingame[player_id].position = Vector2(1600 + rng.randi_range(-100,100),1900 + rng.randi_range(-500,500))
+	ingame[player_id].rotation = 3*PI/2
 	$World.add_child(ingame[player_id])
 	
 remote func syncUpdate(package):

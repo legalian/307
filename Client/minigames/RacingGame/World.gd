@@ -58,7 +58,7 @@ func _process(delta):
 	if gui==null:
 		gui = player.find_node("GUI")
 		gui.visible = true
-	print("Progress="+str(player.progress)+", Checkpoint="+str(player.checkpoint)+", Lap="+str(player.lap))
+	#print("Progress="+str(player.progress)+", Checkpoint="+str(player.checkpoint)+", Lap="+str(player.lap))
 	
 	var ctr = camera.global_rotation
 	var xhalf = get_viewport().size.x/2
