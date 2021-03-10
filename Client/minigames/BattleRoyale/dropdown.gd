@@ -27,7 +27,7 @@ func _ready():
 func _input(event):
 	if(!spawned):
 		if(event is InputEventMouseButton):
-			var pos = event.global_position
+			var pos = get_parent().get_local_mouse_position()
 			var space_state = get_world_2d().direct_space_state
 			var collidingWith = space_state.intersect_point(pos);
 			if(collidingWith.empty() || collidingWith[0].shape == 0):
