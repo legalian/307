@@ -11,7 +11,7 @@ var server = null
 func _ready():
 	world = get_node("World")
 	minigame = "BATTLEROYALE"
-
+	
 func _process(delta):
 	if get_node("/root/Server").get_children().size()>0:
 		server = get_node("/root/Server").get_children()[0]
