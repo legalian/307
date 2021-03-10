@@ -4,7 +4,7 @@ var server = null
 var id
 var input_vector = Vector2.ZERO
 var checkpoint = 0.0
-var num_checkpoints = 10
+var num_checkpoints = 20
 var checkpoint_div = 1/float(num_checkpoints)
 var progress = 0.0
 var lap = 1
@@ -41,6 +41,8 @@ func _process(delta):
 	progress = path.curve.get_closest_offset(position)/path_length
 	var potential_checkpoint = progress - fmod(progress, checkpoint_div)
 	if is_equal_approx(potential_checkpoint, checkpoint + checkpoint_div):
+		checkpoint = potential_checkpoint
+	elif is_equal_approx(potential_checkpoint, checkpoint + 2*checkpoint_div):
 		checkpoint = potential_checkpoint
 	elif is_equal_approx(potential_checkpoint, 0.0) and is_equal_approx(checkpoint, (1 - checkpoint_div)):
 		checkpoint = 0.0
