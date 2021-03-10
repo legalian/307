@@ -38,7 +38,7 @@ func damage():
 	
 func die():
 	dying = true
-	velocity = 0
+	velocity = Vector2.ZERO
 	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying
 	body.rip()
 	var _timer = Timer.new()
