@@ -8,6 +8,12 @@ var car = preload("res://RacingGame/racingCar.tscn")
 
 var ingame = {}
 
+class PlaceSorter:
+	static func sort_places(a, b):
+		if a[1] > b[1]:
+			return true
+		return false
+
 func add_player(newplayer):
 	.add_player(newplayer)
 	spawn(newplayer.playerID)
@@ -33,7 +39,7 @@ func _send_rpc_update():
 		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame)
 
 func spawn(player_id):
-	print("spawn called")
+	print("Spawning player: " + str(player_id))
 	ingame[player_id] = car.instance()
 	ingame[player_id].name = "Player_" + str(player_id)
 	ingame[player_id].id = player_id
@@ -43,7 +49,13 @@ func spawn(player_id):
 remote func syncUpdate(package):
 	var player_id = get_tree().get_rpc_sender_id()
 	if (ingame.has(player_id)):
-		ingame[player_id].input_vector = package
+		ingame[player_id].input_vector = package["input"]
+		ingame[player_id].progress = package["progress"]
 
 func _process(delta):
-	pass
+	var sort_array = []
+	for ig in ingame.values():
+		sort_array.append([ig.id, ig.progress])
+	sort_array.sort_custom(PlaceSorter, "sort_places")
+	for n in range(sort_array.size()):
+		ingame[sort_array[n][0]].place = n + 1

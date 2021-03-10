@@ -8,23 +8,27 @@ var num_checkpoints = 10
 var checkpoint_div = 1/float(num_checkpoints)
 var progress = 0.0
 var lap = 1
+var place = 1
 
 var path
 var path_length
 var gui
-var label
+var laps_label
+var place_label
 
 func _ready():
 	server = get_node("/root/Server").get_children()[0]
 	path = get_parent().get_node("TrackPath")
 	path_length = path.curve.get_baked_length()
 	gui = find_node("GUI")
-	label = gui.find_node("laps")
+	laps_label = gui.find_node("laps")
+	place_label = gui.find_node("place")
 
 func unpack(package):
 	position = Vector2(package['x'],package['y'])
 	rotation = package['r']
 	id = package['id']
+	place = package['place']
 
 func _process(delta):
 	input_vector = Vector2.ZERO
@@ -42,6 +46,7 @@ func _process(delta):
 		checkpoint = 0.0
 		lap += 1
 	
-	label.currentLap = lap
+	laps_label.currentLap = lap
+	place_label.rank = place
 		
 	

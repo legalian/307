@@ -4,6 +4,8 @@ var maxSpeed = 1500
 var speed = 0
 var acceleration = 25
 var rotSpeed = 0.05
+var progress = 0.0
+var place = 1
 
 var id
 var velocity = Vector2.ZERO
@@ -15,6 +17,7 @@ func pack():
 		'x':position.x,
 		'y':position.y,
 		'r':rotation,
+		'place':place
 	}
 
 func _physics_process(delta):
