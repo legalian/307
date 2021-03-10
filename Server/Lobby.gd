@@ -9,7 +9,8 @@ var minigame_order = []
 var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
 
-var started
+var can_start = false
+var in_game = false
 var rng
 
 var max_players_per_lobby = 20
@@ -53,8 +54,8 @@ func add_party(var party):
 	
 	party.lobby_code = lobby_code
 	
-	if (parties.size() >= min_players_per_lobby):
-		started = true
+	if (get_occupied() >= min_players_per_lobby):
+		can_start = true
 		return true
 	
 	return false
@@ -122,6 +123,8 @@ func debug_print():
 	print("\n ========= LOBBY DEBUG =========")
 	print("LOBBY: " + str(lobby_code))
 	print("CURRENT MINIGAME: " + str(current_minigame))
+	print("CAN_START: " + str(can_start))
+	print("IN GAME?: " + str(in_game))
 	
 	print("\n~PARTY LIST~")
 	var partycount = 0

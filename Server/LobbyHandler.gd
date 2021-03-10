@@ -58,7 +58,7 @@ func remove_from_lobby(var party):
 		# lobby.remove_party(party) should return true on success!	
 		return false
 	
-	if (lobby.get_parties().size() < lobby.min_players_per_lobby):
+	if (lobby.get_occupied() < lobby.min_players_per_lobby):
 		print("Lobby is detected to not have enough parties, deleting from dictionary")
 				
 		# Disconnect all peers
@@ -77,23 +77,23 @@ func add_to_lobby(var party):
 	for lobby in lobbies.values():
 		# Loop through the lobbies that are created
 		if ((lobby.max_players_per_lobby - lobby.get_occupied()) >= party.size() &&
-			!lobby.started):
+			!lobby.in_game):
 			
 			# Checks if adding the party would make the lobby size too big,
 			# and checks if the lobby hasn't started yet.
 			
 			if (lobby.add_party(party)):
-				return lobby.lobby_code
+				return true
 	
-	# Lobbies that are already created are all full; create a new one	
+	# Lobbies that are already created are all full or started; create a new one	
 	var fresh_lobby_code = create_lobby()
 	
 	if (fresh_lobby_code != null): # New lobby was created successfully
 		if (lobbies.get(fresh_lobby_code).add_party(party)):
-			return fresh_lobby_code
+			return true
 	
 	# New lobby was not created successfully; too many lobbies
-	return null
+	return false
 	
 
 func get_lobby_by_player(var playerID):

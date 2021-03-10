@@ -71,23 +71,12 @@ remote func party_ready():
 			return
 		
 		matchmaking_pool.append(party)
-		var lobby_code = lobbyHandler.add_to_lobby(party)
+		
+		print("Party_ready finished, calling matchmake_pool()")
+			
 		debug_print_lobbies()
 		debug_print_matchmaking_pool()
-		if (lobby_code != null):
-			matchmaking_pool.erase(party)
-			print("\n\n\nGAME STARTING\n\n\n")
-			# Start the game!
-			# Iterate through the unstarted lobby and clear them from the pool,
-			# and also assign the minigame.
-			var lobby = lobbyHandler.get_lobby(lobby_code)
-			var minigame = make_new_minigame(lobby.get_current_minigame())
-			for parties in lobby.get_parties():
-				matchmaking_pool.erase(parties)
-				reassign_party_to_minigame(parties, minigame)
-			
-			debug_print_lobbies()
-			debug_print_matchmaking_pool()
+		matchmake_pool()
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
@@ -152,6 +141,7 @@ func _Peer_Disconnected(player_id):
 		if (party.playerIDs.size() == 0):
 			print("Party size detected to be empty, removing from lobby")
 			lobbyHandler.remove_from_lobby(party)
+			party.lobby_code = "defaultCode"
 			debug_print_lobbies()
 	
 	print("User " + str(player_id) + " disconnected.")	
@@ -159,22 +149,27 @@ func _Peer_Disconnected(player_id):
 func matchmake_pool():
 	print("Attempting to matchmake as many players in the pool as possible")
 	var ret
-	for party in matchmaking_pool: # Go through the entire pool
-		# The pool consists of parties in lobbies and also not in lobbies.
-		var lobby_code = party.lobby_code
-		if (str(lobby_code) == "defaultCode"):
-			# Party is not added to a lobby.
-			lobby_code = lobbyHandler.add_to_lobby(party)
-		
-		if (lobby_code != null && str(lobby_code) != "defaultCode"):
-			matchmaking_pool.erase(party)
+	for party in matchmaking_pool: # Go through the entire pool and add to lobbies
+		if (str(party.lobby_code) == "defaultCode"):
+			# Only add to a lobby if the party is not in one.
+			lobbyHandler.add_to_lobby(party)
+			# The lobby code is in party.lobby_code
+	
+	# Start the lobbies that can and remove them from the pool
+	for party in matchmaking_pool:
+		var lobby = lobbyHandler.get_lobby(party.lobby_code)
+		if (lobby.lobby_code != null &&
+			str(lobby.lobby_code) != "defaultCode" &&
+			lobby.can_start):
+			
 			# Start the game!
-			var lobby = lobbyHandler.get_lobby(lobby_code)
+			lobby.in_game = true
 			var minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
 				matchmaking_pool.erase(parties)
 				reassign_party_to_minigame(parties, minigame)
 
+	print("\n\n Matchmaking Pool finished \n\n")
 	debug_print_lobbies()
 	debug_print_matchmaking_pool()
 	
@@ -188,6 +183,7 @@ remote func cancel_matchmaking():
 	matchmaking_pool.erase(party)
 	print("      Removing party from lobby")
 	lobbyHandler.remove_from_lobby(party)
+	party.lobby_code = "defaultCode"
 	
 	# Here, we DON'T want to iterate through the lobby and disconnect everyone else.
 	
