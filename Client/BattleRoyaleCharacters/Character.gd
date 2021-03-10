@@ -48,7 +48,7 @@ func unpack(package):
 func _process(delta):
 	lookoffset = get_parent().global_transform.xform_inv(get_global_mouse_position()) - global_position
 	get_node("HUD/MapOverlay/Target").global_position = get_global_mouse_position()
-	body.set_look_pos(get_global_mouse_position())
+	body.set_look_pos(get_global_mouse_position(),velocity)
 	
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
@@ -80,26 +80,26 @@ func _physics_process(delta):
 	rotate(rotvel*delta)
 	
 func _unhandled_input(event):
+	if dying: return
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == BUTTON_LEFT:
 			var bullet = gun.fire(self,$HUD/MapOverlay/Target.global_position)
 			if bullet!=null:
 				server.shoot(bullet.pack())
-			#print("rpc call happened.")
-			#rpc_id(1,"gameCall","shoot")
 	
 
 func damage():
-	pass#this is where an animation would go
+	body.ouch()
 	
 func die():
 	dying = true
+	speed=0
 	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying
-	#$Body.die_anim() for when there's an animation
+	body.rip()
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "finish_dying")
-	_timer.set_wait_time(0.05)#normally wait for the animation to finish
+	_timer.set_wait_time(1.5)#normally wait for the animation to finish
 	_timer.start()
 
 func finish_dying():

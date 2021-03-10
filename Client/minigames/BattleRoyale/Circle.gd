@@ -12,10 +12,6 @@ const zone_line_width = 10000
 
 func isInCircle(var location: Vector2):
 	if (abs(center.distance_to(location) + zone_line_width/2) >= abs(radius)):
-		#print("Loc:" + str(location))
-		#print("Cen: " + str(center))
-		#print("Dist: " + str(abs(center.distance_to(location))))
-		#print("Rad: " + str(radius))
 		return true
 	else:
 		return false
@@ -39,7 +35,6 @@ func draw_circle_arc(center, radius, angle_from, angle_to, color):
 
 func _draw():
 	draw_circle_arc(center, radius, 0, 365, color)
-	radius = radius - .6
 	
 func update_radius(var rad: float):
 	radius = rad

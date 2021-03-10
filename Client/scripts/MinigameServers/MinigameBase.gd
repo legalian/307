@@ -6,8 +6,7 @@ var players#a reference to a parent property by the same name
 # players[0] is yourself.
 
 func _ready():#this is called in cascasde so no worries about overriding
-	players = get_node("..").players
-	print("I have been added to a generic lobby")
+	players = get_parent().players
 
 func get_player(player_id):
 	for player in players:

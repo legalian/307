@@ -28,14 +28,9 @@ func glob_rot(node):
 	#return rotclamp(node.global_rotation-leftbody.global_rotation)
 	
 func glob_pos(node):
-	#print(node.global_position)
-	#print(node.position)
-	#print(node.get_parent().global_transform.affine_inverse().xform(node.global_position))
-	#print(leftbody.global_transform.xform_inv(node.global_position))
 	return leftbody.global_transform.affine_inverse().xform(node.global_position)
 	
 func set_glob_rot(node,rot):
-	#print(leftbody.rotation)
 	node.rotation = (
 		Transform2D(rot,Vector2(0,0))*leftbody.get_global_transform_with_canvas().affine_inverse()*
 		node.get_parent().get_global_transform_with_canvas().affine_inverse()
@@ -65,12 +60,8 @@ func _calc_ik222(node, ik_node, target_node, parrot, index = 0):
 		var pos = glob_pos(target_node)
 		transforms[index] = Transform2D(rot, pos)
 	else:
-		#print(body)
-		#print(get_node(body))
-		#print(get_node(body).isFacingLeft())
 		var rotmin = deg2rad(node.rot_min_left if leftbody.isFacingLeft() else node.rot_min_right)
 		var rotmax = deg2rad(node.rot_max_left if leftbody.isFacingLeft() else node.rot_max_right)
-		#print(rotmin,",",rotmax)
 		var adj = transforms[index+1].get_origin() - glob_pos(node)
 		#adj.y/=.44
 		var rot = adj.angle()
@@ -78,10 +69,10 @@ func _calc_ik222(node, ik_node, target_node, parrot, index = 0):
 		parrot = parrot + rotation_offsets[index]
 		rot = rot-parrot
 		#if (rot<)
-		while rotmin+rotmax>rot+PI:
+		while (rotmin+rotmax)/2>rot+PI:
 			rotmin-=2*PI
 			rotmax-=2*PI
-		while rotmin+rotmax<rot-PI:
+		while (rotmin+rotmax)/2<rot-PI:
 			rotmin+=2*PI
 			rotmax+=2*PI
 		
@@ -94,12 +85,8 @@ func _calc_ik222(node, ik_node, target_node, parrot, index = 0):
 
 func _apply_ik222(node, ik_node, index = 0):
 	if node != ik_node:
-		#print(body)
-		#print(get_node(body))
-		#print(get_node(body).isFacingLeft())
 		var rotmin = node.rot_min_left if leftbody.isFacingLeft() else node.rot_min_right
 		var rotmax = node.rot_max_left if leftbody.isFacingLeft() else node.rot_max_right
-		#print(rotmin,",",rotmax)
 		var rotation_to_apply = transforms[index].get_rotation() - rotation_offsets[index]
 
 		_apply_ik222(node.get_child(0), ik_node, index + 1)

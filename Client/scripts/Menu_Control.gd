@@ -33,12 +33,7 @@ func _ready():
 		active_corner = OS.get_environment("ACTIVECORNER")
 		desired_screen = OS.get_environment("DESIREDSCREEN")
 	
-	print("MULTI_USER_TESTING: " + str(multi_user_testing))
-	print("ACTIVE_CORNER: " + str(active_corner))
-	print("DESIRED_SCREEN: " + str(desired_screen))
-	
 	if str(multi_user_testing) == "TRUE":
-		print("in user testing!")
 		var screen = int(desired_screen)%int(OS.get_screen_count())
 		OS.set_current_screen(screen)
 		var windowdecoration = OS.get_real_window_size()-OS.window_size
@@ -47,16 +42,12 @@ func _ready():
 		
 		# Window splitting
 		if str(active_corner) == "1":
-			print("active_corner 1 activated")
 			OS.window_position = OS.get_screen_position(screen)+Vector2(0,0)
 		if str(active_corner) == "2":
-			print("active_corner 2 activated")
 			OS.window_position = OS.get_screen_position(screen)+Vector2(realwindowsize.x,0)
 		if str(active_corner) == "3":
-			print("active_corner 3 activated")
 			OS.window_position = OS.get_screen_position(screen)+Vector2(0,realwindowsize.y)
-		if str(active_corner) == "4":			
-			print("active_corner 4 activated")
+		if str(active_corner) == "4":
 			OS.window_position = OS.get_screen_position(screen)+realwindowsize
 
 		# $MUT_test_flow
@@ -71,7 +62,7 @@ func _on_Button_Exit_pressed():
 
 
 func _on_Button_Start_pressed():
-	print(get_node("/root/Server"))
+	pass
 	#get_tree().change_scene("res://minigames/isometric_test/World.tscn")
 
 func _on_Button_Settings_pressed():
@@ -92,4 +83,4 @@ func _on_Button_Join_Party_pressed():
 
 
 func _on_Button_Profile_pressed():
-	get_tree().change_scene("res://Menus/ProfileScreen/ProfileSettings.tscn")
+	get_tree().change_scene("res://Menus/Profile.tscn")

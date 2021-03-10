@@ -117,6 +117,7 @@ remote func join_party(var partyID):
 	if (joined_party.minigame != null && str(joined_party.code) != str(PartyHandler.invalid_party_id)):
 		print("Players: " + str(joined_party.playerIDs))
 		rpc_id(player_id,"setminigame",joined_party.minigame.systemname(),joined_party.minigame.name)
+		joined_party.minigame.add_player(partyHandler.player_objects.get(player_id))
 	else:
 		print("Party code invalid: " + str(partyID))
 

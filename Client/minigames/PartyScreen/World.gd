@@ -74,3 +74,12 @@ func _on_EnterGameButton_pressed():
 	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
 	generalserver.attemptEnterGame()
 	
+	
+	
+	
+	
+
+	
+	
+	
+	

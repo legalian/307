@@ -8,7 +8,7 @@ var sprite
 var viscontainer
 var posfix
 var flare
-var server
+var server = null
 
 func _ready():
 	set_process(true)
@@ -16,7 +16,7 @@ func _ready():
 	viscontainer = get_node("Visible")
 	posfix = get_node("PositionFix")
 	flare = get_node("PositionFix/Flare")
-	server = get_node("/root/Server").get_children()[0]
+	
 
 func _process(delta):
 	var glt = get_global_transform_with_canvas()
@@ -50,6 +50,7 @@ func _process(delta):
 	))
 
 func fire(var origpl,var targetpos):
+	if server==null: server = get_node("/root/Server").get_children()[0]
 	var b = Bullet.instance()
 	var parent = origpl.get_parent()
 	#b.transform = parent.global_transform.affine_inverse()*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
