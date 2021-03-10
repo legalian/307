@@ -162,11 +162,11 @@ func matchmake_pool():
 	for party in matchmaking_pool: # Go through the entire pool
 		# The pool consists of parties in lobbies and also not in lobbies.
 		var lobby_code = party.lobby_code
-		if (lobby_code == "defaultCode"):
+		if (str(lobby_code) == "defaultCode"):
 			# Party is not added to a lobby.
 			lobby_code = lobbyHandler.add_to_lobby(party)
 		
-		if (lobby_code != null && lobby_code != "defaultCode"):
+		if (lobby_code != null && str(lobby_code) != "defaultCode"):
 			matchmaking_pool.erase(party)
 			# Start the game!
 			var lobby = lobbyHandler.get_lobby(lobby_code)
