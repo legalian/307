@@ -75,11 +75,5 @@ func _on_EnterGameButton_pressed():
 	generalserver.attemptEnterGame()
 	
 	
-	
-	
-	
-
-	
-	
-	
-	
+func _on_Button_CopyCode_pressed():
+	OS.set_clipboard($PartyCode.text)
