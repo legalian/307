@@ -22,9 +22,17 @@ func _process(_delta):
 		_close_player_list()
 		pressed = false
 
+func sort_by_score(var playerA, var playerB):
+	return (playerA.score > playerB.score)
+
 func _open_player_list():
 	if (!pressed): # First press
 		var scores = generalserver.players
+		
+		scores.sort_custom(self, "sort_by_score")
+		
+		# Add player IDs and their scores into the dictionary
+		
 		print("SCOREBOARD ARRAY SIZE: " + str(scores.size()))
 		
 		player_list.add_scoreboard(scores) # Add the data
