@@ -1,4 +1,4 @@
-extends ProgressBar
+extends CenterContainer
 
 
 # Declare member variables here. Examples:

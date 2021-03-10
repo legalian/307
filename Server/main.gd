@@ -11,16 +11,16 @@ var max_players = 3000
 var party_screen = preload("res://PartyScreen/World.tscn")
 
 # Lobby Management Variables ###################################################
-
-const LobbyHandler=preload("res://LobbyHandler.gd")
+var LobbyHandler=load("res://LobbyHandler.gd")
 var lobbyHandler
 
 var matchmaking_pool=[] # This is used as a queue
-
+	
 func _ready():
 	StartServer()
-	
+
 func StartServer():
+	
 	partyHandler = PartyHandler.new()
 	
 	# Create lobby handler
@@ -59,30 +59,43 @@ func reassign_party_to_minigame(var party,var minigame):
 		print("Attempted to queue_free() null minigame")
 	party.minigame = minigame
 
+func get_pool_size():
+	var size = 0
+	for party in matchmaking_pool:
+		size += party.playerIDs.size()
+	
+	return size
+
 remote func party_ready():
 	var party = partyHandler.get_party_by_player(get_tree().get_rpc_sender_id())
 	if party!=null:
-		var lobby_code = matchmake(party)
-		
-		if (lobby_code == null):
-			print("Matchmaking failed")
-			print("lobby_code = NULL @@ party_ready()")
+		if (party.playerIDs.size() <= 0):
+			print("Party doesn't have any players!")
 			return
 		
-		var lobby = lobbyHandler.get_lobby(lobby_code)
-		
-		if (lobby == null):
-			print("Lobby not created properly")
-			print("lobby_code = " + lobby_code)
-			print("lobby = null @@ party_ready()")
-		
+		matchmaking_pool.append(party)
+		var lobby_code = lobbyHandler.add_to_lobby(party)
 		debug_print_lobbies()
-		
-		reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
-		# No need to return anything; reassign_party_to_minigame will call the client
+		debug_print_matchmaking_pool()
+		if (lobby_code != null):
+			matchmaking_pool.erase(party)
+			print("\n\n\nGAME STARTING\n\n\n")
+			debug_print_lobbies()
+			debug_print_matchmaking_pool()
+			# Start the game!
+			var lobby = lobbyHandler.get_lobby(lobby_code)
+			var minigame = make_new_minigame(lobby.get_current_minigame())
+			for parties in lobby.get_parties():
+				matchmaking_pool.erase(parties)
+				reassign_party_to_minigame(parties, minigame)
+		# The party should be removed from matchmaking pool within lobbyHandler.
+		# We don't call reassign here. We'll call it from within the lobby.
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
+		
+		debug_print_lobbies()
+		debug_print_matchmaking_pool()
 
 remote func create_party():
 	var player_id = get_tree().get_rpc_sender_id()
@@ -111,6 +124,19 @@ remote func join_party(var partyID):
 func send_party_code_to_client(var clientID, var partyID):
 	rpc_id(clientID, "receive_party_code", partyID)
 
+remote func go_to_next_minigame():
+	var player_id = get_tree().get_rpc_sender_id()
+	var party = partyHandler.get_party_by_player(player_id)
+	var lobby = lobbyHandler.get_lobby(party.lobby_code)
+	
+	if (lobby.go_to_next_minigame() != null):
+		# There were no errors
+		var minigame = make_new_minigame(lobby.get_current_minigame())
+		for parties in lobby.get_parties():
+			reassign_party_to_minigame(parties, minigame)
+	
+	print("\n\n Go To Next Minigame failed!\n\n")
+
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
 		
@@ -132,102 +158,35 @@ func _Peer_Disconnected(player_id):
 	
 	print("User " + str(player_id) + " disconnected.")	
 
-###############################################################################
-# @desc
-# This function can be called by going through party_ready(). This should be done
-# for solo queue as well as party queue.
-#
-# @param
-# party:		This a Party object that has the playerIDs filled out.
-#
-# @returns
-# lobby_id:		This will contain the id of either a new lobby or existing
-#				lobby. The Lobby object will be stored inside LobbyHandler.gd,
-#				and can be accessed via LobbyHandler.get_lobby(lobby_id), which
-#				returns a Lobby.gd object. 
-###############################################################################
-var test_bool = true
-# Use this boolean to simulate matchmaking failing.
-func matchmake(var party):
-	print("\n\n" + str(party.playerIDs.size()) + " player(s) have requested to matchmake.\n")
-	print("Here are the players that have requested to matchmake under party " + str(party.code) + ":")
-	for playerID in party.playerIDs:
-		print("\tPlayerID:" + str(playerID) + "\n")
-	
-	# Check if party list size is less than 0.
-	if (party.playerIDs.size() <= 0):
-		print("FATAL ERROR @@ REMOTE FUNC MATCHMAKE(PARTY_SIZE): party_size is <= 0")
-		return null
-	
-	print("Added Party " + str(party.code) + " to the matchmaking pool")
-	matchmaking_pool.append(party)
-	debug_print_matchmaking_pool()
-
-	if (test_bool):
-		print("Test bool detected! FORCIBLY RETURNING NULL ON MATCHMAKING")
-		test_bool = false
-		return
-	
-	print("Processing party! Attempting to add to lobby")
-	# Try to send them to a lobby and get the code
-	var lobby_code = lobbyHandler.add_to_lobby(party)
-	
-	# Trying to check for cstatus here will not work.
-	
-	if (lobby_code != null): # We've gotten a lobby
-		matchmaking_pool.remove(matchmaking_pool.find(party))
-		print("Set lobby code " + str(lobby_code) + " to party " + str(party.code))
-		party.lobby_code = lobby_code
-		debug_print_matchmaking_pool()
-		return lobby_code
-	
-	debug_print_matchmaking_pool()
-	return null
-
-################################################################################
-# @desc
-# Goes through the entire pool and tries to get as many players into lobbies
-# as possible. First come first serve.
-# This should be called whenever a party disconnects.
-################################################################################
-
 func matchmake_pool():
 	print("Attempting to matchmake as many players in the pool as possible")
+	var ret
 	for party in matchmaking_pool: # Go through the entire pool
 		var lobby_code = lobbyHandler.add_to_lobby(party)
-		
-		if (lobby_code == null):
-			print("Matchmaking Pool failed")
-			print("lobby_code = NULL @@ matchmake_pool()")
-			debug_print_matchmaking_pool()
-			continue
-		
-		var lobby = lobbyHandler.get_lobby(lobby_code)
-		
-		if (lobby == null):
-			print("Matchmaking Pool lobby not created properly")
-			print("lobby code = " + str(lobby_code))
-			print("lobby = NULL @@ matchmake_pool()")
-			debug_print_matchmaking_pool()
-			continue
-		
-		# we have a valid party!
-		matchmaking_pool.remove(matchmaking_pool.find(party))
-		reassign_party_to_minigame(party, make_new_minigame(lobby.get_current_minigame()))
-		debug_print_matchmaking_pool()
-	return
+		if (lobby_code != null):
+			matchmaking_pool.erase(party)
+			# Start the game!
+			var lobby = lobbyHandler.get_lobby(lobby_code)
+			var minigame = make_new_minigame(lobby.get_current_minigame())
+			for parties in lobby.get_parties():
+				matchmaking_pool.erase(parties)
+				reassign_party_to_minigame(parties, minigame)
+		# Adding will automatically try to start the minigame.
 	
-################################################################################
-# @desc
-# Removes a party from the matchmaking pool. If called while matchmake_pool()
-# has found a lobby, matchmake_pool() will override this, and the party
-# will be forced into the game.
-################################################################################
 remote func cancel_matchmaking():
 	var playerID = get_tree().get_rpc_sender_id()
 	var party = partyHandler.get_party_by_player(playerID)
 	
-	matchmaking_pool.remove(matchmaking_pool.find(party))
+	# There are two places the player can be in: the pool, or an unstarted lobby.
+	# We want to remove from the pool,
+	# or remove from the lobby; but do not remove from party.
+	matchmaking_pool.erase(party)
+	print("      Removing party from lobby")
+	lobbyHandler.remove_from_lobby(party)
+	
+	# Here, we DON'T want to iterate through the lobby and disconnect everyone else.
+	
+	debug_print_lobbies()
 	debug_print_matchmaking_pool()
 
 func debug_print_matchmaking_pool():
