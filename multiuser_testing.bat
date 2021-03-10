@@ -1,14 +1,20 @@
+@echo off
+echo This script can take a while, please wait...
 
+echo Finding Godot.exe
 pushd \
 for /f "tokens=*" %%i in ('dir /b /s Godot_v3.2.3-stable_win64.exe') do set GODOT_PATH=%%i
-echo %GODOT_PATH%
 popd
 
+echo Starting Server instance
 cd Server
 START "SERVER" "%GODOT_PATH%"
 cd ..
+
+echo Waiting for Server to launch
 timeout /t 2 /nobreak
 
+echo Starting Client instances
 cd Client
 START "CLIENT 1 - TOP LEFT" "%GODOT_PATH%" -MULTI_USER_TESTING=TRUE -DESIREDSCREEN=1 -ACTIVECORNER=1
 START "CLIENT 2 - TOP RIGHT" "%GODOT_PATH%" -MULTI_USER_TESTING=TRUE -DESIREDSCREEN=1 -ACTIVECORNER=2
