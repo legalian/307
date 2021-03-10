@@ -3,10 +3,11 @@ extends Node
 var lobby_code
 var parties = []
 
-var minigame_list = [preload("res://BattleRoyale/World.tscn")]
+var minigame_list = [preload("res://BattleRoyale/World.tscn"),
+					 preload("res://RacingGame/World.tscn")]
 var minigame_order = []
 
-var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!
+var minigames_per_match = 2 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
 
 var can_start = false
@@ -62,6 +63,16 @@ func add_party(var party):
 	return false
 
 func scramble_minigames():
+	print("\n\n\n\n\n\nEntered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
+	print("Entered minigame scrambling")
 	print("Entered minigame scrambling")
 	while (minigame_order.size() != minigames_per_match):
 		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
@@ -80,7 +91,9 @@ func go_to_next_minigame():
 	if (current_minigame >= minigame_order.size()):
 		print("FATAL ERROR @@ FUNC GET_NEXT_MINIGAME(): trying to get next" + 
 			  "minigame despite having finished all minigames")
-		return null
+		return false
+	
+	return true
 
 func remove_party(var in_party):
 	

@@ -111,18 +111,17 @@ remote func join_party(var partyID):
 func send_party_code_to_client(var clientID, var partyID):
 	rpc_id(clientID, "receive_party_code", partyID)
 
-remote func go_to_next_minigame():
-	var player_id = get_tree().get_rpc_sender_id()
+func go_to_next_minigame(var player_id):
 	var party = partyHandler.get_party_by_player(player_id)
 	var lobby = lobbyHandler.get_lobby(party.lobby_code)
 	
-	if (lobby.go_to_next_minigame() != null):
+	if (lobby.go_to_next_minigame()):
 		# There were no errors
 		var minigame = make_new_minigame(lobby.get_current_minigame())
 		for parties in lobby.get_parties():
 			reassign_party_to_minigame(parties, minigame)
-	
-	print("\n\n Go To Next Minigame failed!\n\n")
+	else:
+		print("\n\n Go To Next Minigame failed!\n\n")
 
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)

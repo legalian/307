@@ -46,7 +46,6 @@ remote func reducescore(amt):
 func _ready():
 	print("minigame has been created.")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
