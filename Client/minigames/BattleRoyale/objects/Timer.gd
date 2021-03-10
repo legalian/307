@@ -8,10 +8,12 @@ var timer
 
 # Called when the node enters the scene tree for the first time.
 func _on_timer_timeout():
-	
+	get_parent().get_parent().current = false;
+	get_parent().get_parent().get_parent().spawnRandom();
 	
 func _ready():
 	timer = Timer.new()
+	timer.one_shot = true;
 	timer.connect("timeout",self,"_on_timer_timeout")
 	add_child(timer)
 	timer.start(5);
@@ -19,4 +21,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	self.text = timer.left(1);
+	self.text = str(timer.time_left).left(1);

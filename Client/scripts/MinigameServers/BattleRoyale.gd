@@ -15,8 +15,8 @@ func _ready():
 func shoot(package):
 	rpc_id(1,"shoot",package)
 
-func spawn():
-	rpc_id(1,"spawn",0,0)
+func spawn(x, y):
+	rpc_id(1,"spawn",x,y)
 
 func syncUpdate():
 	if gameinstance==null: return

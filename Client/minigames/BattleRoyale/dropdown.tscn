@@ -1,3 +1,29 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://minigames/BattleRoyale/objects/Timer.gd" type="Script" id=1]
+[ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://minigames/BattleRoyale/dropdown.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="camera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 12, 12 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="camera"]
+
+[node name="Timer" type="Label" parent="camera/CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+text = "5"
+align = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
