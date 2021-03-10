@@ -8,14 +8,15 @@ func _ready():
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "syncUpdate")
-	_timer.set_wait_time(0.1)#10 rpc updates per second
+	_timer.set_wait_time(0.02)#50 rpc updates per second
 	_timer.set_one_shot(false) # Make sure it loops
 	_timer.start()
 
 func syncUpdate():
 	if gameinstance==null: return
 	if players[0].playerID in gameinstance.players:
-		rpc_unreliable_id(1,"syncUpdate",gameinstance.players[players[0].playerID].input_vector)
+		var p = gameinstance.players[players[0].playerID]
+		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_vector, "progress": p.lap + p.checkpoint})
 
 remote func frameUpdate(s_players):
 	if gameinstance==null:
