@@ -11,14 +11,14 @@ var server = null
 func _ready():
 	world = get_node("World")
 	minigame = "BATTLEROYALE"
+	camera = get_node("World/dropdown/camera");
 
+	
+	
 func _process(delta):
 	if get_node("/root/Server").get_children().size()>0:
 		server = get_node("/root/Server").get_children()[0]
 	if server==null: return
-	if server.clientstatus == "UNSPAWNED":
-		server.clientstatus = "ATTEMPTINGSPAWN"
-		server.spawn()
 	if camera==null:
 		var player = get_node_or_null("World/Player")
 		if player==null: return
