@@ -66,10 +66,10 @@ tracks/0/keys = {
 script = ExtResource( 4 )
 
 [node name="Button_Back" type="Button" parent="."]
-margin_left = 75.3504
-margin_top = 485.954
-margin_right = 278.35
-margin_bottom = 558.954
+margin_left = 71.3459
+margin_top = 471.271
+margin_right = 274.345
+margin_bottom = 544.271
 rect_pivot_offset = Vector2( 159.38, 30.3461 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
@@ -79,6 +79,7 @@ __meta__ = {
 }
 
 [node name="Button_ConfirmUsername" type="Button" parent="."]
+visible = false
 margin_left = 458.018
 margin_top = 389.719
 margin_right = 644.018
@@ -92,6 +93,7 @@ __meta__ = {
 }
 
 [node name="Button_ChooseCharacter" type="Button" parent="."]
+visible = false
 margin_left = 79.5916
 margin_top = 389.719
 margin_right = 265.592
@@ -106,9 +108,9 @@ __meta__ = {
 
 [node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="."]
 margin_left = 413.0
-margin_top = 22.0
+margin_top = 22.6674
 margin_right = 721.0
-margin_bottom = 99.0
+margin_bottom = 99.6674
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 text = "Party screen"
@@ -117,10 +119,10 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 709.152
-margin_top = 520.479
-margin_right = 1001.15
-margin_bottom = 564.479
+margin_left = 708.484
+margin_top = 501.124
+margin_right = 1000.48
+margin_bottom = 545.124
 theme = ExtResource( 3 )
 text = "debug: remove score"
 __meta__ = {
@@ -128,10 +130,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 755.685
-margin_top = 448.756
-margin_right = 995.685
-margin_bottom = 492.756
+margin_left = 761.024
+margin_top = 443.417
+margin_right = 1001.02
+margin_bottom = 487.417
 theme = ExtResource( 3 )
 text = "debug: add score"
 __meta__ = {
@@ -139,6 +141,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 500.0
 margin_top = 274.0
 margin_right = 583.0
@@ -150,6 +153,7 @@ __meta__ = {
 }
 
 [node name="CurrentName" type="Label" parent="."]
+visible = false
 margin_left = 412.665
 margin_top = 297.665
 margin_right = 670.665
@@ -162,6 +166,7 @@ __meta__ = {
 }
 
 [node name="CurrentAvatar" type="Label" parent="."]
+visible = false
 margin_left = 42.0
 margin_top = 360.0
 margin_right = 300.0
@@ -174,6 +179,7 @@ __meta__ = {
 }
 
 [node name="UsernameInput" type="LineEdit" parent="."]
+visible = false
 margin_left = 352.256
 margin_top = 329.0
 margin_right = 755.256
@@ -197,7 +203,7 @@ __meta__ = {
 }
 
 [node name="Raccoon" parent="." instance=ExtResource( 2 )]
-position = Vector2( 167.902, 346.28 )
+position = Vector2( 169.237, 378.983 )
 
 [node name="Avatar Menu" type="Control" parent="."]
 visible = false
@@ -248,10 +254,10 @@ __meta__ = {
 }
 
 [node name="EnterGameButton" type="Button" parent="."]
-margin_left = 468.646
-margin_top = 493.204
-margin_right = 627.646
-margin_bottom = 537.204
+margin_left = 446.621
+margin_top = 361.055
+margin_right = 605.621
+margin_bottom = 405.055
 theme = ExtResource( 3 )
 text = "Enter game"
 __meta__ = {
@@ -259,10 +265,10 @@ __meta__ = {
 }
 
 [node name="PartyCodeLabel" type="Label" parent="."]
-margin_left = 330.508
-margin_top = 164.742
-margin_right = 401.508
-margin_bottom = 178.742
+margin_left = 340.519
+margin_top = 291.552
+margin_right = 411.519
+margin_bottom = 305.552
 rect_scale = Vector2( 2.71146, 2.91496 )
 text = "Party code:"
 __meta__ = {
@@ -270,10 +276,10 @@ __meta__ = {
 }
 
 [node name="PartyCode" type="Label" parent="."]
-margin_left = 535.157
-margin_top = 163.719
-margin_right = 599.157
-margin_bottom = 177.719
+margin_left = 545.168
+margin_top = 290.529
+margin_right = 609.168
+margin_bottom = 304.529
 rect_scale = Vector2( 3.00754, 2.93724 )
 text = "undefined"
 __meta__ = {

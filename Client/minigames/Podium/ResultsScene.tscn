@@ -1,0 +1,317 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://minigames/Podium/ResultsScene.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+margin_left = 260.0
+margin_top = 569.0
+margin_right = 858.0
+margin_bottom = 608.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+margin_left = 249.0
+margin_top = 585.0
+margin_right = 869.0
+margin_bottom = 609.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Place1" type="Control" parent="."]
+margin_left = 430.0
+margin_right = 666.0
+margin_bottom = 615.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raccoon" parent="Place1" instance=ExtResource( 1 )]
+position = Vector2( 130.904, 346.347 )
+
+[node name="ColorRect" type="ColorRect" parent="Place1"]
+margin_left = 50.0
+margin_top = 362.0
+margin_right = 212.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Place1"]
+margin_left = 85.0
+margin_top = 362.0
+margin_right = 177.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="Place1"]
+margin_left = 85.0
+margin_top = 371.0
+margin_right = 177.0
+margin_bottom = 389.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.6, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Place1"]
+margin_left = 39.0
+margin_top = 358.0
+margin_right = 222.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Place1"]
+margin_left = 65.0
+margin_top = 358.0
+margin_right = 197.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.615686, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="RichTextLabel" parent="Place1"]
+margin_left = -4.5
+margin_top = 162.5
+margin_right = 265.5
+margin_bottom = 203.5
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Username[/center]"
+text = "Username"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PodiumNumber" type="RichTextLabel" parent="Place1"]
+margin_left = 102.0
+margin_top = 390.0
+margin_right = 165.0
+margin_bottom = 433.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#000000]1st![/color]"
+text = "1st!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Place2" type="Control" parent="."]
+margin_left = 233.5
+margin_top = 80.5
+margin_right = 469.5
+margin_bottom = 695.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raccoon" parent="Place2" instance=ExtResource( 1 )]
+position = Vector2( 130.904, 346.347 )
+
+[node name="ColorRect" type="ColorRect" parent="Place2"]
+margin_left = 50.0
+margin_top = 362.0
+margin_right = 212.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Place2"]
+margin_left = 85.0
+margin_top = 362.0
+margin_right = 177.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="Place2"]
+margin_left = 85.0
+margin_top = 371.0
+margin_right = 177.0
+margin_bottom = 389.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.6, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Place2"]
+margin_left = 39.0
+margin_top = 358.0
+margin_right = 222.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Place2"]
+margin_left = 65.0
+margin_top = 358.0
+margin_right = 197.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.615686, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="RichTextLabel" parent="Place2"]
+margin_left = -8.0
+margin_top = 163.0
+margin_right = 262.0
+margin_bottom = 204.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Username[/center]"
+text = "Username"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PodiumNumber" type="RichTextLabel" parent="Place2"]
+margin_left = 92.5
+margin_top = 391.5
+margin_right = 172.5
+margin_bottom = 438.5
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#000000]2nd![/color]"
+text = "2nd!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Place3" type="Control" parent="."]
+margin_left = 623.059
+margin_top = 136.024
+margin_right = 859.059
+margin_bottom = 751.024
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raccoon" parent="Place3" instance=ExtResource( 1 )]
+position = Vector2( 130.904, 346.347 )
+
+[node name="ColorRect" type="ColorRect" parent="Place3"]
+margin_left = 50.0
+margin_top = 362.0
+margin_right = 212.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Place3"]
+margin_left = 85.0
+margin_top = 362.0
+margin_right = 177.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="Place3"]
+margin_left = 85.0
+margin_top = 371.0
+margin_right = 177.0
+margin_bottom = 389.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.6, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Place3"]
+margin_left = 39.0
+margin_top = 358.0
+margin_right = 222.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Place3"]
+margin_left = 65.0
+margin_top = 358.0
+margin_right = 197.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.615686, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="RichTextLabel" parent="Place3"]
+margin_left = -5.5
+margin_top = 164.5
+margin_right = 264.5
+margin_bottom = 205.5
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Username[/center]"
+text = "Username"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PodiumNumber" type="RichTextLabel" parent="Place3"]
+margin_left = 97.0
+margin_top = 397.0
+margin_right = 166.0
+margin_bottom = 444.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#000000]3rd![/color]"
+text = "3rd!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
