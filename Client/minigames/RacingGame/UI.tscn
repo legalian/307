@@ -41,11 +41,11 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 margin_right = 1024.0
-margin_bottom = 610.0
+margin_bottom = 609.0
 
 [node name="Left side" type="VBoxContainer" parent="UI/HBoxContainer"]
 margin_right = 820.0
-margin_bottom = 610.0
+margin_bottom = 609.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -55,17 +55,17 @@ __meta__ = {
 [node name="Right side" type="VBoxContainer" parent="UI/HBoxContainer"]
 margin_left = 824.0
 margin_right = 1024.0
-margin_bottom = 610.0
+margin_bottom = 609.0
 
 [node name="Laps" type="MarginContainer" parent="UI/HBoxContainer/Right side"]
 margin_right = 200.0
-margin_bottom = 100.0
+margin_bottom = 505.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/HBoxContainer/Right side/Laps"]
 margin_right = 200.0
-margin_bottom = 100.0
+margin_bottom = 505.0
 rect_min_size = Vector2( 200, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -89,9 +89,9 @@ __meta__ = {
 }
 
 [node name="Position" type="MarginContainer" parent="UI/HBoxContainer/Right side"]
-margin_top = 510.0
+margin_top = 509.0
 margin_right = 200.0
-margin_bottom = 610.0
+margin_bottom = 609.0
 
 [node name="Background" type="NinePatchRect" parent="UI/HBoxContainer/Right side/Position"]
 margin_right = 200.0
