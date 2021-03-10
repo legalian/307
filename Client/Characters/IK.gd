@@ -36,7 +36,7 @@ func set_glob_rot(node,rot):
 		node.get_parent().get_global_transform_with_canvas().affine_inverse()
 	).get_rotation()
 
-func _process(delta):
+func _process(_delta):
 	var target = get_node(targetpath)
 	var ik_node = get_node(ikpath)
 

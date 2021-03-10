@@ -72,15 +72,11 @@ func _on_Button_Settings_pressed():
 
 func _on_Button_Create_Party_pressed():
 	var server = get_node("/root/Server")
-	var code = server.createParty()
+	server.createParty()
 
 func _on_Button_Join_Party_pressed():
-	var player_id = get_tree().get_rpc_sender_id()
 	var server = get_node("/root/Server")
-	print("Joining with code: " + get_node("PartyCodeTextEdit").text)
 	server.join_party(get_node("PartyCodeTextEdit").text)
-	print("Join party button pressed")
-
 
 func _on_Button_Profile_pressed():
-	get_tree().change_scene("res://Menus/Profile.tscn")
+	var _success = get_tree().change_scene("res://Menus/Profile.tscn")

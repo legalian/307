@@ -18,7 +18,7 @@ func _ready():
 	playback.start('WalkCycle')
 
 
-func _process(delta):
+func _process(_delta):
 	var glt = get_global_transform_with_canvas()
 	glt.origin = Vector2(0,0)
 	get_node("Char").transform = glt.affine_inverse()

@@ -14,7 +14,7 @@ func _ready():
 	
 	pressed = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("scoreboard"): #tab
 		_open_player_list()
 		pressed = true

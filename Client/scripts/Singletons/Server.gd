@@ -52,7 +52,7 @@ remote func setminigame(systemname,lobbyname):
 	instance.name = lobbyname
 	print("created associate node: ",lobbyname," ",instance.name)
 	add_child(instance,true)
-	get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
+	var _success = get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
 
 remote func receive_party_code(var recPartyID):
 	print("Party created - code: " + str(recPartyID))

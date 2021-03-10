@@ -18,7 +18,7 @@ func _ready():
 	flare = get_node("PositionFix/Flare")
 	
 
-func _process(delta):
+func _process(_delta):
 	var glt = get_global_transform_with_canvas()
 	var mobo = glt.get_rotation()
 	if mobo>PI: mobo-=2*PI

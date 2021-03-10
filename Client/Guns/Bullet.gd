@@ -32,7 +32,7 @@ func _ready():
 	velocity = Vector2(-speed, 0).rotated(rotation)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var gt = get_global_transform_with_canvas()
 	gt.origin = Vector2(0,0)
 	var trot = gt.get_rotation()#.scaled(Vector2(1,.44))
