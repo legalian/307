@@ -107,7 +107,7 @@ remote func update_radius(var rad: float):
 	
 remote func update_health_bar(var health: float):
 	if gameinstance == null: return
-	gameinstance.get_node("World/Player").get_node("HealthBar").set_value(health*100)
+	gameinstance.get_node("World/Player").get_node("HUD/HealthBar").set_value(health*100)
 	
 	
 func showlose():

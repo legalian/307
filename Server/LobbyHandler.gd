@@ -93,7 +93,6 @@ func add_to_lobby(var party):
 			return fresh_lobby_code
 	
 	# New lobby was not created successfully; too many lobbies
-	# we DO NOT remove from the pool
 	return null
 	
 
