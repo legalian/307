@@ -15,6 +15,10 @@ var LobbyHandler=load("res://LobbyHandler.gd")
 var lobbyHandler
 
 var matchmaking_pool=[] # This is used as a queue
+# Matchmaking pool contains parties that are added to lobbies and not added as well.
+# Parties which are added to lobbies just need to be started. When they are, they will be removed
+# From the matchmaking pool.
+# Parties which are not added to lobbies will be added when calling matchmaking_pool.
 	
 func _ready():
 	StartServer()
@@ -73,14 +77,17 @@ remote func party_ready():
 		if (lobby_code != null):
 			matchmaking_pool.erase(party)
 			print("\n\n\nGAME STARTING\n\n\n")
-			debug_print_lobbies()
-			debug_print_matchmaking_pool()
 			# Start the game!
+			# Iterate through the unstarted lobby and clear them from the pool,
+			# and also assign the minigame.
 			var lobby = lobbyHandler.get_lobby(lobby_code)
 			var minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
 				matchmaking_pool.erase(parties)
 				reassign_party_to_minigame(parties, minigame)
+			
+			debug_print_lobbies()
+			debug_print_matchmaking_pool()
 	else:
 		print("Attempted to mark a party as ready that does not exist.")
 		print("Player code: ",get_tree().get_rpc_sender_id())
@@ -153,8 +160,13 @@ func matchmake_pool():
 	print("Attempting to matchmake as many players in the pool as possible")
 	var ret
 	for party in matchmaking_pool: # Go through the entire pool
-		var lobby_code = lobbyHandler.add_to_lobby(party)
-		if (lobby_code != null):
+		# The pool consists of parties in lobbies and also not in lobbies.
+		var lobby_code = party.lobby_code
+		if (lobby_code == "defaultCode"):
+			# Party is not added to a lobby.
+			lobby_code = lobbyHandler.add_to_lobby(party)
+		
+		if (lobby_code != null && lobby_code != "defaultCode"):
 			matchmaking_pool.erase(party)
 			# Start the game!
 			var lobby = lobbyHandler.get_lobby(lobby_code)
@@ -162,6 +174,9 @@ func matchmake_pool():
 			for parties in lobby.get_parties():
 				matchmaking_pool.erase(parties)
 				reassign_party_to_minigame(parties, minigame)
+
+	debug_print_lobbies()
+	debug_print_matchmaking_pool()
 	
 remote func cancel_matchmaking():
 	var playerID = get_tree().get_rpc_sender_id()
