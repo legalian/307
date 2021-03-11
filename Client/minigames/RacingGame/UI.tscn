@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
 [ext_resource path="res://minigames/RacingGame/UIobjects/numPlayers.gd" type="Script" id=3]
 [ext_resource path="res://minigames/RacingGame/UIobjects/laps.gd" type="Script" id=4]
+[ext_resource path="res://minigames/RacingGame/racingScoreboard.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -23,6 +24,8 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="scoreboard" parent="." instance=ExtResource( 5 )]
 
 [node name="laps" type="Label" parent="."]
 anchor_left = 1.0
