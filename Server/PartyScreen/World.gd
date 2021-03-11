@@ -3,13 +3,6 @@ func systemname():
 	return "PartyScreen"
 
 
-func add_player(newplayer):
-	for player in players:
-		rpc_id(player.playerID,"add_player",newplayer.pack())
-		rpc_id(newplayer.playerID,"add_player",player.pack())
-	players.append(newplayer)
-	print("player has been added to PartyScreen.")
-
 remote func setusername(name):
 	var player_id = get_tree().get_rpc_sender_id()
 	get_player(player_id).username = name

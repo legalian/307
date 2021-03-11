@@ -95,11 +95,11 @@ func remove_party(var in_party):
 func get_parties():
 	return parties
 	
-func get_players():
+func get_player_ids():
 	var players = []
 	for party in parties:
-		players.append(party)
-	
+		for player_id in party.playerIDs:
+			players.append(player_id)
 	return players
 
 func get_occupied():

@@ -13,3 +13,11 @@ func _init(var packed):
 	score = packed.get('score',0)
 	hat = packed.get('hat',"None")
 	#defaults here must match defaults in server PartyPlayer.gd.
+	
+func unpack(packed):
+	playerID = packed['id']
+	username = packed['username']
+	avatar = packed['avatar']
+	score = packed['score']
+	hat = packed['hat']
+	

@@ -65,6 +65,3 @@ __meta__ = {
 
 [node name="ScoreBoard" parent="HUD/CenterContainer" instance=ExtResource( 5 )]
 position = Vector2( 11.1904, -1.96066 )
-
-[node name="MapOverlay" type="CanvasLayer" parent="HUD"]
-follow_viewport_enable = true

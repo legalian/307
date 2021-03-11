@@ -7,15 +7,10 @@ func player_count():
 
 func add_player(newplayer):
 	players.append(newplayer)
-	print("player has been added to minigame.")
 	
-
 func remove_player(player_id):
 	for i in range(players.size()-1,-1,-1):
 		if players[i].playerID==player_id: players.remove(i)
-		else:
-			rpc_id(players[i].playerID,"drop_player",player_id)
-	print("player has been removed from minigame.")
 
 func get_player(player_id):
 	for player in players:

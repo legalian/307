@@ -60,3 +60,24 @@ remote func receive_party_code(var recPartyID):
 	var node = get_tree().get_root().get_node_or_null("root/Node2D/PartyCode")
 	if node!=null: node.text = str(recPartyID)
 	
+
+
+
+
+
+func get_player(player_id):
+	for player in players:
+		if player.playerID==player_id: return player
+
+remote func add_players(packed):
+	for p in packed:
+		var pl = get_player(p['id'])
+		if pl!=null: pl.unpack(p)
+		else: players.append(Player.new(p))
+
+remote func drop_player(player_id):
+	for i in range(players.size()-1,-1,-1):
+		if players[i].playerID==player_id: players.remove(i)
+
+
+

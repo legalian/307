@@ -7,8 +7,6 @@ func _ready():
 	rpc_id(1,'setavatar',players[0].avatar)
 	rpc_id(1,'sethat',players[0].hat)
 
-remote func add_player(packed):
-	players.append(Player.new(packed))
 
 remote func setusername(player_id,name):
 	get_player(player_id).username = name
