@@ -30,7 +30,8 @@ remote func frameUpdate(s_players):
 			gameinstance.players[s_player['id']].name = "Player_" + str(s_player['id'])
 			gameinstance.players[s_player['id']].unpack(s_player)
 			gameinstance.get_node("World").add_child(gameinstance.players[s_player['id']])
-			var nameNode = preload("res://minigames/RacingGame/objects/name.tscn").instance()
-			nameNode.TargetNode = gameinstance.players[s_player['id']];
-			gameinstance.get_node("World").add_child(nameNode)
+			#var nameNode = preload("res://minigames/RacingGame/objects/name.tscn").instance()
+			#removed name node for now
+			#nameNode.TargetNode = gameinstance.players[s_player['id']];
+			#gameinstance.get_node("World").add_child(nameNode)
 
