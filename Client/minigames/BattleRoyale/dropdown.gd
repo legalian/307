@@ -5,6 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+
 var spawned = false;
 
 func _spawnRandom():
@@ -24,6 +25,7 @@ func _ready():
 
 
 
+
 func _input(event):
 	if(!spawned):
 		if(event is InputEventMouseButton):
@@ -31,7 +33,6 @@ func _input(event):
 			var space_state = get_world_2d().direct_space_state
 			var collidingWith = space_state.intersect_point(pos);
 			if(collidingWith.empty() || collidingWith[0].shape == 0):
-				if(pos):
 					get_parent().get_parent().server.spawn(pos[0], pos[1]);
 					get_node("camera").current = false;
 					get_parent().get_parent().camera = null; 
