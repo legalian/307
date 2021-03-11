@@ -1,6 +1,6 @@
 [gd_scene load_steps=69 format=2]
 
-[ext_resource path="res://objects/tree.gd" type="Script" id=1]
+[ext_resource path="res://objects/rotatedObject.gd" type="Script" id=1]
 [ext_resource path="res://exported/foliage/tree_palm/diffuse.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -346,3 +346,6 @@ frames = SubResource( 65 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.68176, -13.4543 )
 shape = SubResource( 66 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 40, 40 )

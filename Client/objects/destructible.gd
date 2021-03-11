@@ -1,4 +1,4 @@
-extends "res://objects/object.gd"
+extends "res://objects/rotatedObject.gd"
 
 
 # Declare member variables here. Examples:
@@ -17,6 +17,6 @@ func _getHit(damage):
 	if (health <= 0) :
 		_die()
 func _die():
-	pass
+	get_parent().remove_child(self)
 	
 

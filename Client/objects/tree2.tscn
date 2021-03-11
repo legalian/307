@@ -1,6 +1,6 @@
 [gd_scene load_steps=68 format=2]
 
-[ext_resource path="res://objects/tree.gd" type="Script" id=1]
+[ext_resource path="res://objects/rotatedObject.gd" type="Script" id=1]
 [ext_resource path="res://exported/foliage/tree_fat/diffuse.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -337,5 +337,9 @@ script = ExtResource( 1 )
 [node name="Visible" type="Node2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
-position = Vector2( -1, 0 )
+position = Vector2( 3.66821, -132.577 )
 frames = SubResource( 65 )
+frame = 63
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 40, 40 )
