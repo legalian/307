@@ -9,13 +9,18 @@ var car = preload("res://RacingGame/racingCar.tscn")
 var spawn_positions = []
 
 var started = false
+var race_finished = false
 
 var ingame = {}
 
-class PlaceSorter:
-	static func sort_places(a, b):
-		if a[1] > b[1]:
+
+func sort_places(a, b):
+	if is_equal_approx(a[1], b[1]):
+		if a[2] < b[2]:
 			return true
+	elif a[1] > b[1]:
+		return true
+	else:
 		return false
 
 func add_player(newplayer):
@@ -79,8 +84,14 @@ remote func syncUpdate(package):
 
 func _process(delta):
 	var sort_array = []
+	var done = true
 	for ig in ingame.values():
-		sort_array.append([ig.id, ig.progress])
-	sort_array.sort_custom(PlaceSorter, "sort_places")
+		if ig.finished == false:
+			done = false
+		sort_array.append([ig.id, ig.progress, ig.finish_time])
+	sort_array.sort_custom(self, "sort_places")
 	for n in range(sort_array.size()):
 		ingame[sort_array[n][0]].place = n + 1
+		
+	if done:
+		print("Everyone finished the race!")

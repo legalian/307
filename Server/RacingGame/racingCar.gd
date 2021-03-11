@@ -8,6 +8,8 @@ var acceleration = 25
 var rotSpeed = 0.05
 var progress = 0.0
 var place = 1
+var finish_time = INF
+var finished = false
 
 var id
 var velocity = Vector2.ZERO
@@ -32,6 +34,9 @@ func _physics_process(delta):
 		rotation += input_vector.x * rotSpeed
 		speed += input_vector.y*acceleration
 	else:
+		if finished == false:
+			finish_time = OS.get_ticks_msec()
+			finished = true
 		speed = move_toward(speed, 0, 50)
 	
 	speed = clamp(speed, -maxSpeed, maxSpeed)
