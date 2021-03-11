@@ -93,5 +93,16 @@ func _process(delta):
 	for n in range(sort_array.size()):
 		ingame[sort_array[n][0]].place = n + 1
 		
-	if done:
+	if done and !race_finished:
 		print("Everyone finished the race!")
+		race_finished = true
+		
+		for p in players:
+			rpc_id(p.playerID, "endMatch")
+		
+		var end_match = Timer.new()
+		add_child(end_match)
+		end_match.connect("timeout", get_parent(), "go_to_next_minigame", [players[0].playerID])
+		end_match.set_wait_time(3)
+		end_match.set_one_shot(true)
+		end_match.start()

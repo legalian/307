@@ -35,3 +35,5 @@ remote func frameUpdate(s_players):
 			#nameNode.TargetNode = gameinstance.players[s_player['id']];
 			#gameinstance.get_node("World").add_child(nameNode)
 
+remote func endMatch():
+	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()
