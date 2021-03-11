@@ -27,9 +27,9 @@ func _SetScene():
 		currentPlacement = find_node("Place" + str(i))
 		currentPlacement.get_node("PlayerName").bbcode_text = "[center]" + TopPlayers[i-1].username + "[/center]"
 		currentPlacement.get_node("Avatar").set_Hat(HatLocation[TopPlayers[i-1].hat])
-	if (SelfPlayer != Playerlist[0] and  SelfPlayer != Playerlist[1] and SelfPlayer != Playerlist[2])
+	if (SelfPlayer != Playerlist[0] and  SelfPlayer != Playerlist[1] and SelfPlayer != Playerlist[2]):
 		find_node("CongratsText").hide()
-	else
+	else:
 		find_node("CongratsText").show()
 	
 
