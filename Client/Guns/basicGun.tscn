@@ -334,13 +334,13 @@ animations = [ {
 } ]
 
 [node name="Gun" type="Node2D"]
-rotation = -4.81129
+rotation = -4.39218
 script = ExtResource( 2 )
 sideoffset = 45
 
 [node name="Visible" type="Node2D" parent="."]
-position = Vector2( -0.513996, 44.3011 )
-rotation = -1.4719
+position = Vector2( 0.731098, 44.298 )
+rotation = -1.5
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
 position = Vector2( 0, -15 )
@@ -348,8 +348,9 @@ frames = SubResource( 65 )
 frame = 17
 
 [node name="PositionFix" type="Node2D" parent="."]
-position = Vector2( -11.7877, 94.963 )
-rotation = 5.21541e-08
+position = Vector2( -9.11449, 95.2568 )
+rotation = -2.23517e-08
+scale = Vector2( 1, 1 )
 script = ExtResource( 3 )
 hookX = -10.726
 hookY = 97.537
