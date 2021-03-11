@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,11 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=2]
 size = 35
 outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
 use_filter = true
 font_data = ExtResource( 2 )
 
@@ -46,7 +51,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Raccoon" parent="Place1" instance=ExtResource( 1 )]
+[node name="Avatar" parent="Place1" instance=ExtResource( 1 )]
 position = Vector2( 130.904, 346.347 )
 
 [node name="ColorRect" type="ColorRect" parent="Place1"]
@@ -139,7 +144,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Raccoon" parent="Place2" instance=ExtResource( 1 )]
+[node name="Avatar" parent="Place2" instance=ExtResource( 1 )]
 position = Vector2( 130.904, 346.347 )
 
 [node name="ColorRect" type="ColorRect" parent="Place2"]
@@ -232,7 +237,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Raccoon" parent="Place3" instance=ExtResource( 1 )]
+[node name="Avatar" parent="Place3" instance=ExtResource( 1 )]
 position = Vector2( 130.904, 346.347 )
 
 [node name="ColorRect" type="ColorRect" parent="Place3"]
@@ -311,6 +316,20 @@ custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[color=#000000]3rd![/color]"
 text = "3rd!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CongratsText" type="RichTextLabel" parent="."]
+margin_left = 336.189
+margin_top = 25.6432
+margin_right = 782.189
+margin_bottom = 118.643
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Congratulations[/rainbow][/wave]"
+text = "Congratulations"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
