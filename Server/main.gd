@@ -99,14 +99,17 @@ remote func create_party():
 remote func join_party(var partyID):
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Joining party")
-	var joined_party = partyHandler.join_party_by_id(player_id, partyID)
-	send_party_code_to_client(player_id, joined_party.code)
-	if (joined_party.minigame != null && str(joined_party.code) != str(PartyHandler.invalid_party_id)):
-		print("Players: " + str(joined_party.playerIDs))
-		rpc_id(player_id,"setminigame",joined_party.minigame.systemname(),joined_party.minigame.name)
-		joined_party.minigame.add_player(partyHandler.player_objects.get(player_id))
+	if (!partyHandler.parties[str(partyID)].in_game):
+		var joined_party = partyHandler.join_party_by_id(player_id, partyID)
+		send_party_code_to_client(player_id, joined_party.code)
+		if (joined_party.minigame != null && str(joined_party.code) != str(PartyHandler.invalid_party_id)):
+			print("Players: " + str(joined_party.playerIDs))
+			rpc_id(player_id,"setminigame",joined_party.minigame.systemname(),joined_party.minigame.name)
+			joined_party.minigame.add_player(partyHandler.player_objects.get(player_id))
+		else:
+			print("Party code invalid: " + str(partyID))
 	else:
-		print("Party code invalid: " + str(partyID))
+		print("Party is already in game.")
 
 func send_party_code_to_client(var clientID, var partyID):
 	rpc_id(clientID, "receive_party_code", partyID)
@@ -165,6 +168,7 @@ func matchmake_pool():
 			lobby.in_game = true
 			var minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
+				parties.in_game = true;
 				matchmaking_pool.erase(parties)
 				reassign_party_to_minigame(parties, minigame)
 
