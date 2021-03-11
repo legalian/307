@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://minigames/RacingGame/UIobjects/top3.gd" type="Script" id=7]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://minigames/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=9]
+[ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -33,6 +34,7 @@ font_data = ExtResource( 8 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
