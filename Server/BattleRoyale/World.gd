@@ -112,6 +112,8 @@ func _on_die(player):
 
 func crown_winner(playerID):
 	for oplayer in players: rpc_id(oplayer.playerID,"win",playerID)
+	print("WINNER CROWNED! GO TO NEXT MINIGAME")
+	get_parent().go_to_next_minigame(playerID)
 
 
 
