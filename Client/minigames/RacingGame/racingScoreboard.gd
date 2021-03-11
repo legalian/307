@@ -1,16 +1,23 @@
-extends Node2D
+extends Node
+
+onready var game = get_node("root");
+
+var player_list
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	set_process(true)
+	player_list = find_node("PlayerList")
+	self.visible = false;
+	
+func sort_by_place(var playerA, var playerB):
+	return (playerA.place < playerB.place)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _open_player_list():
+	var players = game.players.values();
+	players.sort_custom(self, "sort_by_place")
+	player_list.add_scoreboard(players) # Add the data
+	self.visible = true
+	
+func systemname():
+	return "ScoreBoard"
