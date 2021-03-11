@@ -1,9 +1,8 @@
 
 extends Sprite
 
-export (NodePath) var TargetPath
 
-onready var TargetNode = get_node(TargetPath)
+var TargetNode
 onready var StartOffset = self.transform.origin - TargetNode.transform.origin
 
 func _process(delta):
