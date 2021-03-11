@@ -10,7 +10,7 @@ func _ready():#this is called in cascasde so no worries about overriding
 
 func get_player(player_id):
 	for player in players:
-		if player.playerID==player_id: return player
+		if str(player.playerID) == str(player_id): return player
 
 func player_disconnected(player_id):
 	print("a peer has disconnected.")

@@ -1,12 +1,13 @@
 extends Label
 
-var server = get_node("/root/Server").get_children()[0]
+var server
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	server = get_node("/root/Server").get_children()[0]
 	var id = get_parent().TargetNode.id;
 	var carName = server.get_player(id).username;
 	self.text = carName;

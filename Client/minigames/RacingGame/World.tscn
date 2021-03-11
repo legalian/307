@@ -39,5 +39,5 @@ tile_data = PoolIntArray( -131099, 1610612739, 851968, -131098, 1610612739, 8519
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="World/TrackPath"]
-position = Vector2( -1229.36, 1790.98 )
-rotation = 1.56961
+position = Vector2( 1221.22, 1875.01 )
+rotation = 3.13801
