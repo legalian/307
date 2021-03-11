@@ -14,7 +14,6 @@ func _process(delta):
 	
 	glt.origin = Vector2(0,0);
 	var invscale = 1/(glt[0][0]*glt[1][1]-glt[1][0]*glt[0][1])
-	print(invscale)
 	glt = glt.scaled(Vector2(invscale,invscale))
 	$Visible.transform = glt.affine_inverse();
 
