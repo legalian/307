@@ -1,6 +1,6 @@
 extends Node
 
-onready var game = get_node("root");
+onready var game = get_tree().get_current_scene();
 
 var player_list
 
@@ -9,6 +9,7 @@ func _ready():
 	set_process(true)
 	player_list = find_node("PlayerList")
 	self.visible = false;
+
 	
 func sort_by_place(var playerA, var playerB):
 	return (playerA.place < playerB.place)

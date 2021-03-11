@@ -5,7 +5,14 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+
 var spawned = false;
+
+var map
+var minx
+var miny
+var maxx
+var maxy
 
 func _spawnRandom():
 	if(!spawned) :
@@ -21,6 +28,16 @@ func _spawnRandom():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("camera").current = true;
+	map = get_node("../TileMap");
+	var topleft = Vector2(-24, -17)
+	var bottomright = Vector2(40,40)
+	var topleftworld = map.map_to_world(topleft, false);
+	var bottomrightworld = map.map_to_world(bottomright, false);
+	minx = topleftworld[0]
+	miny = topleftworld[1]
+	maxx = bottomrightworld[0]
+	maxy = bottomrightworld[1]
+
 
 
 
@@ -31,10 +48,11 @@ func _input(event):
 			var space_state = get_world_2d().direct_space_state
 			var collidingWith = space_state.intersect_point(pos);
 			if(collidingWith.empty() || collidingWith[0].shape == 0):
-				get_parent().get_parent().server.spawn(pos[0], pos[1]);
-				get_node("camera").current = false;
-				get_parent().get_parent().camera = null; 
-				spawned = true;
+				if(pos[0] >= minx && pos[0] <= maxx && pos[1] >= miny && pos[1] <= maxy):
+					get_parent().get_parent().server.spawn(pos[0], pos[1]);
+					get_node("camera").current = false;
+					get_parent().get_parent().camera = null; 
+					spawned = true;
 			
 		
 		
