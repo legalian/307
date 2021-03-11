@@ -1,6 +1,6 @@
 extends Node
 
-onready var game = get_node("root");
+onready var game = get_tree().get_current_scene();
 
 var player_list
 
