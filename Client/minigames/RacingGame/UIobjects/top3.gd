@@ -21,8 +21,8 @@ func _process(_delta):
 		var player1 = str(players[0].id)
 		get_node("first").text = "1. " + player1;
 	if (players.size() >= 2):
-		var player2 = players[1].id;
+		var player2 = str(players[1].id);
 		get_node("second").text = "2. " + player2;
 	if (players.size() >= 3):
-		var player3 = players[2].id;
+		var player3 = str(players[2].id);
 		get_node("third").text = "3. " + player3;
