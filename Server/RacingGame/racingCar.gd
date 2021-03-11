@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const NUM_LAPS = 3
+
 var maxSpeed = 1500
 var speed = 0
 var acceleration = 25
@@ -21,10 +23,14 @@ func pack():
 	}
 
 func _physics_process(delta):
-	rotation += input_vector.x * rotSpeed
-	if input_vector.y == 0:
-		speed = move_toward(speed, 0, 10)
-	speed += input_vector.y*acceleration
+	if progress <  NUM_LAPS + 1:
+		if input_vector.y == 0:
+			speed = move_toward(speed, 0, 10)
+		rotation += input_vector.x * rotSpeed
+		speed += input_vector.y*acceleration
+	else:
+		speed = move_toward(speed, 0, 50)
+	
 	speed = clamp(speed, -maxSpeed, maxSpeed)
 	velocity = Vector2(0, speed).rotated(rotation)
 	move_and_slide(velocity)

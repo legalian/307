@@ -15,6 +15,7 @@ var path_length
 var gui
 var laps_label
 var place_label
+var scoreboard
 
 func _ready():
 	server = get_node("/root/Server").get_children()[0]
@@ -23,6 +24,7 @@ func _ready():
 	gui = find_node("GUI")
 	laps_label = gui.find_node("laps")
 	place_label = gui.find_node("place")
+	scoreboard = gui.find_node("scoreboard")
 
 func unpack(package):
 	position = Vector2(package['x'],package['y'])
@@ -48,7 +50,7 @@ func _process(delta):
 		checkpoint = 0.0
 		lap += 1
 	
-	laps_label.currentLap = lap
+	laps_label.currentLap = int(clamp(lap, 1, 3))
 	place_label.rank = place
 		
 	

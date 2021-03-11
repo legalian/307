@@ -6,6 +6,8 @@ var rng = RandomNumberGenerator.new()
 
 var car = preload("res://RacingGame/racingCar.tscn")
 
+var spawn_positions = []
+
 var ingame = {}
 
 class PlaceSorter:
@@ -24,6 +26,14 @@ func remove_player(player_id):
 
 func _ready():
 	rng.randomize()
+	
+	for x in range(1400, 1800, 200):
+		for y in range(1400, 2500, 110):
+			spawn_positions.append(Vector2(x,y))
+	
+	randomize()
+	spawn_positions.shuffle()
+	
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "_send_rpc_update")
@@ -43,7 +53,7 @@ func spawn(player_id):
 	ingame[player_id] = car.instance()
 	ingame[player_id].name = "Player_" + str(player_id)
 	ingame[player_id].id = player_id
-	ingame[player_id].position = Vector2(1600 + rng.randi_range(-100,100),1900 + rng.randi_range(-500,500))
+	ingame[player_id].position = spawn_positions.pop_front()
 	ingame[player_id].rotation = 3*PI/2
 	$World.add_child(ingame[player_id])
 	
