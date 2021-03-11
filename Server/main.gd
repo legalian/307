@@ -99,7 +99,7 @@ remote func create_party():
 remote func join_party(var partyID):
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Joining party")
-	if (!partyHandler.parties[str(partyID)].in_game):
+	if (partyHandler.parties.has(str(partyID)) && !partyHandler.parties[str(partyID)].in_game):
 		var joined_party = partyHandler.join_party_by_id(player_id, partyID)
 		send_party_code_to_client(player_id, joined_party.code)
 		if (joined_party.minigame != null && str(joined_party.code) != str(PartyHandler.invalid_party_id)):
