@@ -29,6 +29,9 @@ func _MUT_set_username():
 
 func _ready():	
 	generalserver = get_node("/root/Server")
+	UsernameInput = generalserver.selfplayer.username
+	AvatarSelected = generalserver.selfplayer.avatar
+	HatSelected = generalserver.selfplayer.hat
 	
 
 func _on_UsernameInput_text_changed(new_username):
@@ -47,7 +50,9 @@ func _on_Button_ConfirmUsername_pressed():
 	
 	if (UsernameInput.length() >= 3 and UsernameInput.length() <= 20): #and validCharacters):
 		get_node("CurrentName").text = UsernameInput
+		generalserver.selfplayer.username  = UsernameInput
 	else:
+		find_node("UsernameInput").text = "Username is Invalid"
 		print("Username is Invalid")
 
 
@@ -55,12 +60,14 @@ func _on_ChangeAvatar_pressed(AvatarType):
 	print(AvatarType)
 	AvatarSelected = AvatarType
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
+	generalserver.selfplayer.avatar = AvatarSelected
 
 func _on_ChangeHat_pressed(HatType):
 	print(HatType)
 	HatSelected = HatType
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	find_node("Avatar").set_Hat(HatLocation[HatType])
+	generalserver.selfplayer.hat = HatSelected
 
 
 func _on_Button_ChooseHat_pressed():
