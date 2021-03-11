@@ -21,6 +21,9 @@ func pack():
 		'r':rotation,
 		'place':place
 	}
+	
+func _ready():
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if progress <  NUM_LAPS + 1:

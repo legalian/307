@@ -8,6 +8,8 @@ var car = preload("res://RacingGame/racingCar.tscn")
 
 var spawn_positions = []
 
+var started = false
+
 var ingame = {}
 
 class PlaceSorter:
@@ -40,6 +42,18 @@ func _ready():
 	_timer.set_wait_time(0.02)#50 rpc updates per second
 	_timer.set_one_shot(false) # Make sure it loops
 	_timer.start()
+	
+	var _countdown = Timer.new()
+	add_child(_countdown)
+	_countdown.connect("timeout", self, "_countdown_end")
+	_countdown.set_wait_time(7)
+	_countdown.set_one_shot(true)
+	_countdown.start()
+	
+func _countdown_end():
+	started = true
+	for ig in ingame.values():
+		ig.set_physics_process(true)
 	
 func _send_rpc_update():
 	var player_frame = []
