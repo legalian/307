@@ -27,8 +27,21 @@ func _SetScene():
 		currentPlacement = find_node("Place" + str(i))
 		currentPlacement.get_node("PlayerName").bbcode_text = "[center]" + TopPlayers[i-1].username + "[/center]"
 		currentPlacement.get_node("Avatar").set_Hat(HatLocation[TopPlayers[i-1].hat])
-		
+	if (SelfPlayer != Playerlist[0] and  SelfPlayer != Playerlist[1] and SelfPlayer != Playerlist[2])
+		find_node("CongratsText").hide()
+	else
+		find_node("CongratsText").show()
+	
 
 func _SortPlayers():
 	print("Sort Players")
 	
+
+
+func _on_MainMenu_Button_pressed():
+	pass # Replace with function body.
+
+
+
+func _on_Matchmake_Button_pressed():
+	pass # Replace with function body.
