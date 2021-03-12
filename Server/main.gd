@@ -37,7 +37,10 @@ func StartServer():
 	network.connect("peer_connected",self,"_Peer_Connected")
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
-func make_new_minigame(var minigame):#makes a new minigame object, inserts it into the tree, and returns it.	
+func make_new_minigame(var minigame):#makes a new minigame object, inserts it into the tree, and returns it.
+	if (minigame == null):
+		print("MINIGAME IS NULL!!!!")
+	
 	var instance = minigame.instance()#it's really important that this method isn't called more than once- it has side effects.
 	instance.name = instance.systemname()
 	add_child(instance,true)
@@ -124,6 +127,7 @@ func go_to_next_minigame(var player_id):
 		var minigame = make_new_minigame(lobby.get_current_minigame())
 		for parties in lobby.get_parties():
 			reassign_party_to_minigame(parties, minigame)
+		print("\n\n NEXT MINIGAME ASSIGNED: " + str(minigame.systemname()) + "\n\n")
 	else:
 		print("\n\n Go To Next Minigame failed!\n\n")
 
