@@ -36,10 +36,10 @@ func attemptEnterGame():
 	rpc_id(1,"party_ready")
 
 func createParty():
-	rpc_id(1, "create_party")
+	rpc_id(1, "create_party",selfplayer.pack())
 
 func join_party(var partyID):
-	rpc_id(1, "join_party", partyID)
+	rpc_id(1, "join_party", partyID,selfplayer.pack())
 
 func cancel_matchmaking():
 	rpc_id(1, "cancel_matchmaking")

@@ -87,10 +87,11 @@ remote func party_ready():
 		debug_print_lobbies()
 		debug_print_matchmaking_pool()
 
-remote func create_party():
+remote func create_party(packed):
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Creating party...")
 	var newparty = partyHandler.new_party(player_id)
+	partyHandler.player_objects.get(player_id).unpack(packed)
 	print("Code: " + str(newparty.code))
 	print("Players: " + str(newparty.playerIDs))
 	newparty.minigame = make_party_screen()
@@ -99,11 +100,12 @@ remote func create_party():
 	print("Systemname: " + newparty.minigame.systemname())
 	send_party_code_to_client(player_id, newparty.code)
 
-remote func join_party(var partyID):
+remote func join_party(var partyID,packed):
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Joining party")
 	if (partyHandler.parties.has(str(partyID)) && !partyHandler.parties[str(partyID)].in_game):
 		var joined_party = partyHandler.join_party_by_id(player_id, partyID)
+		partyHandler.player_objects.get(player_id).unpack(packed)
 		send_party_code_to_client(player_id, joined_party.code)
 		if (joined_party.minigame != null && str(joined_party.code) != str(PartyHandler.invalid_party_id)):
 			print("Players: " + str(joined_party.playerIDs))
@@ -228,3 +230,16 @@ func debug_print_lobbies():
 	
 	for lobby in lobbyHandler.get_lobbies().values():
 		lobby.debug_print()
+
+
+
+
+
+
+
+
+
+
+
+
+

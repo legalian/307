@@ -5,8 +5,8 @@ var playerID
 var party
 var score = 0
 var username
-var avatar = "Raccoon"
-var hat = "None"
+var avatar = 0
+var hat = 0
 
 func _init(var thisPlayerID, var thisParty):
 	playerID = thisPlayerID
@@ -33,6 +33,11 @@ func pack():
 			'avatar':avatar,
 			'hat':hat
 		}
+
+func unpack(packed):
+	username = packed['username']
+	avatar = packed['avatar']
+	hat = packed['hat']
 
 func equals(var comparePlayer):
 	return playerID == comparePlayer.playerID

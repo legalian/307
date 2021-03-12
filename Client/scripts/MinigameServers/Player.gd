@@ -21,3 +21,9 @@ func unpack(packed):
 	score = packed['score']
 	hat = packed['hat']
 	
+func pack():
+	return {
+		'avatar':avatar,
+		'hat':hat,
+		'username':username
+	}
