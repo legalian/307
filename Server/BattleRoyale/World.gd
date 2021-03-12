@@ -100,7 +100,10 @@ func _on_strike(bullet,object):
 	bullet.queue_free()
 
 func _on_die(player):
-	for oplayer in players: rpc_id(oplayer.playerID,"die",player.pack())
+	for oplayer in players: 
+		if oplayer.playerID == player.id:
+			oplayer.score += players.size()-ingame.size()
+		rpc_id(oplayer.playerID,"die",player.pack())
 	status[player.id] = "DEAD"
 	$World.remove_child(ingame[player.id])
 	ingame[player.id].queue_free()
@@ -111,7 +114,11 @@ func _on_die(player):
 			break
 
 func crown_winner(playerID):
-	for oplayer in players: rpc_id(oplayer.playerID,"win",playerID)
+	for oplayer in players: 
+		rpc_id(oplayer.playerID,"win",playerID)
+		if oplayer.playerID == playerID:
+			oplayer.score += players.size()-ingame.size()
+	syncScores()
 	print("WINNER CROWNED! GO TO NEXT MINIGAME")
 	get_parent().go_to_next_minigame(playerID)
 	
