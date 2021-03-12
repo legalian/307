@@ -1,8 +1,8 @@
 extends Node2D
 
-onready var generalserver = get_node("/root/Server")
-var Playerlist = generalserver.players
-var SelfPlayer = generalserver.selfplayer
+var generalserver
+var Playerlist
+var SelfPlayer
 var TopPlayers
 
 var AvatarStyles = ["Racoon"]
@@ -10,6 +10,9 @@ var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	generalserver = get_node("/root/Server")
+	SelfPlayer = generalserver.selfplayer
+	Playerlist = generalserver.players
 	_SortPlayers()
 	_SetScene()
 
@@ -19,6 +22,9 @@ func _SetScene():
 	var currentPlacement = null
 	for i in range(1,4):
 		currentPlacement = find_node("Place" + str(i))
+		if TopPlayers.size()<i:
+			currentPlacement.visible = false
+			continue
 		currentPlacement.get_node("PlayerName").bbcode_text = "[center]" + TopPlayers[i-1].username + "[/center]"
 		currentPlacement.get_node("Avatar").set_Hat(TopPlayers[i-1].hat)
 	if (SelfPlayer != Playerlist[0] and  SelfPlayer != Playerlist[1] and SelfPlayer != Playerlist[2]):
