@@ -30,6 +30,9 @@ func _ready():
 			$MUT_test_flow.play("Multi_User_Testing_Partylead")
 		else:
 			$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
+	rpc_id(get_tree().get_network_unique_id(), "setusername", SelfUsername)
+	rpc_id(get_tree().get_network_unique_id(), "setavatar", generalserver.selfplayer.avatar)
+	rpc_id(get_tree().get_network_unique_id(), "sethat", generalserver.selfplayer.hat)
 	
 
 
