@@ -29,7 +29,7 @@ func _OnConnectionFailed():
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
 	players[0].playerID = get_tree().get_network_unique_id()
-	
+
 func attemptEnterGame():
 	# var lobby_id = rpc_id(1, "matchmake", party_list)
 	# rpc_id(1, "party_ready", lobby_id)
@@ -57,9 +57,9 @@ remote func setminigame(systemname,lobbyname):
 remote func receive_party_code(var recPartyID):
 	print("Party created - code: " + str(recPartyID))
 	partycode = recPartyID
-	var node = get_tree().get_root().get_node_or_null("root/Node2D/PartyCode")
+	var node = get_tree().get_root().get_node_or_null("/root/Node2D/PartyCode")
 	if node!=null: node.text = str(recPartyID)
-	
+
 
 
 
@@ -70,14 +70,24 @@ func get_player(player_id):
 		if player.playerID==player_id: return player
 
 remote func add_players(packed):
+	print("added players:",packed)
 	for p in packed:
 		var pl = get_player(p['id'])
 		if pl!=null: pl.unpack(p)
 		else: players.append(Player.new(p))
+	var node = get_tree().get_root().get_node_or_null("/root/Node2D/Playerlist")
+	if node!=null:
+		print("updated playerlist")
+		node.update_playerlist()
 
 remote func drop_player(player_id):
 	for i in range(players.size()-1,-1,-1):
 		if players[i].playerID==player_id: players.remove(i)
+	var node = get_tree().get_root().get_node_or_null("/root/Node2D/Playerlist")
+	if node!=null:
+		print("dropped player")
+		node.update_playerlist()
+
 
 
 

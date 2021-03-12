@@ -32,6 +32,10 @@ func _ready():
 	UsernameInput = generalserver.selfplayer.username
 	AvatarSelected = generalserver.selfplayer.avatar
 	HatSelected = generalserver.selfplayer.hat
+	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
+	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
+	get_node("CurrentName").text = UsernameInput
+	find_node("Avatar").set_Hat(HatLocation[HatSelected])
 	
 
 func _on_UsernameInput_text_changed(new_username):
@@ -57,13 +61,13 @@ func _on_Button_ConfirmUsername_pressed():
 
 
 func _on_ChangeAvatar_pressed(AvatarType):
-	print(AvatarType)
+	#print(AvatarType)
 	AvatarSelected = AvatarType
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	generalserver.selfplayer.avatar = AvatarSelected
 
 func _on_ChangeHat_pressed(HatType):
-	print(HatType)
+	#print(HatType)
 	HatSelected = HatType
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	find_node("Avatar").set_Hat(HatLocation[HatType])

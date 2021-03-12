@@ -141,7 +141,8 @@ func _Peer_Disconnected(player_id):
 			if minigame.player_count()==0:minigame.queue_free()
 		partyHandler.leave_party(player_id)
 		
-		unintroduce(player_id,lobbyHandler.get_lobby(party.lobby_code).get_player_ids())
+		var lobbyin = lobbyHandler.get_lobby(party.lobby_code)
+		if lobbyin: unintroduce(player_id,lobbyin.get_player_ids())
 		# Player has left, freeing up space in lobby; matchmake again
 		print("Attempting to matchmake_pool()")
 		matchmake_pool()
@@ -170,6 +171,9 @@ func matchmake_pool():
 		if (str(party.lobby_code) == "defaultCode"):
 			# Only add to a lobby if the party is not in one.
 			if lobbyHandler.add_to_lobby(party):
+				print("-=-=-=-")
+				print(party.lobby_code)
+				print(lobbyHandler.get_lobby(party.lobby_code))
 				mutually_introduce(lobbyHandler.get_lobby(party.lobby_code).get_player_ids())
 			# The lobby code is in party.lobby_code
 	
