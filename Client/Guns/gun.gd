@@ -53,12 +53,12 @@ func fire(var origpl,var targetpos):
 	if server==null: server = get_node("/root/Server").get_children()[0]
 	var b = Bullet.instance()
 	var parent = origpl.get_parent()
+	parent.add_child(b)
 	#b.transform = parent.global_transform.affine_inverse()*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
 	b.position = parent.global_transform.xform_inv(posfix.global_position)#*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
 	b.rotation = (b.position-targetpos).angle()
 	b.position -= Vector2(0,-90/.44).rotated(origpl.rotation)
 	
-	parent.add_child(b)
 	#b.start()
 	flare.fire()
 	

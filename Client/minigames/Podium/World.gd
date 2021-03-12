@@ -12,7 +12,7 @@ var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
 func _ready():
 	generalserver = get_node("/root/Server")
 	SelfPlayer = generalserver.selfplayer
-	Playerlist = generalserver.players
+	Playerlist = generalserver.players+[]
 	_SortPlayers()
 	_SetScene()
 
