@@ -89,7 +89,7 @@ func _on_strike(bullet,object):
 		$World.remove_child(object)
 		object.queue_free()
 	elif object.get('entity_type')=='player':
-		object.health -= 0.1
+		object.health -= 0.101
 		for player in players:
 			rpc_id(player.playerID,"strike",bullet.pack(),{'type':'player','obj':object.pack()})
 			if (ingame.has(player.playerID)):
@@ -114,6 +114,8 @@ func crown_winner(playerID):
 	for oplayer in players: rpc_id(oplayer.playerID,"win",playerID)
 	print("WINNER CROWNED! GO TO NEXT MINIGAME")
 	get_parent().go_to_next_minigame(playerID)
+	
+	
 
 
 
