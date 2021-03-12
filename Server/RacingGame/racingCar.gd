@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const NUM_LAPS = 3
+const NUM_LAPS = 2
 
 var maxSpeed = 1500
 var speed = 0
