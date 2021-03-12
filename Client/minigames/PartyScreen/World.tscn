@@ -92,19 +92,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_ChooseCharacter" type="Button" parent="."]
-margin_left = 79.5916
-margin_top = 389.719
-margin_right = 265.592
-margin_bottom = 435.719
-rect_pivot_offset = Vector2( 159.38, 30.3461 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Change"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="."]
 margin_left = 413.0
 margin_top = 22.6674
@@ -118,10 +105,10 @@ __meta__ = {
 }
 
 [node name="CurrentAvatar" type="Label" parent="."]
-margin_left = 42.0
-margin_top = 360.0
-margin_right = 300.0
-margin_bottom = 383.0
+margin_left = 43.211
+margin_top = 387.247
+margin_right = 301.211
+margin_bottom = 410.247
 theme = ExtResource( 3 )
 text = "Current Avatar"
 align = 1
@@ -142,9 +129,9 @@ __meta__ = {
 
 [node name="UsernameLabel" type="Label" parent="."]
 margin_left = 88.4583
-margin_top = 208.721
+margin_top = 201.455
 margin_right = 256.458
-margin_bottom = 231.721
+margin_bottom = 224.455
 theme = ExtResource( 3 )
 text = "Username goes here"
 __meta__ = {
@@ -202,5 +189,4 @@ __meta__ = {
 }
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_CopyCode" to="." method="_on_Button_CopyCode_pressed"]
-[connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
 [connection signal="pressed" from="EnterGameButton" to="." method="_on_EnterGameButton_pressed"]

@@ -38,16 +38,16 @@ func set_look_pos(gpos,vel):
 	lefthand.global_position = gpos
 
 func set_Hat(hatPath):
-	var headbone = find_node("Head")
-	var currentHat = headbone.get_node_or_null("Hat")
+	var currentHat = headRef.get_node_or_null("Hat")
 	if currentHat!=null:
-		headbone.remove_child(currentHat)
+		headRef.remove_child(currentHat)
 		currentHat.queue_free()
 	if hatPath != null:
 		var newHat = load(hatPath).instance()
 		newHat.name = "Hat"
-		headbone.add_child(newHat,true)#second parameter is important here- must be true
-		newHat.position = Vector2(0,-35)
+		headRef.add_child(newHat,true)#second parameter is important here- must be true
+		newHat.position = Vector2(40,0)
+		newHat.rotation = PI/2
 
 func ouch():
 	animPlayer.set("parameters/Ouch/active", true)
