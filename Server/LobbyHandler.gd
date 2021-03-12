@@ -85,7 +85,7 @@ func add_to_lobby(var party):
 			if (lobby.add_party(party)):
 				return true
 	
-	# Lobbies that are already created are all full or started; create a new one	
+	# Lobbies that are already created are all full or started; create a new one
 	var fresh_lobby_code = create_lobby()
 	
 	if (fresh_lobby_code != null): # New lobby was created successfully
