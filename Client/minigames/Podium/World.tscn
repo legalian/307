@@ -342,12 +342,13 @@ margin_top = 430.142
 margin_right = 199.314
 margin_bottom = 489.142
 theme = ExtResource( 4 )
-text = "Main Menu"
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Matchmake_Button" type="Button" parent="."]
+visible = false
 margin_left = 33.3731
 margin_top = 509.072
 margin_right = 200.373

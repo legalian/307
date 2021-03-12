@@ -15,6 +15,10 @@ func remove_player(player_id):
 func get_player(player_id):
 	for player in players:
 		if player.playerID==player_id: return player
+		
+func syncScores():
+	for p in players:
+		rpc("setscore",p.playerID,p.score)
 
 remote func addscore(amt):
 	var player_id = get_tree().get_rpc_sender_id()
@@ -28,19 +32,5 @@ remote func reducescore(amt):
 	player.score += 1
 	for p in players: rpc(p.playerID,"setscore",player_id,player.score)
 
-
-
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	print("minigame has been created.")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

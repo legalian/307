@@ -3,7 +3,7 @@ extends Node2D
 onready var generalserver = get_node("/root/Server")
 var Playerlist = generalserver.players
 var SelfPlayer = generalserver.selfplayer
-var TopPlayers = Playerlist
+var TopPlayers
 
 var AvatarStyles = ["Racoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
@@ -34,12 +34,15 @@ func _SetScene():
 	
 
 func _SortPlayers():
-	print("Sort Players")
+	Playerlist.sort_custom(self, "sort_by_score");
+	TopPlayers = Playerlist
 	
+func sort_by_score(var playerA, var playerB):
+	return (playerA.score <= playerB.score)
 
 
 func _on_MainMenu_Button_pressed():
-	pass # Replace with function body.
+	get_tree().quit()
 
 
 

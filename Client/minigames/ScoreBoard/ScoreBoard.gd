@@ -23,7 +23,7 @@ func _process(_delta):
 		pressed = false
 
 func sort_by_score(var playerA, var playerB):
-	return (playerA.score > playerB.score)
+	return (playerA.score >= playerB.score)
 
 func _open_player_list():
 	if (!pressed): # First press

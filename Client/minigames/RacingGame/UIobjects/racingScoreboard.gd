@@ -12,7 +12,7 @@ func _ready():
 
 	
 func sort_by_place(var playerA, var playerB):
-	return (playerA.place < playerB.place)
+	return (playerA.place <= playerB.place)
 
 func _open_player_list():
 	var players = game.players.values();

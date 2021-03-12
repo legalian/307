@@ -1,6 +1,6 @@
 extends Label
 
-var totalLaps = 3
+var totalLaps = 2
 var currentLap = 0
 
 # Declare member variables here. Examples:

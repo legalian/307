@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
-const NUM_LAPS = 3
+const NUM_LAPS = 2
 
 var maxSpeed = 1500
 var speed = 0
 var acceleration = 25
-var rotSpeed = 0.05
+var rotSpeed = 2
 var progress = 0.0
 var place = 1
 var finish_time = INF
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	if progress <  NUM_LAPS + 1:
 		if input_vector.y == 0:
 			speed = move_toward(speed, 0, 10)
-		rotation += input_vector.x * rotSpeed
+		rotation += input_vector.x * rotSpeed * delta
 		speed += input_vector.y*acceleration
 	else:
 		if finished == false:
