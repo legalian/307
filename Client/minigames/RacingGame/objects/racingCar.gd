@@ -3,13 +3,13 @@ extends KinematicBody2D
 var server = null
 var id
 var input_vector = Vector2.ZERO
-#var checkpoint = 0.0
-var checkpoint = 0.95
+var checkpoint = 0.0
+#var checkpoint = 0.95
 var num_checkpoints = 20
 var checkpoint_div = 1/float(num_checkpoints) # originally 1
 var progress = 0.0
-#var lap = 1
-var lap = 3
+var lap = 1
+#var lap = 2
 var place = 1
 
 var path
@@ -52,7 +52,7 @@ func _process(delta):
 		checkpoint = 0.0
 		lap += 1
 	
-	laps_label.currentLap = int(clamp(lap, 1, 3))
+	laps_label.currentLap = int(clamp(lap, 1, 2))
 	place_label.rank = place
 		
 	
