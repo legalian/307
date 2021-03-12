@@ -98,7 +98,10 @@ func _process(delta):
 		race_finished = true
 		
 		for p in players:
+			p.score += sort_array.size()-ingame[p.playerID].place
 			rpc_id(p.playerID, "endMatch")
+			
+		syncScores()
 		
 		var end_match = Timer.new()
 		add_child(end_match)

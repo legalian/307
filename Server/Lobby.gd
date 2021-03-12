@@ -5,6 +5,10 @@ var parties = []
 
 var minigame_list = [preload("res://BattleRoyale/World.tscn"),
 					 preload("res://RacingGame/World.tscn")]
+					
+
+var podium = preload("res://Podium/World.tscn")
+
 var minigame_order = []
 
 var minigames_per_match = 2 # This number CANNOT be greater than minigame_list size!!
@@ -30,6 +34,7 @@ func _init(var code):
 		return
 	
 	scramble_minigames()
+	# Add one to let get_next_minigame work
 
 func get_scoreboard():
 	var scoreboard = []
@@ -78,6 +83,9 @@ func scramble_minigames():
 		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
 		if (minigame_order.find(minigame_list[rand]) == -1):
 			minigame_order.append(minigame_list[rand]) # Keep appending until size is correct
+	
+	minigame_order.append(podium)
+	minigames_per_match += 1
 
 func get_minigame_order():
 	return minigame_order
