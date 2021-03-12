@@ -1,6 +1,8 @@
 extends "res://minigame.gd"
 var path = "res://objects"
 
+var world_type = 'battle_royale'
+
 var players = {}
 var bullets = {}
 

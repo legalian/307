@@ -19,7 +19,7 @@ func _MUT_send_partycode():
 func _MUT_set_username():
 	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
-func _ready():	
+func _ready():
 	generalserver = get_node("/root/Server")
 	specificserver = generalserver.get_children()[0]
 	SelfUsername = generalserver.selfplayer.username

@@ -5,6 +5,7 @@ var gameinstance
 func _ready():
 	print("I have been added to a racing game lobby")
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
+	if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "syncUpdate")
@@ -21,6 +22,7 @@ func syncUpdate():
 remote func frameUpdate(s_players):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
+		if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
 		if gameinstance==null: return
 	for s_player in s_players:
 		if s_player['id'] in gameinstance.players:

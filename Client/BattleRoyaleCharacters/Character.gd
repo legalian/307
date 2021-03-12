@@ -42,6 +42,7 @@ func unpack(package):
 	if(!setted):
 		position = Vector2(package['x'],package['y'])
 		setted = true;
+		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
 	#rotation = package['r']
 	pass#will need up set position or rotation if it's too far away
 	

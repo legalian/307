@@ -2,6 +2,8 @@ extends "res://minigame.gd"
 var path = "res://objects"
 var objectsPath = "res://minigames/racing/objects"
 
+var world_type = 'racing_game'
+
 enum Object_ids {TREE, FENCE, CAR, FENCE2, FLAG}
 
 var camera = null

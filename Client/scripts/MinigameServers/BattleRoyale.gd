@@ -5,6 +5,7 @@ var gameinstance
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
+	if gameinstance!=null && gameinstance.get('world_type')!='battle_royale': gameinstance = null
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "syncUpdate")
@@ -26,6 +27,7 @@ func syncUpdate():
 remote func frameUpdate(s_players,s_bullets):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
+		if gameinstance!=null && gameinstance.get('world_type')!='battle_royale': gameinstance = null
 		if gameinstance==null: return
 	var visited = []
 	for s_player in s_players:
@@ -37,8 +39,8 @@ remote func frameUpdate(s_players,s_bullets):
 				gameinstance.players[s_player['id']] = preload("res://BattleRoyaleCharacters/RaccoonPlayer.tscn").instance()
 			else:
 				gameinstance.players[s_player['id']] = preload("res://BattleRoyaleCharacters/AutonomousAvatar.tscn").instance()
-			gameinstance.players[s_player['id']].unpack(s_player)
 			gameinstance.get_node("World").add_child(gameinstance.players[s_player['id']])
+			gameinstance.players[s_player['id']].unpack(s_player)
 	var mustremove = []
 	for player in gameinstance.players:
 		if gameinstance.players[player].dying: continue
@@ -56,8 +58,8 @@ remote func frameUpdate(s_players,s_bullets):
 			gameinstance.bullets[s_bullet['id']].unpack(s_bullet)
 		else:
 			gameinstance.bullets[s_bullet['id']] = preload("res://Guns/BasicRedBullet.tscn").instance()
-			gameinstance.bullets[s_bullet['id']].unpack(s_bullet)
 			gameinstance.get_node("World").add_child(gameinstance.bullets[s_bullet['id']])
+			gameinstance.bullets[s_bullet['id']].unpack(s_bullet)
 	mustremove = []
 	for bullet in gameinstance.bullets:
 		if !visited.has(bullet): mustremove.append(bullet)
@@ -70,8 +72,8 @@ remote func other_shoot(package):
 	if gameinstance == null: return
 	if package['id'] in gameinstance.bullets: return
 	gameinstance.bullets[package['id']] = preload("res://Guns/BasicRedBullet.tscn").instance()
-	gameinstance.bullets[package['id']].unpack(package)
 	gameinstance.get_node("World").add_child(gameinstance.bullets[package['id']])
+	gameinstance.bullets[package['id']].unpack(package)
 
 
 remote func strike(bullet,object):

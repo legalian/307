@@ -16,6 +16,8 @@ func _ready():
 	body = get_node("Body")
 
 func unpack(package):
+	if last_position==null:
+		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
 	if (last_position == null || position.distance_to(last_position) >= 1):
 		position = Vector2(package['x'],package['y'])
 		last_position = position
@@ -25,6 +27,7 @@ func unpack(package):
 	#we don't let the client set the health- the server knows better
 	lookoffset = Vector2(package['lx'],package['ly'])
 	id = package['id']
+	
 
 func _process(delta):
 	$Body.set_look_pos(get_parent().global_transform.xform(lookoffset+global_position), velocity)

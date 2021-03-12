@@ -6,6 +6,12 @@ var headRef = null
 var lefthand = null
 var righthand = null
 var playback = null
+var HatLocation = [null, 
+"res://Hats/Tophat.tscn",
+"res://Hats/Whitehat.tscn",
+"res://Hats/Viking.tscn",
+"res://Hats/Paperhat.tscn",
+"res://Hats/Headphones.tscn"]
 
 func _ready():
 	#set_Hat("res://Hats/Whitehat.tscn")
@@ -37,7 +43,10 @@ func set_look_pos(gpos,vel):
 	#gpos.y*=.44
 	lefthand.global_position = gpos
 
-func set_Hat(hatPath):
+
+
+func set_Hat(hatindex):
+	var hatPath = HatLocation[hatindex];
 	var currentHat = headRef.get_node_or_null("Hat")
 	if currentHat!=null:
 		headRef.remove_child(currentHat)

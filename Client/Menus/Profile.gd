@@ -10,12 +10,7 @@ var HatMenuOpen = false
 
 var AvatarStyles = ["Racoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
-var HatLocation = [null, 
-"res://Hats/Tophat.tscn",
-"res://Hats/Whitehat.tscn",
-"res://Hats/Viking.tscn",
-"res://Hats/Paperhat.tscn",
-"res://Hats/Headphones.tscn"]
+
 
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
@@ -35,7 +30,7 @@ func _ready():
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	get_node("CurrentName").text = UsernameInput
-	find_node("Avatar").set_Hat(HatLocation[HatSelected])
+	find_node("Avatar").set_Hat(HatSelected)
 	
 
 func _on_UsernameInput_text_changed(new_username):
@@ -70,7 +65,7 @@ func _on_ChangeHat_pressed(HatType):
 	#print(HatType)
 	HatSelected = HatType
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
-	find_node("Avatar").set_Hat(HatLocation[HatType])
+	find_node("Avatar").set_Hat(HatType)
 	generalserver.selfplayer.hat = HatSelected
 
 
