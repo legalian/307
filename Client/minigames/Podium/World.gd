@@ -42,7 +42,7 @@ func sort_by_score(var playerA, var playerB):
 
 
 func _on_MainMenu_Button_pressed():
-	pass # Replace with function body.
+	get_tree().quit()
 
 
 
