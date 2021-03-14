@@ -340,7 +340,8 @@ script = ExtResource( 2 )
 [node name="Visible" type="Node2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
-scale = Vector2( 2.3, 1 )
+position = Vector2( -1.45483, -149.859 )
+scale = Vector2( 2.3, 2.3 )
 frames = SubResource( 65 )
 frame = 63
 
@@ -349,5 +350,4 @@ position = Vector2( -1, 0 )
 shape = SubResource( 66 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -3.05176e-05, 0.993787 )
-scale = Vector2( 30, 30 )
+scale = Vector2( 40, 40 )
