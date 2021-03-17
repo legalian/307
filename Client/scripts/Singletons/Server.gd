@@ -1,8 +1,8 @@
 extends Node
 
 var network = NetworkedMultiplayerENet.new()
-#var ip = "127.0.0.1"
-var ip = "64.227.13.167"
+var ip = "127.0.0.1"
+#var ip = "64.227.13.167"
 var port = 1909
 
 var partycode = "undefined"
@@ -59,6 +59,11 @@ remote func receive_party_code(var recPartyID):
 	partycode = recPartyID
 	var node = get_tree().get_root().get_node_or_null("/root/Node2D/PartyCode")
 	if node!=null: node.text = str(recPartyID)
+
+	var file = File.new()
+	file.open("user://saved_partycode.dat", file.WRITE)
+	file.store_string(str(partycode))
+	file.close()
 
 
 

@@ -11,8 +11,8 @@ cd Server
 START "SERVER" "%GODOT_PATH%"
 cd ..
 
-echo Waiting for Server to launch
-timeout /t 2 /nobreak
+echo Waiting 5s for Server to finish launching
+timeout /t 5 /nobreak
 
 echo Starting Client instances
 cd Client

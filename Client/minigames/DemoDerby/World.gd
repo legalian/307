@@ -2,7 +2,7 @@ extends "res://minigame.gd"
 
 var world_type = 'demo_derby'
 
-enum Object_ids {TREE, FENCE, CAR, FENCE2, FLAG}
+enum Object_ids {TREE, FENCE, CAR, FENCE2} # Removed FLAG
 
 var camera = null
 var world = null
@@ -19,7 +19,7 @@ func _ready():
 	world = get_node("World")
 	
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/DemoDerby/assets/entities/fence.tscn")
-	#object_scenes[Object_ids.CAR] = preload("res://minigames/DemoDerby/objects/racingCar.tscn")
+	object_scenes[Object_ids.CAR] = preload("res://minigames/DemoDerby/assets/entities/racingCar.tscn")
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
 	#object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
 	object_map = find_node("Objects")
