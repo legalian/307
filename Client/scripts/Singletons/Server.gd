@@ -22,6 +22,11 @@ func ConnectToServer():
 	
 	network.connect("connection_failed",self,"_OnConnectionFailed")
 	network.connect("connection_succeeded",self,"_OnConnectionSucceeded")
+	network.connect("server_disconnected", self, "_OnServerDisconnect")
+
+func _OnServerDisconnect():
+	print("SERVER DISCONNECTED!\n");
+	get_tree().change_scene("res://disc_from_serv.tscn")
 
 func _OnConnectionFailed():
 	print("Failed to connect")
@@ -64,11 +69,6 @@ remote func receive_party_code(var recPartyID):
 	file.open("user://saved_partycode.dat", file.WRITE)
 	file.store_string(str(partycode))
 	file.close()
-
-
-
-
-
 
 func get_player(player_id):
 	for player in players:
