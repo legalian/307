@@ -12,8 +12,6 @@ var lap = 1
 #var lap = 2
 var place = 1
 
-
-
 var path
 var path_length
 var gui
