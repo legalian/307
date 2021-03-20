@@ -11,13 +11,12 @@ var players = {}
 
 var player
 var gui
-var object_map = null
+var object_map = "Grass"
 var object_scenes = {}
 
 func _ready():
 	minigame = "DEMODERBY"
-	world = get_node("World")
-	
+	world = get_node("World" + object_map);
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/DemoDerby/assets/entities/fence.tscn")
 	object_scenes[Object_ids.CAR] = preload("res://minigames/DemoDerby/assets/entities/racingCar.tscn")
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
