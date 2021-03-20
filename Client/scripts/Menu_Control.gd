@@ -8,32 +8,13 @@ func _MUT_recieve_partycode():
 	file.close()
 	$PartyCodeTextEdit.text = partycode
 	
-	
 func _ready():
-	var multi_user_testing = false;
-	var active_corner = -1;
-	var desired_screen = -1;
-	
-	if (OS.get_name() == "Windows"):
-		# Windows Argument Parsing
-		for argument in OS.get_cmdline_args():
-			if argument.find("=") > -1:
-				var arg = argument.split("=")[0].lstrip("-")
-				var val = argument.split("=")[1]
-				
-				if (arg == "MULTI_USER_TESTING"):
-					multi_user_testing = val
-				if (arg == "ACTIVECORNER"):
-					active_corner = val
-				if (arg == "DESIREDSCREEN"):
-					desired_screen = val
-	else:
-		# Linux Argument Parsing
-		multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
-		active_corner = OS.get_environment("ACTIVECORNER")
-		desired_screen = OS.get_environment("DESIREDSCREEN")
-	
-	if str(multi_user_testing) == "TRUE":
+	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING");
+	var active_corner = OS.get_environment("ACTIVECORNER");
+	var desired_screen = OS.get_environment("DESIREDSCREEN");
+	var flows_leader = {"party":"Multi_User_Testing_Partylead"}#,"lobby":"","quickplay":""}
+	var flows_follower = {"party":"Multi_User_Testing_Partyfollow"}#,"lobby":"","quickplay":""}
+	if flows_leader.has(multi_user_testing):
 		var screen = int(desired_screen)%int(OS.get_screen_count())
 		OS.set_current_screen(screen)
 		var windowdecoration = OS.get_real_window_size()-OS.window_size
@@ -52,9 +33,9 @@ func _ready():
 
 		# $MUT_test_flow
 		if str(active_corner) == "1":
-			$MUT_test_flow.play("Multi_User_Testing_Partylead")
+			$MUT_test_flow.play(flows_leader[multi_user_testing])
 		else:
-			$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
+			$MUT_test_flow.play(flows_follower[multi_user_testing])
 	
 func _on_Button_Exit_pressed():
 	# Exit the game
