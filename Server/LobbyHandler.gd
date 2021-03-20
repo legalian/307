@@ -7,6 +7,8 @@ var rng
 
 var max_lobbies = 150
 
+signal dc_peer(playerID)
+
 func _init(): # Called when LobbyHandler.new() is done
 	rng = RandomNumberGenerator.new()
 	rng.randomize()

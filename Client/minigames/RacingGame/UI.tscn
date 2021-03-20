@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://minigames/RacingGame/Countdown.gd" type="Script" id=6]
 [ext_resource path="res://minigames/RacingGame/UIobjects/top3.gd" type="Script" id=7]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://minigames/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=9]
 [ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
@@ -41,8 +40,6 @@ __meta__ = {
 
 [node name="scoreboard" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 0.341705 )
-
-[node name="match scoreboard" parent="." instance=ExtResource( 9 )]
 
 [node name="laps" type="Label" parent="."]
 anchor_left = 1.0

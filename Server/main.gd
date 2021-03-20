@@ -11,7 +11,7 @@ var max_players = 3000
 var party_screen = preload("res://PartyScreen/World.tscn")
 
 # Lobby Management Variables ###################################################
-var LobbyHandler=load("res://LobbyHandler.gd")
+var LobbyHandler=preload("res://LobbyHandler.gd")
 var lobbyHandler
 
 var matchmaking_pool=[] # This is used as a queue
