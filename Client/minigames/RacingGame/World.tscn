@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://minigames/RacingGame/racemap.tres" type="TileSet" id=1]
 [ext_resource path="res://minigames/RacingGame/World.gd" type="Script" id=2]
 [ext_resource path="res://minigames/RacingGame/objects.tres" type="TileSet" id=3]
+[ext_resource path="res://minigames/RacingGame/objects/powerup.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -41,3 +42,6 @@ curve = SubResource( 1 )
 [node name="PathFollow2D" type="PathFollow2D" parent="World/TrackPath"]
 position = Vector2( 1221.22, 1875.01 )
 rotation = 3.13801
+
+[node name="Powerup" parent="World" instance=ExtResource( 4 )]
+position = Vector2( -33.9031, 1966.37 )
