@@ -3,7 +3,8 @@ extends Node2D
 var spin
 var frame = 0
 var speed;
-onready var wheel = get_node("World/Wheel");
+onready var wheel = get_node("World/WheelContainer/Wheel");
+var player
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,6 +15,8 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize();
 	spin = rng.randi_range(360, 3600)
+	player = get_node("World/Raccoon");
+	get_node("World/Raccoon/Char/Skeleton2D/Hip/Torso/LeftArm/LeftHand/LeftHandPoint/Gun").visible = false;
 	
 
 

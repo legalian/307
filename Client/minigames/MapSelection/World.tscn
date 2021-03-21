@@ -1,8 +1,9 @@
-[gd_scene load_steps=365 format=2]
+[gd_scene load_steps=366 format=2]
 
 [ext_resource path="res://minigames/MapSelection/mapsprites/finalfinal.png" type="Texture" id=1]
 [ext_resource path="res://minigames/MapSelection/World.gd" type="Script" id=2]
 [ext_resource path="res://minigames/MapSelection/mapsprites/knob selector.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -1817,19 +1818,26 @@ script = ExtResource( 2 )
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Wheel" type="AnimatedSprite" parent="World"]
-position = Vector2( 2590.4, 1183.97 )
-scale = Vector2( 3.39209, 3.39209 )
-frames = SubResource( 361 )
-
 [node name="Background" type="Sprite" parent="World"]
-
-[node name="Sprite" type="Sprite" parent="World"]
-position = Vector2( 2597.53, 354.706 )
-scale = Vector2( 2.08483, 2.08483 )
-texture = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="World"]
 offset = Vector2( 2000, 1000 )
 current = true
 zoom = Vector2( 4, 4 )
+
+[node name="Raccoon" parent="World" instance=ExtResource( 4 )]
+position = Vector2( 3097.05, 1634.01 )
+scale = Vector2( 8, 8 )
+
+[node name="WheelContainer" type="YSort" parent="World"]
+
+[node name="Knob" type="Sprite" parent="World/WheelContainer"]
+position = Vector2( 1303.99, 340.09 )
+scale = Vector2( 2.08483, 2.08483 )
+texture = ExtResource( 3 )
+
+[node name="Wheel" type="AnimatedSprite" parent="World/WheelContainer"]
+show_behind_parent = true
+position = Vector2( 1315.13, 1162.05 )
+scale = Vector2( 3.39209, 3.39209 )
+frames = SubResource( 361 )
