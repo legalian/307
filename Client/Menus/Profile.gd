@@ -3,14 +3,16 @@ extends Node2D
 var UsernameInput = ""
 var AvatarSelected = 0
 var HatSelected = 0
+var VehicleSelected = 0
 
 onready var generalserver = get_node("/root/Server")
 var AvatarMenuOpen = false
 var HatMenuOpen = false
+var VehicleMenuOpen = false
 
 var AvatarStyles = ["Racoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
-
+var VehicleStyles = ["Car"]
 
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
@@ -68,6 +70,34 @@ func _on_ChangeHat_pressed(HatType):
 	find_node("Avatar").set_Hat(HatType)
 	generalserver.selfplayer.hat = HatSelected
 
+func _on_ChangeVehicle_pressed(VehicleType):
+	#print(AvatarType)
+	VehicleSelected = VehicleType
+	get_node("CurrentVehicles").text = "Vehicle - " + VehicleStyles[VehicleSelected]
+	#generalserver.selfplayer.Vehicle = VehicleSelected #Set Vechicle
+
+func _on_Button_ChooseVehicle_pressed():
+	if (VehicleMenuOpen):
+		#get_node("Button_ChooseCharacter").text = "Change"
+		get_node("Vehicle Menu").hide()
+		VehicleMenuOpen = false
+	else:
+		#get_node("Button_ChooseCharacter").text = "Close"
+		get_node("Vehicle Menu").show()
+		_set_Vehicle_Selection()
+		VehicleMenuOpen = true
+
+func _set_Vehicle_Selection():
+	var VehicleSelection = get_node("Vehicle Menu").get_node("ColorRect").get_node("ButtonSelection")
+	var currentNode = VehicleSelection
+	for i in 8:
+		currentNode = VehicleSelection.get_node("Avatar" + str(i))
+		if(i < VehicleStyles.size()):
+			currentNode.get_node("AvatarType").text = VehicleStyles[i]
+			currentNode.show()
+		else:
+			currentNode.get_node("AvatarType").text = "Null"
+			currentNode.hide()
 
 func _on_Button_ChooseHat_pressed():
 	if (HatMenuOpen):
