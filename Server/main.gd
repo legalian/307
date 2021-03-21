@@ -52,8 +52,6 @@ func make_party_screen():
 	add_child(instance,true)
 	return instance
 
-func _Peer_Connected(player_id):
-	print("User " + str(player_id) + " connected.")
 
 func reassign_party_to_minigame(var party,var minigame):
 	for player in partyHandler.get_players_in_party(party):
@@ -135,10 +133,13 @@ func go_to_next_minigame(var player_id):
 
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
-		
+	_disconnect_handle_mut(player_id)
+	print("DICONNECT CALLED")
 	if party!=null:
+		print("DICONNECT CALLED WITH PARTY")
 		var minigame = party.minigame
 		if minigame!=null:
+			print("DICONNECTINGG FRAOM MINIGAME")
 			minigame.remove_player(player_id)
 			if minigame.player_count()==0:minigame.queue_free()
 		partyHandler.leave_party(player_id)
@@ -232,12 +233,24 @@ func debug_print_lobbies():
 		lobby.debug_print()
 
 
+var shims = {"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn")}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
 
+func _Peer_Connected(player_id):
+	print("User " + str(player_id) + " connected.")
+	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
+	var shims = {"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn")}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
+	if shims.has(multi_user_testing):
+		var dummyobj = PartyPlayer.new(1010101010, null);
+		var playerobj = PartyPlayer.new(player_id, null);
+		rpc_id(player_id,"add_players",[playerobj.pack(),dummyobj.pack()])
+		var minigame = make_new_minigame(shims[multi_user_testing]);
+		rpc_id(player_id,"setminigame",minigame.systemname(),minigame.name)
+		minigame.add_player(dummyobj)
+		minigame.add_player(playerobj)
 
-
-
-
-
+func _disconnect_handle_mut(player_id):
+	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
+	if shims.has(multi_user_testing): get_tree().quit()
 
 
 

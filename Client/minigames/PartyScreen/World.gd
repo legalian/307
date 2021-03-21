@@ -25,7 +25,7 @@ func _ready():
 	SelfUsername = generalserver.selfplayer.username
 	find_node("UsernameLabel").text = SelfUsername
 	$PartyCode.text = str(generalserver.partycode)
-	if OS.get_environment("MULTI_USER_TESTING")=="TRUE":
+	if OS.get_environment("MULTI_USER_TESTING")=="party":
 		if OS.get_environment("ACTIVECORNER")=="1":
 			$MUT_test_flow.play("Multi_User_Testing_Partylead")
 		else:
