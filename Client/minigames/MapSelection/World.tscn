@@ -1826,7 +1826,7 @@ current = true
 zoom = Vector2( 4, 4 )
 
 [node name="Raccoon" parent="World" instance=ExtResource( 4 )]
-position = Vector2( 3097.05, 1634.01 )
+position = Vector2( 3102.65, 1634.01 )
 scale = Vector2( 8, 8 )
 
 [node name="WheelContainer" type="YSort" parent="World"]
