@@ -64,9 +64,9 @@ __meta__ = {
 
 [node name="Button_Settings" type="Button" parent="Menu_Controller"]
 margin_left = 313.779
-margin_top = 255.664
+margin_top = 260.336
 margin_right = 493.779
-margin_bottom = 325.664
+margin_bottom = 330.336
 rect_pivot_offset = Vector2( 102.633, 49.9475 )
 theme = ExtResource( 2 )
 text = "Settings"
@@ -88,9 +88,9 @@ __meta__ = {
 
 [node name="Button_Exit" type="Button" parent="Menu_Controller"]
 margin_left = 311.777
-margin_top = 358.979
+margin_top = 350.97
 margin_right = 491.777
-margin_bottom = 428.979
+margin_bottom = 420.97
 theme = ExtResource( 2 )
 text = "Exit"
 __meta__ = {
@@ -110,9 +110,9 @@ __meta__ = {
 
 [node name="Button_Join_Party" type="Button" parent="Menu_Controller"]
 margin_left = 530.009
-margin_top = 363.122
+margin_top = 351.776
 margin_right = 722.009
-margin_bottom = 433.122
+margin_bottom = 421.776
 theme = ExtResource( 2 )
 text = "Join a Party"
 __meta__ = {
