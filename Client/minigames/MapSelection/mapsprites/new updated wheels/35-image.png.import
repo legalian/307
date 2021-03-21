@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/35-image.png-c621c069d11984d686b31904b09ee01c.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://minigames/MapSelection/mapsprites/new updated wheels/35-image.png"
+dest_files=[ "res://.import/35-image.png-c621c069d11984d686b31904b09ee01c.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
