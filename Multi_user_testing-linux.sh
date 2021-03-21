@@ -1,13 +1,41 @@
 
+
+
+acceptableTests=('party' 'lobby' 'quickplay' 'podium' 'battleroyale' 'racing' 'demoderby' 'battleroyale_shim' 'racing_shim' 'demoderby_shim')
+associatedCount=('4'     '4'     '4'         '4'      '3'            '3'      '3'         '1'                 '1'           '1'             )
+
+DESIREDSCREEN=1
+if [[ $# == 0 ]]; then
+	echo "Not enough arguments"
+	echo "Usage: Multi_user_testing.sh test [desiredscreen]"
+	echo "test must be one of:"
+	echo "${acceptableTests[*]}"
+	exit 1
+fi
+if ! printf '%s\n' "${acceptableTests[@]}" | grep -q "^$1$"; then
+	echo "Invalid test"
+	echo "Usage: Multi_user_testing.sh test [desiredscreen]"
+	echo "test must be one of:"
+	echo "${acceptableTests[*]}"
+	exit 1
+fi
+if [[ $# == 2 ]]; then
+	DESIREDSCREEN=$2
+fi
+
 cd Server
-godot &
+MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" godot &
 cd ..
 sleep 2
+for i in "${!acceptableTests[@]}"; do
+   if [[ "${acceptableTests[$i]}" = "$1" ]]; then
+       END="${associatedCount[i]}";
+   fi
+done
 cd Client
-MULTI_USER_TESTING=TRUE DESIREDSCREEN=1 ACTIVECORNER=1 godot &
-sleep 2
-MULTI_USER_TESTING=TRUE DESIREDSCREEN=1 ACTIVECORNER=2 godot &
-MULTI_USER_TESTING=TRUE DESIREDSCREEN=1 ACTIVECORNER=3 godot &
-MULTI_USER_TESTING=TRUE DESIREDSCREEN=1 ACTIVECORNER=4 godot &
-echo "Instances started"
+for ((i=1;i<=END;i++)); do
+    MULTI_USER_TESTING=$1 ACTIVECORNER=$i DESIREDSCREEN="$DESIREDSCREEN" godot &
+done
+
+
 

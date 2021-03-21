@@ -28,5 +28,5 @@ func _process(delta):
 			frame = frame + 1
 			if(frame == 360):
 				frame = 0;
-			wheel.frame = frame;
+			wheel.rotation_degrees = frame;
 			spin = spin - 1
