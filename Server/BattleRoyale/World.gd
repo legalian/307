@@ -9,6 +9,7 @@ var status = {}
 var ingame = {}
 var bullets = {}
 
+var debug_id = 1010101010
 
 func add_player(newplayer):
 	.add_player(newplayer)
@@ -29,17 +30,34 @@ func _ready():
 	_timer.set_wait_time(0.1)#10 rpc updates per second
 	_timer.set_one_shot(false) # Make sure it loops
 	_timer.start()
+	if "battleroyale_shim" == OS.get_environment("MULTI_USER_TESTING"):
+		spawn_id(0,0,debug_id);
 	
 func _send_rpc_update():
 	var player_frame = []
 	for gg in ingame.values(): player_frame.append(gg.pack())
 	var bullet_frame = []
 	for gg in bullets.values(): bullet_frame.append(gg.pack())
-	for p in players: rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame)
+	for p in players:
+		if p.playerID==debug_id: continue
+		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame)
 
-remote func spawn(x,y):
-	print("spawn called")
-	var player_id = get_tree().get_rpc_sender_id()
+#func _process(delta):
+#	return
+	for player in players:
+		if player.playerID==debug_id: continue
+		if (player.playerID != 0 && ingame.has(player.playerID)):
+			#print("Calling update radius")
+			var circle = get_node("World/Circle")
+			rpc_id(player.playerID, "update_radius", circle.radius)
+			if (circle.isInCircle(ingame[player.playerID].position)):
+				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
+				print(str(player.playerID) + " Damaged from server")
+				ingame[player.playerID].health -= .01
+				if (ingame[player.playerID].health <= 0):
+					_on_die(ingame[player.playerID])
+
+func spawn_id(x,y,player_id):
 	if (status.has(player_id)):
 		if status[player_id] != "UNSPAWNED": return
 	status[player_id] = "INGAME"
@@ -47,6 +65,11 @@ remote func spawn(x,y):
 	ingame[player_id].id = player_id
 	ingame[player_id].position = Vector2(x,y)
 	$World.add_child(ingame[player_id])
+	
+remote func spawn(x,y):
+	print("spawn called")
+	var player_id = get_tree().get_rpc_sender_id()
+	spawn_id(x,y,player_id)
 	
 remote func syncUpdate(package):
 	var player_id = get_tree().get_rpc_sender_id()
@@ -58,39 +81,30 @@ remote func shoot(package):
 	print("GOING TO TRY CHECKING FOR BULLETS")
 	if package['id'] in bullets: return
 	for player in players:
-		if player.playerID!=player_id: rpc_id(player.playerID,"other_shoot",package)
+		if player.playerID!=player_id && player.playerID!=debug_id: rpc_id(player.playerID,"other_shoot",package)
 	print("I AM UNPACKING A BULLET")
 	bullets[package['id']] = BRBullet.instance()
+	$World.add_child(bullets[package['id']])
 	bullets[package['id']].unpack(package)
 	bullets[package['id']].connect("strike",self,"_on_strike")
-	$World.add_child(bullets[package['id']])
 
 	print(str(player_id)+" is shooting.")
 
-func _process(delta):
-	for player in players:
-		if (player.playerID != 0 && ingame.has(player.playerID)):
-			#print("Calling update radius")
-			var circle = get_node("World/Circle")
-			rpc_id(player.playerID, "update_radius", circle.radius)
-			if (circle.isInCircle(ingame[player.playerID].position)):
-				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
-				print(str(player.playerID) + " Damaged from server")
-				ingame[player.playerID].health -= .001
-				if (ingame[player.playerID].health <= 0):
-					_on_die(ingame[player.playerID])
 
 func _on_strike(bullet,object):
 	if object==null:
-		for player in players: rpc_id(player.playerID,"strike",bullet.pack(),null)
+		for player in players:
+			if player.playerID!=debug_id: rpc_id(player.playerID,"strike",bullet.pack(),null)
 	elif object.get('entity_type')=='bullet':
-		for player in players: rpc_id(player.playerID,"strike",bullet.pack(),{'type':'bullet','obj':object.pack()})
+		for player in players:
+			if player.playerID!=debug_id: rpc_id(player.playerID,"strike",bullet.pack(),{'type':'bullet','obj':object.pack()})
 		bullets.erase(bullet.id)
 		$World.remove_child(object)
 		object.queue_free()
 	elif object.get('entity_type')=='player':
 		object.health -= 0.101
 		for player in players:
+			if player.playerID==debug_id: continue
 			rpc_id(player.playerID,"strike",bullet.pack(),{'type':'player','obj':object.pack()})
 			if (ingame.has(player.playerID)):
 				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
@@ -103,6 +117,7 @@ func _on_die(player):
 	for oplayer in players: 
 		if oplayer.playerID == player.id:
 			oplayer.score += players.size()-ingame.size()
+		if oplayer.playerID==debug_id: continue
 		rpc_id(oplayer.playerID,"die",player.pack())
 	status[player.id] = "DEAD"
 	$World.remove_child(ingame[player.id])
@@ -115,9 +130,10 @@ func _on_die(player):
 
 func crown_winner(playerID):
 	for oplayer in players: 
-		rpc_id(oplayer.playerID,"win",playerID)
 		if oplayer.playerID == playerID:
 			oplayer.score += players.size()-ingame.size()
+		if oplayer.playerID==debug_id: continue
+		rpc_id(oplayer.playerID,"win",playerID)
 	syncScores()
 	print("WINNER CROWNED! GO TO NEXT MINIGAME")
 	get_parent().go_to_next_minigame(playerID)

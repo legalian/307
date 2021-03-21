@@ -27,7 +27,6 @@ func _process(delta):
 		camera = player.find_node("Camera")
 		if camera==null: return
 	
-	
 	var ctr = camera.global_rotation
 	var xhalf = get_viewport().size.x/2
 	var yhalf = get_viewport().size.y/2
