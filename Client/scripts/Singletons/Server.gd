@@ -25,8 +25,8 @@ func ConnectToServer():
 	network.connect("server_disconnected", self, "_OnServerDisconnect")
 
 func _OnServerDisconnect():
-	print("SERVER DISCONNECTED!\n");
-	get_tree().change_scene("res://disc_from_serv.tscn")
+	# This will fire when the server disconnects.
+	get_tree().change_scene("res://kick_from_serv.tscn")
 
 func _OnConnectionFailed():
 	print("Failed to connect")
@@ -41,10 +41,16 @@ func attemptEnterGame():
 	rpc_id(1,"party_ready")
 
 func createParty():
-	rpc_id(1, "create_party",selfplayer.pack())
+	if (network.get_connection_status() == network.CONNECTION_CONNECTED):
+		rpc_id(1, "create_party",selfplayer.pack())
+	else:
+		get_tree().change_scene("res://disc_from_serv.tscn")
 
 func join_party(var partyID):
-	rpc_id(1, "join_party", partyID,selfplayer.pack())
+	if (network.get_connection_status() == network.CONNECTION_CONNECTED):
+		rpc_id(1, "join_party", partyID,selfplayer.pack())
+	else:
+		get_tree().change_scene("res://disc_from_serv.tscn")
 
 func cancel_matchmaking():
 	rpc_id(1, "cancel_matchmaking")
