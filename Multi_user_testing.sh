@@ -23,7 +23,7 @@ if [[ $# == 2 ]]; then
 fi
 
 cd Server
-MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot -t &
+MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot &
 cd ..
 sleep 2
 for i in "${!acceptableTests[@]}"; do
