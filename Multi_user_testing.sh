@@ -23,7 +23,7 @@ if [[ $# == 2 ]]; then
 fi
 
 cd Server
-MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot &
+MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot -t &
 cd ..
 sleep 2
 for i in "${!acceptableTests[@]}"; do
@@ -33,5 +33,5 @@ for i in "${!acceptableTests[@]}"; do
 done
 cd Client
 for ((i=1;i<=END;i++)); do
-    MULTI_USER_TESTING=$1 ACTIVECORNER=$i DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot &
+    MULTI_USER_TESTING=$1 ACTIVECORNER=$i DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot -t &
 done
