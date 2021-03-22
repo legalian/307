@@ -34,8 +34,5 @@ for i in "${!acceptableTests[@]}"; do
 done
 cd Client
 for ((i=1;i<=END;i++)); do
-    MULTI_USER_TESTING=$1 ACTIVECORNER=$i DESIREDSCREEN="$DESIREDSCREEN" godot &
+    MULTI_USER_TESTING=$1 ACTIVECORNER=$i DESIREDSCREEN="$DESIREDSCREEN" godot -t &
 done
-
-
-
