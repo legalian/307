@@ -20,6 +20,9 @@ var matchmaking_pool=[] # This is used as a queue
 # From the matchmaking pool.
 # Parties which are not added to lobbies will be added when calling matchmaking_pool.
 	
+	
+var test_script_party
+
 func _ready():
 	StartServer()
 
@@ -189,7 +192,13 @@ func matchmake_pool():
 			
 			# Start the game!
 			lobby.in_game = true
+			var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
 			var minigame = make_new_minigame(lobby.get_current_minigame())
+			#Note: "party", "lobby", and "quickplay" all have the same effect when called through the multi user testing script, and "demoderby" will be enabled when the demoderby game is in a playable state
+			var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn")}
+			if (scenes_no_shim.has(multi_user_testing) && multi_user_testing != "party" && multi_user_testing != "lobby" && multi_user_testing != "quickplay"):
+				print("Minigame specified: " + multi_user_testing)
+				minigame = make_new_minigame(scenes_no_shim[multi_user_testing]);
 			for parties in lobby.get_parties():
 				parties.in_game = true;
 				matchmaking_pool.erase(parties)
@@ -235,17 +244,45 @@ func debug_print_lobbies():
 
 var shims = {"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn")}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
 
+
 func _Peer_Connected(player_id):
 	print("User " + str(player_id) + " connected.")
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
-	var shims = {"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn")}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
+	
+	#Note: "party", "lobby", and "quickplay" all have the same effect when called through the multi user testing script, and "demoderby" will be enabled when the demoderby game is in a playable state
+	var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn")}
+	if (scenes_no_shim.has(multi_user_testing)):
+		print ("Starting minigame " + str(multi_user_testing) + " without shim")
+		#var thisTestParty = partyHandler.get_party_by_player(str(player_id))
+		#print("thisTestParty: " + str(thisTestParty))
+		#var minigame = make_new_minigame(scenes_no_shim[multi_user_testing]);
+		#if (thisTestParty.playerIDs.size() >= 3):
+		#	for player in thisTestParty.playerIDs:
+		#		rpc_id(player,"setminigame",minigame.systemname(),minigame.name)
+		#if (test_script_party == null):
+			#test_script_party = partyHandler.new_party(player_id)
+		#else:
+			#partyHandler.join_party_by_id(player_id, test_script_party.code)
+			#var playerobj = PartyPlayer.new(player_id, null);
+			#partyHandler.join_party_by_id(player_id, "testPartyCode")
+			#rpc_id(player_id,"add_players",[playerobj.pack()])
+			#rpc_id(player_id,"setminigame",minigame.systemname(),minigame.name)
+			#minigame.add_player(playerobj)
+			#if (test_script_party.playerIDs.size() >= 3):
+			#	for player in test_script_party.playerIDs:
+			#		rpc_id(player,"setminigame",minigame.systemname(),minigame.name)
+	
+	var shims = {"podium_shim":preload("res://Podium/World.tscn"), "battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn")}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
+	print("multi_user_testing = " + str(multi_user_testing))
 	if shims.has(multi_user_testing):
 		var dummyobj = PartyPlayer.new(1010101010, null);
+		var dummyobj2 = PartyPlayer.new(1010101011, null);
 		var playerobj = PartyPlayer.new(player_id, null);
-		rpc_id(player_id,"add_players",[playerobj.pack(),dummyobj.pack()])
+		rpc_id(player_id,"add_players",[playerobj.pack(),dummyobj.pack(),dummyobj2.pack()])
 		var minigame = make_new_minigame(shims[multi_user_testing]);
 		rpc_id(player_id,"setminigame",minigame.systemname(),minigame.name)
 		minigame.add_player(dummyobj)
+		minigame.add_player(dummyobj2)
 		minigame.add_player(playerobj)
 
 func _disconnect_handle_mut(player_id):

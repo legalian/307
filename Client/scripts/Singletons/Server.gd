@@ -34,6 +34,24 @@ func _OnConnectionFailed():
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
 	players[0].playerID = get_tree().get_network_unique_id()
+	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
+	var scenes_no_shim = ["party", "lobby", "quickplay", "podium", "battleroyale", "racing"]
+	if (scenes_no_shim.has(multi_user_testing)):
+		print("Client has noshim: " + multi_user_testing)
+		var file = File.new()
+		file.open("user://saved_partycode.dat", file.READ)
+		var tmpCode = file.get_as_text()
+		file.close()
+		var file2 = File.new()
+		file2.open("user://pc_created.dat", file.READ)
+		var created = file.get_as_text()
+		file2.close()
+		if (tmpCode && (created || multi_user_testing == "party")):
+			print("Joined party for test flow: " + tmpCode)
+			join_party(tmpCode)
+		else:
+			print("Created party for test flow")
+			createParty()
 
 func attemptEnterGame():
 	# var lobby_id = rpc_id(1, "matchmake", party_list)
@@ -75,6 +93,11 @@ remote func receive_party_code(var recPartyID):
 	file.open("user://saved_partycode.dat", file.WRITE)
 	file.store_string(str(partycode))
 	file.close()
+	
+	var file2 = File.new()
+	file2.open("user://pc_created.dat", file.WRITE)
+	file2.store_string(str(partycode))
+	file2.close()
 
 func get_player(player_id):
 	for player in players:
