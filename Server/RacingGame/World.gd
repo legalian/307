@@ -12,6 +12,7 @@ var started = false
 var race_finished = false
 
 var ingame = {}
+var powerups = {}
 
 
 func sort_places(a, b):
@@ -55,6 +56,10 @@ func _ready():
 	_countdown.set_one_shot(true)
 	_countdown.start()
 	
+	for node in $World.get_children():
+		if node.name.begins_with("Powerup"):
+			powerups[node.name] = node
+	
 func _countdown_end():
 	started = true
 	for ig in ingame.values():
@@ -62,10 +67,13 @@ func _countdown_end():
 	
 func _send_rpc_update():
 	var player_frame = []
+	var powerup_frame = []
 	for gg in ingame.values():
 		player_frame.append(gg.pack())
+	for pp in powerups.values():
+		powerup_frame.append(pp.pack())
 	for p in players:
-		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame)
+		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,powerup_frame)
 
 func spawn(player_id):
 	print("Spawning player: " + str(player_id))

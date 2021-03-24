@@ -19,7 +19,7 @@ func syncUpdate():
 		var p = gameinstance.players[players[0].playerID]
 		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_vector, "progress": p.lap + p.checkpoint})
 
-remote func frameUpdate(s_players):
+remote func frameUpdate(s_players, powerups):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
@@ -32,10 +32,16 @@ remote func frameUpdate(s_players):
 			gameinstance.players[s_player['id']].name = "Player_" + str(s_player['id'])
 			gameinstance.players[s_player['id']].unpack(s_player)
 			gameinstance.get_node("World").add_child(gameinstance.players[s_player['id']])
-			#var nameNode = preload("res://minigames/RacingGame/objects/name.tscn").instance()
-			#removed name node for now
-			#nameNode.TargetNode = gameinstance.players[s_player['id']];
-			#gameinstance.get_node("World").add_child(nameNode)
+	var world = gameinstance.get_node("World")
+	for powerup in powerups:
+		if world.has_node(powerup["name"]):
+			world.get_node(powerup["name"]).unpack(powerup)
+		else:
+			var p_node = preload("res://minigames/RacingGame/objects/powerup.tscn").instance()
+			p_node.position = Vector2(powerup["x"],powerup["y"])
+			p_node.name = powerup["name"]
+			p_node.unpack(powerup)
+			world.add_child(p_node)
 
 remote func endMatch():
 	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()
