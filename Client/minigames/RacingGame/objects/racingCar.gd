@@ -3,6 +3,7 @@ extends KinematicBody2D
 var server = null
 var id
 var input_vector = Vector2.ZERO
+var hasSpeedPowerup = false
 var checkpoint = 0.0
 #var checkpoint = 0.95
 var num_checkpoints = 20
@@ -19,6 +20,9 @@ var laps_label
 var place_label
 var scoreboard
 
+var particles
+var car_material
+
 func _ready():
 	server = get_node("/root/Server").get_children()[0]
 	path = get_parent().get_node("TrackPath")
@@ -27,12 +31,15 @@ func _ready():
 	laps_label = gui.find_node("laps")
 	place_label = gui.find_node("place")
 	scoreboard = gui.find_node("scoreboard")
+	particles = $Particles2D
+	car_material = find_node("Sprite").get_material()
 
 func unpack(package):
 	position = Vector2(package['x'],package['y'])
 	rotation = package['r']
 	id = package['id']
 	place = package['place']
+	hasSpeedPowerup = package['hasSpeedPowerup']
 
 func _process(delta):
 	input_vector = Vector2.ZERO
@@ -54,5 +61,7 @@ func _process(delta):
 	
 	laps_label.currentLap = int(clamp(lap, 1, 2))
 	place_label.rank = place
-		
+	
+	particles.emitting = hasSpeedPowerup
+	car_material.set_shader_param("hasSpeedPowerup", hasSpeedPowerup)
 	

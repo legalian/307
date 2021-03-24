@@ -22,7 +22,8 @@ func pack():
 		'x':position.x,
 		'y':position.y,
 		'r':rotation,
-		'place':place
+		'place':place,
+		'hasSpeedPowerup':hasSpeedPowerup
 	}
 	
 func _ready():
