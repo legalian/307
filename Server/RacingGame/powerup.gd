@@ -15,6 +15,14 @@ func _ready():
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
+func pack():
+	return {
+		'x':position.x,
+		'y':position.y,
+		'visible':visible,
+		'name':name
+	}
+	
 func use(player):
 	cooldown.start()
 	$CollisionShape2D.set_deferred("disabled", true)

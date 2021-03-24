@@ -13,4 +13,10 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Powerup" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 0, 2000 )
+position = Vector2( 0, 1500 )
+
+[node name="Powerup2" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 0, 1900 )
+
+[node name="Powerup3" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 0, 2300 )

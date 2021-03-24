@@ -32,7 +32,10 @@ func _physics_process(delta):
 	if progress <  NUM_LAPS + 1:
 		if input_vector.y == 0:
 			speed = move_toward(speed, 0, 10)
-		rotation += input_vector.x * rotSpeed * delta
+		var rot_amount = input_vector.x * rotSpeed * delta
+		if hasSpeedPowerup:
+			rot_amount *= 1.5
+		rotation += rot_amount
 		speed += input_vector.y*acceleration
 	else:
 		if finished == false:
@@ -48,7 +51,7 @@ func _physics_process(delta):
 	
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
-		if collision.collider.name == "Powerup":
+		if collision.collider.name.begins_with("Powerup"):
 			collision.collider.use(self)
 
 func gain_speed_powerup(duration):

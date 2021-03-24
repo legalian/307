@@ -3,7 +3,7 @@
 [ext_resource path="res://RacingGame/powerup.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 200.0
+radius = 160.0
 
 [node name="Powerup" type="StaticBody2D"]
 scale = Vector2( 0.8, 0.8 )
