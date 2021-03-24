@@ -44,4 +44,4 @@ position = Vector2( 1221.22, 1875.01 )
 rotation = 3.13801
 
 [node name="Powerup" parent="World" instance=ExtResource( 4 )]
-position = Vector2( -33.9031, 1966.37 )
+position = Vector2( 0, 2000 )

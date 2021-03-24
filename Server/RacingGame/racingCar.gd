@@ -42,4 +42,9 @@ func _physics_process(delta):
 	speed = clamp(speed, -maxSpeed, maxSpeed)
 	velocity = Vector2(0, speed).rotated(rotation)
 	move_and_slide(velocity)
+	
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.name == "Powerup":
+			print("test")
 
