@@ -32,6 +32,8 @@ func use(player):
 	match cur_powerup:
 		Powerups.SPEED:
 			player.gain_speed_powerup(5)
+			
+			
 	
 func reset():
 	$CollisionShape2D.set_deferred("disabled", false)

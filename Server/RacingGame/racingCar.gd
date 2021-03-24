@@ -6,7 +6,6 @@ var maxSpeed = 1500
 var speed = 0
 var acceleration = 25
 var rotSpeed = 2
-var hasSpeedPowerup = false
 var progress = 0.0
 var place = 1
 var finish_time = INF
@@ -15,7 +14,9 @@ var finished = false
 var id
 var velocity = Vector2.ZERO
 var input_vector = Vector2.ZERO
-	
+
+var hasSpeedPowerup = false
+
 func pack():
 	return {
 		'id':id,
