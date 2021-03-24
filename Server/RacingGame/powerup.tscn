@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://RacingGame/powerup.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 200.0
 
 [node name="Powerup" type="StaticBody2D"]
 scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-disabled = true

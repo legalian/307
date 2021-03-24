@@ -6,6 +6,7 @@ var maxSpeed = 1500
 var speed = 0
 var acceleration = 25
 var rotSpeed = 2
+var hasSpeedPowerup = false
 var progress = 0.0
 var place = 1
 var finish_time = INF
@@ -41,10 +42,24 @@ func _physics_process(delta):
 	
 	speed = clamp(speed, -maxSpeed, maxSpeed)
 	velocity = Vector2(0, speed).rotated(rotation)
+	if hasSpeedPowerup:
+		velocity *= 2
 	move_and_slide(velocity)
 	
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
 		if collision.collider.name == "Powerup":
-			print("test")
+			collision.collider.use(self)
 
+func gain_speed_powerup(duration):
+	hasSpeedPowerup = true
+	
+	var timer = Timer.new()
+	add_child(timer)
+	timer.connect("timeout", self, "lose_speed_powerup")
+	timer.set_wait_time(duration)
+	timer.set_one_shot(true)
+	timer.start()
+	
+func lose_speed_powerup():
+	hasSpeedPowerup = false
