@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -8,9 +8,7 @@
 [ext_resource path="res://minigames/RacingGame/Countdown.gd" type="Script" id=6]
 [ext_resource path="res://minigames/RacingGame/UIobjects/top3.gd" type="Script" id=7]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://minigames/RacingGame/powerups/speed.png" type="Texture" id=9]
 [ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
-[ext_resource path="res://minigames/RacingGame/powerup.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -32,8 +30,6 @@ font_data = ExtResource( 1 )
 size = 30
 font_data = ExtResource( 8 )
 
-[sub_resource type="Theme" id=6]
-
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,7 +39,7 @@ __meta__ = {
 }
 
 [node name="scoreboard" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1.21692, 0.341705 )
+position = Vector2( 0, 0.341705 )
 
 [node name="laps" type="Label" parent="."]
 anchor_left = 1.0
@@ -72,9 +68,8 @@ __meta__ = {
 }
 
 [node name="place" type="Label" parent="Control"]
-margin_left = 2.43384
 margin_top = -2.82849
-margin_right = 135.434
+margin_right = 133.0
 margin_bottom = 102.172
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.0588235, 0.0588235, 1 )
@@ -151,24 +146,3 @@ size_flags_horizontal = 2
 size_flags_vertical = 14
 custom_fonts/font = SubResource( 5 )
 valign = 2
-
-[node name="Control2" type="PanelContainer" parent="."]
-anchor_top = 0.75
-anchor_bottom = 0.75
-margin_right = 79.0
-margin_bottom = 79.0
-theme = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="powerup" type="TextureRect" parent="Control2"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 135.0
-margin_bottom = 135.0
-texture = ExtResource( 9 )
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
