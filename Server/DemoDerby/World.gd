@@ -5,6 +5,8 @@ func systemname():
 var car = preload("res://DemoDerby/racingCar.tscn")
 
 var spawn_positions = []
+var desert_spawn_positions = [Vector2(3250,1000),Vector2(4700,1000),Vector2(3250,4000),Vector2(4700,4000),Vector2(6000,2300),Vector2(1500,2300),Vector2(5000,2300),Vector2(2700,2300),Vector2(4000,1500),Vector2(4000,3500),
+Vector2(1000,4300),Vector2(2000,4300),Vector2(3000,4300),Vector2(4000,4300),Vector2(5000,4300),Vector2(1000,300),Vector2(2000,300),Vector2(3000,300),Vector2(4000,300),Vector2(5000,300)]
 
 var started = false
 var round_finished = false
@@ -40,9 +42,13 @@ func _ready():
 	
 	if map == "Grass":
 		print("DemoDerby: Loading grass map")
+		for x in range(1000, 6500, 200):
+			for y in range(1000, 4000, 110):
+				spawn_positions.append(Vector2(x,y))
 		world = preload("res://DemoDerby/World-Grass.tscn").instance()
 	elif map == "Desert":
 		print("DemoDerby: Loading desert map")
+		spawn_positions = desert_spawn_positions
 		world = preload("res://DemoDerby/World-Desert.tscn").instance()
 	assert(world != null)
 	add_child(world)
@@ -50,10 +56,6 @@ func _ready():
 	for node in world.get_children():
 		if node.name.begins_with("Powerup"):
 			powerups[node.name] = node
-
-	for x in range(700, 1000, 200):
-		for y in range(700, 1500, 110):
-			spawn_positions.append(Vector2(x,y))
 	
 	spawn_positions.shuffle()
 	
