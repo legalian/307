@@ -24,6 +24,7 @@ remote func frameUpdate(s_players, powerups):
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
 		if gameinstance==null: return
+	if gameinstance.world == null: return
 	for s_player in s_players:
 		if s_player['id'] in gameinstance.players:
 			gameinstance.players[s_player['id']].unpack(s_player)
@@ -42,6 +43,9 @@ remote func frameUpdate(s_players, powerups):
 			p_node.name = powerup["name"]
 			p_node.unpack(powerup)
 			world.add_child(p_node)
+
+remote func setMap(map):
+	gameinstance.load_map(map)
 
 remote func endMatch():
 	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()

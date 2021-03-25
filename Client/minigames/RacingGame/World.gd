@@ -18,13 +18,24 @@ var object_scenes = {}
 
 func _ready():
 	minigame = "RACINGGAME"
-	world = get_node("World")
 	
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/RacingGame/objects/fence.tscn")
 	object_scenes[Object_ids.CAR] = preload("res://minigames/RacingGame/objects/racingCar.tscn")
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
 	object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
 	object_scenes[Object_ids.CACTUS] = preload("res://objects/cactus_tall.tscn")
+	
+	set_process(false)
+
+
+func load_map(map):
+	if map == "Grass":
+		world = preload("res://minigames/RacingGame/World-Grass.tscn").instance()
+	elif map == "Desert":
+		world = preload("res://minigames/RacingGame/World-Desert.tscn").instance()
+	assert(world != null)
+	add_child(world)
+	
 	object_map = find_node("Objects")
 	object_map.visible = false
 	
@@ -39,13 +50,13 @@ func _ready():
 						fences.rotate(PI / 2)
 					world.add_child(fences)
 					
-
 			else:	
 				for obj in positions:
 					var instance = object_scenes[id].instance()
 					instance.position = object_map.map_to_world(obj)
 					world.add_child(instance)
-
+					
+	set_process(true)
 
 func _process(delta):
 	if get_node("/root/Server").get_children().size()>0:
