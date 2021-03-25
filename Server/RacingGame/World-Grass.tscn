@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://RacingGame/powerup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://RacingGame/Objects.tscn" type="PackedScene" id=3]
+
+[node name="World" type="Node2D"]
+
+[node name="Objects" parent="." instance=ExtResource( 3 )]
+
+[node name="Powerup" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 1500 )
+
+[node name="Powerup2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 1900 )
+
+[node name="Powerup3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 2300 )

@@ -36,7 +36,7 @@ func load_map(map):
 	assert(world != null)
 	add_child(world)
 	
-	object_map = find_node("Objects")
+	object_map = world.get_node("Objects")
 	object_map.visible = false
 	
 	for id in Object_ids.values():
@@ -64,6 +64,7 @@ func _process(delta):
 	if server==null: return
 	if camera==null:
 		player = get_node_or_null("World/Player_" + str(get_tree().get_network_unique_id()))
+		print(player)
 		if player==null: return
 		camera = player.find_node("Camera")
 		camera.current = true

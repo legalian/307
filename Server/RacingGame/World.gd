@@ -2,8 +2,6 @@ extends "res://GameBase.gd"
 func systemname():
 	return "RacingGame"
 
-var rng = RandomNumberGenerator.new()
-
 var car = preload("res://RacingGame/racingCar.tscn")
 
 var spawn_positions = []
@@ -14,6 +12,10 @@ var race_finished = false
 var ingame = {}
 var powerups = {}
 
+const MAPS = ["Grass", "Desert"]
+
+var map = null
+var world = null
 
 func sort_places(a, b):
 	if is_equal_approx(a[1], b[1]):
@@ -33,13 +35,24 @@ func remove_player(player_id):
 	.remove_player(player_id)
 
 func _ready():
-	rng.randomize()
+	randomize()
+	map = MAPS[randi() % MAPS.size()]
 	
+	if map == "Grass":
+		world = preload("res://RacingGame/World-Grass.tscn").instance()
+	elif map == "Desert":
+		world = preload("res://RacingGame/World-Desert.tscn").instance()
+	assert(world != null)
+	add_child(world)
+	
+	for node in world.get_children():
+		if node.name.begins_with("Powerup"):
+			powerups[node.name] = node
+
 	for x in range(1400, 1800, 200):
 		for y in range(1400, 2500, 110):
 			spawn_positions.append(Vector2(x,y))
 	
-	randomize()
 	spawn_positions.shuffle()
 	
 	var _timer = Timer.new()
@@ -55,10 +68,6 @@ func _ready():
 	_countdown.set_wait_time(6.5)
 	_countdown.set_one_shot(true)
 	_countdown.start()
-	
-	for node in $World.get_children():
-		if node.name.begins_with("Powerup"):
-			powerups[node.name] = node
 	
 func _countdown_end():
 	started = true
@@ -77,12 +86,15 @@ func _send_rpc_update():
 
 func spawn(player_id):
 	print("Spawning player: " + str(player_id))
+	
+	rpc_id(player_id, "setMap", map)
+	
 	ingame[player_id] = car.instance()
 	ingame[player_id].name = "Player_" + str(player_id)
 	ingame[player_id].id = player_id
 	ingame[player_id].position = spawn_positions.pop_front()
 	ingame[player_id].rotation = 3*PI/2
-	$World.add_child(ingame[player_id])
+	world.add_child(ingame[player_id])
 	
 remote func syncUpdate(package):
 	var player_id = get_tree().get_rpc_sender_id()
@@ -93,6 +105,7 @@ remote func syncUpdate(package):
 func _process(delta):
 	var sort_array = []
 	var done = true
+	if ingame.size() == 0: return
 	for ig in ingame.values():
 		if ig.finished == false:
 			done = false

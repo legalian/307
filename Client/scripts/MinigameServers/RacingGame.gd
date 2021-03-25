@@ -2,6 +2,8 @@ extends "res://scripts/MinigameServers/MinigameBase.gd"
 
 var gameinstance
 
+var world_map = null
+
 func _ready():
 	print("I have been added to a racing game lobby")
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
@@ -24,7 +26,8 @@ remote func frameUpdate(s_players, powerups):
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
 		if gameinstance==null: return
-	if gameinstance.world == null: return
+	if gameinstance.world == null: 
+		gameinstance.load_map(world_map)
 	for s_player in s_players:
 		if s_player['id'] in gameinstance.players:
 			gameinstance.players[s_player['id']].unpack(s_player)
@@ -45,7 +48,7 @@ remote func frameUpdate(s_players, powerups):
 			world.add_child(p_node)
 
 remote func setMap(map):
-	gameinstance.load_map(map)
+	world_map = map
 
 remote func endMatch():
 	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()
