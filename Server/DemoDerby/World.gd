@@ -2,7 +2,7 @@ extends "res://GameBase.gd"
 func systemname():
 	return "DemoDerby"
 
-var car = preload("res://DemoDerby/racingCar.tscn")
+var car = preload("res://DemoDerby/demoDerbyCar.tscn")
 
 var spawn_positions = []
 var desert_spawn_positions = [Vector2(3250,1000),Vector2(4700,1000),Vector2(3250,4000),Vector2(4700,4000),Vector2(6000,2300),Vector2(1500,2300),Vector2(5000,2300),Vector2(2700,2300),Vector2(4000,1500),Vector2(4000,3500),

@@ -194,8 +194,8 @@ func matchmake_pool():
 			lobby.in_game = true
 			var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
 			var minigame = make_new_minigame(lobby.get_current_minigame())
-			#Note: "party", "lobby", and "quickplay" all have the same effect when called through the multi user testing script, and "demoderby" will be enabled when the demoderby game is in a playable state
-			var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn")}
+			#Note: "party", "lobby", and "quickplay" all have the same effect when called through the multi user testing script.
+			var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn"), "demoderby":preload("res://DemoDerby/World.tscn")}
 			if (scenes_no_shim.has(multi_user_testing) && multi_user_testing != "party" && multi_user_testing != "lobby" && multi_user_testing != "quickplay"):
 				print("Minigame specified: " + multi_user_testing)
 				minigame = make_new_minigame(scenes_no_shim[multi_user_testing]);
