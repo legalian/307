@@ -22,7 +22,7 @@ func _ready():
 	object_scenes[Object_ids.CAR] = preload("res://minigames/DemoDerby/assets/entities/racingCar.tscn")
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
 	#object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
-	object_scenes[Object_ids.CACTUS] = preload("res://objects/cactus.tscn")
+	object_scenes[Object_ids.CACTUS] = preload("res://objects/cactus_short.tscn")
 	object_map = find_node("Objects")
 	object_map.visible = false
 	

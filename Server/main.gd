@@ -137,12 +137,12 @@ func go_to_next_minigame(var player_id):
 func _Peer_Disconnected(player_id):
 	var party = partyHandler.get_party_by_player(player_id)
 	_disconnect_handle_mut(player_id)
-	print("DICONNECT CALLED")
+	print("DISCONNECT CALLED")
 	if party!=null:
-		print("DICONNECT CALLED WITH PARTY")
+		print("DISCONNECT CALLED WITH PARTY")
 		var minigame = party.minigame
 		if minigame!=null:
-			print("DICONNECTINGG FRAOM MINIGAME")
+			print("DISCONNECTINGG FRAOM MINIGAME")
 			minigame.remove_player(player_id)
 			if minigame.player_count()==0:minigame.queue_free()
 		partyHandler.leave_party(player_id)

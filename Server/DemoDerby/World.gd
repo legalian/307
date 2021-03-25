@@ -51,8 +51,8 @@ func _ready():
 		if node.name.begins_with("Powerup"):
 			powerups[node.name] = node
 
-	for x in range(1400, 1800, 200):
-		for y in range(1400, 2500, 110):
+	for x in range(700, 1000, 200):
+		for y in range(700, 1500, 110):
 			spawn_positions.append(Vector2(x,y))
 	
 	spawn_positions.shuffle()

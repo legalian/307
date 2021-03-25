@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://exported/foliage/cactus_short/diffuse.png" type="Texture" id=1]
 [ext_resource path="res://objects/rotatedObject.gd" type="Script" id=2]
@@ -331,10 +331,21 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id=66]
+radius = 41.9435
+
+[node name="Node2D" type="StaticBody2D"]
 script = ExtResource( 2 )
 
 [node name="Visible" type="Node2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
+position = Vector2( 2.37842, -167.678 )
 frames = SubResource( 65 )
+frame = 63
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.18921, -52.3251 )
+shape = SubResource( 66 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
