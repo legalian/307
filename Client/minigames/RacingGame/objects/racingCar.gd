@@ -58,7 +58,7 @@ func _process(delta):
 	elif is_equal_approx(potential_checkpoint, 0.0) and is_equal_approx(checkpoint, (1 - checkpoint_div)):
 		checkpoint = 0.0
 		lap += 1
-	.
+	
 	laps_label.currentLap = int(clamp(lap, 1, 2))
 	place_label.rank = place
 	
