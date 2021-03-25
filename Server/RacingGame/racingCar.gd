@@ -55,6 +55,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(index)
 		if collision.collider.name.begins_with("Powerup"):
 			collision.collider.use(self)
+			break;
 
 func interrupt():
 	speed = 0
