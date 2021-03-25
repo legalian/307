@@ -64,7 +64,6 @@ func _process(delta):
 	if server==null: return
 	if camera==null:
 		player = get_node_or_null("World/Player_" + str(get_tree().get_network_unique_id()))
-		print(player)
 		if player==null: return
 		camera = player.find_node("Camera")
 		camera.current = true
