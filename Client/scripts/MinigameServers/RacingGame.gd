@@ -44,13 +44,13 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 			world.add_child(p_node)
 	
 	for projectile_pkg in projectile_frame:
-		if $World.has_node(projectile_pkg["name"]):
-			$World.get_node(projectile_pkg["name"]).unpack(projectile_pkg)
+		if world.has_node(projectile_pkg["name"]):
+			world.get_node(projectile_pkg["name"]).unpack(projectile_pkg)
 		else:
 			var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
 			proj_node.name = projectile_pkg["name"]
 			proj_node.unpack(projectile_pkg)
-			$World.add_child(proj_node)
+			world.add_child(proj_node)
 	
 
 remote func endMatch():
