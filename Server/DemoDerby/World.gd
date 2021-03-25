@@ -2,7 +2,7 @@ extends "res://GameBase.gd"
 func systemname():
 	return "DemoDerby"
 
-var car = preload("res://RacingGame/racingCar.tscn")
+var car = preload("res://DemoDerby/racingCar.tscn")
 
 var spawn_positions = []
 

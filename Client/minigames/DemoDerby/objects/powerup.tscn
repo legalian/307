@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/powerup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://minigames/RacingGame/objects/powerup.gd" type="Script" id=2]
+
+[node name="Powerup" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Graphics" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.8, 0.8 )

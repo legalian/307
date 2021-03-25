@@ -32,7 +32,7 @@ remote func frameUpdate(s_players, powerups):
 		if s_player['id'] in gameinstance.players:
 			gameinstance.players[s_player['id']].unpack(s_player)
 		else:
-			gameinstance.players[s_player['id']] = preload("res://minigames/RacingGame/objects/racingCar.tscn").instance()
+			gameinstance.players[s_player['id']] = preload("res://minigames/DemoDerby/objects/racingCar.tscn").instance()
 			gameinstance.players[s_player['id']].name = "Player_" + str(s_player['id'])
 			gameinstance.players[s_player['id']].unpack(s_player)
 			gameinstance.get_node("World").add_child(gameinstance.players[s_player['id']])
@@ -41,7 +41,7 @@ remote func frameUpdate(s_players, powerups):
 		if world.has_node(powerup["name"]):
 			world.get_node(powerup["name"]).unpack(powerup)
 		else:
-			var p_node = preload("res://minigames/RacingGame/objects/powerup.tscn").instance()
+			var p_node = preload("res://minigames/DemoDerby/objects/powerup.tscn").instance()
 			p_node.position = Vector2(powerup["x"],powerup["y"])
 			p_node.name = powerup["name"]
 			p_node.unpack(powerup)
