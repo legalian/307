@@ -37,7 +37,7 @@ func use(player):
 		Powerups.PROJ:
 			var proj_node = projectile.instance()
 			proj_node.name = "Projectile " + str(proj_node.get_instance_id())
-			proj_node.position = Vector2(position.x, position.y)
+			proj_node.position = Vector2(position.x, position.y) # Change to car position later
 			get_parent().add_child(proj_node) # Add to $World
 	
 func reset():

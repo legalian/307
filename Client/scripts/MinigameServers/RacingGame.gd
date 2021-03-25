@@ -43,14 +43,19 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 			p_node.unpack(powerup)
 			world.add_child(p_node)
 	
-	for projectile_pkg in projectile_frame:
-		if world.has_node(projectile_pkg["name"]):
-			world.get_node(projectile_pkg["name"]).unpack(projectile_pkg)
-		else:
-			var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
-			proj_node.name = projectile_pkg["name"]
-			proj_node.unpack(projectile_pkg)
-			world.add_child(proj_node)
+	# Special case for projectiles; not sure how to remove specific ones from client, so im just
+	# removing all and adding them back regardless
+	
+	for child in world.get_children(): # Remove all projectiles
+		if (child.name.begins_with("Projectile")):
+			world.remove_child(child)
+	
+	for projectile_pkg in projectile_frame: # Add them back in
+		var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
+		proj_node.name = projectile_pkg["name"]
+		proj_node.unpack(projectile_pkg)
+		world.add_child(proj_node)
+	
 	
 
 remote func endMatch():

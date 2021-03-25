@@ -11,8 +11,18 @@ func _ready():
 
 func _physics_process(delta):
 	# Somehow get direction from RacingCar.gd
-	var coll_obj = move_and_collide(velocity * delta)
-	pass
+	var collided = move_and_collide(velocity * delta)
+	
+	if collided:
+		print("collided with something")
+		get_parent().remove_child(self)
+		print("Collided with: " + collided.collider.name)
+		if (collided.collider.name.begins_with("Player")):
+			collided.collider.interrupt()
+			print("collided with player!")
+		else:
+			print("collided with not a player!")
+	
 
 func pack():
 	return {

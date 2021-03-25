@@ -16,7 +16,6 @@ var velocity = Vector2.ZERO
 var input_vector = Vector2.ZERO
 
 var hasSpeedPowerup = false
-var isStunned = false
 
 func pack():
 	return {
@@ -25,8 +24,7 @@ func pack():
 		'y':position.y,
 		'r':rotation,
 		'place':place,
-		'hasSpeedPowerup':hasSpeedPowerup,
-		'isStunned':isStunned
+		'hasSpeedPowerup':hasSpeedPowerup
 	}
 	
 func _ready():
@@ -58,8 +56,11 @@ func _physics_process(delta):
 		if collision.collider.name.begins_with("Powerup"):
 			collision.collider.use(self)
 
+func interrupt():
+	speed = 0
+
 func stun(duration):
-	isStunned = true
+	# Somehow stop the car's movements.
 	
 	var timer = Timer.new()
 	add_child(timer)
@@ -69,7 +70,9 @@ func stun(duration):
 	timer.start()
 
 func cleanse():
-	isStunned = false
+	# Restore any changes from stun() back to normal.
+	# Should be called from stun's timer hookup.
+	pass
 
 func gain_speed_powerup(duration):
 	hasSpeedPowerup = true
