@@ -19,7 +19,7 @@ func _ready():
 	minigame = "DEMODERBY"
 	world = get_node("World" + map);
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/DemoDerby/assets/entities/fence.tscn")
-	object_scenes[Object_ids.CAR] = preload("res://minigames/DemoDerby/assets/entities/racingCar.tscn")
+	object_scenes[Object_ids.CAR] = preload("res://minigames/DemoDerby/assets/entities/demoDerbyCar.tscn")
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
 	#object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
 	object_scenes[Object_ids.CACTUS] = preload("res://objects/cactus_short.tscn")

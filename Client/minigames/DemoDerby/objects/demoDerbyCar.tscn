@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/car.tscn" type="PackedScene" id=1]
-[ext_resource path="res://minigames/DemoDerby/objects/racingCar.gd" type="Script" id=2]
-[ext_resource path="res://minigames/DemoDerby/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://minigames/DemoDerby/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://minigames/DemoDerby/objects/demoDerbyCar.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 90.465
@@ -24,7 +24,7 @@ scale = 10.0
 color = Color( 0.945098, 1, 0, 1 )
 
 [node name="Player" type="KinematicBody2D"]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
 rotation = 3.14159
@@ -33,7 +33,7 @@ rotation = 3.14159
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
 
-[node name="GUI" parent="Camera/CanvasLayer" instance=ExtResource( 3 )]
+[node name="GUI" parent="Camera/CanvasLayer" instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.513, -16.106 )
