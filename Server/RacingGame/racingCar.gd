@@ -16,6 +16,7 @@ var velocity = Vector2.ZERO
 var input_vector = Vector2.ZERO
 
 var hasSpeedPowerup = false
+var isStunned = false
 
 func pack():
 	return {
@@ -24,7 +25,8 @@ func pack():
 		'y':position.y,
 		'r':rotation,
 		'place':place,
-		'hasSpeedPowerup':hasSpeedPowerup
+		'hasSpeedPowerup':hasSpeedPowerup,
+		'isStunned':isStunned
 	}
 	
 func _ready():
@@ -55,6 +57,19 @@ func _physics_process(delta):
 		var collision = get_slide_collision(index)
 		if collision.collider.name.begins_with("Powerup"):
 			collision.collider.use(self)
+
+func stun(duration):
+	isStunned = true
+	
+	var timer = Timer.new()
+	add_child(timer)
+	timer.connect("timeout", self, "cleanse")
+	timer.set_wait_time(duration)
+	timer.set_one_shot(true)
+	timer.start()
+
+func cleanse():
+	isStunned = false
 
 func gain_speed_powerup(duration):
 	hasSpeedPowerup = true

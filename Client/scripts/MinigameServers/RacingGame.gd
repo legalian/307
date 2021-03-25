@@ -19,7 +19,7 @@ func syncUpdate():
 		var p = gameinstance.players[players[0].playerID]
 		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_vector, "progress": p.lap + p.checkpoint})
 
-remote func frameUpdate(s_players, powerups):
+remote func frameUpdate(s_players, powerups, projectile_frame):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
@@ -42,6 +42,16 @@ remote func frameUpdate(s_players, powerups):
 			p_node.name = powerup["name"]
 			p_node.unpack(powerup)
 			world.add_child(p_node)
+	
+	for projectile_pkg in projectile_frame:
+		if $World.has_node(projectile_pkg["name"]):
+			$World.get_node(projectile_pkg["name"]).unpack(projectile_pkg)
+		else:
+			var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
+			proj_node.name = projectile_pkg["name"]
+			proj_node.unpack(projectile_pkg)
+			$World.add_child(proj_node)
+	
 
 remote func endMatch():
 	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()

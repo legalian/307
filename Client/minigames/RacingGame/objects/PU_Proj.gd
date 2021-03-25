@@ -1,4 +1,6 @@
 extends Node2D
 
+
 func unpack(package):
-	pass
+	position = Vector2(package['x'],package['y'])
+	rotation = package['r']

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://RacingGame/World.gd" type="Script" id=1]
 [ext_resource path="res://RacingGame/Objects.tscn" type="PackedScene" id=2]
 [ext_resource path="res://RacingGame/powerup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://RacingGame/PU_Proj.tscn" type="PackedScene" id=4]
 
 [node name="WorldContainer" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,3 +21,5 @@ position = Vector2( 0, 1900 )
 
 [node name="Powerup3" parent="World" instance=ExtResource( 3 )]
 position = Vector2( 0, 2300 )
+
+[node name="Projectile" parent="World" instance=ExtResource( 4 )]

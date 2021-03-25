@@ -72,8 +72,18 @@ func _send_rpc_update():
 		player_frame.append(gg.pack())
 	for pp in powerups.values():
 		powerup_frame.append(pp.pack())
+	
+	var projectile_frame = []
+	for node in $World.get_children():
+		if (node.name.begins_with("Projectile")):
+			projectile_frame.append(node.pack())
+	
+	
 	for p in players:
-		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,powerup_frame)
+		rpc_unreliable_id(p.playerID,"frameUpdate",
+						  player_frame,
+						  powerup_frame,
+						  projectile_frame)
 
 func spawn(player_id):
 	print("Spawning player: " + str(player_id))
