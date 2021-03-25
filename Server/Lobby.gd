@@ -12,7 +12,7 @@ var podium = preload("res://Podium/World.tscn")
 
 var minigame_order = []
 
-var minigames_per_match = 2 # This number CANNOT be greater than minigame_list size!!
+var minigames_per_match = 3 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
 
 var can_start = false
@@ -20,7 +20,7 @@ var in_game = false
 var rng
 
 var max_players_per_lobby = 20
-var min_players_per_lobby = 2
+var min_players_per_lobby = 3
 # Change this to 1 for debugging
 
 func _init(var code):

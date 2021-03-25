@@ -11,6 +11,7 @@ var progress = 0.0
 var place = 1
 var finish_time = INF
 var finished = false
+var health = 100
 
 var id
 var velocity = Vector2.ZERO
@@ -23,7 +24,8 @@ func pack():
 		'y':position.y,
 		'r':rotation,
 		'place':place,
-		'hasSpeedPowerup':hasSpeedPowerup
+		'hasSpeedPowerup':hasSpeedPowerup,
+		'health':health
 	}
 	
 func _ready():
@@ -52,8 +54,12 @@ func _physics_process(delta):
 	
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
+		#print("Collision with " + str(collision.collider.name))
 		if collision.collider.name.begins_with("Powerup"):
 			collision.collider.use(self)
+		if collision.collider.name.begins_with("Player"):
+			health = health - 1
+			print("Car collided with another car")
 
 func gain_speed_powerup(duration):
 	hasSpeedPowerup = true

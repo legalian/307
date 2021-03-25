@@ -8,7 +8,7 @@
 [ext_resource path="res://minigames/DemoDerby/UIobjects/demoDerbyScoreboard.gd" type="Script" id=6]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 100
 font_data = ExtResource( 1 )
 
@@ -37,7 +37,7 @@ margin_left = -35.809
 margin_top = -49.191
 margin_right = 37.191
 margin_bottom = 213.809
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0.678431, 0, 1 )
 text = "5!
 "
@@ -80,3 +80,12 @@ size_flags_horizontal = 2
 size_flags_vertical = 14
 custom_fonts/font = SubResource( 2 )
 valign = 2
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = 773.07
+margin_top = 533.762
+margin_right = 1006.07
+margin_bottom = 581.762
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -12,6 +12,7 @@ var progress = 0.0
 var lap = 1
 #var lap = 2
 var place = 1
+var health = 100
 
 var path
 var path_length
@@ -40,6 +41,8 @@ func unpack(package):
 	id = package['id']
 	place = package['place']
 	hasSpeedPowerup = package['hasSpeedPowerup']
+	health = package['health']
+	get_node("Camera/CanvasLayer/GUI/HealthBar").set_value(health)
 
 func _process(delta):
 	input_vector = Vector2.ZERO
