@@ -250,7 +250,7 @@ func _Peer_Connected(player_id):
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
 	
 	#Note: "party", "lobby", and "quickplay" all have the same effect when called through the multi user testing script, and "demoderby" will be enabled when the demoderby game is in a playable state
-	var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn")}
+	var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn"), "demoderby":preload("res://DemoDerby/World.tscn")}
 	if (scenes_no_shim.has(multi_user_testing)):
 		print ("Starting minigame " + str(multi_user_testing) + " without shim")
 		#var thisTestParty = partyHandler.get_party_by_player(str(player_id))
@@ -272,7 +272,7 @@ func _Peer_Connected(player_id):
 			#	for player in test_script_party.playerIDs:
 			#		rpc_id(player,"setminigame",minigame.systemname(),minigame.name)
 	
-	var shims = {"podium_shim":preload("res://Podium/World.tscn"), "battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn")}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
+	var shims = {"podium_shim":preload("res://Podium/World.tscn"), "battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn"),"demoderby_shim":preload("res://DemoDerby/World.tscn")}#,}
 	print("multi_user_testing = " + str(multi_user_testing))
 	if shims.has(multi_user_testing):
 		var dummyobj = PartyPlayer.new(1010101010, null);

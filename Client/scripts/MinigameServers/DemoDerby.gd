@@ -5,7 +5,7 @@ var gameinstance
 var world_map = null
 
 func _ready():
-	print("I have been added to a racing game lobby")
+	print("I have been added to a demo derby lobby")
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 	if gameinstance!=null && gameinstance.get('world_type')!='demo_derby': gameinstance = null
 	var _timer = Timer.new()
@@ -24,7 +24,7 @@ func syncUpdate():
 remote func frameUpdate(s_players, powerups):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
-		if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
+		if gameinstance!=null && gameinstance.get('world_type')!='demo_derby': gameinstance = null
 		if gameinstance==null: return
 	if gameinstance.world == null: 
 		gameinstance.load_map(world_map)
