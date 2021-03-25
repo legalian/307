@@ -4,7 +4,7 @@ var objectsPath = "res://minigames/racing/objects"
 
 var world_type = 'racing_game'
 
-enum Object_ids {TREE, FENCE, CAR, FENCE2, FLAG}
+enum Object_ids {TREE, FENCE, CAR, FENCE2, FLAG, STARTLINE, CACTUS}
 
 var camera = null
 var world = null
@@ -24,6 +24,7 @@ func _ready():
 	object_scenes[Object_ids.CAR] = preload("res://minigames/RacingGame/objects/racingCar.tscn")
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
 	object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
+	object_scenes[Object_ids.CACTUS] = preload("res://objects/cactus_tall.tscn")
 	object_map = find_node("Objects")
 	object_map.visible = false
 	
