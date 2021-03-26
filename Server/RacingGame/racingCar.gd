@@ -18,6 +18,8 @@ var velocity = Vector2.ZERO
 var input_dict = {"rotating":0, "accelerating":0, "usingPowerup":false}
 
 var hasSpeedPowerup = false
+var speed_timer = null
+
 var cur_powerup = null
 
 func pack():
@@ -33,6 +35,11 @@ func pack():
 	
 func _ready():
 	set_physics_process(false)
+	
+	speed_timer = Timer.new()
+	add_child(speed_timer)
+	speed_timer.connect("timeout", self, "lose_speed_powerup")
+	speed_timer.set_one_shot(true)
 
 func _physics_process(delta):
 	if progress <  NUM_LAPS + 1:
@@ -96,12 +103,7 @@ func cleanse():
 func gain_speed_powerup(duration):
 	hasSpeedPowerup = true
 	
-	var timer = Timer.new()
-	add_child(timer)
-	timer.connect("timeout", self, "lose_speed_powerup")
-	timer.set_wait_time(duration)
-	timer.set_one_shot(true)
-	timer.start()
+	speed_timer.start(duration)
 	
 func lose_speed_powerup():
 	hasSpeedPowerup = false
