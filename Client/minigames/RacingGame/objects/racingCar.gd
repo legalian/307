@@ -43,9 +43,8 @@ func unpack(package):
 	id = package['id']
 	place = package['place']
 	hasSpeedPowerup = package['hasSpeedPowerup']
-	if cur_powerup != package['powerup']:
+	if cur_powerup != package['powerup'] and powerup_icon != null:
 		cur_powerup = package['powerup']
-		yield(self, "ready")
 		powerup_icon.changePowerup(cur_powerup)
 
 func _process(delta):

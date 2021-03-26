@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const NUM_LAPS = 2
 
+var projectile = preload("res://RacingGame/PU_Proj.tscn")
+
 var maxSpeed = 1500
 var speed = 0
 var acceleration = 25
@@ -56,8 +58,20 @@ func _physics_process(delta):
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
 		if collision.collider.name.begins_with("Powerup"):
-			collision.collider.use(self)
+			collision.collider.pickup(self)
 			break;
+
+func _process(delta):
+	if input_dict["usingPowerup"] and cur_powerup != null:
+		match cur_powerup:
+			"speed":
+				gain_speed_powerup(5)
+			"missile":
+				var proj_node = projectile.instance()
+				proj_node.name = "Projectile " + str(proj_node.get_instance_id())
+				proj_node.position = Vector2(position.x, position.y)
+				get_parent().add_child(proj_node) # Add to World
+		cur_powerup = null
 
 func interrupt():
 	speed = 0

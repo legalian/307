@@ -24,8 +24,8 @@ func pack():
 		'visible':visible,
 		'name':name
 	}
-	
-func use(player):
+
+func pickup(player):
 	cooldown.start()
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
@@ -33,12 +33,9 @@ func use(player):
 	var cur_powerup = rng.randi_range(0, Powerups.size()-1)
 	match cur_powerup:
 		Powerups.SPEED:
-			player.gain_speed_powerup(5)
+			player.cur_powerup = "speed"
 		Powerups.PROJ:
-			var proj_node = projectile.instance()
-			proj_node.name = "Projectile " + str(proj_node.get_instance_id())
-			proj_node.position = Vector2(position.x, position.y) # Change to car position later
-			get_parent().add_child(proj_node) # Add to $World
+			player.cur_powerup = "missile"
 	
 func reset():
 	$CollisionShape2D.set_deferred("disabled", false)
