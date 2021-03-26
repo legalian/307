@@ -17,7 +17,7 @@ func syncUpdate():
 	if gameinstance==null: return
 	if players[0].playerID in gameinstance.players:
 		var p = gameinstance.players[players[0].playerID]
-		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_vector, "progress": p.lap + p.checkpoint})
+		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_dict, "progress": p.lap + p.checkpoint})
 
 remote func frameUpdate(s_players, powerups, projectile_frame):
 	if gameinstance==null:

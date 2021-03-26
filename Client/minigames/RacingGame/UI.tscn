@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://minigames/RacingGame/UIobjects/top3.gd" type="Script" id=7]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
+[ext_resource path="res://minigames/RacingGame/UIobjects/PowerupIcon.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -29,6 +30,14 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=5]
 size = 30
 font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0.392157 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 1, 1, 1, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -146,3 +155,28 @@ size_flags_horizontal = 2
 size_flags_vertical = 14
 custom_fonts/font = SubResource( 5 )
 valign = 2
+
+[node name="PowerupContainer" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -125.0
+margin_right = 125.0
+margin_bottom = -25.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerupIcon" type="TextureRect" parent="PowerupContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 95.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 90, 90 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

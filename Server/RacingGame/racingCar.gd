@@ -13,9 +13,10 @@ var finished = false
 
 var id
 var velocity = Vector2.ZERO
-var input_vector = Vector2.ZERO
+var input_dict = {"rotating":0, "accelerating":0, "usingPowerup":false}
 
 var hasSpeedPowerup = false
+var cur_powerup = null
 
 func pack():
 	return {
@@ -24,7 +25,8 @@ func pack():
 		'y':position.y,
 		'r':rotation,
 		'place':place,
-		'hasSpeedPowerup':hasSpeedPowerup
+		'hasSpeedPowerup':hasSpeedPowerup,
+		'powerup':cur_powerup
 	}
 	
 func _ready():
@@ -32,13 +34,13 @@ func _ready():
 
 func _physics_process(delta):
 	if progress <  NUM_LAPS + 1:
-		if input_vector.y == 0:
+		if input_dict["accelerating"] == 0:
 			speed = move_toward(speed, 0, 10)
-		var rot_amount = input_vector.x * rotSpeed * delta
+		var rot_amount = input_dict["rotating"] * rotSpeed * delta
 		if hasSpeedPowerup:
 			rot_amount *= 1.5
 		rotation += rot_amount
-		speed += input_vector.y*acceleration
+		speed += input_dict["accelerating"]*acceleration
 	else:
 		if finished == false:
 			finish_time = OS.get_ticks_msec()

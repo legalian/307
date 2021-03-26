@@ -97,7 +97,7 @@ func spawn(player_id):
 remote func syncUpdate(package):
 	var player_id = get_tree().get_rpc_sender_id()
 	if (ingame.has(player_id)):
-		ingame[player_id].input_vector = package["input"]
+		ingame[player_id].input_dict = package["input"]
 		ingame[player_id].progress = package["progress"]
 
 func _process(delta):
