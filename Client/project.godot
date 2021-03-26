@@ -106,3 +106,7 @@ use_powerup={
 [physics]
 
 2d/default_gravity=0
+
+[rendering]
+
+quality/2d/use_pixel_snap=true
