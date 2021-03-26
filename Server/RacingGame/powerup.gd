@@ -3,7 +3,9 @@ extends StaticBody2D
 var cooldown
 var rng
 
-enum Powerups {SPEED}
+enum Powerups {SPEED, PROJ}
+
+var projectile = preload("res://RacingGame/PU_Proj.tscn")
 
 func _ready():
 	cooldown = Timer.new()
@@ -22,8 +24,8 @@ func pack():
 		'visible':visible,
 		'name':name
 	}
-	
-func use(player):
+
+func pickup(player):
 	cooldown.start()
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
@@ -31,7 +33,9 @@ func use(player):
 	var cur_powerup = rng.randi_range(0, Powerups.size()-1)
 	match cur_powerup:
 		Powerups.SPEED:
-			player.gain_speed_powerup(5)
+			player.cur_powerup = "speed"
+		Powerups.PROJ:
+			player.cur_powerup = "missile"
 	
 func reset():
 	$CollisionShape2D.set_deferred("disabled", false)
