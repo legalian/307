@@ -69,7 +69,8 @@ func _process(delta):
 			"missile":
 				var proj_node = projectile.instance()
 				proj_node.name = "Projectile " + str(proj_node.get_instance_id())
-				proj_node.position = Vector2(position.x, position.y)
+				proj_node.rotation = self.rotation - PI/2
+				proj_node.position = Vector2(position.x  + 150 * cos(proj_node.rotation), position.y + 150 * sin(proj_node.rotation))
 				get_parent().add_child(proj_node) # Add to World
 		cur_powerup = null
 

@@ -4,13 +4,11 @@ var speed = 1500
 
 var velocity
 
-
 func _ready():
 	set_process(true)
-	velocity = Vector2(speed, speed) #.rotated(r)
 
 func _physics_process(delta):
-	# Somehow get direction from RacingCar.gd
+	velocity = Vector2(speed, 0).rotated(rotation)
 	var collided = move_and_collide(velocity * delta)
 	
 	if collided:
@@ -20,8 +18,11 @@ func _physics_process(delta):
 		if (collided.collider.name.begins_with("Player")):
 			collided.collider.interrupt()
 			print("collided with player!")
+		elif (collided.collider.name.begins_with("Projectile")):
+			get_parent().remove_child(collided.collider)
+			print("collided with another projectile; remove both")
 		else:
-			print("collided with not a player!")
+			print("did not collide with a player or projectile")
 	
 
 func pack():
