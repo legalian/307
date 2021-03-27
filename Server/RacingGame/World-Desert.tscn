@@ -15,3 +15,18 @@ position = Vector2( 0, 1900 )
 
 [node name="Powerup3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 2300 )
+
+[node name="Powerup6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 13350, 6632 )
+
+[node name="Powerup7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 13350, 6932 )
+
+[node name="Powerup8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 13350, 7232 )
+
+[node name="Powerup4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 11606.7, 13487.2 )
+
+[node name="Powerup5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 11606.7, 13887.2 )
