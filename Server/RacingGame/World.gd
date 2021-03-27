@@ -83,7 +83,7 @@ func _send_rpc_update():
 		powerup_frame.append(pp.pack())
 	
 	var projectile_frame = []
-	for node in $World.get_children():
+	for node in world.get_children():
 		if (node.name.begins_with("Projectile")):
 			projectile_frame.append(node.pack())
 	

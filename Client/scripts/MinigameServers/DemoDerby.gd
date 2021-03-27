@@ -19,9 +19,9 @@ func syncUpdate():
 	if gameinstance==null: return
 	if players[0].playerID in gameinstance.players:
 		var p = gameinstance.players[players[0].playerID]
-		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_vector, "progress": p.lap + p.checkpoint})
+		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_dict, "progress": p.lap + p.checkpoint})
 
-remote func frameUpdate(s_players, powerups):
+remote func frameUpdate(s_players, powerups, projectile_frame):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='demo_derby': gameinstance = null
@@ -46,6 +46,19 @@ remote func frameUpdate(s_players, powerups):
 			p_node.name = powerup["name"]
 			p_node.unpack(powerup)
 			world.add_child(p_node)
+	
+	# Special case for projectiles; not sure how to remove specific ones from client, so im just
+	# removing all and adding them back regardless
+	
+	for child in world.get_children(): # Remove all projectiles
+		if (child.name.begins_with("Projectile")):
+			world.remove_child(child)
+	
+	for projectile_pkg in projectile_frame: # Add them back in
+		var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
+		proj_node.name = projectile_pkg["name"]
+		proj_node.unpack(projectile_pkg)
+		world.add_child(proj_node)
 
 remote func setMap(map):
 	world_map = map
