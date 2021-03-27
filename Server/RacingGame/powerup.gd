@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var cooldown
 var rng
+var powerupSelected = null
 
 enum Powerups {SPEED, PROJ, TRAP}
 
@@ -30,8 +31,16 @@ func pickup(player):
 	cooldown.start()
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	
-	var cur_powerup = rng.randi_range(0, Powerups.size()-1)
+	var cur_powerup;
+	if(powerupSelected != null);
+		cur_powerup = rng.randi_range(0, Powerups.size()-1)
+	else:
+		if(powerupSelected == "speed"):
+			cur_powerup = Powerups.SPEED
+		else if(powerupSelected == "missile"):
+			cur_powerup = Powerups.PROJ;
+		else:
+			cur_powerup = Powerups.TRAP
 	match cur_powerup:
 		Powerups.SPEED:
 			player.cur_powerup = "speed"
