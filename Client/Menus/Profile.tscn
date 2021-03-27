@@ -20,16 +20,16 @@ size = 50
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxEmpty" id=388]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="DynamicFont" id=389]
+[sub_resource type="DynamicFont" id=4]
 size = 25
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxEmpty" id=390]
+[sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=391]
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -202,7 +202,7 @@ position = Vector2( 883.592, 192.822 )
 scale = Vector2( 0.404052, 0.404052 )
 frames = ExtResource( 10 )
 animation = "Truck"
-frame = 55
+frame = 25
 playing = true
 
 [node name="Avatar Menu" type="Control" parent="."]
@@ -248,7 +248,7 @@ margin_left = 20.0
 margin_top = 42.0
 margin_right = 200.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 388 )
+custom_styles/normal = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,7 +262,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 text = "Racoon"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -273,7 +273,7 @@ margin_left = 20.0
 margin_top = 260.0
 margin_right = 200.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -287,7 +287,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 text = "Racoon 2"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -298,7 +298,7 @@ margin_left = 250.0
 margin_top = 260.0
 margin_right = 430.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -312,7 +312,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -322,7 +322,7 @@ margin_left = 485.0
 margin_top = 260.0
 margin_right = 665.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -336,7 +336,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -346,7 +346,7 @@ margin_left = 715.0
 margin_top = 260.0
 margin_right = 895.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -360,7 +360,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -370,7 +370,7 @@ margin_left = 250.0
 margin_top = 42.0
 margin_right = 430.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 391 )
+custom_styles/normal = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -384,7 +384,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -394,7 +394,7 @@ margin_left = 485.0
 margin_top = 42.0
 margin_right = 665.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -408,7 +408,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -418,7 +418,7 @@ margin_left = 715.0
 margin_top = 42.0
 margin_right = 895.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -432,7 +432,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -489,7 +489,7 @@ margin_left = 20.0
 margin_top = 42.0
 margin_right = 200.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 388 )
+custom_styles/normal = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -500,7 +500,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -510,7 +510,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 9
+frame = 43
 playing = true
 
 [node name="Avatar4" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -518,7 +518,7 @@ margin_left = 20.0
 margin_top = 260.0
 margin_right = 200.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -529,7 +529,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -539,7 +539,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 6
+frame = 40
 playing = true
 
 [node name="Avatar5" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -547,7 +547,7 @@ margin_left = 250.0
 margin_top = 260.0
 margin_right = 430.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -558,7 +558,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -568,7 +568,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 6
+frame = 40
 playing = true
 
 [node name="Avatar6" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -576,7 +576,7 @@ margin_left = 485.0
 margin_top = 260.0
 margin_right = 665.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -586,7 +586,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 5
+frame = 39
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
@@ -595,7 +595,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -605,7 +605,7 @@ margin_left = 715.0
 margin_top = 260.0
 margin_right = 895.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -615,7 +615,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 5
+frame = 39
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
@@ -624,7 +624,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -634,7 +634,7 @@ margin_left = 250.0
 margin_top = 42.0
 margin_right = 430.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 391 )
+custom_styles/normal = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -644,7 +644,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 8
+frame = 42
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
@@ -653,7 +653,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -663,7 +663,7 @@ margin_left = 485.0
 margin_top = 42.0
 margin_right = 665.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -674,7 +674,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -684,7 +684,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 8
+frame = 42
 playing = true
 
 [node name="Avatar3" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -692,7 +692,7 @@ margin_left = 715.0
 margin_top = 42.0
 margin_right = 895.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -703,7 +703,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -713,7 +713,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 7
+frame = 41
 playing = true
 
 [node name="CloseAvatarMenu" type="Button" parent="Vehicle Menu"]
@@ -768,7 +768,7 @@ margin_left = 20.0
 margin_top = 42.0
 margin_right = 200.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 388 )
+custom_styles/normal = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -783,7 +783,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -793,7 +793,7 @@ margin_left = 20.0
 margin_top = 260.0
 margin_right = 200.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -804,7 +804,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -817,7 +817,7 @@ margin_left = 250.0
 margin_top = 260.0
 margin_right = 430.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -828,7 +828,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -841,7 +841,7 @@ margin_left = 485.0
 margin_top = 260.0
 margin_right = 665.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -855,7 +855,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -865,7 +865,7 @@ margin_left = 715.0
 margin_top = 260.0
 margin_right = 895.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -879,7 +879,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -889,7 +889,7 @@ margin_left = 250.0
 margin_top = 42.0
 margin_right = 430.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 391 )
+custom_styles/normal = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -900,7 +900,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -913,7 +913,7 @@ margin_left = 485.0
 margin_top = 42.0
 margin_right = 665.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -924,7 +924,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -937,7 +937,7 @@ margin_left = 715.0
 margin_top = 42.0
 margin_right = 895.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 390 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -948,7 +948,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 389 )
+custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
