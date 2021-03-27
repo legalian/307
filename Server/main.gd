@@ -7,8 +7,7 @@ var network = NetworkedMultiplayerENet.new()
 var partyHandler
 var port = 1909
 var max_players = 3000
-var mapSelect;
-var powerupSelect;
+
 
 var party_screen = preload("res://PartyScreen/World.tscn")
 
@@ -43,6 +42,7 @@ func StartServer():
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
 
 func make_new_minigame(var minigame):#makes a new minigame object, inserts it into the tree, and returns it.
+
 	if (minigame == null):
 		print("MINIGAME IS NULL!!!!")
 	
@@ -191,7 +191,8 @@ func matchmake_pool():
 		if (lobby.lobby_code != null &&
 			str(lobby.lobby_code) != "defaultCode" &&
 			lobby.can_start):
-			
+
+
 			# Start the game!
 			lobby.in_game = true
 			var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
@@ -250,12 +251,6 @@ var shims = {"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racin
 func _Peer_Connected(player_id):
 	print("User " + str(player_id) + " connected.")
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
-	var powerups = OS.get_environment("POWERUPTEST")
-	var maps = OS.get_environment("MAPTEST")
-	if(maps != "nonmap"):
-		mapSelect = maps;
-	if (powerups != nonpowerups):
-		powerupSelect = powerups;
 
 	
 	#Note: "party", "lobby", and "quickplay" all have the same effect when called through the multi user testing script, and "demoderby" will be enabled when the demoderby game is in a playable state

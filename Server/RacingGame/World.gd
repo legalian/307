@@ -12,6 +12,8 @@ var race_finished = false
 var ingame = {}
 var powerups = {}
 
+var mapSelect = "nonmap";
+
 const MAPS = ["Grass", "Desert"]
 
 var map = null
@@ -36,8 +38,15 @@ func remove_player(player_id):
 
 func _ready():
 	randomize()
-	map = MAPS[randi() % MAPS.size()]
-	
+	if(OS.has_environment("MAPTEST"):
+		mapSelect = OS.get_environment("MAPTEST");
+	if(mapSelect != "nonmap"):
+		if(mapSelect = "grassland"):
+			map = MAPS[0];
+		else:
+			map = MAPS[1];
+	else:
+		map = MAPS[randi() % MAPS.size()]
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
