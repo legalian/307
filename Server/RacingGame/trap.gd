@@ -3,10 +3,8 @@ extends RigidBody2D
 var owner_id;
 
 
-func _physics_process(delta):
-	# Somehow get direction from RacingCar.gd
+func _physics_process(_delta):
 	var collided = get_colliding_bodies();
-	
 	if collided:
 		if (collided.collider.name.begins_with("Player")):
 			if collided.collider.id == owner_id:

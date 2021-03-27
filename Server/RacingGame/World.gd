@@ -38,10 +38,11 @@ func remove_player(player_id):
 
 func _ready():
 	randomize()
-	if(OS.has_environment("MAPTEST"):
+	if(OS.has_environment("MAPTEST")):
 		mapSelect = OS.get_environment("MAPTEST");
+		print("MAPSELECT = " + mapSelect)
 	if(mapSelect != "nonmap"):
-		if(mapSelect = "grassland"):
+		if(mapSelect == "grassland"):
 			map = MAPS[0];
 		else:
 			map = MAPS[1];

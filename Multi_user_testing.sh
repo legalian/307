@@ -31,10 +31,10 @@ if [[ $# == 4 ]]; then
 fi
 
 cd Server
-if [[ $# >= 2]]; then
+if [[ $# -gt 2 ]]; then
 	MAPTEST=$2;
 fi
-if [[ $# >= 3]]; then
+if [[ $# -gt 3 ]]; then
 	POWERUPTEST=$3;
 fi
 MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot &

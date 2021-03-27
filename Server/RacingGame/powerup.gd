@@ -12,10 +12,12 @@ var trap = preload("res://RacingGame/trap.tscn")
 
 func _ready():
 	var powerupEnv = "nonpowerups"
-	if(OS.has_environment("POWERUPTEST"):
+	if(OS.has_environment("POWERUPTEST")):
 		powerupEnv = OS.get_environment("POWERUPTEST")
+		print("powerupENV = " + powerupEnv);
 	if(powerupEnv != "nonpowerups"):
 		powerupSelected = powerupEnv;
+		print(powerupSelected);
 	cooldown = Timer.new()
 	add_child(cooldown)
 	cooldown.connect("timeout", self, "reset")
@@ -38,19 +40,19 @@ func pickup(player):
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
 	var cur_powerup;
-	if(powerupSelected != null);
+	if(powerupSelected != null):
 		cur_powerup = rng.randi_range(0, Powerups.size()-1)
 	else:
 		if(powerupSelected == "speed"):
 			cur_powerup = Powerups.SPEED
-		else if(powerupSelected == "missile"):
-			cur_powerup = Powerups.PROJ;
+		elif(powerupSelected == "missile"):
+			cur_powerup = Powerups.PROJ
 		else:
 			cur_powerup = Powerups.TRAP
 	match cur_powerup:
 		Powerups.SPEED:
 			player.cur_powerup = "speed"
-		Powerups.PROJ:
+		Powerups.PROJ:	 
 			player.cur_powerup = "missile"
 		Powerups.TRAP:
 			player.cur_powerup = "trap";
