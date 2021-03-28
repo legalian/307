@@ -68,6 +68,8 @@ func _physics_process(delta):
 		if collision.collider.name.begins_with("Powerup"):
 			collision.collider.pickup(self)
 			break;
+		if collision.collider.name.begins_with("Trap"):
+			stun(4, 500)
 
 func _process(delta):
 	if input_dict["usingPowerup"] and cur_powerup != null:
@@ -97,6 +99,8 @@ func interrupt():
 
 func stun(duration, speedMax):
 	# Somehow stop the car's movements.
+	cleanse();
+	# Cleanse at start of stun, to prevent multiple effects from causing issues. 
 	maxSpeed = speedMax;
 	if(speed > maxSpeed): speed = maxSpeed;
 	var timer = Timer.new()
