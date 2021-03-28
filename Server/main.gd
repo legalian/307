@@ -281,6 +281,8 @@ func _Peer_Connected(player_id):
 	if shims.has(multi_user_testing):
 		var dummyobj = PartyPlayer.new(1010101010, null);
 		var dummyobj2 = PartyPlayer.new(1010101011, null);
+		dummyobj.dummy = 1;
+		dummyobj2.dummy = 1;
 		var playerobj = PartyPlayer.new(player_id, null);
 		rpc_id(player_id,"add_players",[playerobj.pack(),dummyobj.pack(),dummyobj2.pack()])
 		var minigame = make_new_minigame(shims[multi_user_testing]);

@@ -7,6 +7,7 @@ var score = 0
 var username
 var avatar = 0
 var hat = 0
+var dummy = 0;
 
 func _init(var thisPlayerID, var thisParty):
 	playerID = thisPlayerID

@@ -99,10 +99,11 @@ func _send_rpc_update():
 	
 	
 	for p in players:
-		rpc_unreliable_id(p.playerID,"frameUpdate",
-						  player_frame,
-						  powerup_frame,
-						  projectile_frame)
+		if(p.dummy == 0):
+			rpc_unreliable_id(p.playerID,"frameUpdate",
+							  player_frame,
+							  powerup_frame,
+							  projectile_frame)
 
 func spawn(player_id):
 	print("Spawning player: " + str(player_id))
