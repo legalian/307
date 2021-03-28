@@ -3,6 +3,7 @@ extends KinematicBody2D
 const NUM_LAPS = 2
 
 var projectile = preload("res://RacingGame/PU_Proj.tscn")
+var trap = preload("res://RacingGame/trap.tscn");
 
 var maxSpeed = 1500
 var speed = 0
@@ -76,18 +77,28 @@ func _process(delta):
 			"missile":
 				var proj_node = projectile.instance()
 				proj_node.name = "Projectile " + str(proj_node.get_instance_id())
-				proj_node.position = position + Vector2(0, -100).rotated(rotation)
-				proj_node.rotation = rotation
+				#proj_node.position = position + Vector2(0, -100).rotated(rotation)
+				#proj_node.rotation = rotation
 				proj_node.owner_id = id
+				proj_node.rotation = self.rotation - PI/2
+				proj_node.position = Vector2(position.x  + 150 * cos(proj_node.rotation), position.y + 150 * sin(proj_node.rotation))
 				get_parent().add_child(proj_node) # Add to World
+			"trap":
+				print("Placing a trap!")
+				var trapInstance = trap.instance();
+				trapInstance.name = "Trap " + str(trapInstance.get_instance_id())
+				trapInstance.position = position;
+				trapInstance.owner_id = id;
+				get_parent().add_child(trapInstance)
 		cur_powerup = null
 
 func interrupt():
 	speed = 0
 
-func stun(duration):
+func stun(duration, speedMax):
 	# Somehow stop the car's movements.
-	
+	maxSpeed = speedMax;
+	if(speed > maxSpeed): speed = maxSpeed;
 	var timer = Timer.new()
 	add_child(timer)
 	timer.connect("timeout", self, "cleanse")
@@ -98,7 +109,7 @@ func stun(duration):
 func cleanse():
 	# Restore any changes from stun() back to normal.
 	# Should be called from stun's timer hookup.
-	pass
+	maxSpeed = 1500;
 
 func gain_speed_powerup(duration):
 	hasSpeedPowerup = true
