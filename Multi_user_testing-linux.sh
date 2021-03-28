@@ -4,6 +4,12 @@
 acceptableTests=('party' 'lobby' 'quickplay' 'podium' 'battleroyale' 'racing' 'demoderby' 'battleroyale_shim' 'racing_shim' 'demoderby_shim' 'podium_shim')
 associatedCount=('4'     '4'     '4'         '4'      '3'            '3'      '3'         '1'                 '1'           '1'              '1')
 
+powerups=('speed' 'powerup' 'trap', 'nonpowerups')
+maps=('desert' 'grassland' 'nonmap')
+
+MAPTEST="nonmap"
+POWERUPTEST="nonpowerups"
+
 DESIREDSCREEN=1
 if [[ $# == 0 ]]; then
 	echo "Not enough arguments"
