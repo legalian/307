@@ -12,6 +12,8 @@ var race_finished = false
 var ingame = {}
 var powerups = {}
 
+var mapSelect = "nonmap";
+
 const MAPS = ["Grass", "Desert"]
 
 var map = null
@@ -36,8 +38,17 @@ func remove_player(player_id):
 
 func _ready():
 	randomize()
-	map = MAPS[randi() % MAPS.size()]
-	
+	if(OS.has_environment("MAPTEST")):
+		mapSelect = OS.get_environment("MAPTEST");
+		print("MAPSELECT = " + mapSelect)
+	if(mapSelect != "nonmap"):
+		if(mapSelect == "grassland"):
+			map = MAPS[0];
+		else:
+			map = MAPS[1];
+	else:
+		print("NO MAP SELECTED\n");
+		map = MAPS[randi() % MAPS.size()]
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
@@ -83,16 +94,22 @@ func _send_rpc_update():
 		powerup_frame.append(pp.pack())
 	
 	var projectile_frame = []
+	var trap_frame = [];
 	for node in $World.get_children():
 		if (node.name.begins_with("Projectile")):
 			projectile_frame.append(node.pack())
+		if(node.name.begins_with("Trap")):
+			trap_frame.append(node.pack());
+			
 	
 	
 	for p in players:
-		rpc_unreliable_id(p.playerID,"frameUpdate",
-						  player_frame,
-						  powerup_frame,
-						  projectile_frame)
+		if(p.dummy == 0):
+			rpc_unreliable_id(p.playerID,"frameUpdate",
+							  player_frame,
+							  powerup_frame,
+							  projectile_frame,
+							  trap_frame)
 
 func spawn(player_id):
 	print("Spawning player: " + str(player_id))

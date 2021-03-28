@@ -39,8 +39,8 @@ func _send_rpc_update():
 	var bullet_frame = []
 	for gg in bullets.values(): bullet_frame.append(gg.pack())
 	for p in players:
-		if p.playerID==debug_id: continue
-		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame)
+		if(p.dummy == 0):
+			rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame)
 
 #func _process(delta):
 #	return
@@ -49,9 +49,11 @@ func _send_rpc_update():
 		if (player.playerID != 0 && ingame.has(player.playerID)):
 			#print("Calling update radius")
 			var circle = get_node("World/Circle")
-			rpc_id(player.playerID, "update_radius", circle.radius)
+			if(player.dummy == 0):
+				rpc_id(player.playerID, "update_radius", circle.radius)
 			if (circle.isInCircle(ingame[player.playerID].position)):
-				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
+				if(player.dummy == 0):
+					rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
 				print(str(player.playerID) + " Damaged from server")
 				ingame[player.playerID].health -= .01
 				if (ingame[player.playerID].health <= 0):

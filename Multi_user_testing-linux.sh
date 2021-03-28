@@ -19,12 +19,21 @@ if ! printf '%s\n' "${acceptableTests[@]}" | grep -q "^$1$"; then
 	echo "${acceptableTests[*]}"
 	exit 1
 fi
-if [[ $# == 2 ]]; then
-	DESIREDSCREEN=$2
+if [[ $# == 4 ]]; then
+	DESIREDSCREEN=$4
 fi
 
 cd Server
-MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" godot &
+if [[ $# -ge 2 ]]; then
+	MAPTEST=$2;
+	echo $MAPTEST;
+fi
+if [[ $# -ge 3 ]]; then
+	POWERUPTEST=$3;
+	echo $POWERUPTEST
+fi
+
+MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" MAPTEST=$MAPTEST POWERUPTEST=$POWERUPTEST godot &
 cd ..
 sleep 2
 for i in "${!acceptableTests[@]}"; do
