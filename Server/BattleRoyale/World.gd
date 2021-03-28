@@ -49,10 +49,10 @@ func _send_rpc_update():
 		if (player.playerID != 0 && ingame.has(player.playerID)):
 			#print("Calling update radius")
 			var circle = get_node("World/Circle")
-			if(p.dummy == 0):
+			if(player.dummy == 0):
 				rpc_id(player.playerID, "update_radius", circle.radius)
 			if (circle.isInCircle(ingame[player.playerID].position)):
-				if(p.dummy == 0):
+				if(player.dummy == 0):
 					rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
 				print(str(player.playerID) + " Damaged from server")
 				ingame[player.playerID].health -= .01

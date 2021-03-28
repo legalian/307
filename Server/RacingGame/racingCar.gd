@@ -82,10 +82,12 @@ func _process(delta):
 				proj_node.owner_id = id
 				get_parent().add_child(proj_node) # Add to World
 			"trap":
+				print("Placing a trap!")
 				var trapInstance = trap.instance();
 				trapInstance.name = "Trap " + str(trapInstance.get_instance_id())
 				trapInstance.position = position;
 				trapInstance.owner_id = id;
+				get_parent().add_child(trapInstance)
 		cur_powerup = null
 
 func interrupt():

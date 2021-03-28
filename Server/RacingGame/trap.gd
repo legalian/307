@@ -1,10 +1,12 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 var owner_id;
+var velocity
 
 
 func _physics_process(_delta):
-	var collided = get_colliding_bodies();
+	velocity = Vector2(0,0)
+	var collided = move_and_collide(velocity);
 	if collided:
 		if (collided.collider.name.begins_with("Player")):
 			if collided.collider.id == owner_id:
