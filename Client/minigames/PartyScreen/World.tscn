@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Theme.tres" type="Theme" id=3]
 [ext_resource path="res://minigames/PartyScreen/World.gd" type="Script" id=4]
 [ext_resource path="res://minigames/PartyScreen/Partylist.gd" type="Script" id=5]
+[ext_resource path="res://exported/cars/CarSpriteFrames.tres" type="SpriteFrames" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -12,6 +13,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
+use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=3]
@@ -67,10 +69,10 @@ tracks/0/keys = {
 script = ExtResource( 4 )
 
 [node name="Button_Back" type="Button" parent="."]
-margin_left = 71.3459
-margin_top = 471.271
-margin_right = 274.345
-margin_bottom = 544.271
+margin_left = 28.6311
+margin_top = 494.631
+margin_right = 231.63
+margin_bottom = 567.631
 rect_pivot_offset = Vector2( 159.38, 30.3461 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
@@ -80,27 +82,14 @@ __meta__ = {
 }
 
 [node name="Button_CopyCode" type="Button" parent="."]
-margin_left = 765.733
-margin_top = 324.113
-margin_right = 914.733
-margin_bottom = 377.113
+margin_left = 766.4
+margin_top = 375.504
+margin_right = 915.4
+margin_bottom = 428.504
 rect_pivot_offset = Vector2( 159.38, 30.3461 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
 text = "Copy code"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_ChooseCharacter" type="Button" parent="."]
-margin_left = 79.5916
-margin_top = 389.719
-margin_right = 265.592
-margin_bottom = 435.719
-rect_pivot_offset = Vector2( 159.38, 30.3461 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Change"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -118,10 +107,10 @@ __meta__ = {
 }
 
 [node name="CurrentAvatar" type="Label" parent="."]
-margin_left = 42.0
-margin_top = 360.0
-margin_right = 300.0
-margin_bottom = 383.0
+margin_left = 246.898
+margin_top = 330.634
+margin_right = 504.898
+margin_bottom = 353.634
 theme = ExtResource( 3 )
 text = "Current Avatar"
 align = 1
@@ -129,36 +118,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 789.798
-margin_top = 89.4575
-margin_right = 957.798
-margin_bottom = 112.458
+[node name="CurrentVehicle" type="Label" parent="."]
+margin_left = 537.225
+margin_top = 330.634
+margin_right = 795.225
+margin_bottom = 353.634
 theme = ExtResource( 3 )
-text = "Party List goes here"
+text = "Current Vehicle"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 790.0
+margin_top = 89.0
+margin_right = 958.0
+margin_bottom = 112.0
+theme = ExtResource( 3 )
+text = "Party List:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="UsernameLabel" type="Label" parent="."]
-margin_left = 88.4583
-margin_top = 208.721
-margin_right = 256.458
-margin_bottom = 231.721
+margin_left = 416.161
+margin_top = 121.289
+margin_right = 584.16
+margin_bottom = 144.289
+rect_scale = Vector2( 1.4, 1.4 )
 theme = ExtResource( 3 )
 text = "Username goes here"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Raccoon" parent="." instance=ExtResource( 2 )]
-position = Vector2( 169.237, 378.983 )
+position = Vector2( 376.137, 314.911 )
+
+[node name="VehicleSprites" type="AnimatedSprite" parent="."]
+position = Vector2( 663.414, 241.606 )
+scale = Vector2( 0.374295, 0.374295 )
+frames = ExtResource( 6 )
+animation = "Future"
+playing = true
 
 [node name="EnterGameButton" type="Button" parent="."]
 margin_left = 453.76
-margin_top = 461.003
+margin_top = 485.03
 margin_right = 612.76
-margin_bottom = 505.003
+margin_bottom = 529.03
 theme = ExtResource( 3 )
 text = "Enter game"
 __meta__ = {
@@ -166,23 +176,25 @@ __meta__ = {
 }
 
 [node name="PartyCodeLabel" type="Label" parent="."]
-margin_left = 345.278
-margin_top = 332.007
-margin_right = 416.278
-margin_bottom = 346.007
+margin_left = 338.604
+margin_top = 384.733
+margin_right = 409.604
+margin_bottom = 398.733
 rect_scale = Vector2( 2.71146, 2.91496 )
 text = "Party code:"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PartyCode" type="Label" parent="."]
-margin_left = 549.927
-margin_top = 330.984
-margin_right = 613.927
-margin_bottom = 344.984
+margin_left = 543.253
+margin_top = 383.71
+margin_right = 607.253
+margin_bottom = 397.71
 rect_scale = Vector2( 3.00754, 2.93724 )
 text = "undefined"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -202,5 +214,4 @@ __meta__ = {
 }
 [connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Button_CopyCode" to="." method="_on_Button_CopyCode_pressed"]
-[connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
 [connection signal="pressed" from="EnterGameButton" to="." method="_on_EnterGameButton_pressed"]

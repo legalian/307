@@ -1,14 +1,8 @@
 tool
 extends Node2D
 
-onready var generalserver = get_node("/root/Server")
-var VehicleSelected = 0
-var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
-
 func _ready():
 	set_process(true)
-	VehicleSelected = generalserver.selfplayer.vehicle
-	$Visible/Sprite.animation = VehicleStyles[VehicleSelected]
 
 func _process(delta):
 	if !$VisibilityNotifier.is_on_screen(): return
