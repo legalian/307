@@ -7,6 +7,7 @@ var score = 0
 var username
 var avatar = 0
 var hat = 0
+var vehicle = 0
 
 func _init(var thisPlayerID, var thisParty):
 	playerID = thisPlayerID
@@ -31,10 +32,12 @@ func pack():
 			'score':score,
 			'username':username,
 			'avatar':avatar,
-			'hat':hat
+			'hat':hat,
+			'vehicle':vehicle
 		}
 
 func unpack(packed):
+	vehicle = packed['vehicle']
 	username = packed['username']
 	avatar = packed['avatar']
 	hat = packed['hat']

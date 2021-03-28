@@ -3,6 +3,8 @@ extends Node2D
 
 var animPlayer = null
 var headRef = null
+var l_handref = null
+var r_handref = null
 var lefthand = null
 var righthand = null
 var playback = null
@@ -12,6 +14,10 @@ var HatLocation = [null,
 "res://Hats/Viking.tscn",
 "res://Hats/Paperhat.tscn",
 "res://Hats/Headphones.tscn"]
+var GunLocation = [null, 
+"res://Guns/basicGun.tscn",
+"res://Guns/greenUzi.tscn",
+"res://Guns/purpleDualGun.tscn"]
 
 func _ready():
 	#set_Hat("res://Hats/Whitehat.tscn")
@@ -22,6 +28,8 @@ func _ready():
 	righthand = find_node("RightArmTarget")
 	playback = animPlayer.get("parameters/StateMachine/playback")
 	playback.start('WalkCycle')
+	l_handref = find_node("LeftHandPoint")
+	r_handref = find_node("RightHandPoint")
 
 
 func _process(_delta):
@@ -57,6 +65,21 @@ func set_Hat(hatindex):
 		headRef.add_child(newHat,true)#second parameter is important here- must be true
 		newHat.position = Vector2(40,0)
 		newHat.rotation = PI/2
+
+func set_Gun(gunindex):
+	var gunPath = GunLocation[gunindex]
+	var currentGun = l_handref.get_node_or_null("Gun")
+	if currentGun!=null:
+		l_handref.remove_child(currentGun)
+		currentGun.queue_free()
+	if gunPath != null:
+		var newGun = load(gunPath).instance()
+		newGun.name = "Gun"
+		l_handref.add_child(newGun,true)#second parameter is important here- must be true
+		newGun.rotation_degrees = -88.4
+		newGun.scale = Vector2(1.75,1.75)
+		return newGun
+
 
 func ouch():
 	animPlayer.set("parameters/Ouch/active", true)

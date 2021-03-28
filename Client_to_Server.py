@@ -4,12 +4,14 @@
 import glob
 import re
 from sys import exit
+import sys
 from collections import OrderedDict as ODict
 
 class Map:
 	def __init__(self):
 		self.props = []
 		self.sub_resource_id = 1
+		self.exmaps = {}
 	def __str__(self):
 		res = '[gd_scene load_steps=20 format=2]\n\n'
 		def tostr(obj):
@@ -81,8 +83,14 @@ class Map:
 				if all(obj.get(k)==v for k,v in propmatches.items()):
 					# if obj['___type']=='node': print("MATCHED",parentpath,"FOR",{k:v for k,v in obj.items() if k!='___lines'})
 					if obj['___type']=='sub_resource':
-						obj['___id']=str(self.sub_resource_id)
-						self.sub_resource_id+=1
+						if path not in self.exmaps: self.exmaps[path] = {}
+						if obj['id'] not in self.exmaps[path]:
+							self.exmaps[path][obj['id']]=str(self.sub_resource_id)
+							self.sub_resource_id+=1
+							obj['___id']=self.exmaps[path][obj['id']]
+						else:
+							obj['___id']=self.exmaps[path][obj['id']]
+							continue
 					if obj['___type']=='node': self.assertNotHaveScale(obj)
 					# if 'parent' not in obj: print(obj)
 					if 'parent' in obj:
@@ -102,9 +110,9 @@ class Map:
 							# print("marking ",'"'+'/'.join(vsp[:-1])+'"')
 							markImportant({'___type':'node','name':'"'+vsp[-1]+'"','parent':'"'+'/'.join(vsp[:-1])+'"'})
 					if 'shape' in obj['___lines']:
-						ori = self.sub_resource_id
-						markImportant({'___type':'sub_resource','id':str(self.isCallOf(obj['___lines']['shape'],'SubResource'))})
-						obj['___lines']['shape'] = 'SubResource( '+str(ori)+" )"
+						ori = str(self.isCallOf(obj['___lines']['shape'],'SubResource'))
+						markImportant({'___type':'sub_resource','id':ori})
+						obj['___lines']['shape'] = 'SubResource( '+self.exmaps[path][ori]+" )"
 					if obj['___type']=='node' and obj.get('type') != '"CollisionShape2D"':
 						obj['___lines'] = self.whitelist(obj['___lines'],['position','rotation','mode'])
 						if obj.get('type') not in ['"RigidBody2D"','"StaticBody2D"','"KinematicBody2D"']:
@@ -142,21 +150,20 @@ class Map:
 		return res
 
 
-
-
-globlist = glob.glob('Client/minigames/*/World.tscn')
-if 'Client/minigames/PartyScreen/World.tscn' not in globlist:
-	print("The directory structure is fucked up. Contact parker.")
+if len(sys.argv)<2:
+	print("\tscript needs one argument. Example: BattleRoyale/GrasslandWorld.tscn")
+	print("\tfor that example, input path will be Client/minigames/BattleRoyale/GrasslandWorld.tscn")
+	print("\tand output path will be Server/BattleRoyale/GrasslandWorld.tscn")
 	exit(1)
-for path in globlist:
-	serverpath = path.replace('Client/minigames','Server')
-	if path=='Client/minigames/PartyScreen/World.tscn': continue
-	# print("converting",path,"to",serverpath)
-	thismap = Map()
-	thismap.read(path,savedir=serverpath[:-len('World.tscn')])
-	outp = str(thismap)
-	# print("\t"+outp.replace('\n','\n\t'))
-	with open(serverpath,'w') as f: f.write(outp)
+
+path ="Client/minigames/"+sys.argv[1]
+serverpath ="Server/"+sys.argv[1]
+print("converting",path,"to",serverpath)
+thismap = Map()
+thismap.read(path,savedir=serverpath[:-len('World.tscn')])
+outp = str(thismap)
+# print("\t"+outp.replace('\n','\n\t'))
+with open(serverpath,'w') as f: f.write(outp)
 
 
 

@@ -94,23 +94,6 @@ func _send_rpc_update():
 						  powerup_frame,
 						  projectile_frame)
 
-func spawn(player_id):
-	print("Spawning player: " + str(player_id))
-	
-	rpc_id(player_id, "setMap", map)
-	
-	ingame[player_id] = car.instance()
-	ingame[player_id].name = "Player_" + str(player_id)
-	ingame[player_id].id = player_id
-	ingame[player_id].position = spawn_positions.pop_front()
-	ingame[player_id].rotation = 3*PI/2
-	world.add_child(ingame[player_id])
-	
-remote func syncUpdate(package):
-	var player_id = get_tree().get_rpc_sender_id()
-	if (ingame.has(player_id)):
-		ingame[player_id].input_dict = package["input"]
-		ingame[player_id].progress = package["progress"]
 
 func _process(delta):
 	var sort_array = []
@@ -140,3 +123,23 @@ func _process(delta):
 		end_match.set_wait_time(3)
 		end_match.set_one_shot(true)
 		end_match.start()
+
+
+func spawn(player_id):
+	print("Spawning player: " + str(player_id))
+	
+	rpc_id(player_id, "setMap", map)
+	
+	ingame[player_id] = car.instance()
+	ingame[player_id].name = "Player_" + str(player_id)
+	ingame[player_id].id = player_id
+	ingame[player_id].position = spawn_positions.pop_front()
+	ingame[player_id].rotation = 3*PI/2
+	world.add_child(ingame[player_id])
+	
+remote func syncUpdate(package):
+	var player_id = get_tree().get_rpc_sender_id()
+	if (ingame.has(player_id)):
+		ingame[player_id].input_dict = package["input"]
+		ingame[player_id].progress = package["progress"]
+

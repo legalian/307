@@ -38,9 +38,15 @@ func _send_rpc_update():
 	for gg in ingame.values(): player_frame.append(gg.pack())
 	var bullet_frame = []
 	for gg in bullets.values(): bullet_frame.append(gg.pack())
+	var powerup_frame = []
+	
+	for child in $World.get_children():
+		if child.get('entity_type') == 'collectible':
+			powerup_frame.append(child.pack())
+		
 	for p in players:
 		if p.playerID==debug_id: continue
-		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame)
+		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
 
 #func _process(delta):
 #	return

@@ -65,3 +65,15 @@ __meta__ = {
 
 [node name="ScoreBoard" parent="HUD/CenterContainer" instance=ExtResource( 5 )]
 position = Vector2( 11.1904, -1.96066 )
+
+[node name="PowerBar" type="ProgressBar" parent="HUD"]
+margin_left = 954.0
+margin_top = 472.316
+margin_right = 1327.0
+margin_bottom = 519.316
+rect_rotation = -90.0
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
