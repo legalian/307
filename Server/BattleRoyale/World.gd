@@ -84,6 +84,9 @@ remote func syncUpdate(package):
 
 remote func shoot(package):
 	var player_id = get_tree().get_rpc_sender_id()
+	var playerobj = ingame[player_id]
+	playerobj.gunbar -= {1:0,2:5,3:10}[playerobj.gun]
+	if playerobj.gunbar<=0: playerobj.gun = 1
 	print("GOING TO TRY CHECKING FOR BULLETS")
 	if package['id'] in bullets: return
 	for player in players:
