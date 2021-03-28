@@ -14,10 +14,8 @@ func _ready():
 	var powerupEnv = "nonpowerups"
 	if(OS.has_environment("POWERUPTEST")):
 		powerupEnv = OS.get_environment("POWERUPTEST")
-		print("powerupENV = " + powerupEnv);
 	if(powerupEnv != "nonpowerups"):
 		powerupSelected = powerupEnv;
-		print(powerupSelected);
 	cooldown = Timer.new()
 	add_child(cooldown)
 	cooldown.connect("timeout", self, "reset")
@@ -40,7 +38,7 @@ func pickup(player):
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
 	var cur_powerup;
-	if(powerupSelected != null):
+	if(powerupSelected == null):
 		cur_powerup = rng.randi_range(0, Powerups.size()-1)
 	else:
 		if(powerupSelected == "speed"):

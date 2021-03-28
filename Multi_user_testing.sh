@@ -31,13 +31,15 @@ if [[ $# == 4 ]]; then
 fi
 
 cd Server
-if [[ $# -gt 2 ]]; then
+if [[ $# -ge 2 ]]; then
 	MAPTEST=$2;
+	echo $MAPTEST;
 fi
-if [[ $# -gt 3 ]]; then
+if [[ $# -ge 3 ]]; then
 	POWERUPTEST=$3;
+	echo $POWERUPTEST
 fi
-MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" /Applications/Godot.app/Contents/MacOS/Godot &
+MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" POWERUPTEST=$POWERUPTEST MAPTEST=$MAPTEST /Applications/Godot.app/Contents/MacOS/Godot &
 cd ..
 sleep 2
 for i in "${!acceptableTests[@]}"; do

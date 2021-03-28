@@ -47,6 +47,7 @@ func _ready():
 		else:
 			map = MAPS[1];
 	else:
+		print("NO MAP SELECTED\n");
 		map = MAPS[randi() % MAPS.size()]
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
