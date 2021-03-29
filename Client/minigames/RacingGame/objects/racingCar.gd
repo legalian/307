@@ -49,8 +49,10 @@ func unpack(package):
 	if cur_powerup != package['powerup'] and powerup_icon != null:
 		cur_powerup = package['powerup']
 		powerup_icon.changePowerup(cur_powerup)
-	var VehicleSelected = get_node("/root/Server").get_player(package['id']).vehicle
-	find_node("Sprite").animation = VehicleStyles[VehicleSelected]
+	if get_node_or_null("/root/Server") != null:
+		if get_node("/root/Server").get_player(package['id']) != null:
+			var VehicleSelected = get_node("/root/Server").get_player(package['id']).vehicle
+			find_node("Sprite").animation = VehicleStyles[VehicleSelected]
 
 func _process(delta):
 	input_dict = {"rotating":0, "accelerating":0, "usingPowerup":false}
