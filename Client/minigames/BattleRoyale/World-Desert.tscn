@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://objects/car.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/staticcarSmallWithCollision.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/cactus_tall_60percentscaled.tscn" type="PackedScene" id=2]
 [ext_resource path="res://minigames/BattleRoyale/racemap.tres" type="TileSet" id=4]
 [ext_resource path="res://minigames/BattleRoyale/Circle.gd" type="Script" id=5]
@@ -192,87 +192,6 @@ position = Vector2( -2197.25, -1532.97 )
 [node name="Cactus16" parent="cacti" instance=ExtResource( 2 )]
 position = Vector2( -2518.7, -3502.01 )
 
-[node name="cars" type="YSort" parent="."]
-
-[node name="2Car" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -3341.16, 1175.5 )
-rotation = 1.08036
-
-[node name="2Car2" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -2092.97, 803.694 )
-rotation = -3.01767
-
-[node name="2Car3" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -1263.05, 1228.61 )
-rotation = 1.89194
-
-[node name="2Car4" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -2119.52, 1235.25 )
-rotation = -1.06343
-
-[node name="2Car5" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -1070.91, 816.826 )
-rotation = 2.62443
-
-[node name="2Car6" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -287.637, 819.377 )
-rotation = 0.348206
-
-[node name="2Car7" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 317.039, 1130.64 )
-rotation = -1.63096
-
-[node name="2Car8" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 891.099, 783.658 )
-rotation = -4.07341
-
-[node name="2Car9" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 1710.09, 849.993 )
-rotation = -1.09485
-
-[node name="2Car10" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 2625.35, 1071.27 )
-rotation = -1.09485
-
-[node name="2Car11" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 3540.61, 903.635 )
-rotation = -1.09485
-
-[node name="Car" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -1150.18, -776.466 )
-rotation = -2.25846
-
-[node name="Car2" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -2057.84, -1075.49 )
-rotation = 2.48535
-
-[node name="Car3" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -3538.57, -808.891 )
-rotation = 0.816814
-
-[node name="Car4" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( -364.546, -1089.91 )
-rotation = -3.99506
-
-[node name="Car5" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 482.101, -574.712 )
-rotation = 2.05076
-
-[node name="Car6" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 2207.82, -898.96 )
-
-[node name="Car7" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 1130.6, -844.919 )
-rotation = -5.74213
-
-[node name="Car8" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 3148.14, -653.973 )
-rotation = 4.3703
-
-[node name="Car9" parent="cars" instance=ExtResource( 1 )]
-position = Vector2( 3938.46, -1137.03 )
-rotation = -4.17134
-
 [node name="palm trees" type="YSort" parent="."]
 
 [node name="Palm" parent="palm trees" instance=ExtResource( 7 )]
@@ -349,3 +268,127 @@ position = Vector2( 2621.69, -2741.16 )
 
 [node name="Palm25" parent="palm trees" instance=ExtResource( 7 )]
 position = Vector2( 2620.75, -2493.48 )
+
+[node name="cars" type="YSort" parent="."]
+
+[node name="Car" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -3442.76, -704.522 )
+rotation = 2.13295
+
+[node name="Car2" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -2834.58, -1050.29 )
+rotation = 0.22823
+
+[node name="Car3" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -2306.66, -652.039 )
+rotation = -0.738277
+
+[node name="Car4" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -1917.66, -1081.17 )
+rotation = 0.452438
+
+[node name="Car5" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -1729.34, -602.643 )
+rotation = -0.338847
+
+[node name="Car6" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -1025.45, -1031.77 )
+rotation = 1.59969
+
+[node name="Car7" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -1070.18, -633.36 )
+rotation = 1.59969
+
+[node name="Car8" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -96.4417, -1047.9 )
+rotation = 0.658799
+
+[node name="Car9" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 938.23, -774.747 )
+rotation = 3.00937
+
+[node name="Car10" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 1788.04, -1020.31 )
+rotation = 4.38928
+
+[node name="Car11" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 2265.37, -711.287 )
+rotation = 6.62985
+
+[node name="Car12" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 2819.95, -1078.25 )
+rotation = 5.5209
+
+[node name="2Car" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -3472.3, 814.433 )
+rotation = 1.02922
+scale = Vector2( 1, 1 )
+
+[node name="2Car2" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -2619.8, 930.076 )
+rotation = 3.77675
+scale = Vector2( 1, 1 )
+
+[node name="2Car3" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -3199.5, 1182.12 )
+rotation = 5.35078
+scale = Vector2( 1, 1 )
+
+[node name="2Car4" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -1729.18, 1003.37 )
+rotation = 2.52632
+scale = Vector2( 1, 1 )
+
+[node name="2Car5" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -587.516, 945.715 )
+rotation = 0.957003
+scale = Vector2( 1, 1 )
+
+[node name="2Car6" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -1135.28, 1124.46 )
+rotation = 1.79872
+scale = Vector2( 1, 1 )
+
+[node name="2Car7" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( -114.707, 1245.55 )
+rotation = -0.887621
+scale = Vector2( 1, 1 )
+
+[node name="2Car8" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 652.166, 870.758 )
+rotation = -1.12694
+scale = Vector2( 1, 1 )
+
+[node name="2Car9" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 1015.42, 1170.59 )
+rotation = 0.131811
+scale = Vector2( 1, 1 )
+
+[node name="2Car10" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 2781.56, 832.923 )
+rotation = 1.52647
+scale = Vector2( 1, 1 )
+
+[node name="2Car14" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 3412.04, 1123.68 )
+rotation = -0.944945
+scale = Vector2( 1, 1 )
+
+[node name="2Car13" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 2561.2, 1145.1 )
+rotation = 4.62594
+scale = Vector2( 1, 1 )
+
+[node name="2Car11" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 1949.51, 1135.99 )
+rotation = 1.52647
+scale = Vector2( 1, 1 )
+
+[node name="2Car12" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 1450.75, 821.747 )
+rotation = 4.20043
+scale = Vector2( 1, 1 )
+
+[node name="Car13" parent="cars" instance=ExtResource( 1 )]
+position = Vector2( 3377.29, -730.601 )
+rotation = 2.58588
