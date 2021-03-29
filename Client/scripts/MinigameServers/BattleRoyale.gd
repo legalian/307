@@ -3,6 +3,8 @@ extends "res://scripts/MinigameServers/MinigameBase.gd"
 var clientstatus = "UNSPAWNED"
 var gameinstance
 
+var world_map = null;
+
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 	if gameinstance!=null && gameinstance.get('world_type')!='battle_royale': gameinstance = null
@@ -30,6 +32,8 @@ remote func frameUpdate(s_players,s_bullets,s_powerups):
 		if gameinstance!=null && gameinstance.get('world_type')!='battle_royale': gameinstance = null
 		if gameinstance==null: return
 	var visited = []
+	if gameinstance.world == null:
+		gameinstance.load_map(world_map)
 	for s_player in s_players:
 		visited.append(s_player['id'])
 		if s_player['id'] in gameinstance.players:
@@ -129,7 +133,9 @@ remote func update_health_bar(var health: float):
 	if gameinstance == null: return
 	gameinstance.get_node("World/Player").get_node("HUD/HealthBar").set_value(health*100)
 	
-	
+remote func setMap(map):
+	world_map = map
+
 func showlose():
 	get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
 	
