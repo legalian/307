@@ -87,6 +87,7 @@ remote func syncUpdate(package):
 
 remote func shoot(package):
 	var player_id = get_tree().get_rpc_sender_id()
+	if !ingame.has(player_id): return
 	var playerobj = ingame[player_id]
 	playerobj.gunbar -= {1:0,2:5,3:10}[playerobj.gun]
 	if playerobj.gunbar<=0: playerobj.gun = 1
