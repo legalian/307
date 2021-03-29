@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Hats/Whitehat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hats/Headphones.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hats/Paperhat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://exported/cars/CarSpriteFrames.tres" type="SpriteFrames" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -195,6 +196,14 @@ __meta__ = {
 
 [node name="Avatar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 140.538, 291.552 )
+
+[node name="VehicleSprites" type="AnimatedSprite" parent="."]
+position = Vector2( 883.592, 192.822 )
+scale = Vector2( 0.404052, 0.404052 )
+frames = ExtResource( 10 )
+animation = "Truck"
+frame = 54
+playing = true
 
 [node name="Avatar Menu" type="Control" parent="."]
 visible = false
@@ -496,6 +505,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar0"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 8
+playing = true
+
 [node name="Avatar4" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
 margin_left = 20.0
 margin_top = 260.0
@@ -516,6 +533,14 @@ custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar4"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 5
+playing = true
 
 [node name="Avatar5" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
 margin_left = 250.0
@@ -538,6 +563,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar5"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 5
+playing = true
+
 [node name="Avatar6" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
 margin_left = 485.0
 margin_top = 260.0
@@ -547,6 +580,14 @@ custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 4
+playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
 margin_left = 1.33258
@@ -569,6 +610,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 4
+playing = true
+
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
 margin_left = 1.33258
 margin_top = -39.6696
@@ -589,6 +638,14 @@ custom_styles/normal = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 7
+playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
 margin_left = 1.33258
@@ -622,6 +679,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar2"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 7
+playing = true
+
 [node name="Avatar3" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
 margin_left = 715.0
 margin_top = 42.0
@@ -642,6 +707,14 @@ custom_fonts/normal_font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar3"]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 10 )
+animation = "Sedan"
+frame = 6
+playing = true
 
 [node name="CloseAvatarMenu" type="Button" parent="Vehicle Menu"]
 margin_left = 893.989

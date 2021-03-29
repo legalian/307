@@ -8,7 +8,7 @@ var username
 var avatar = 0
 var hat = 0
 var vehicle = 0
-var dummy = 0;
+var dummy = 0
 
 func _init(var thisPlayerID, var thisParty):
 	playerID = thisPlayerID
@@ -38,10 +38,10 @@ func pack():
 		}
 
 func unpack(packed):
-	vehicle = packed['vehicle']
 	username = packed['username']
 	avatar = packed['avatar']
 	hat = packed['hat']
+	vehicle = packed['vehicle']
 
 func equals(var comparePlayer):
 	return playerID == comparePlayer.playerID
