@@ -28,9 +28,12 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          echo "keymap protector running"
           if cmp --silent Client/project.godot Client/project.godot_prot; then
             ver1=$(grep "config/git_copy_prot" Client/project.godot | tr -d -c 0-9)
             ver2=$(grep "config/git_copy_prot" Client/project.godot_prot | tr -d -c 0-9)
+            echo "main version $ver1"
+            echo "alt version $ver2"
             if [[ ver1 -lt ver2 ]]; then
               mv Client/project.godot_prot Client/project.godot
               ver_master=$ver2
@@ -38,6 +41,7 @@ jobs:
               mv Client/project.godot Client/project.godot_prot
               ver_master=$ver1
             fi
+            echo "master ver $ver_master"
             sed -i -e "s:config/git_copy_prot=.:config/git_copy_prot=$((ver_master+1)):" Client/project.godot
             sed -i -e "s:config/git_copy_prot=.:config/git_copy_prot=$((ver_master+1)):" Client/project.godot_prot
           fi
