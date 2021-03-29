@@ -30,6 +30,8 @@ jobs:
         run: |
           echo "keymap protector running"
           if cmp --silent Client/project.godot Client/project.godot_prot; then
+            echo "all clear"
+          else
             ver1=$(grep "config/git_copy_prot" Client/project.godot | tr -d -c 0-9)
             ver2=$(grep "config/git_copy_prot" Client/project.godot_prot | tr -d -c 0-9)
             echo "main version $ver1"
