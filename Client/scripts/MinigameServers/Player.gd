@@ -10,6 +10,11 @@ var hat = 0
 var vehicle = 0
 
 func _init(var packed):
+	
+	#var rng = RandomNumberGenerator.new() # Random Num Generator
+	#rng.randomize()
+	#var RandomCarNum = rng.randi_range(0, 5)
+	
 	playerID = packed['id']
 	#username = packed.get('username',"User "+str(packed['id']))
 	username = packed.get('username',randomUsername())
@@ -40,5 +45,5 @@ func pack():
 func randomUsername():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var my_random_number = rng.randi_range(0, randomNameList.size()-1)
-	return randomNameList[my_random_number]
+	var RandomNameNum = rng.randi_range(0, randomNameList.size()-1)
+	return randomNameList[RandomNameNum]

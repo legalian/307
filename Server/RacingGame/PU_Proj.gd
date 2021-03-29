@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+#Layer 1 is the Car
+#Layer 2 is the world objects
+#Layer 3 is the powerup box
+#Layer 4 currently has missile + trap
+
 var speed = 3500
 
 var velocity
@@ -21,6 +26,9 @@ func _physics_process(delta):
 		elif (collided.collider.name.begins_with("Projectile")):
 			get_parent().remove_child(collided.collider)
 			print("collided with another projectile; remove both")
+		elif (collided.collider.name.begins_with("Trap")):
+			get_parent().remove_child(collided.collider)
+			print("collided with a trap; remove both")
 		elif (collided.collider.name.begins_with("Powerup")):
 			print("collided with powerup box! collision bits set incorrectly")
 		else:

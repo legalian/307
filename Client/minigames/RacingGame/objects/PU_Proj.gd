@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "res://objects/rotatedObject.gd"
 
 func _ready():
 	set_process(true)

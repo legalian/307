@@ -12,8 +12,8 @@ var VehicleMenuOpen = false
 
 var AvatarStyles = ["Racoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
-var VehicleStyles = ["Car","Bike","Forklift","Truck"]
-var VehicleRoots = [["res://Vehicles/Car.tscn", 1, 1], ["res://Vehicles/Bike.tscn", 1.8, 1.6], ["res://Vehicles/Forklift.tscn", 1, .8], ["res://Vehicles/Truck.tscn", .6, .6]] # Root, Size X, Size Y 
+var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
+#var VehicleRoots = ["res://exported/cars/sedan/diffuse.png","res://exported/cars/van/diffuse.png","res://exported/cars/truck/diffuse.png","res://exported/cars/race/diffuse.png","res://exported/cars/taxi/diffuse.png","res://exported/cars/raceFuture/diffuse.png"] # Sprite Roots
 
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
@@ -78,17 +78,8 @@ func _on_ChangeVehicle_pressed(VehicleType):
 	VehicleSelected = VehicleType
 	get_node("CurrentVehicles").text = "Vehicle - " + VehicleStyles[VehicleSelected]
 	generalserver.selfplayer.vehicle = VehicleSelected #Set Vechicle
-	var VehicleRef = find_node("SelectedVehicle")
-	var CurrentVehicle = VehicleRef.get_node_or_null("Vehicle")
-	if CurrentVehicle != null:
-		VehicleRef.remove_child(CurrentVehicle)
-		CurrentVehicle.queue_free()
-	var newVehicle = load(VehicleRoots[VehicleSelected][0]).instance()
-	newVehicle.name = "Vehicle"
-	VehicleRef.add_child(newVehicle,true)#second parameter is important here- must be true
-	newVehicle.position = Vector2(0,0)
-	newVehicle.set_mode(1)
-	newVehicle.scale = Vector2(VehicleRoots[VehicleSelected][1],VehicleRoots[VehicleSelected][2])
+	var CurrentVehicle = find_node("VehicleSprites")
+	CurrentVehicle.animation = VehicleStyles[VehicleSelected]
 	
 
 func _on_Button_ChooseVehicle_pressed():
@@ -109,20 +100,11 @@ func _set_Vehicle_Selection():
 	var currentNode = VehicleSelection
 	for i in 8:
 		currentNode = VehicleSelection.get_node("Avatar" + str(i))
-		var CurrentVehicle = currentNode.get_node_or_null("Vehicle")
-		#if CurrentVehicle != null:
-			#currentNode.remove_child(CurrentVehicle)
-			#currentNode.queue_free()
+		var VehicleDisplay = currentNode.get_node("VehicleDisplay")
 		if(i < VehicleStyles.size()):
 			currentNode.get_node("AvatarType").text = VehicleStyles[i]
+			VehicleDisplay.animation = VehicleStyles[i]
 			currentNode.show()
-			if CurrentVehicle == null:
-				var newVehicle = load(VehicleRoots[i][0]).instance()
-				newVehicle.name = "Vehicle"
-				currentNode.add_child(newVehicle,true)#second parameter is important here- must be true
-				newVehicle.position = Vector2(100,75)
-				newVehicle.set_mode(1)
-				newVehicle.scale = Vector2(VehicleRoots[i][1],VehicleRoots[i][2])
 		else:
 			currentNode.get_node("AvatarType").text = "Null"
 			currentNode.hide()
