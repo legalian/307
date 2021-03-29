@@ -63,5 +63,11 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 remote func setMap(map):
 	world_map = map
 
+remote func die():
+	get_tree().change_scene("res://minigames/DemoDerby/dead.tscn")
+
+remote func win():
+	get_tree().change_scene("res://minigames/DemoDerby/win.tscn")
+
 remote func endMatch():
 	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()

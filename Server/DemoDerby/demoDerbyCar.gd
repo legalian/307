@@ -18,6 +18,8 @@ var id
 var velocity = Vector2.ZERO
 var input_dict = {"rotating":0, "accelerating":0, "usingPowerup":false}
 
+onready var server = get_parent().get_parent() # World.gd
+
 var hasSpeedPowerup = false
 var speed_timer = null
 
@@ -32,7 +34,8 @@ func pack():
 		'place':place,
 		'hasSpeedPowerup':hasSpeedPowerup,
 		'powerup':cur_powerup,
-		'health':health
+		'health':health,
+		'visible':visible
 	}
 	
 func _ready():
@@ -42,6 +45,7 @@ func _ready():
 	add_child(speed_timer)
 	speed_timer.connect("timeout", self, "lose_speed_powerup")
 	speed_timer.set_one_shot(true)
+	visible = true
 
 func _physics_process(delta):
 	if progress <  NUM_LAPS + 1:
@@ -71,8 +75,26 @@ func _physics_process(delta):
 			collision.collider.pickup(self)
 			break;
 		if collision.collider.name.begins_with("Player"):
-			health = health - 1
+			collision.collider.damage(1) # Damage other player with YOUR speed
+			# Currently whenever you collide, speed is 0. Gotta update this later
+			# with possibly a lagged speed var or something
 			print("Car collided with another car")
+
+func damage(amount):
+	health -= amount
+	if (health <= 0):
+		#server.remove_player(id) # Remove from interal array
+		# We don't want to remove from the array, otherwise
+		# unpack() and pack() will not update information.
+		# We could fix this in the client by removing all cars
+		# and re-adding them so the client always has the 
+		# latest info for the entire frame, but 
+		# I'm not sure if this will break anything.
+		server.die(id) # Commit sudoku
+		get_node("CollisionShape2D").disabled = true
+		visible = false # Remove from screen
+		finished = true # Set this car as "finished"
+		#queue_free()
 
 func _process(delta):
 	if input_dict["usingPowerup"] and cur_powerup != null:
