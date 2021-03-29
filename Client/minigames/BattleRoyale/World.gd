@@ -5,6 +5,7 @@ var world_type = 'battle_royale'
 
 var players = {}
 var bullets = {}
+var powerups = {}
 
 var camera = null
 var world = null

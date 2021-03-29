@@ -1,7 +1,7 @@
 [gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://exported/blasters_lowres/blasterH/diffuse.png" type="Texture" id=1]
-[ext_resource path="res://Guns/gun.gd" type="Script" id=2]
+[ext_resource path="res://Guns/basicGun.gd" type="Script" id=2]
 [ext_resource path="res://Guns/PositionFix.gd" type="Script" id=3]
 [ext_resource path="res://Guns/RedMuzzleFlare.tscn" type="PackedScene" id=4]
 
@@ -334,23 +334,22 @@ animations = [ {
 } ]
 
 [node name="Gun" type="Node2D"]
-rotation = -4.39218
+rotation = -5.04664
 script = ExtResource( 2 )
 sideoffset = 45
 
 [node name="Visible" type="Node2D" parent="."]
-position = Vector2( 0.731098, 44.298 )
-rotation = -1.5
+position = Vector2( 0.453897, 36.9811 )
+rotation = -1.23654
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
 position = Vector2( 0, -15 )
 frames = SubResource( 65 )
-frame = 17
+frame = 22
 
 [node name="PositionFix" type="Node2D" parent="."]
-position = Vector2( -9.11449, 95.2568 )
-rotation = -2.23517e-08
-scale = Vector2( 1, 1 )
+position = Vector2( -9.14855, 76.6373 )
+rotation = 2.98023e-08
 script = ExtResource( 3 )
 hookX = -10.726
 hookY = 97.537

@@ -7,7 +7,6 @@ var Bullet = preload("res://Guns/BasicRedBullet.tscn")
 var sprite
 var viscontainer
 var posfix
-var flare
 var server = null
 
 func _ready():
@@ -15,7 +14,6 @@ func _ready():
 	sprite = get_node("Visible/Sprite")
 	viscontainer = get_node("Visible")
 	posfix = get_node("PositionFix")
-	flare = get_node("PositionFix/Flare")
 	
 
 func _process(_delta):
@@ -49,18 +47,19 @@ func _process(_delta):
 		posfix.hookX
 	))
 
-func fire(var origpl,var targetpos):
+
+
+func bulletAt(var origpl,var targetpos):
 	if server==null: server = get_node("/root/Server").get_children()[0]
 	var b = Bullet.instance()
 	var parent = origpl.get_parent()
 	parent.add_child(b)
 	#b.transform = parent.global_transform.affine_inverse()*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
 	b.position = parent.global_transform.xform_inv(posfix.global_position)#*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
-	b.rotation = (b.position-targetpos).angle()
+	b.rotation = (b.position-targetpos.global_position).angle()
 	b.position -= Vector2(0,-90/.44).rotated(origpl.rotation)
 	
 	#b.start()
-	flare.fire()
 	
 	randomize()
 	var code = int(rand_range(100000, 999999))
@@ -68,15 +67,7 @@ func fire(var origpl,var targetpos):
 		code = int(rand_range(100000, 999999))
 	b.id = code
 	server.gameinstance.bullets[b.id] = b
-		
-	return b
-	
-	
-	
-
-
-
-
+	server.shoot(b.pack())
 
 
 

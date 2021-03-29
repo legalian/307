@@ -24,7 +24,7 @@ func syncUpdate():
 	if players[0].playerID in gameinstance.players:
 		rpc_unreliable_id(1,"syncUpdate",gameinstance.players[players[0].playerID].pack())
 
-remote func frameUpdate(s_players,s_bullets):
+remote func frameUpdate(s_players,s_bullets,s_powerups):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='battle_royale': gameinstance = null
@@ -67,6 +67,24 @@ remote func frameUpdate(s_players,s_bullets):
 		gameinstance.get_node("World").remove_child(gameinstance.bullets[bullet])
 		gameinstance.bullets[bullet].queue_free()
 		gameinstance.bullets.erase(bullet)
+	
+	visited = []
+	for s_powerup in s_powerups:
+		visited.append(s_powerup['id'])
+		if s_powerup['id'] in gameinstance.powerups:
+			gameinstance.powerups[s_powerup['id']].unpack(s_powerup)
+		else:
+			gameinstance.powerups[s_powerup['id']] = preload("res://Guns/Collectible.tscn").instance()
+			gameinstance.get_node("World").add_child(gameinstance.powerups[s_powerup['id']])
+			gameinstance.powerups[s_powerup['id']].unpack(s_powerup)
+	mustremove = []
+	for powerup in gameinstance.powerups:
+		if !visited.has(powerup): mustremove.append(powerup)
+	for powerup in mustremove:
+		gameinstance.get_node("World").remove_child(gameinstance.powerups[powerup])
+		gameinstance.powerups[powerup].queue_free()
+		gameinstance.powerups.erase(powerup)
+
 
 remote func other_shoot(package):
 	if gameinstance == null: return

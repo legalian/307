@@ -8,7 +8,9 @@ var lx=0
 var ly=0
 var velocity = Vector2.ZERO
 var rotvel = 0
-	
+var gun = 1
+var gunbar = 100
+
 func pack():
 	return {
 		'id':id,
@@ -20,7 +22,9 @@ func pack():
 		'vr':rotvel,
 		'h':health,
 		'lx':lx,
-		'ly':ly
+		'ly':ly,
+		'gun':gun,
+		'gunbar':gunbar
 	}
 
 func unpack(package):
@@ -35,5 +39,9 @@ func unpack(package):
 func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	rotate(rotvel*delta)
+
+
+
+
 
 

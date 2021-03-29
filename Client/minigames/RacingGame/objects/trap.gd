@@ -8,4 +8,8 @@ func _process(delta):
 
 func unpack(package):
 	position = Vector2(package['x'],package['y'])
-	rotation = package['r']
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+

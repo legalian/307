@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tank_bullet3.png-45d9f10c336f80a830baf29a186f88c1.stex"
+path="res://.import/diffuse.png-77cab5783250804f57d5ebc57e69f83a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/RacingGame/objects/tank_bullet3.png"
-dest_files=[ "res://.import/tank_bullet3.png-45d9f10c336f80a830baf29a186f88c1.stex" ]
+source_file="res://exported/objects/fish/diffuse.png"
+dest_files=[ "res://.import/diffuse.png-77cab5783250804f57d5ebc57e69f83a.stex" ]
 
 [params]
 
