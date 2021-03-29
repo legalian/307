@@ -1,7 +1,7 @@
 
 shopt -s nullglob
 
-root="doodads_medres"
+root="objects/missile"
 cwd="$PWD"
 for f in "$root"/*/; do
 	cd "$f"
