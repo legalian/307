@@ -30,15 +30,17 @@ jobs:
         run: |
           echo "keymap protector running"
           if cmp --silent Client/project.godot Client/project.godot_prot; then
+            echo "all clear"
+          else
             ver1=$(grep "config/git_copy_prot" Client/project.godot | tr -d -c 0-9)
             ver2=$(grep "config/git_copy_prot" Client/project.godot_prot | tr -d -c 0-9)
             echo "main version $ver1"
             echo "alt version $ver2"
             if [[ ver1 -lt ver2 ]]; then
-              mv Client/project.godot_prot Client/project.godot
+              cp Client/project.godot_prot Client/project.godot
               ver_master=$ver2
             else
-              mv Client/project.godot Client/project.godot_prot
+              cp Client/project.godot Client/project.godot_prot
               ver_master=$ver1
             fi
             echo "master ver $ver_master"
@@ -48,6 +50,8 @@ jobs:
           
       - name: Push changes
         uses: actions-go/push@v1
+        with:
+          commit-message: "Protected keymap from being clobbered"
     
     
 
