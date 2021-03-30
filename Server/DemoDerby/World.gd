@@ -117,21 +117,34 @@ remote func syncUpdate(package):
 		ingame[player_id].input_dict = package["input"]
 		ingame[player_id].progress = package["progress"]
 
+func die(id):
+	rpc_id(id, "die")
+	print("Player " + str(id) + " has died.")
+
 func _process(delta):
 	var sort_array = []
 	var done = true
 	if ingame.size() == 0: return
+	
+	var num_not_finished = 0
+	
+	var winner_id = 0
+	
 	for ig in ingame.values():
 		if ig.finished == false:
+			num_not_finished += 1
+			winner_id = ig.id
 			done = false
 		sort_array.append([ig.id, ig.progress, ig.finish_time])
 	sort_array.sort_custom(self, "sort_places")
 	for n in range(sort_array.size()):
 		ingame[sort_array[n][0]].place = n + 1
 		
-	if done and !round_finished:
-		print("Everyone finished the round!")
+	if num_not_finished == 1 and !round_finished:
+		print("We have a winner!")
 		round_finished = true
+		
+		rpc_id(winner_id, "win")
 		
 		for p in players:
 			p.score += sort_array.size()-ingame[p.playerID].place

@@ -7,7 +7,7 @@ var parties = []
 var minigame_list = [preload("res://BattleRoyale/World.tscn"),
 					 preload("res://RacingGame/World.tscn"),
 					 preload("res://DemoDerby/World.tscn")]
-					
+
 var podium = preload("res://Podium/World.tscn")
 
 var minigame_order = []

@@ -43,6 +43,10 @@ func unpack(package):
 		powerup_icon.changePowerup(cur_powerup)
 	health = package['health']
 	get_node("Camera/CanvasLayer/GUI/HealthBar").set_value(health)
+	
+	visible = package['visible']
+	if (!visible):
+		get_node("CollisionShape2D").disabled = true
 
 func _process(delta):
 	input_dict = {"rotating":0, "accelerating":0, "usingPowerup":false}

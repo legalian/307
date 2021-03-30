@@ -39,6 +39,7 @@ rotation = 3.14159
 position = Vector2( -1.513, -16.106 )
 rotation = -0.0191986
 shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 0, 75 )
