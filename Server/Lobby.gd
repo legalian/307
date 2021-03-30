@@ -3,17 +3,16 @@ extends Node
 var lobby_code
 var parties = []
 
-#var minigame_list = [preload("res://BattleRoyale/World.tscn"),
-#					 preload("res://RacingGame/World.tscn"),
-#					 preload("res://DemoDerby/World.tscn")]
+var minigame_list = [preload("res://BattleRoyale/World.tscn"),
+					 preload("res://RacingGame/World.tscn"),
+					 preload("res://DemoDerby/World.tscn")]
 
-var minigame_list = [preload("res://DemoDerby/World.tscn")]
 
 var podium = preload("res://Podium/World.tscn")
 
 var minigame_order = []
 
-var minigames_per_match = 1 # This number CANNOT be greater than minigame_list size!!
+var minigames_per_match = 3 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
 
 var can_start = false
