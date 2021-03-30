@@ -5,7 +5,8 @@ func systemname():
 var car = preload("res://DemoDerby/demoDerbyCar.tscn")
 
 var spawn_positions = []
-var desert_spawn_positions = [Vector2(3250,1000),Vector2(4700,1000),Vector2(3250,4000),Vector2(4700,4000),Vector2(6000,2300),Vector2(1500,2300),Vector2(5000,2300),Vector2(2700,2300),Vector2(4000,1500),Vector2(4000,3500),
+
+var desert_spawn_positions = [Vector2(3300,1000),Vector2(4700,1000),Vector2(3300,4000),Vector2(4700,4000),Vector2(6000,2300),Vector2(1500,2300),Vector2(5000,2300),Vector2(2700,2300),Vector2(4000,1500),Vector2(4000,3000),
 Vector2(1000,4300),Vector2(2000,4300),Vector2(3000,4300),Vector2(4000,4300),Vector2(5000,4300),Vector2(1000,300),Vector2(2000,300),Vector2(3000,300),Vector2(4000,300),Vector2(5000,300)]
 
 var started = false
