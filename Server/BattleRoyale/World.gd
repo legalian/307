@@ -18,7 +18,7 @@ func add_player(newplayer):
 func remove_player(player_id):
 	.remove_player(player_id)
 	status.erase(player_id)
-	if player_id in ingame:
+	if ingame.has(player_id):
 		$World.remove_child(ingame[player_id])
 		ingame[player_id].queue_free()
 		ingame.erase(player_id)
@@ -87,6 +87,7 @@ remote func syncUpdate(package):
 
 remote func shoot(package):
 	var player_id = get_tree().get_rpc_sender_id()
+	if !ingame.has(player_id): return
 	var playerobj = ingame[player_id]
 	playerobj.gunbar -= {1:0,2:5,3:10}[playerobj.gun]
 	if playerobj.gunbar<=0: playerobj.gun = 1
