@@ -1,16 +1,20 @@
 extends KinematicBody2D
 
+#Layer 1 is the Car
+#Layer 2 is the world objects
+#Layer 3 is the powerup box
+#Layer 4 currently has missile + trap
+
 var speed = 3500
 
 var velocity
 var owner_id
 
-
 func _ready():
 	velocity = Vector2(0, -speed).rotated(rotation)
 
 func _physics_process(delta):
-	# Somehow get direction from RacingCar.gd
+	velocity = Vector2(speed, 0).rotated(rotation)
 	var collided = move_and_collide(velocity * delta)
 	
 	if collided:
@@ -19,8 +23,17 @@ func _physics_process(delta):
 				return
 			collided.collider.interrupt()
 			print("collided with player!")
+		elif (collided.collider.name.begins_with("Projectile")):
+			get_parent().remove_child(collided.collider)
+			print("collided with another projectile; remove both")
+		elif (collided.collider.name.begins_with("Trap")):
+			get_parent().remove_child(collided.collider)
+			print("collided with a trap; remove both")
+		elif (collided.collider.name.begins_with("Powerup")):
+			print("collided with powerup box! collision bits set incorrectly")
 		else:
-			print("collided with not a player!")
+			print("did not collide with a player or projectile")
+		
 		queue_free() # Delete self
 	
 

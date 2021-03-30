@@ -9,6 +9,8 @@ var AvatarMenuOpen = false
 
 var scoreboard = preload("res://minigames/ScoreBoard/ScoreBoard.tscn")
 
+var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
+
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
 	var file = File.new()
@@ -31,6 +33,9 @@ func _ready():
 		#else:
 		#	$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
 	$Raccoon.set_Hat(generalserver.selfplayer.hat)
+	var VehicleSelected = generalserver.selfplayer.vehicle
+	var CurrentVehicle = find_node("VehicleSprites")
+	CurrentVehicle.animation = VehicleStyles[VehicleSelected]
 
 
 

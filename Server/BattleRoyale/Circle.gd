@@ -24,23 +24,8 @@ func isInCircle(var location: Vector2):
 func _ready():
 	pass # Replace with function body.
 
-#Taken from https://docs.godotengine.org/en/stable/tutorials/2d/custom_drawing_in_2d.html
-func draw_circle_arc(center, radius, angle_from, angle_to, color):
-	var nb_points = 256
-	var points_arc = PoolVector2Array()
-
-	for i in range(nb_points + 1):
-		var angle_point = deg2rad(angle_from + i * (angle_to-angle_from) / nb_points - 90)
-		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
-
-	for index_point in range(nb_points):
-		draw_line(points_arc[index_point], points_arc[index_point + 1], color, zone_line_width)
-
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var player_id = get_tree().get_rpc_sender_id()
 	#Don't do any drawing on the serverside
-	#draw_circle_arc(center, radius, 0, 365, color)
 	radius = radius - .1
 	pass

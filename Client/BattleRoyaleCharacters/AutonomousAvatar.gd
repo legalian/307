@@ -9,6 +9,7 @@ var lookoffset = Vector2.ZERO
 var last_position
 var dying = false
 var server = null
+var l_gun = -1
 var body
 
 func _ready():
@@ -21,6 +22,9 @@ func unpack(package):
 	if (last_position == null || position.distance_to(last_position) >= 1):
 		position = Vector2(package['x'],package['y'])
 		last_position = position
+	if l_gun!=package['gun']:
+		$Body.set_Gun(package['gun'])
+		l_gun = package['gun']
 	rotation = package['r']
 	velocity = Vector2(package['vx'],package['vy'])
 	rotvel = package['vr']

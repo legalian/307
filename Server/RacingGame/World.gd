@@ -12,6 +12,8 @@ var race_finished = false
 var ingame = {}
 var powerups = {}
 
+var mapSelect = "nonmap";
+
 const MAPS = ["Grass", "Desert"]
 
 var map = null
@@ -36,8 +38,17 @@ func remove_player(player_id):
 
 func _ready():
 	randomize()
-	map = MAPS[randi() % MAPS.size()]
-	
+	if(OS.has_environment("MAPTEST")):
+		mapSelect = OS.get_environment("MAPTEST");
+		print("MAPSELECT = " + mapSelect)
+	if(mapSelect != "nonmap"):
+		if(mapSelect == "grassland"):
+			map = MAPS[0];
+		else:
+			map = MAPS[1];
+	else:
+		print("NO MAP SELECTED\n");
+		map = MAPS[randi() % MAPS.size()]
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
@@ -65,7 +76,7 @@ func _ready():
 	var _countdown = Timer.new()
 	add_child(_countdown)
 	_countdown.connect("timeout", self, "_countdown_end")
-	_countdown.set_wait_time(6.5)
+	_countdown.set_wait_time(8.5)
 	_countdown.set_one_shot(true)
 	_countdown.start()
 	
@@ -83,34 +94,23 @@ func _send_rpc_update():
 		powerup_frame.append(pp.pack())
 	
 	var projectile_frame = []
-	for node in world.get_children():
+	var trap_frame = [];
+	for node in $World.get_children():
 		if (node.name.begins_with("Projectile")):
 			projectile_frame.append(node.pack())
+		if(node.name.begins_with("Trap")):
+			trap_frame.append(node.pack());
+			
 	
 	
 	for p in players:
-		rpc_unreliable_id(p.playerID,"frameUpdate",
-						  player_frame,
-						  powerup_frame,
-						  projectile_frame)
+		if(p.dummy == 0):
+			rpc_unreliable_id(p.playerID,"frameUpdate",
+							  player_frame,
+							  powerup_frame,
+							  projectile_frame,
+							  trap_frame)
 
-func spawn(player_id):
-	print("Spawning player: " + str(player_id))
-	
-	rpc_id(player_id, "setMap", map)
-	
-	ingame[player_id] = car.instance()
-	ingame[player_id].name = "Player_" + str(player_id)
-	ingame[player_id].id = player_id
-	ingame[player_id].position = spawn_positions.pop_front()
-	ingame[player_id].rotation = 3*PI/2
-	world.add_child(ingame[player_id])
-	
-remote func syncUpdate(package):
-	var player_id = get_tree().get_rpc_sender_id()
-	if (ingame.has(player_id)):
-		ingame[player_id].input_dict = package["input"]
-		ingame[player_id].progress = package["progress"]
 
 func _process(delta):
 	var sort_array = []
@@ -140,3 +140,23 @@ func _process(delta):
 		end_match.set_wait_time(3)
 		end_match.set_one_shot(true)
 		end_match.start()
+
+
+func spawn(player_id):
+	print("Spawning player: " + str(player_id))
+	
+	rpc_id(player_id, "setMap", map)
+	
+	ingame[player_id] = car.instance()
+	ingame[player_id].name = "Player_" + str(player_id)
+	ingame[player_id].id = player_id
+	ingame[player_id].position = spawn_positions.pop_front()
+	ingame[player_id].rotation = 3*PI/2
+	world.add_child(ingame[player_id])
+	
+remote func syncUpdate(package):
+	var player_id = get_tree().get_rpc_sender_id()
+	if (ingame.has(player_id)):
+		ingame[player_id].input_dict = package["input"]
+		ingame[player_id].progress = package["progress"]
+

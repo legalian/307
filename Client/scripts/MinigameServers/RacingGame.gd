@@ -21,7 +21,7 @@ func syncUpdate():
 		var p = gameinstance.players[players[0].playerID]
 		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_dict, "progress": p.lap + p.checkpoint})
 
-remote func frameUpdate(s_players, powerups, projectile_frame):
+remote func frameUpdate(s_players, powerups, projectile_frame, trap_frame):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
@@ -34,8 +34,8 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 		else:
 			gameinstance.players[s_player['id']] = preload("res://minigames/RacingGame/objects/racingCar.tscn").instance()
 			gameinstance.players[s_player['id']].name = "Player_" + str(s_player['id'])
-			gameinstance.players[s_player['id']].unpack(s_player)
 			gameinstance.get_node("World").add_child(gameinstance.players[s_player['id']])
+			gameinstance.players[s_player['id']].unpack(s_player)
 	var world = gameinstance.get_node("World")
 	for powerup in powerups:
 		if world.has_node(powerup["name"]):
@@ -44,8 +44,8 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 			var p_node = preload("res://minigames/RacingGame/objects/powerup.tscn").instance()
 			p_node.position = Vector2(powerup["x"],powerup["y"])
 			p_node.name = powerup["name"]
-			p_node.unpack(powerup)
 			world.add_child(p_node)
+			p_node.unpack(powerup)
 	
 	# Special case for projectiles; not sure how to remove specific ones from client, so im just
 	# removing all and adding them back regardless
@@ -53,13 +53,19 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 	for child in world.get_children(): # Remove all projectiles
 		if (child.name.begins_with("Projectile")):
 			world.remove_child(child)
+		if  (child.name.begins_with("Trap")):
+			world.remove_child(child)
 	
 	for projectile_pkg in projectile_frame: # Add them back in
 		var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
 		proj_node.name = projectile_pkg["name"]
-		proj_node.unpack(projectile_pkg)
 		world.add_child(proj_node)
-	
+		proj_node.unpack(projectile_pkg)
+	for trap_pkg in trap_frame: # Add them back in
+		var trapNode = preload("res://minigames/RacingGame/objects/trap.tscn").instance()
+		trapNode.name = trap_pkg["name"]
+		world.add_child(trapNode)
+		trapNode.unpack(trap_pkg)
 	
 
 remote func setMap(map):

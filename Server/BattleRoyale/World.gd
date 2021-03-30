@@ -18,7 +18,7 @@ func add_player(newplayer):
 func remove_player(player_id):
 	.remove_player(player_id)
 	status.erase(player_id)
-	if player_id in ingame:
+	if ingame.has(player_id):
 		$World.remove_child(ingame[player_id])
 		ingame[player_id].queue_free()
 		ingame.erase(player_id)
@@ -38,9 +38,16 @@ func _send_rpc_update():
 	for gg in ingame.values(): player_frame.append(gg.pack())
 	var bullet_frame = []
 	for gg in bullets.values(): bullet_frame.append(gg.pack())
+	var powerup_frame = []
+	
+	for child in $World.get_children():
+		if child.get('entity_type') == 'collectible':
+			powerup_frame.append(child.pack())
+		
 	for p in players:
-		if p.playerID==debug_id: continue
-		rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame)
+		if(p.dummy == 0):
+			rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
+
 
 #func _process(delta):
 #	return
@@ -49,9 +56,11 @@ func _send_rpc_update():
 		if (player.playerID != 0 && ingame.has(player.playerID)):
 			#print("Calling update radius")
 			var circle = get_node("World/Circle")
-			rpc_id(player.playerID, "update_radius", circle.radius)
+			if(player.dummy == 0):
+				rpc_unreliable_id(player.playerID, "update_radius", circle.radius)
 			if (circle.isInCircle(ingame[player.playerID].position)):
-				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
+				if(player.dummy == 0):
+					rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
 				print(str(player.playerID) + " Damaged from server")
 				ingame[player.playerID].health -= .01
 				if (ingame[player.playerID].health <= 0):
@@ -78,6 +87,10 @@ remote func syncUpdate(package):
 
 remote func shoot(package):
 	var player_id = get_tree().get_rpc_sender_id()
+	if !ingame.has(player_id): return
+	var playerobj = ingame[player_id]
+	playerobj.gunbar -= {1:0,2:5,3:10}[playerobj.gun]
+	if playerobj.gunbar<=0: playerobj.gun = 1
 	print("GOING TO TRY CHECKING FOR BULLETS")
 	if package['id'] in bullets: return
 	for player in players:
