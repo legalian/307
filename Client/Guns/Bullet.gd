@@ -41,20 +41,20 @@ func _process(_delta):
 	trail.scale.y = 1-trailLen/trailLenMax
 
 func _physics_process(delta):
-	
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		#velocity = velocity.bounce(collision.normal)
-		#rotation = velocity.angle()+PI
-		trailLen = 0
-		#if collision.collider.has_method("hit"):
-		#	collision.collider.hit()
-	else:
-		trailLen = min(trailLen+(velocity * delta).length(),trailLenMax)
+	position = position + velocity*delta
+	#var collision = move_and_collide(velocity * delta)
+	#if collision:
+	#	#velocity = velocity.bounce(collision.normal)
+	#	#rotation = velocity.angle()+PI
+	#	trailLen = 0
+	#	#if collision.collider.has_method("hit"):
+	#	#	collision.collider.hit()
+	#else:
+	#	trailLen = min(trailLen+(velocity * delta).length(),trailLenMax)
 	
 
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+#func _on_VisibilityNotifier2D_screen_exited():
+#	queue_free()
 
 
 

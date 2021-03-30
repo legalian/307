@@ -10,6 +10,7 @@ func add_player(newplayer):
 	
 func remove_player(player_id):
 	for i in range(players.size()-1,-1,-1):
+		print("-=-=-=-- ",i)
 		if players[i].playerID==player_id: players.remove(i)
 
 func get_player(player_id):

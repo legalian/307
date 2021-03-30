@@ -18,7 +18,7 @@ func add_player(newplayer):
 func remove_player(player_id):
 	.remove_player(player_id)
 	status.erase(player_id)
-	if player_id in ingame:
+	if ingame.has(player_id):
 		$World.remove_child(ingame[player_id])
 		ingame[player_id].queue_free()
 		ingame.erase(player_id)
