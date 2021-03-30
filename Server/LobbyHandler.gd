@@ -16,8 +16,8 @@ func _init(): # Called when LobbyHandler.new() is done
 func get_lobby(var lobby_id):
 	if (str(lobby_id) == "defaultCode"):
 		print("get_lobby() is called on the party screen!")
-		# We're on the party screen, return nothing
-		return
+		# We're on the party screen, return null
+		return null
 	if lobbies.has(lobby_id):
 		return lobbies[lobby_id]
 	return null
@@ -47,12 +47,12 @@ func remove_from_lobby(var party):
 		return false
 	
 	if (str(party.lobby_code) == "defaultCode"):
-		print("Attempting to remove from 'PartyScreen' minigame; returning false")
+		print("Attempting to remove a party with \"defaultCode\" returning false")
 		return false
 	
 	var lobby = get_lobby(party.lobby_code)
 	if (lobby == null):
-		print("Attempted to get lobby from invalid lobby code @@ remove_from_lobby()")
+		print("get_lobby() returned null in remove_from_lobby()")
 		return false
 	
 	if (!lobby.remove_party(party)):
@@ -60,16 +60,15 @@ func remove_from_lobby(var party):
 		# lobby.remove_party(party) should return true on success!	
 		return false
 	
+	if (lobby.get_occupied() == 0):
+		print("Lobby has no players. Deleting")
+		delete_lobby(party.lobby_code)
+	
 	if (lobby.get_occupied() < lobby.min_players_per_lobby):
-		print("Lobby is detected to not have enough parties, deleting from dictionary")
-				
-		# Disconnect all peers
-		for party in lobby.get_parties():
-			for playerID in party.playerIDs:
-				print("Kicking player " + str(playerID) + " out")
-				party.minigame.remove_player(playerID)
+		print("Lobby is detected to not have enough parties. Returning true")
+		# Depending on the situation, we disconnect all players or leave it be
+		# This is handled in main.gd
 		
-		delete_lobby(lobby.get_lobby_code())
 		return true
 	
 	print("Some error occurred!")
