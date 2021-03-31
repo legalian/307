@@ -19,9 +19,12 @@ var world_type = 'map_selection'
 func _ready():
 	player = get_node("World/Raccoon");
 	get_node("World/Raccoon/Char/Skeleton2D/Hip/Torso/LeftArm/LeftHand/LeftHandPoint/Gun").visible = false;
-	
+	set_process(false)
+	self.visible = false;
 
 
+func start():
+	set_process(true)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(spin == null): 

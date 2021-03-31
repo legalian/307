@@ -1,6 +1,7 @@
 extends "res://minigame.gd"
 
 onready var minigameAnimation = get_node("AnimationPlayer")
+var done = false;
 
 var minigameList = [["Racing", "Race Around the Track, Use Power Ups, and Pass All Other Racers To Win!", "res://minigames/MinigameSelection/MinigameSprites/RacingThumbnail.png"],
 ["Battle Royale", "Drop on A Huge Map, Pick Up Weapons, and Eliminate Other Players to be the Last Remaining!", "res://minigames/MinigameSelection/MinigameSprites/BattleRoyale_Icon.png"], 
@@ -9,7 +10,6 @@ var minigameList = [["Racing", "Race Around the Track, Use Power Ups, and Pass A
 var currentMinigame = 0
 
 func _ready():
-	minigameAnimation.connect("finished", self, "Finished_Animation")
 	minigameAnimation.play("SelectMinigameDisplay")
 	_Set_Minigame()
 	
@@ -23,7 +23,9 @@ func _Set_Minigame():
 	find_node("MinigameIcon").texture = load(minigameList[currentMinigame][2])
 
 func Finished_Animation(): # Not Triggering?
-	print("Transition Scene")
+	done = true;
+	self.visible = false;
+	self.get_node("Camera2D").current = false;
 
 
 

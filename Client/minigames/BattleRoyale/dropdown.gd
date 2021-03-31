@@ -70,5 +70,6 @@ func _input(event):
 func _process(_delta):
 	if(spawned == true):
 		get_parent().get_parent().dropFinished = true;
+		self.visible = false;
 		
 		queue_free()
