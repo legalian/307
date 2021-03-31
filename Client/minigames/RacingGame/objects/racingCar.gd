@@ -14,7 +14,7 @@ var lap = 1
 #var lap = 2
 var place = 1
 
-var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
+var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Ambulance","Hatchback","Police","Tractor","Garbage","Future","Firetruck"]
 
 var path
 var path_length
