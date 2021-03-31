@@ -5,6 +5,7 @@ func systemname():
 var car = preload("res://DemoDerby/demoDerbyCar.tscn")
 
 var spawn_positions = []
+var mapSelect
 
 var desert_spawn_positions = [Vector2(3300,1000),Vector2(4700,1000),Vector2(3300,4000),Vector2(4700,4000),Vector2(6000,2300),Vector2(1500,2300),Vector2(5000,2300),Vector2(2700,2300),Vector2(4000,1500),Vector2(4000,3000),
 Vector2(1000,4300),Vector2(2000,4300),Vector2(3000,4300),Vector2(4000,4300),Vector2(5000,4300),Vector2(1000,300),Vector2(2000,300),Vector2(3000,300),Vector2(4000,300),Vector2(5000,300)]
@@ -39,8 +40,23 @@ func remove_player(player_id):
 
 func _ready():
 	randomize()
-	map = MAPS[randi() % MAPS.size()]
-	
+	if(OS.has_environment("MAPTEST")):
+		mapSelect = OS.get_environment("MAPTEST");
+		print("MAPSELECT = " + mapSelect)
+	if(mapSelect != "nonmap"):
+		if(mapSelect == "grassland"):
+			map = MAPS[0];
+		else:
+			map = MAPS[1];
+	else:
+		print("NO MAP SELECTED\n");
+		map = MAPS[randi() % MAPS.size()]
+		
+		
+	if map == "Grass":
+		world = preload("res://RacingGame/World-Grass.tscn").instance()
+	elif map == "Desert":
+		world = preload("res://RacingGame/World-Desert.tscn").instance()
 	if map == "Grass":
 		print("DemoDerby: Loading grass map")
 		for x in range(1000, 6500, 200):
@@ -94,7 +110,8 @@ func _send_rpc_update():
 	
 	
 	for p in players:
-		rpc_unreliable_id(p.playerID,"frameUpdate",
+		if p.dummy == 0:
+			rpc_unreliable_id(p.playerID,"frameUpdate",
 						  player_frame,
 						  powerup_frame,
 						  projectile_frame)

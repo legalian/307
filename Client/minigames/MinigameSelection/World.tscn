@@ -4,12 +4,12 @@
 [ext_resource path="res://minigames/MinigameSelection/MinigameSprites/RacingThumbnail.png" type="Texture" id=2]
 [ext_resource path="res://minigames/MinigameSelection/World.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 45
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 60
 use_filter = true
 font_data = ExtResource( 1 )
@@ -94,7 +94,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0, 165.291 ), Vector2( 0, 90 ) ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="YSort"]
 script = ExtResource( 3 )
 
 [node name="MinigameTitle" type="RichTextLabel" parent="."]
@@ -102,7 +102,7 @@ visible = false
 margin_top = 165.291
 margin_right = 1024.0
 margin_bottom = 231.291
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]###########"
 text = "###########"
@@ -607,7 +607,7 @@ texture = ExtResource( 2 )
 [node name="SelectionTitle" type="RichTextLabel" parent="."]
 margin_right = 1024.0
 margin_bottom = 85.0
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Minigame Selection"
 text = "Minigame Selection"

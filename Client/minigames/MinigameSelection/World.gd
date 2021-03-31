@@ -1,4 +1,4 @@
-extends Node
+extends "res://minigame.gd"
 
 onready var minigameAnimation = get_node("AnimationPlayer")
 
@@ -14,14 +14,11 @@ func _ready():
 	_Set_Minigame()
 	
 
-func _Select_Minigame():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var RandomMinigame = rng.randi_range(0, minigameList.size()-1)
-	currentMinigame = RandomMinigame
+remote func _Select_Minigame(minigame):
+
+	currentMinigame = minigame;
 
 func _Set_Minigame():
-	_Select_Minigame()
 	find_node("MinigameTitle").bbcode_text = "[center]" + minigameList[currentMinigame][0]
 	find_node("MinigameSummary").bbcode_text = "[center]" + minigameList[currentMinigame][1]
 	find_node("MinigameIcon").texture = load(minigameList[currentMinigame][2])

@@ -70,7 +70,7 @@ func add_party(var party):
 	return false
 
 func scramble_minigames():
-	while (minigame_order.size() != minigames_per_match):
+	while (minigame_order.size() != minigames_per_match * 3):
 		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
 		if (minigame_order.find(minigame_list[rand]) == -1):
 			minigame_order.append(minigame_list[rand]) # Keep appending until size is correct
@@ -148,4 +148,4 @@ func debug_print():
 	print("\n ========= LOBBY DEBUG =========\n")
 	
 func set_map(map):
-	nextMap = MAPS[map]
+	nextMap = map

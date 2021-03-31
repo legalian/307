@@ -23,6 +23,7 @@ func _ready():
 		mapSelected = MAPS[0]
 	else:
 		mapSelected = MAPS[1]
+	#somehow access lobby.gd to set minigame
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

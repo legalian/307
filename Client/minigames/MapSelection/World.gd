@@ -1,6 +1,6 @@
-extends Node2D
+extends "res://minigame.gd"
 
-var spin = 90
+var spin
 var frame = 0
 var speed;
 onready var wheel = get_node("World/WheelContainer/Wheel");
