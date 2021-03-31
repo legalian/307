@@ -174,13 +174,13 @@ func _Peer_Disconnected(player_id):
 		var lobbyin = lobbyHandler.get_lobby(party.lobby_code)
 		if lobbyin: unintroduce(player_id,lobbyin.get_player_ids())
 		# Player has left, freeing up space in lobby; matchmake again
-		
-		if (lobbyin.get_occupied() < lobbyin.min_players_per_lobby):
-			# Lobby does not have enough players.
-			for allparty in lobbyin.get_parties():
-				for playerID in allparty.playerIDs:
-					print("Disconnecting player " + str(playerID) + " from network")
-					network.disconnect_peer(playerID, true)
+		if lobbyin!=null:
+			if (lobbyin.get_occupied() < lobbyin.min_players_per_lobby):
+				# Lobby does not have enough players.
+				for allparty in lobbyin.get_parties():
+					for playerID in allparty.playerIDs:
+						print("Disconnecting player " + str(playerID) + " from network")
+						network.disconnect_peer(playerID, true)
 	
 	matchmake_pool()
 	print("User " + str(player_id) + " disconnected.")

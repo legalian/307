@@ -78,6 +78,7 @@ func set_look_pos(gpos,vel):
 func set_Hat(hatindex):
 	curhatindex = hatindex
 	var hatPath = HatLocation[hatindex];
+	headRef = find_node("Headref")
 	var currentHat = headRef.get_node_or_null("Hat")
 	if currentHat!=null:
 		headRef.remove_child(currentHat)

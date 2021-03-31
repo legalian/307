@@ -35,8 +35,10 @@ func _ready():
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	get_node("CurrentName").text = UsernameInput
-	add_child($Avatar.hotswap(AvatarSelected),true)
-	find_node("Avatar").set_Hat(HatSelected)
+	$Avatar.set_Hat(HatSelected)
+	var hotsw = $Avatar.hotswap(AvatarSelected)
+	hotsw.z_index = -1;
+	add_child(hotsw,true)
 	_on_ChangeVehicle_pressed(VehicleSelected)
 	
 
@@ -75,7 +77,7 @@ func _on_ChangeHat_pressed(HatType):
 	#print(HatType)
 	HatSelected = HatType
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
-	find_node("Avatar").set_Hat(HatType)
+	$Avatar.set_Hat(HatType)
 	generalserver.selfplayer.hat = HatSelected
 
 func _on_ChangeVehicle_pressed(VehicleType):
