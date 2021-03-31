@@ -11,6 +11,8 @@ var minigame_list = [preload("res://BattleRoyale/World.tscn"),
 var podium = preload("res://Podium/World.tscn")
 
 var minigame_order = []
+const MAPS = ["Grass", "Desert"]
+var nextMap
 
 var minigames_per_match = 3 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
@@ -144,3 +146,6 @@ func debug_print():
 			print("\tPlayerID: " + str(playerID))
 	
 	print("\n ========= LOBBY DEBUG =========\n")
+	
+func set_map(map):
+	nextMap = MAPS[map]

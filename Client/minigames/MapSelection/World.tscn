@@ -28,7 +28,8 @@ position = Vector2( 1303.99, 340.09 )
 scale = Vector2( 2.08483, 2.08483 )
 texture = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="World/WheelContainer"]
-position = Vector2( 1189.61, 1006.95 )
+[node name="Wheel" type="Sprite" parent="World/WheelContainer"]
+show_behind_parent = true
+position = Vector2( 1288.65, 999.614 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
