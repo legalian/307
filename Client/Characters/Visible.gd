@@ -22,8 +22,8 @@ var GunLocation = [null,
 
 var avatars = [
 	"res://Characters/Raccoon.tscn",
-	"res://Characters/RaccoonRed.tscn",
-	"res://Characters/RaccoonShadow.tscn"
+	"res://Characters/RaccoonShadow.tscn",
+	"res://Characters/RaccoonRed.tscn"
 ]
 
 func hotswap(index):
