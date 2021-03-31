@@ -28,6 +28,7 @@ func _ready():
 	StartServer()
 
 func StartServer():
+	print("\n\t>>> StartServer()")
 	
 	partyHandler = PartyHandler.new()
 	
@@ -40,25 +41,32 @@ func StartServer():
 	
 	network.connect("peer_connected",self,"_Peer_Connected")
 	network.connect("peer_disconnected",self,"_Peer_Disconnected")
+	print("\t<<< StartServer()\n")
 
 func make_new_minigame(var minigame):#makes a new minigame object, inserts it into the tree, and returns it.
-
+	print("\n\t>>> make_new_minigame()")
 	if (minigame == null):
-		print("MINIGAME IS NULL!!!!")
+		print("Attempted to make_new_minigame(null)")
+		print("<!<!<! make_new_minigame()\n")
+		return
 	
 	var instance = minigame.instance()#it's really important that this method isn't called more than once- it has side effects.
 	instance.name = instance.systemname()
 	add_child(instance,true)
+	print("\t<<< make_new_minigame()\n")
 	return instance
 	
 func make_party_screen():
+	print("\n\t>>> make_party_screen()")
 	var instance = party_screen.instance()
 	instance.name = instance.systemname()
 	add_child(instance,true)
+	print("\t<<< make_party_screen()\n")
 	return instance
 
 
 func reassign_party_to_minigame(var party,var minigame):
+	print("\n\t>>> reassign_party_to_minigame()")
 	for player in partyHandler.get_players_in_party(party):
 		rpc_id(player.playerID,"setminigame",minigame.systemname(),minigame.name)
 		minigame.add_player(player)
@@ -66,31 +74,32 @@ func reassign_party_to_minigame(var party,var minigame):
 	if (party.minigame != null):
 		party.minigame.queue_free()
 	else:
-		print("Attempted to queue_free() null minigame")
+		print("Attempted to null.queue_free() in reassign_party_to_minigame()")
 	party.minigame = minigame
+	print("\t<<< reassign_party_to_minigame()\n")
 
 remote func party_ready():
+	print("\n\t>>> party_ready()")
 	var party = partyHandler.get_party_by_player(get_tree().get_rpc_sender_id())
 	if party!=null:
 		if (party.playerIDs.size() <= 0):
-			print("Party doesn't have any players!")
+			print("party.playerIDs.size() <= 0 in party_ready()")
+			print("<!<!<! party_ready()\n")
 			return
 		
 		matchmaking_pool.append(party)
-		
-		print("Party_ready finished, calling matchmake_pool()")
-			
-		debug_print_lobbies()
-		debug_print_matchmaking_pool()
 		matchmake_pool()
 	else:
-		print("Attempted to mark a party as ready that does not exist.")
+		print("party = null in party_ready()")
 		print("Player code: ",get_tree().get_rpc_sender_id())
 		
 		debug_print_lobbies()
 		debug_print_matchmaking_pool()
+	
+	print("\t<<< party_ready()\n")
 
 remote func create_party(packed):
+	print("\n\t>>> create_party()")
 	var player_id = get_tree().get_rpc_sender_id()
 	print("Creating party...")
 	var newparty = partyHandler.new_party(player_id)
@@ -102,10 +111,11 @@ remote func create_party(packed):
 	newparty.minigame.add_player(partyHandler.player_objects.get(player_id))
 	print("Systemname: " + newparty.minigame.systemname())
 	send_party_code_to_client(player_id, newparty.code)
+	print("\t<<< create_party()\n")
 
 remote func join_party(var partyID,packed):
+	print("\n\t>>> join_party()")
 	var player_id = get_tree().get_rpc_sender_id()
-	print("Joining party")
 	if (partyHandler.parties.has(str(partyID)) && !partyHandler.parties[str(partyID)].in_game):
 		var joined_party = partyHandler.join_party_by_id(player_id, partyID)
 		partyHandler.player_objects.get(player_id).unpack(packed)
@@ -117,13 +127,22 @@ remote func join_party(var partyID,packed):
 			mutually_introduce(joined_party.playerIDs)
 		else:
 			print("Party code invalid: " + str(partyID))
+			print("<!<!<! join_party()\n")
+			return
 	else:
 		print("Party is already in game.")
+		print("<!<!<! join_party()\n")
+		return
+	
+	print("\t<<< join_party()\n")
 
 func send_party_code_to_client(var clientID, var partyID):
+	print("\n\t>>> send_party_code_to_client()")
 	rpc_id(clientID, "receive_party_code", partyID)
+	print("\t<<< send_party_code_to_client()\n")
 
 func go_to_next_minigame(var player_id):
+	print("\n\t>>> go_to_next_minigame()")
 	var party = partyHandler.get_party_by_player(player_id)
 	var lobby = lobbyHandler.get_lobby(party.lobby_code)
 	
@@ -135,16 +154,19 @@ func go_to_next_minigame(var player_id):
 		print("\n\n NEXT MINIGAME ASSIGNED: " + str(minigame.systemname()) + "\n\n")
 	else:
 		print("\n\n Go To Next Minigame failed!\n\n")
+		print("\t<!<!<! go_to_next_minigame()\n")
+		return
+	
+	print("\t<<< go_to_next_minigame()\n")
 
 func _Peer_Disconnected(player_id):
+	print("\n\t>>> peer_disconnected()")
 	var party = partyHandler.get_party_by_player(player_id)
 	_disconnect_handle_mut(player_id)
-	print("DICONNECT CALLED")
 	if party!=null:
-		print("DICONNECT CALLED WITH PARTY")
+		print("Party was not null.")
 		var minigame = party.minigame
 		if minigame!=null:
-			print("DICONNECTINGG FRAOM MINIGAME")
 			minigame.remove_player(player_id)
 			if minigame.player_count()==0:minigame.queue_free()
 		partyHandler.leave_party(player_id)
@@ -152,29 +174,33 @@ func _Peer_Disconnected(player_id):
 		var lobbyin = lobbyHandler.get_lobby(party.lobby_code)
 		if lobbyin: unintroduce(player_id,lobbyin.get_player_ids())
 		# Player has left, freeing up space in lobby; matchmake again
-		print("Attempting to matchmake_pool()")
-		matchmake_pool()
 		
-		if (party.playerIDs.size() == 0):
-			print("Party size detected to be empty, removing from lobby")
-			lobbyHandler.remove_from_lobby(party)
-			party.lobby_code = "defaultCode"
-			debug_print_lobbies()
+		if (lobbyin.get_occupied() < lobbyin.min_players_per_lobby):
+			# Lobby does not have enough players.
+			for allparty in lobbyin.get_parties():
+				for playerID in allparty.playerIDs:
+					print("Disconnecting player " + str(playerID) + " from network")
+					network.disconnect_peer(playerID, true)
 	
+	matchmake_pool()
 	print("User " + str(player_id) + " disconnected.")
+	print("\t<<< peer_disconnected()\n")
 
 func unintroduce(player_id,players):
+	print("\n\t>>> unintroduce()")
 	for player in players:
 		rpc_id(player,"drop_player",player_id)
+	print("\t<<< unintroduce()\n")
 
 func mutually_introduce(players):
+	print("\n\t>>> mutually_introduce()")
 	var ba = []
 	for player in players: ba.append(partyHandler.player_objects[player].pack())
 	for player in players: rpc_id(player,"add_players",ba)
+	print("\t<<< mutually_introduce()\n")
 
 func matchmake_pool():
-	print("Attempting to matchmake as many players in the pool as possible")
-	var ret
+	print("\n\t>>> matchmake_pool()")
 	for party in matchmaking_pool: # Go through the entire pool and add to lobbies
 		if (str(party.lobby_code) == "defaultCode"):
 			# Only add to a lobby if the party is not in one.
@@ -191,8 +217,8 @@ func matchmake_pool():
 		if (lobby.lobby_code != null &&
 			str(lobby.lobby_code) != "defaultCode" &&
 			lobby.can_start):
-
-
+			
+			
 			# Start the game!
 			lobby.in_game = true
 			var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
@@ -208,27 +234,31 @@ func matchmake_pool():
 				parties.in_game = true;
 				matchmaking_pool.erase(parties)
 				reassign_party_to_minigame(parties, minigame)
-
-	print("\n\n Matchmaking Pool finished \n\n")
+	
 	debug_print_lobbies()
 	debug_print_matchmaking_pool()
-	
+	print("\t<<< matchmake_pool()\n")
+
 remote func cancel_matchmaking():
+	print("\n\t>>> cancel_matchmaking()")
 	var playerID = get_tree().get_rpc_sender_id()
 	var party = partyHandler.get_party_by_player(playerID)
+	var lobby = lobbyHandler.get_lobby(party.lobby_code)
 	
 	# There are two places the player can be in: the pool, or an unstarted lobby.
 	# We want to remove from the pool,
 	# or remove from the lobby; but do not remove from party.
 	matchmaking_pool.erase(party)
 	print("      Removing party from lobby")
-	lobbyHandler.remove_from_lobby(party)
-	party.lobby_code = "defaultCode"
+	if (lobby != null):
+		lobbyHandler.remove_from_lobby(party)
+		# Do not disconnect from server!
 	
-	# Here, we DON'T want to iterate through the lobby and disconnect everyone else.
+	party.lobby_code = "defaultCode"
 	
 	debug_print_lobbies()
 	debug_print_matchmaking_pool()
+	print("\t<<< cancel_matchmaking()\n")
 
 func debug_print_matchmaking_pool():
 	print("\n ========= MATCHMAKING POOL DEBUG =========")
@@ -294,8 +324,10 @@ func _Peer_Connected(player_id):
 		minigame.add_player(playerobj)
 
 func _disconnect_handle_mut(player_id):
+	print("DISCONNECT HANDLE MUT CALLED")
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
 	if shims.has(multi_user_testing): get_tree().quit()
+	print("DISCONNECT HANDLE DID NOT EXECUTE ANYTHING")
 
 
 

@@ -1,0 +1,652 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://minigames/MinigameSelection/MinigameSprites/RacingThumbnail.png" type="Texture" id=2]
+[ext_resource path="res://minigames/MinigameSelection/World.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 45
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "SelectMinigameDisplay"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Loading Bar:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10880.3, 268 ), Vector2( -3316.58, 268 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MinigameSummaryBox:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.5, 5.5 ),
+"transitions": PoolRealArray( 1, 0.267943, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 175.362 ), Vector2( 0, 175.362 ), Vector2( 0, 2.82837 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SelectedMinigame/MinigameIcon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.5, 4.5 ),
+"transitions": PoolRealArray( 1, 0.297302, 0.901251 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.38, 0.38 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MinigameTitle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MinigameSummaryBox:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MinigameTitle:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 3.5, 5.2 ),
+"transitions": PoolRealArray( 0.297302, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 165.291 ), Vector2( 0, 90 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="MinigameTitle" type="RichTextLabel" parent="."]
+visible = false
+margin_top = 165.291
+margin_right = 1024.0
+margin_bottom = 231.291
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]###########"
+text = "###########"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Loading Bar" type="Control" parent="."]
+margin_left = -8233.0
+margin_top = 268.0
+margin_right = 3624.0
+margin_bottom = 308.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect19" type="ColorRect" parent="Loading Bar"]
+margin_left = 3357.68
+margin_right = 3461.68
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect20" type="ColorRect" parent="Loading Bar"]
+margin_left = 3541.2
+margin_right = 3645.2
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect21" type="ColorRect" parent="Loading Bar"]
+margin_left = 3726.51
+margin_right = 3830.51
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect22" type="ColorRect" parent="Loading Bar"]
+margin_left = 3910.03
+margin_right = 4014.04
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect23" type="ColorRect" parent="Loading Bar"]
+margin_left = 4100.69
+margin_right = 4204.69
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect24" type="ColorRect" parent="Loading Bar"]
+margin_left = 4284.21
+margin_right = 4388.21
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect25" type="ColorRect" parent="Loading Bar"]
+margin_left = 4481.99
+margin_right = 4585.99
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect26" type="ColorRect" parent="Loading Bar"]
+margin_left = 4665.52
+margin_right = 4769.52
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect27" type="ColorRect" parent="Loading Bar"]
+margin_left = 4856.17
+margin_right = 4960.17
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect28" type="ColorRect" parent="Loading Bar"]
+margin_left = 5039.69
+margin_right = 5143.69
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect29" type="ColorRect" parent="Loading Bar"]
+margin_left = 5225.0
+margin_right = 5329.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect30" type="ColorRect" parent="Loading Bar"]
+margin_left = 5408.53
+margin_right = 5512.53
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect31" type="ColorRect" parent="Loading Bar"]
+margin_left = 5599.18
+margin_right = 5703.18
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect32" type="ColorRect" parent="Loading Bar"]
+margin_left = 5782.7
+margin_right = 5886.7
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect33" type="ColorRect" parent="Loading Bar"]
+margin_left = 5969.82
+margin_right = 6073.82
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect34" type="ColorRect" parent="Loading Bar"]
+margin_left = 6153.34
+margin_right = 6257.34
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect35" type="ColorRect" parent="Loading Bar"]
+margin_left = 6344.0
+margin_right = 6448.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect36" type="ColorRect" parent="Loading Bar"]
+margin_left = 6527.52
+margin_right = 6631.52
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect37" type="ColorRect" parent="Loading Bar"]
+margin_left = 6712.83
+margin_right = 6816.83
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect38" type="ColorRect" parent="Loading Bar"]
+margin_left = 6896.35
+margin_right = 7000.35
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect39" type="ColorRect" parent="Loading Bar"]
+margin_left = 7087.01
+margin_right = 7191.01
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect40" type="ColorRect" parent="Loading Bar"]
+margin_left = 7270.53
+margin_right = 7374.53
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect41" type="ColorRect" parent="Loading Bar"]
+margin_left = 7468.31
+margin_right = 7572.31
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect42" type="ColorRect" parent="Loading Bar"]
+margin_left = 7651.83
+margin_right = 7755.83
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect43" type="ColorRect" parent="Loading Bar"]
+margin_left = 7842.49
+margin_right = 7946.49
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect44" type="ColorRect" parent="Loading Bar"]
+margin_left = 8026.01
+margin_right = 8130.01
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect45" type="ColorRect" parent="Loading Bar"]
+margin_left = 8211.32
+margin_right = 8315.32
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect46" type="ColorRect" parent="Loading Bar"]
+margin_left = 8394.84
+margin_right = 8498.84
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect47" type="ColorRect" parent="Loading Bar"]
+margin_left = 8585.5
+margin_right = 8689.5
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect48" type="ColorRect" parent="Loading Bar"]
+margin_left = 8769.02
+margin_right = 8873.02
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect49" type="ColorRect" parent="Loading Bar"]
+margin_left = 8953.32
+margin_right = 9057.32
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect50" type="ColorRect" parent="Loading Bar"]
+margin_left = 9136.84
+margin_right = 9240.84
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect51" type="ColorRect" parent="Loading Bar"]
+margin_left = 9327.5
+margin_right = 9431.5
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect52" type="ColorRect" parent="Loading Bar"]
+margin_left = 9511.02
+margin_right = 9615.02
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect53" type="ColorRect" parent="Loading Bar"]
+margin_left = 9696.33
+margin_right = 9800.33
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect54" type="ColorRect" parent="Loading Bar"]
+margin_left = 9879.85
+margin_right = 9983.85
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect55" type="ColorRect" parent="Loading Bar"]
+margin_left = 10070.5
+margin_right = 10174.5
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect56" type="ColorRect" parent="Loading Bar"]
+margin_left = 10254.0
+margin_right = 10358.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect57" type="ColorRect" parent="Loading Bar"]
+margin_left = 10451.8
+margin_right = 10555.8
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect58" type="ColorRect" parent="Loading Bar"]
+margin_left = 10635.3
+margin_right = 10739.3
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect59" type="ColorRect" parent="Loading Bar"]
+margin_left = 10826.0
+margin_right = 10930.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect60" type="ColorRect" parent="Loading Bar"]
+margin_left = 11009.5
+margin_right = 11113.5
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect61" type="ColorRect" parent="Loading Bar"]
+margin_left = 11194.8
+margin_right = 11298.8
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect62" type="ColorRect" parent="Loading Bar"]
+margin_left = 11378.3
+margin_right = 11482.3
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect63" type="ColorRect" parent="Loading Bar"]
+margin_left = 11569.0
+margin_right = 11673.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect64" type="ColorRect" parent="Loading Bar"]
+margin_left = 11752.5
+margin_right = 11856.5
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 52, 40 )
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectedMinigame" type="Control" parent="."]
+margin_left = -2.0
+margin_top = 1.0
+margin_right = 1024.0
+margin_bottom = 603.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="SelectedMinigame"]
+margin_left = 298.0
+margin_top = 157.0
+margin_right = 717.0
+margin_bottom = 414.0
+color = Color( 0.176471, 0.176471, 0.176471, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinigameIcon" type="Sprite" parent="SelectedMinigame"]
+position = Vector2( 506.597, 283.987 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
+
+[node name="SelectionTitle" type="RichTextLabel" parent="."]
+margin_right = 1024.0
+margin_bottom = 85.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Minigame Selection"
+text = "Minigame Selection"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinigameSummaryBox" type="Control" parent="."]
+visible = false
+margin_top = 175.362
+margin_right = 1020.0
+margin_bottom = 774.362
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MinigameSummaryBox"]
+margin_left = -795.0
+margin_top = 440.0
+margin_right = 1815.0
+margin_bottom = 1395.0
+color = Color( 0.168627, 0.168627, 0.168627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinigameSummary" type="RichTextLabel" parent="MinigameSummaryBox"]
+margin_top = 468.385
+margin_right = 1024.0
+margin_bottom = 582.385
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]Race through the track and get to the end first!"
+text = "Race through the track and get to the end first!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/SelectMinigameDisplay = SubResource( 4 )
