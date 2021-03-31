@@ -50,7 +50,7 @@ func _ready():
 			map = MAPS[1];
 	else:
 		print("NO MAP SELECTED\n");
-		map = MAPS[randi() % MAPS.size()]
+		map = get_parent().get_map();
 		
 		
 	if map == "Grass":

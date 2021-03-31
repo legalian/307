@@ -43,7 +43,7 @@ func _ready():
 			map = MAPS[1];
 	else:
 		print("NO MAP SELECTED\n");
-		map = MAPS[randi() % MAPS.size()]
+		map = get_parent().get_map();
 	if map == "Grass":
 		world = preload("res://BattleRoyale/World-Grass.tscn").instance()
 	elif map == "Desert":
@@ -124,7 +124,7 @@ remote func shoot(package):
 	print("GOING TO TRY CHECKING FOR BULLETS")
 	if package['id'] in bullets: return
 	for player in players:
-		if player.playerID!=player_id && player.playerID!=debug_id: rpc_id(player.playerID,"other_shoot",package)
+		if player.playerID!=player_id && player.dummy == 0 : rpc_id(player.playerID,"other_shoot",package)
 	print("I AM UNPACKING A BULLET")
 	bullets[package['id']] = BRBullet.instance()
 	world.add_child(bullets[package['id']])

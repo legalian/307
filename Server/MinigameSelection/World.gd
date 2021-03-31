@@ -19,7 +19,6 @@ func _ready():
 	var RandomMinigame = rng.randi_range(0, minigameList.size()-1)
 	for p in players:
 		rpc_unreliable_id(p.playerID, "_Select_Minigame", RandomMinigame);
-	#somehow set the minigame order
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

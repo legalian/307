@@ -23,7 +23,15 @@ func _ready():
 		mapSelected = MAPS[0]
 	else:
 		mapSelected = MAPS[1]
-	#somehow access lobby.gd to set minigame
+	get_parent().set_map(mapSelected);
+	var timer = Timer.new();
+	timer.connect("timeout", self, "finish")
+	timer.set_wait_time(10)
+	timer.start()
+
+func finish():
+	get_parent().go_to_next_minigame(playerID);
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -28,3 +28,6 @@ func _process(delta):
 				frame = 0;
 			wheel.rotation_degrees = frame;
 			spin = spin - 1
+	
+
+
