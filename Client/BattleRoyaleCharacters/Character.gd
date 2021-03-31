@@ -48,7 +48,7 @@ func unpack(package):
 	if(!setted):
 		position = Vector2(package['x'],package['y'])
 		setted = true;
-		setAvatar(package['avatar'])
+		setAvatar(get_node("/root/Server").get_player(package['id']).avatar)
 		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
 	if l_gun!=package['gun']:
 		gun = $Body.set_Gun(package['gun'])

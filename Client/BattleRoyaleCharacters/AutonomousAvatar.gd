@@ -25,7 +25,7 @@ func setAvatar(index):
 
 func unpack(package):
 	if last_position==null:
-		setAvatar(package['avatar'])
+		setAvatar(get_node("/root/Server").get_player(package['id']).avatar)
 		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
 	if (last_position == null || position.distance_to(last_position) >= 1):
 		position = Vector2(package['x'],package['y'])

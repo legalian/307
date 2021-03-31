@@ -35,6 +35,7 @@ func _ready():
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	get_node("CurrentName").text = UsernameInput
+	add_child($Avatar.hotswap(AvatarSelected),true)
 	find_node("Avatar").set_Hat(HatSelected)
 	_on_ChangeVehicle_pressed(VehicleSelected)
 	
