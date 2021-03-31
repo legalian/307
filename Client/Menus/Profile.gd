@@ -10,10 +10,11 @@ var AvatarMenuOpen = false
 var HatMenuOpen = false
 var VehicleMenuOpen = false
 
-var AvatarStyles = ["Racoon"]
+var AvatarStyles = ["Raccoon","DarkRaccoon","RedRaccoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
 var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
 #var VehicleRoots = ["res://exported/cars/sedan/diffuse.png","res://exported/cars/van/diffuse.png","res://exported/cars/truck/diffuse.png","res://exported/cars/race/diffuse.png","res://exported/cars/taxi/diffuse.png","res://exported/cars/raceFuture/diffuse.png"] # Sprite Roots
+
 
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
@@ -65,6 +66,9 @@ func _on_ChangeAvatar_pressed(AvatarType):
 	AvatarSelected = AvatarType
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	generalserver.selfplayer.avatar = AvatarSelected
+	var av = $Avatar.hotswap(AvatarType)
+	av.z_index = -1
+	add_child(av,true)
 
 func _on_ChangeHat_pressed(HatType):
 	#print(HatType)

@@ -12,18 +12,23 @@ var rotvel = 0
 var lookoffset = Vector2.ZERO
 
 var server = null
-var body = null
 var gun = null
 var l_gun = -1;
+var l_body = 0
 var dying = false
-var setted = false;
+var setted = false
+
+
+func setAvatar(index):
+	if index==l_body: return
+	add_child($Body.hotswap(index),true)
+	l_body = index
 
 func _ready():
 	input_pickable = true
 	set_process_unhandled_input(true)
 	server = get_node("/root/Server").get_children()[0]
-	body = get_node("Body")
-	gun = body.find_node("Gun")
+	gun = $Body.find_node("Gun")
 	
 	
 
@@ -43,6 +48,7 @@ func unpack(package):
 	if(!setted):
 		position = Vector2(package['x'],package['y'])
 		setted = true;
+		setAvatar(package['avatar'])
 		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
 	if l_gun!=package['gun']:
 		gun = $Body.set_Gun(package['gun'])
@@ -58,7 +64,7 @@ func unpack(package):
 func _process(delta):
 	lookoffset = get_parent().global_transform.xform_inv(get_global_mouse_position()) - global_position
 	$Target.global_position = get_global_mouse_position()
-	body.set_look_pos(get_global_mouse_position(),velocity)
+	$Body.set_look_pos(get_global_mouse_position(),velocity)
 	
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
@@ -100,13 +106,13 @@ func _unhandled_input(event):
 	
 
 func damage():
-	body.ouch()
+	$Body.ouch()
 	
 func die():
 	dying = true
 	speed=0
 	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying
-	body.rip()
+	$Body.rip()
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "finish_dying")

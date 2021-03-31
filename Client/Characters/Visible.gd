@@ -8,6 +8,7 @@ var r_handref = null
 var lefthand = null
 var righthand = null
 var playback = null
+var curhatindex = 0
 var HatLocation = [null, 
 "res://Hats/Tophat.tscn",
 "res://Hats/Whitehat.tscn",
@@ -18,6 +19,27 @@ var GunLocation = [null,
 "res://Guns/basicGun.tscn",
 "res://Guns/greenUzi.tscn",
 "res://Guns/purpleDualGun.tscn"]
+
+var avatars = [
+	"res://Characters/Raccoon.tscn",
+	"res://Characters/RaccoonRed.tscn",
+	"res://Characters/RaccoonShadow.tscn"
+]
+
+func hotswap(index):
+	var oldloc = position
+	get_parent().remove_child(self)
+	var newinst = load(avatars[index]).instance()
+	newinst.name = name
+	newinst.position = oldloc
+	newinst.set_Hat(curhatindex)
+	queue_free()
+	return newinst
+	#newinst.z_index = -1
+	#add_child(newinst,true)
+
+
+
 
 func _ready():
 	#set_Hat("res://Hats/Whitehat.tscn")
@@ -54,6 +76,7 @@ func set_look_pos(gpos,vel):
 
 
 func set_Hat(hatindex):
+	curhatindex = hatindex
 	var hatPath = HatLocation[hatindex];
 	var currentHat = headRef.get_node_or_null("Hat")
 	if currentHat!=null:

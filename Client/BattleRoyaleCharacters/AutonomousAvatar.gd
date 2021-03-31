@@ -10,14 +10,22 @@ var last_position
 var dying = false
 var server = null
 var l_gun = -1
+var l_body = 0
 var body
 
 func _ready():
 	server = get_node("/root/Server").get_children()[0]
 	body = get_node("Body")
 
+
+func setAvatar(index):
+	if index==l_body: return
+	add_child($Body.hotswap(index),true)
+	l_body = index
+
 func unpack(package):
 	if last_position==null:
+		setAvatar(package['avatar'])
 		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
 	if (last_position == null || position.distance_to(last_position) >= 1):
 		position = Vector2(package['x'],package['y'])
