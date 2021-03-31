@@ -25,8 +25,9 @@ class Map:
 		for obj in self.props:
 			if obj['___type']=='ext_resource': res += tostr(obj)
 		if any(obj['___type']=='ext_resource' for obj in self.props): res += "\n"
-		for obj in self.props:
-			if obj['___type']=='sub_resource': res += tostr(obj)+'\n'
+		subresouces = sorted([obj for obj in self.props if obj['___type']=='sub_resource'],key=lambda x:int(x['id']))
+		for obj in subresouces:
+			res += tostr(obj)+'\n'
 		for obj in self.props:
 			if obj['___type']=='node': res += tostr(obj)+'\n'
 			

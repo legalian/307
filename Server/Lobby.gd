@@ -5,14 +5,14 @@ var parties = []
 
 
 var minigame_list = [preload("res://BattleRoyale/World.tscn"),
-					 preload("res://RacingGame/World.tscn")]
-				
+					 preload("res://RacingGame/World.tscn"),
+					 preload("res://DemoDerby/World.tscn")]
 
 var podium = preload("res://Podium/World.tscn")
 
 var minigame_order = []
 
-var minigames_per_match = 2 # This number CANNOT be greater than minigame_list size!!
+var minigames_per_match = 3 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
 
 var can_start = false
@@ -30,8 +30,7 @@ func _init(var code):
 	rng.randomize()
 	
 	if (minigames_per_match > minigame_list.size()):
-		print("ERROR! REQUESTING TO SCRAMBLE MORE MINIGAMES THAN AVAILABLE")
-		debug_print()
+		print("minigames_per_match > minigame_list.size() in Lobby._init()")
 		return
 	
 	scramble_minigames()
@@ -69,17 +68,6 @@ func add_party(var party):
 	return false
 
 func scramble_minigames():
-	print("\n\n\n\n\n\nEntered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
-	print("Entered minigame scrambling")
 	while (minigame_order.size() != minigames_per_match):
 		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
 		if (minigame_order.find(minigame_list[rand]) == -1):
@@ -95,11 +83,9 @@ func get_current_minigame():
 	return minigame_order[current_minigame]
 
 func go_to_next_minigame():
-	print("Incrementing current_minigame!")
 	current_minigame = current_minigame + 1
 	if (current_minigame >= minigame_order.size()):
-		print("FATAL ERROR @@ FUNC GET_NEXT_MINIGAME(): trying to get next" + 
-			  "minigame despite having finished all minigames")
+		print("FATAL ERROR @@ FUNC GET_NEXT_MINIGAME()")
 		return false
 	
 	return true

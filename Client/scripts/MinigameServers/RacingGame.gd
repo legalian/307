@@ -7,7 +7,7 @@ var world_map = null
 func _ready():
 	print("I have been added to a racing game lobby")
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
-	if gameinstance!=null && gameinstance.get('world_type')!='racing_game': gameinstance = null
+	if gameinstance!=null && gameinstance.get('world_type')!='demo_derby': gameinstance = null
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "syncUpdate")

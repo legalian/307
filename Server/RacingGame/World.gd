@@ -14,6 +14,10 @@ var powerups = {}
 
 var mapSelect = "nonmap";
 
+var round_limit = 120; # 120s will forcibly end the round
+
+var force_finish = false;
+
 const MAPS = ["Grass", "Desert"]
 
 var map = null
@@ -80,6 +84,17 @@ func _ready():
 	_countdown.set_one_shot(true)
 	_countdown.start()
 	
+	var _round_limit = Timer.new()
+	add_child(_round_limit)
+	_round_limit.connect("timeout", self, "_finish_game")
+	_round_limit.set_wait_time(round_limit)
+	_round_limit.set_one_shot(false)
+	#_round_limit.start()
+
+func _finish_game():
+	print("force_finish set to true")
+	force_finish = true
+
 func _countdown_end():
 	started = true
 	for ig in ingame.values():
@@ -124,7 +139,7 @@ func _process(delta):
 	for n in range(sort_array.size()):
 		ingame[sort_array[n][0]].place = n + 1
 		
-	if done and !race_finished:
+	if ((done && !race_finished) || (force_finish)):
 		print("Everyone finished the race!")
 		race_finished = true
 		
