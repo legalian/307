@@ -73,6 +73,7 @@ func scramble_minigames():
 	while (minigame_order.size() != minigames_per_match * 3):
 		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
 		if (minigame_order.find(minigame_list[rand]) == -1):
+			minigame_order.append()
 			minigame_order.append(minigame_list[rand]) # Keep appending until size is correct
 	
 	minigame_order.append(podium)

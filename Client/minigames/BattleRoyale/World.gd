@@ -17,6 +17,7 @@ func _ready():
 	camera = get_node("World/dropdown/camera");
 
 func load_map(map):
+	print(map)
 	if map == "Grass":
 		world = preload("res://minigames/BattleRoyale/World-Grass.tscn").instance()
 	elif map == "Desert":

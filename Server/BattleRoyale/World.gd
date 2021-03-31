@@ -22,6 +22,7 @@ func add_player(newplayer):
 	.add_player(newplayer)
 	status[newplayer.playerID] = "UNSPAWNED"
 	print("adding player: ",newplayer)
+	rpc_id(newplayer.playerID, "setMap", map)
 func remove_player(player_id):
 	.remove_player(player_id)
 	status.erase(player_id)
@@ -96,7 +97,8 @@ func spawn_id(x,y,player_id):
 	if (status.has(player_id)):
 		if status[player_id] != "UNSPAWNED": return
 	status[player_id] = "INGAME"
-	rpc_id(player_id, "setMap", map)
+	
+	print("Spawning player!");
 	ingame[player_id] = BRPlayer.instance()
 	ingame[player_id].id = player_id
 	ingame[player_id].position = Vector2(x,y)

@@ -15,7 +15,6 @@ func _ready():
 	
 
 remote func _Select_Minigame(minigame):
-
 	currentMinigame = minigame;
 
 func _Set_Minigame():
