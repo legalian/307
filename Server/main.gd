@@ -72,6 +72,7 @@ func reassign_party_to_minigame(var party,var minigame):
 		minigame.add_player(player)
 		print("setting ",minigame.name,minigame.get_path())
 	if (party.minigame != null):
+		print("queue_freeing " + str(party.minigame.systemname()))
 		party.minigame.queue_free()
 	else:
 		print("Attempted to null.queue_free() in reassign_party_to_minigame()")
@@ -181,7 +182,10 @@ func _Peer_Disconnected(player_id):
 				for allparty in lobbyin.get_parties():
 					for playerID in allparty.playerIDs:
 						print("Disconnecting player " + str(playerID) + " from network")
-						network.disconnect_peer(playerID, true)
+						network.disconnect_peer(playerID, false)
+				
+				# Delete the lobby
+				lobbyHandler.delete_lobby(lobbyin.lobby_code)
 	
 	matchmake_pool()
 	print("User " + str(player_id) + " disconnected.")
