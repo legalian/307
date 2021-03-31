@@ -17,6 +17,7 @@ var mapSelect = "nonmap";
 var round_limit = 120; # 120s will forcibly end the round
 
 var force_finish = false;
+var mapRoll;
 
 const MAPS = ["Grass", "Desert"]
 
@@ -42,6 +43,8 @@ func remove_player(player_id):
 
 func _ready():
 	randomize()
+	var rng = RandomNumberGenerator.new();
+	rng.randomize();
 	if(OS.has_environment("MAPTEST")):
 		mapSelect = OS.get_environment("MAPTEST");
 		print("MAPSELECT = " + mapSelect)
@@ -52,7 +55,12 @@ func _ready():
 			map = MAPS[1];
 	else:
 		print("NO MAP SELECTED\n");
-		map = get_parent().get_map();
+		mapRoll = rng.randi_range(360, 3600);
+		if(mapRoll % 360  <= 180):
+			map = MAPS[0]
+		else:
+			map = MAPS[1];
+
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
@@ -161,6 +169,7 @@ func spawn(player_id):
 	print("Spawning player: " + str(player_id))
 	
 	rpc_id(player_id, "setMap", map)
+	rpc_id(player_id, "setMapRoll", mapRoll)
 	
 	ingame[player_id] = car.instance()
 	ingame[player_id].name = "Player_" + str(player_id)

@@ -7,14 +7,16 @@ var players = {}
 var bullets = {}
 var powerups = {}
 
+var startedDrop = false;
 var camera = null
 var world = null
 var server = null
+var dropFinished = false;
 
 func _ready():
 	world = get_node("World")
 	minigame = "BATTLEROYALE"
-	camera = get_node("World/dropdown/camera");
+	camera = get_node("mapselection/World/Camera2D");
 
 func load_map(map):
 	print(map)
@@ -24,13 +26,24 @@ func load_map(map):
 		world = preload("res://minigames/BattleRoyale/World-Desert.tscn").instance()
 	assert(world != null)
 	add_child(world)
+	world.visible = false;
 					
 	set_process(true)
-	
+
+func load_mapRoll(mapRoll):
+	get_node("mapselection").spin = mapRoll;
+
 func _process(delta):
+	if(get_node("mapselection").done == true && startedDrop == false):
+		startedDrop = true;
+		get_node("World/dropdown").start();
+		camera = get_node("World/dropdown/camera")
+		world.visible = true;
 	if get_node("/root/Server").get_children().size()>0:
 		server = get_node("/root/Server").get_children()[0]
 	if server==null: return
+	if(get_node("mapselection").done == false):
+		return;
 	if camera==null:
 		var player = get_node_or_null("World/Player")
 		if player==null: return

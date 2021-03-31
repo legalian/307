@@ -234,6 +234,7 @@ func matchmake_pool():
 			if (scenes_no_shim.has(multi_user_testing) && multi_user_testing != "party" && multi_user_testing != "lobby" && multi_user_testing != "quickplay"):
 				print("Minigame specified: " + multi_user_testing)
 				minigame = make_new_minigame(scenes_no_shim[multi_user_testing]);
+
 			else:
 				minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():

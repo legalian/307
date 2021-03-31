@@ -4,6 +4,11 @@ var count = 5
 var timer
 var tween
 
+func start():
+	timer.start()
+	
+	tween.start()
+
 func _ready():
 	tween = get_node("Tween")
 	tween.interpolate_property(self, "modulate:a", 1, 0, 1, Tween.TRANS_QUAD)
@@ -14,9 +19,7 @@ func _ready():
 	timer.connect("timeout", self, "tick")
 	timer.set_wait_time(1)
 	timer.set_one_shot(false)
-	timer.start()
-	
-	tween.start()
+
 
 func tick():
 	count -= 1

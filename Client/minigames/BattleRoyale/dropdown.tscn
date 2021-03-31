@@ -12,7 +12,6 @@ font_data = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="camera" type="Camera2D" parent="."]
-current = true
 zoom = Vector2( 12, 12 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="camera"]

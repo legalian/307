@@ -4,6 +4,7 @@ var clientstatus = "UNSPAWNED"
 var gameinstance
 
 var world_map = null;
+var mapRoll = null;
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
@@ -34,6 +35,7 @@ remote func frameUpdate(s_players,s_bullets,s_powerups):
 	var visited = []
 	if gameinstance.world == null:
 		gameinstance.load_map(world_map)
+		gameinstance.load_mapRoll(mapRoll);
 	for s_player in s_players:
 		visited.append(s_player['id'])
 		if s_player['id'] in gameinstance.players:
@@ -135,6 +137,9 @@ remote func update_health_bar(var health: float):
 	
 remote func setMap(map):
 	world_map = map
+
+remote func setMapRoll(mapRolls):
+	mapRoll = mapRolls
 
 func showlose():
 	get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")

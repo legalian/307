@@ -20,5 +20,8 @@ remote func setSpin(spins):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(_delta):
+	if gameinstance==null:
+		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
+		if gameinstance!=null && gameinstance.get('world_type')!='map_selection': gameinstance = null
+		if gameinstance==null: return

@@ -15,6 +15,7 @@ const MAPS = ["Grass", "Desert"]
 
 var map = null
 var world = null
+var mapRoll;
 
 var debug_id = 1010101010
 
@@ -23,6 +24,7 @@ func add_player(newplayer):
 	status[newplayer.playerID] = "UNSPAWNED"
 	print("adding player: ",newplayer)
 	rpc_id(newplayer.playerID, "setMap", map)
+	rpc_id(newplayer.playerID, "setMapRoll", mapRoll)
 func remove_player(player_id):
 	.remove_player(player_id)
 	status.erase(player_id)
@@ -32,18 +34,29 @@ func remove_player(player_id):
 		ingame.erase(player_id)
 
 func _ready():
-	randomize()
+	var rng = RandomNumberGenerator.new();
+	rng.randomize();
 	if(OS.has_environment("MAPTEST")):
 		mapSelect = OS.get_environment("MAPTEST");
 		print("MAPSELECT = " + mapSelect)
 	if(mapSelect != "nonmap"):
 		if(mapSelect == "grassland"):
 			map = MAPS[0];
+			mapRoll = 450;
+
 		else:
 			map = MAPS[1];
+			mapRoll = 630
 	else:
 		print("NO MAP SELECTED\n");
-		map = get_parent().get_map();
+		mapRoll = rng.randi_range(360, 3600);
+		if(mapRoll % 360  <= 180):
+			map = MAPS[0];
+		else:
+			map = MAPS[1];
+
+
+
 	if map == "Grass":
 		world = preload("res://BattleRoyale/World-Grass.tscn").instance()
 	elif map == "Desert":

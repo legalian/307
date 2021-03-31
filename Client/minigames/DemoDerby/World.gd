@@ -23,6 +23,7 @@ func _ready():
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
 	#object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
 	object_scenes[Object_ids.CACTUS] = preload("res://objects/cactus_short.tscn")
+	camera = get_node("mapselection/Camera2D");
 	
 	set_process(false)
 
@@ -33,6 +34,7 @@ func load_map(map):
 		world = preload("res://minigames/DemoDerby/World-Desert.tscn").instance()
 	assert(world != null)
 	add_child(world)
+	world.visible = false;
 	
 	object_map = world.get_node("Objects")
 	object_map.visible = false
@@ -56,10 +58,18 @@ func load_map(map):
 					
 	set_process(true)
 
+func load_mapRoll(mapRoll):
+	get_node("mapselection").spin = mapRoll;
+
 func _process(delta):
+	if(get_node("mapselection").done == true):
+		camera = null;
+		world.visible = true;
 	if get_node("/root/Server").get_children().size()>0:
 		server = get_node("/root/Server").get_children()[0]
 	if server==null: return
+	if(get_node("mapselection").done == false):
+		return;
 	if camera==null:
 		player = get_node_or_null("World/Player_" + str(get_tree().get_network_unique_id()))
 		if player==null: return

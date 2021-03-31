@@ -3,6 +3,7 @@ extends "res://scripts/MinigameServers/MinigameBase.gd"
 var gameinstance
 
 var world_map = null
+var mapRoll = null;
 
 func _ready():
 	print("I have been added to a demo derby lobby")
@@ -28,6 +29,7 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 		if gameinstance==null: return
 	if gameinstance.world == null: 
 		gameinstance.load_map(world_map)
+		gameinstance.load_mapRoll(mapRoll)
 	for s_player in s_players:
 		if s_player['id'] in gameinstance.players:
 			gameinstance.players[s_player['id']].unpack(s_player)
@@ -62,6 +64,9 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 
 remote func setMap(map):
 	world_map = map
+
+remote func setMapRoll(mapRolls):
+	mapRoll = mapRolls
 
 remote func die():
 	get_tree().change_scene("res://minigames/DemoDerby/dead.tscn")

@@ -9,11 +9,10 @@ var minigame_list = [preload("res://BattleRoyale/World.tscn"),
 					 preload("res://DemoDerby/World.tscn")]
 
 var podium = preload("res://Podium/World.tscn")
-var mapSelectionScreen = preload("res://MapSelection/World.tscn")
 
 var minigame_order = []
 const MAPS = ["Grass", "Desert"]
-var nextMap = "Grass"
+var nextMap = "none"
 
 var minigames_per_match = 3 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
@@ -74,7 +73,6 @@ func scramble_minigames():
 	while (minigame_order.size() != minigames_per_match * 2):
 		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
 		if (minigame_order.find(minigame_list[rand]) == -1):
-			minigame_order.append(mapSelectionScreen);
 			minigame_order.append(minigame_list[rand]) # Keep appending until size is correct
 	
 	minigame_order.append(podium)
@@ -148,9 +146,4 @@ func debug_print():
 			print("\tPlayerID: " + str(playerID))
 	
 	print("\n ========= LOBBY DEBUG =========\n")
-	
-func set_map(map):
-	nextMap = map
 
-func get_map():
-	return nextMap;

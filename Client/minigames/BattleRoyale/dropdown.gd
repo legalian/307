@@ -7,6 +7,7 @@ extends Node2D
 
 
 var spawned = false;
+var started = false;
 
 var map
 var minx
@@ -27,6 +28,13 @@ func _spawnRandom():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.visible = false;
+	get_node("camera").current = false;
+
+func start():
+	self.visible = true;
+	
+	started = true;
 	get_node("camera").current = true;
 	map = get_node("../TileMap");
 	var topleft = Vector2(-24, -17)
@@ -37,12 +45,13 @@ func _ready():
 	miny = topleftworld[1]
 	maxx = bottomrightworld[0]
 	maxy = bottomrightworld[1]
+	get_node("camera/CanvasLayer/Timer").start();
 
 
 
 
 func _input(event):
-	if(!spawned):
+	if(!spawned && started):
 		if(event is InputEventMouseButton):
 			var pos = get_parent().get_local_mouse_position()
 			var space_state = get_world_2d().direct_space_state
@@ -60,4 +69,6 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if(spawned == true):
+		get_parent().get_parent().dropFinished = true;
+		
 		queue_free()

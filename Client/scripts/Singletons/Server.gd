@@ -77,6 +77,7 @@ remote func setminigame(systemname,lobbyname):
 	for ms in get_children():
 		remove_child(ms)
 		ms.queue_free()
+	
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
 	print("created associate node: ",lobbyname," ",instance.name)

@@ -322,72 +322,58 @@ rotation = 5.5209
 [node name="2Car" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( -3472.3, 814.433 )
 rotation = 1.02922
-scale = Vector2( 1, 1 )
 
 [node name="2Car2" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( -2619.8, 930.076 )
 rotation = 3.77675
-scale = Vector2( 1, 1 )
 
 [node name="2Car3" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( -3199.5, 1182.12 )
 rotation = 5.35078
-scale = Vector2( 1, 1 )
 
 [node name="2Car4" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( -1729.18, 1003.37 )
 rotation = 2.52632
-scale = Vector2( 1, 1 )
 
 [node name="2Car5" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( -587.516, 945.715 )
 rotation = 0.957003
-scale = Vector2( 1, 1 )
 
 [node name="2Car6" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( -1135.28, 1124.46 )
 rotation = 1.79872
-scale = Vector2( 1, 1 )
 
 [node name="2Car7" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( -114.707, 1245.55 )
 rotation = -0.887621
-scale = Vector2( 1, 1 )
 
 [node name="2Car8" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 652.166, 870.758 )
 rotation = -1.12694
-scale = Vector2( 1, 1 )
 
 [node name="2Car9" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 1015.42, 1170.59 )
 rotation = 0.131811
-scale = Vector2( 1, 1 )
 
 [node name="2Car10" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 2781.56, 832.923 )
 rotation = 1.52647
-scale = Vector2( 1, 1 )
 
 [node name="2Car14" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 3412.04, 1123.68 )
 rotation = -0.944945
-scale = Vector2( 1, 1 )
 
 [node name="2Car13" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 2561.2, 1145.1 )
 rotation = 4.62594
-scale = Vector2( 1, 1 )
 
 [node name="2Car11" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 1949.51, 1135.99 )
 rotation = 1.52647
-scale = Vector2( 1, 1 )
 
 [node name="2Car12" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 1450.75, 821.747 )
 rotation = 4.20043
-scale = Vector2( 1, 1 )
 
 [node name="Car13" parent="cars" instance=ExtResource( 1 )]
 position = Vector2( 3377.29, -730.601 )
