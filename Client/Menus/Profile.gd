@@ -10,7 +10,7 @@ var AvatarMenuOpen = false
 var HatMenuOpen = false
 var VehicleMenuOpen = false
 
-var AvatarStyles = ["Raccoon","DarkRaccoon","RedRaccoon"]
+var AvatarStyles = ["Raccoon","Shadow Raccoon","Red Raccoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
 var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
 #var VehicleRoots = ["res://exported/cars/sedan/diffuse.png","res://exported/cars/van/diffuse.png","res://exported/cars/truck/diffuse.png","res://exported/cars/race/diffuse.png","res://exported/cars/taxi/diffuse.png","res://exported/cars/raceFuture/diffuse.png"] # Sprite Roots
@@ -26,7 +26,7 @@ func _MUT_send_partycode():
 func _MUT_set_username():
 	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
-func _ready():	
+func _ready():
 	generalserver = get_node("/root/Server")
 	UsernameInput = generalserver.selfplayer.username
 	AvatarSelected = generalserver.selfplayer.avatar
@@ -52,7 +52,7 @@ func _on_Button_Back_pressed():
 
 func _on_Button_ConfirmUsername_pressed():
 	#print(UsernameInput)
-	#regex.compile("^[A-Za-z]+$")
+	#regex.compile("^[A-Za-z]+$") 
 	#var result = regex.search(UsernameInput)
 	#var validCharacters = (result.get_string() == UsernameInput)
 	

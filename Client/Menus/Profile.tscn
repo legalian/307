@@ -25,7 +25,7 @@ font_data = ExtResource( 1 )
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="DynamicFont" id=4]
-size = 25
+size = 18
 use_filter = true
 font_data = ExtResource( 1 )
 
@@ -204,7 +204,7 @@ position = Vector2( 883.592, 192.822 )
 scale = Vector2( 0.404052, 0.404052 )
 frames = ExtResource( 10 )
 animation = "Truck"
-frame = 42
+frame = 29
 playing = true
 
 [node name="Avatar Menu" type="Control" parent="."]
@@ -266,6 +266,7 @@ margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
 text = "Racoon"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -291,6 +292,7 @@ margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
 text = "Racoon 2"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -315,6 +317,7 @@ margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -339,6 +342,7 @@ margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -363,6 +367,7 @@ margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -387,6 +392,7 @@ margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -411,6 +417,7 @@ margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -435,6 +442,7 @@ margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -512,7 +520,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 60
+frame = 47
 playing = true
 
 [node name="Avatar4" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -541,7 +549,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 57
+frame = 44
 playing = true
 
 [node name="Avatar5" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -570,7 +578,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 57
+frame = 44
 playing = true
 
 [node name="Avatar6" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -588,7 +596,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 56
+frame = 43
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
@@ -617,7 +625,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 56
+frame = 43
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
@@ -646,7 +654,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 59
+frame = 46
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
@@ -686,7 +694,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 59
+frame = 46
 playing = true
 
 [node name="Avatar3" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -715,7 +723,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 58
+frame = 45
 playing = true
 
 [node name="CloseAvatarMenu" type="Button" parent="Vehicle Menu"]
