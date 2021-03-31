@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Hats/Headphones.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hats/Paperhat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://exported/cars/CarSpriteFrames.tres" type="SpriteFrames" id=10]
+[ext_resource path="res://Characters/RaccoonShadow.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Characters/RaccoonRed.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -202,7 +204,7 @@ position = Vector2( 883.592, 192.822 )
 scale = Vector2( 0.404052, 0.404052 )
 frames = ExtResource( 10 )
 animation = "Truck"
-frame = 54
+frame = 42
 playing = true
 
 [node name="Avatar Menu" type="Control" parent="."]
@@ -375,8 +377,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar1" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
+[node name="Raccoon" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar1" instance=ExtResource( 11 )]
+position = Vector2( 95, 140 )
 
 [node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar1"]
 margin_left = 1.33258
@@ -399,8 +401,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar2" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
+[node name="Raccoon" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar2" instance=ExtResource( 12 )]
+position = Vector2( 95, 140 )
 
 [node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar2"]
 margin_left = 1.33258
@@ -510,7 +512,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 8
+frame = 60
 playing = true
 
 [node name="Avatar4" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -539,7 +541,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 5
+frame = 57
 playing = true
 
 [node name="Avatar5" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -568,7 +570,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 5
+frame = 57
 playing = true
 
 [node name="Avatar6" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -586,7 +588,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 4
+frame = 56
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
@@ -615,7 +617,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 4
+frame = 56
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
@@ -644,7 +646,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 7
+frame = 59
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
@@ -684,7 +686,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 7
+frame = 59
 playing = true
 
 [node name="Avatar3" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -713,7 +715,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 6
+frame = 58
 playing = true
 
 [node name="CloseAvatarMenu" type="Button" parent="Vehicle Menu"]

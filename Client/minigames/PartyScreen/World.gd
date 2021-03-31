@@ -32,12 +32,14 @@ func _ready():
 		#	$MUT_test_flow.play("Multi_User_Testing_Partylead")
 		#else:
 		#	$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
+		
+	add_child($Raccoon.hotswap(generalserver.selfplayer.avatar),true)
 	$Raccoon.set_Hat(generalserver.selfplayer.hat)
 	var VehicleSelected = generalserver.selfplayer.vehicle
 	var CurrentVehicle = find_node("VehicleSprites")
 	CurrentVehicle.animation = VehicleStyles[VehicleSelected]
 
-
+#may 2
 
 func _on_Button_Back_pressed():
 	#generalserver.attemptEnterGame()
