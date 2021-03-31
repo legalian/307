@@ -70,4 +70,5 @@ remote func win():
 	get_tree().change_scene("res://minigames/DemoDerby/win.tscn")
 
 remote func endMatch():
-	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()
+	if (gameinstance != null):
+		gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()

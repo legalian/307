@@ -70,7 +70,7 @@ func _ready():
 	var _countdown = Timer.new()
 	add_child(_countdown)
 	_countdown.connect("timeout", self, "_countdown_end")
-	_countdown.set_wait_time(6.5)
+	_countdown.set_wait_time(8.5) # Set wait time to be countdown + 3.5s
 	_countdown.set_one_shot(true)
 	_countdown.start()
 	
