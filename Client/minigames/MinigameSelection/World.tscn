@@ -4,12 +4,12 @@
 [ext_resource path="res://minigames/MinigameSelection/MinigameSprites/RacingThumbnail.png" type="Texture" id=2]
 [ext_resource path="res://minigames/MinigameSelection/World.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 45
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 60
 use_filter = true
 font_data = ExtResource( 1 )
@@ -93,16 +93,29 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( 0, 165.291 ), Vector2( 0, 90 ) ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Finished_Animation"
+} ]
+}
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="YSort"]
 script = ExtResource( 3 )
 
 [node name="MinigameTitle" type="RichTextLabel" parent="."]
-visible = false
-margin_top = 165.291
+margin_top = 90.0
 margin_right = 1024.0
-margin_bottom = 231.291
-custom_fonts/normal_font = SubResource( 2 )
+margin_bottom = 156.0
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]###########"
 text = "###########"
@@ -112,9 +125,9 @@ __meta__ = {
 }
 
 [node name="Loading Bar" type="Control" parent="."]
-margin_left = -8233.0
+margin_left = -3316.58
 margin_top = 268.0
-margin_right = 3624.0
+margin_right = 8540.42
 margin_bottom = 308.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -601,13 +614,13 @@ __meta__ = {
 
 [node name="MinigameIcon" type="Sprite" parent="SelectedMinigame"]
 position = Vector2( 506.597, 283.987 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 0.38, 0.38 )
 texture = ExtResource( 2 )
 
 [node name="SelectionTitle" type="RichTextLabel" parent="."]
 margin_right = 1024.0
 margin_bottom = 85.0
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Minigame Selection"
 text = "Minigame Selection"
@@ -617,10 +630,9 @@ __meta__ = {
 }
 
 [node name="MinigameSummaryBox" type="Control" parent="."]
-visible = false
-margin_top = 175.362
+margin_top = 2.82837
 margin_right = 1020.0
-margin_bottom = 774.362
+margin_bottom = 601.828
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -650,3 +662,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/SelectMinigameDisplay = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 513.064, 299.702 )
+current = true

@@ -9,12 +9,22 @@ var status = {}
 var ingame = {}
 var bullets = {}
 
+var mapSelect = "nonmap";
+
+const MAPS = ["Grass", "Desert"]
+
+var map = null
+var world = null
+var mapRoll;
+
 var debug_id = 1010101010
 
 func add_player(newplayer):
 	.add_player(newplayer)
 	status[newplayer.playerID] = "UNSPAWNED"
 	print("adding player: ",newplayer)
+	rpc_id(newplayer.playerID, "setMap", map)
+	rpc_id(newplayer.playerID, "setMapRoll", mapRoll)
 func remove_player(player_id):
 	.remove_player(player_id)
 	status.erase(player_id)
@@ -24,6 +34,35 @@ func remove_player(player_id):
 		ingame.erase(player_id)
 
 func _ready():
+	var rng = RandomNumberGenerator.new();
+	rng.randomize();
+	if(OS.has_environment("MAPTEST")):
+		mapSelect = OS.get_environment("MAPTEST");
+		print("MAPSELECT = " + mapSelect)
+	if(mapSelect != "nonmap"):
+		if(mapSelect == "grassland"):
+			map = MAPS[0];
+			mapRoll = 630
+		else:
+			map = MAPS[1];
+			mapRoll = 450
+	else:
+		print("NO MAP SELECTED\n");
+		mapRoll = rng.randi_range(360, 3600);
+		if(mapRoll % 360  >= 180):
+			map = MAPS[0];
+		else:
+			map = MAPS[1];
+
+
+
+	if map == "Grass":
+		world = preload("res://BattleRoyale/World-Grass.tscn").instance()
+	elif map == "Desert":
+		world = preload("res://BattleRoyale/World-Desert.tscn").instance()
+	assert(world != null)
+	add_child(world)
+
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "_send_rpc_update")
@@ -70,10 +109,13 @@ func spawn_id(x,y,player_id):
 	if (status.has(player_id)):
 		if status[player_id] != "UNSPAWNED": return
 	status[player_id] = "INGAME"
+	
+	print("Spawning player!");
 	ingame[player_id] = BRPlayer.instance()
 	ingame[player_id].id = player_id
 	ingame[player_id].position = Vector2(x,y)
-	$World.add_child(ingame[player_id])
+	
+	world.add_child(ingame[player_id])
 	
 remote func spawn(x,y):
 	print("spawn called")
@@ -94,10 +136,10 @@ remote func shoot(package):
 	print("GOING TO TRY CHECKING FOR BULLETS")
 	if package['id'] in bullets: return
 	for player in players:
-		if player.playerID!=player_id && player.playerID!=debug_id: rpc_id(player.playerID,"other_shoot",package)
+		if player.playerID!=player_id && player.dummy == 0 : rpc_id(player.playerID,"other_shoot",package)
 	print("I AM UNPACKING A BULLET")
 	bullets[package['id']] = BRBullet.instance()
-	$World.add_child(bullets[package['id']])
+	world.add_child(bullets[package['id']])
 	bullets[package['id']].unpack(package)
 	bullets[package['id']].connect("strike",self,"_on_strike")
 

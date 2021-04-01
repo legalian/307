@@ -72,6 +72,7 @@ func reassign_party_to_minigame(var party,var minigame):
 		minigame.add_player(player)
 		print("setting ",minigame.name,minigame.get_path())
 	if (party.minigame != null):
+		print("queue_freeing " + str(party.minigame.systemname()))
 		party.minigame.queue_free()
 	else:
 		print("Attempted to null.queue_free() in reassign_party_to_minigame()")
@@ -173,14 +174,18 @@ func _Peer_Disconnected(player_id):
 		
 		var lobbyin = lobbyHandler.get_lobby(party.lobby_code)
 		if lobbyin: unintroduce(player_id,lobbyin.get_player_ids())
-		# Player has left, freeing up space in lobby; matchmake again
+
 		if lobbyin!=null:
+			print("Lobby has " + str(lobbyin.get_occupied()) + " players in it")
 			if (lobbyin.get_occupied() < lobbyin.min_players_per_lobby):
 				# Lobby does not have enough players.
 				for allparty in lobbyin.get_parties():
 					for playerID in allparty.playerIDs:
 						print("Disconnecting player " + str(playerID) + " from network")
-						network.disconnect_peer(playerID, true)
+						network.disconnect_peer(playerID, false)
+				
+				# Delete the lobby
+				lobbyHandler.delete_lobby(lobbyin.lobby_code)
 	
 	matchmake_pool()
 	print("User " + str(player_id) + " disconnected.")
@@ -228,6 +233,7 @@ func matchmake_pool():
 			if (scenes_no_shim.has(multi_user_testing) && multi_user_testing != "party" && multi_user_testing != "lobby" && multi_user_testing != "quickplay"):
 				print("Minigame specified: " + multi_user_testing)
 				minigame = make_new_minigame(scenes_no_shim[multi_user_testing]);
+
 			else:
 				minigame = make_new_minigame(lobby.get_current_minigame())
 			for parties in lobby.get_parties():
@@ -286,7 +292,7 @@ func _Peer_Connected(player_id):
 
 	
 	#Note: "party", "lobby", and "quickplay" all have the same effect when called through the multi user testing script, and "demoderby" will be enabled when the demoderby game is in a playable state
-	var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn")}
+	var scenes_no_shim = {"party":preload("res://PartyScreen/World.tscn"), "lobby":preload("res://PartyScreen/World.tscn"), "quickplay":preload("res://PartyScreen/World.tscn"), "podium":preload("res://Podium/World.tscn"), "battleroyale":preload("res://BattleRoyale/World.tscn"), "racing":preload("res://RacingGame/World.tscn"), "demoderby":preload("res://DemoDerby/World.tscn")}
 	if (scenes_no_shim.has(multi_user_testing)):
 		print ("Starting minigame " + str(multi_user_testing) + " without shim")
 		#var thisTestParty = partyHandler.get_party_by_player(str(player_id))
@@ -308,7 +314,7 @@ func _Peer_Connected(player_id):
 			#	for player in test_script_party.playerIDs:
 			#		rpc_id(player,"setminigame",minigame.systemname(),minigame.name)
 	
-	var shims = {"podium_shim":preload("res://Podium/World.tscn"), "battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn")}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
+	var shims = {"podium_shim":preload("res://Podium/World.tscn"), "battleroyale_shim":preload("res://BattleRoyale/World.tscn"),"racing_shim":preload("res://RacingGame/World.tscn"),"demoderby_shim":preload("res://DemoDerby/World.tscn")}#,}
 	print("multi_user_testing = " + str(multi_user_testing))
 	if shims.has(multi_user_testing):
 		var dummyobj = PartyPlayer.new(1010101010, null);

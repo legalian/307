@@ -1,6 +1,8 @@
 extends Node
 
+
 var players = []
+
 
 func player_count():
 	return players.size()

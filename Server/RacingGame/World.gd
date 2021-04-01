@@ -14,6 +14,11 @@ var powerups = {}
 
 var mapSelect = "nonmap";
 
+var round_limit = 120; # 120s will forcibly end the round
+
+var force_finish = false;
+var mapRoll;
+
 const MAPS = ["Grass", "Desert"]
 
 var map = null
@@ -38,17 +43,26 @@ func remove_player(player_id):
 
 func _ready():
 	randomize()
+	var rng = RandomNumberGenerator.new();
+	rng.randomize();
 	if(OS.has_environment("MAPTEST")):
 		mapSelect = OS.get_environment("MAPTEST");
 		print("MAPSELECT = " + mapSelect)
 	if(mapSelect != "nonmap"):
 		if(mapSelect == "grassland"):
+			mapRoll = 630
 			map = MAPS[0];
 		else:
+			mapRoll = 450
 			map = MAPS[1];
 	else:
 		print("NO MAP SELECTED\n");
-		map = MAPS[randi() % MAPS.size()]
+		mapRoll = rng.randi_range(360, 3600);
+		if(mapRoll % 360  >= 180):
+			map = MAPS[0]
+		else:
+			map = MAPS[1];
+
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
@@ -80,6 +94,17 @@ func _ready():
 	_countdown.set_one_shot(true)
 	_countdown.start()
 	
+	var _round_limit = Timer.new()
+	add_child(_round_limit)
+	_round_limit.connect("timeout", self, "_finish_game")
+	_round_limit.set_wait_time(round_limit)
+	_round_limit.set_one_shot(false)
+	#_round_limit.start()
+
+func _finish_game():
+	print("force_finish set to true")
+	force_finish = true
+
 func _countdown_end():
 	started = true
 	for ig in ingame.values():
@@ -124,7 +149,7 @@ func _process(delta):
 	for n in range(sort_array.size()):
 		ingame[sort_array[n][0]].place = n + 1
 		
-	if done and !race_finished:
+	if ((done && !race_finished) || (force_finish)):
 		print("Everyone finished the race!")
 		race_finished = true
 		
@@ -146,6 +171,7 @@ func spawn(player_id):
 	print("Spawning player: " + str(player_id))
 	
 	rpc_id(player_id, "setMap", map)
+	rpc_id(player_id, "setMapRoll", mapRoll)
 	
 	ingame[player_id] = car.instance()
 	ingame[player_id].name = "Player_" + str(player_id)

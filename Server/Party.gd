@@ -27,6 +27,9 @@ func _ready():
 	# Generate a code for the minigame
 	pass # Replace with function body.
 
+func get_first_player():
+	return playerIDs[0];
+	
 func size():
 	return playerIDs.size()
 	

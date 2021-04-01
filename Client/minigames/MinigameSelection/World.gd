@@ -1,6 +1,7 @@
-extends Node
+extends "res://minigame.gd"
 
 onready var minigameAnimation = get_node("AnimationPlayer")
+var done = false;
 
 var minigameList = [["Racing", "Race Around the Track, Use Power Ups, and Pass All Other Racers To Win!", "res://minigames/MinigameSelection/MinigameSprites/RacingThumbnail.png"],
 ["Battle Royale", "Drop on A Huge Map, Pick Up Weapons, and Eliminate Other Players to be the Last Remaining!", "res://minigames/MinigameSelection/MinigameSprites/BattleRoyale_Icon.png"], 
@@ -9,25 +10,24 @@ var minigameList = [["Racing", "Race Around the Track, Use Power Ups, and Pass A
 var currentMinigame = 0
 
 func _ready():
-	minigameAnimation.connect("finished", self, "Finished_Animation")
-	minigameAnimation.play("SelectMinigameDisplay")
-	_Set_Minigame()
+	pass
 	
 
-func _Select_Minigame():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var RandomMinigame = rng.randi_range(0, minigameList.size()-1)
-	currentMinigame = RandomMinigame
+func _Select_Minigame(minigame):
+	currentMinigame = minigame;
+	_Set_Minigame();
+	minigameAnimation.play("SelectMinigameDisplay")
+	
 
 func _Set_Minigame():
-	_Select_Minigame()
 	find_node("MinigameTitle").bbcode_text = "[center]" + minigameList[currentMinigame][0]
 	find_node("MinigameSummary").bbcode_text = "[center]" + minigameList[currentMinigame][1]
 	find_node("MinigameIcon").texture = load(minigameList[currentMinigame][2])
 
 func Finished_Animation(): # Not Triggering?
-	print("Transition Scene")
+	done = true;
+	self.visible = false;
+	self.get_node("Camera2D").current = false;
 
 
 

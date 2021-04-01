@@ -35,7 +35,7 @@ func _OnConnectionSucceeded():
 	print("Succesfully connected")
 	players[0].playerID = get_tree().get_network_unique_id()
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
-	var scenes_no_shim = ["party", "lobby", "quickplay", "podium", "battleroyale", "racing"]
+	var scenes_no_shim = ["party", "lobby", "quickplay", "podium", "battleroyale", "racing", "demoderby"]
 	if (scenes_no_shim.has(multi_user_testing)):
 		print("Client has noshim: " + multi_user_testing)
 		var file = File.new()
@@ -77,6 +77,7 @@ remote func setminigame(systemname,lobbyname):
 	for ms in get_children():
 		remove_child(ms)
 		ms.queue_free()
+	
 	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
 	instance.name = lobbyname
 	print("created associate node: ",lobbyname," ",instance.name)
