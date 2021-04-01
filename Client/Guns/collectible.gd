@@ -3,7 +3,7 @@ extends Node2D
 
 var time = 0
 
-var gunmap = {2:'greenUzi',3:'purpleDualGun'}
+var gunmap = {2:'greenUzi',3:'purpleDualGun',4:'blueBigSniper'}
 
 func _ready():
 	set_process(true)

@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/light.png" type="Texture" id=1]
+[ext_resource path="res://objects/explosion.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "explode"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Light2D:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.0286614, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Light2D:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.0288986, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Light2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 3.6, 2.83, 0.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end"
+} ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.0286614, 0.0288986 )
+texture = ExtResource( 1 )
+color = Color( 0.960784, 0.678431, 0.282353, 1 )
+energy = 3.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.67
+method_call_mode = 1
+anims/explode = SubResource( 1 )

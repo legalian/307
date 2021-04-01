@@ -96,7 +96,7 @@ remote func other_shoot(package):
 
 remote func strike(bullet,object):
 	if gameinstance == null: return
-	if bullet['id'] in gameinstance.bullets:
+	if bullet!=null and bullet['id'] in gameinstance.bullets:
 		gameinstance.get_node("World").remove_child(gameinstance.bullets[bullet['id']])
 		gameinstance.bullets[bullet['id']].queue_free()
 		gameinstance.bullets.erase(bullet['id'])
@@ -108,6 +108,13 @@ remote func strike(bullet,object):
 	elif object['type']=='player':
 		gameinstance.players[object['obj']['id']].unpack(object['obj'])
 		gameinstance.players[object['obj']['id']].damage()
+
+remote func explode(location):
+	print("exploding")
+	var inst = preload("res://objects/explosion.tscn").instance()
+	inst.position = location
+	gameinstance.get_node("World").add_child(inst)
+	
 
 remote func die(package):
 	if gameinstance == null: return

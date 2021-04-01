@@ -162,7 +162,7 @@ position = Vector2( 663.414, 241.606 )
 scale = Vector2( 0.374295, 0.374295 )
 frames = ExtResource( 6 )
 animation = "Future"
-frame = 14
+frame = 30
 playing = true
 
 [node name="EnterGameButton" type="Button" parent="."]

@@ -204,7 +204,7 @@ position = Vector2( 883.592, 192.822 )
 scale = Vector2( 0.404052, 0.404052 )
 frames = ExtResource( 10 )
 animation = "Truck"
-frame = 42
+frame = 59
 playing = true
 
 [node name="Avatar Menu" type="Control" parent="."]
@@ -512,7 +512,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 60
+frame = 13
 playing = true
 
 [node name="Avatar4" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -541,7 +541,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 57
+frame = 10
 playing = true
 
 [node name="Avatar5" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -570,7 +570,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 57
+frame = 10
 playing = true
 
 [node name="Avatar6" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -588,7 +588,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 56
+frame = 9
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
@@ -617,7 +617,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 56
+frame = 9
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
@@ -646,7 +646,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 59
+frame = 12
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
@@ -686,7 +686,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 59
+frame = 12
 playing = true
 
 [node name="Avatar3" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -715,7 +715,7 @@ position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
 animation = "Sedan"
-frame = 58
+frame = 11
 playing = true
 
 [node name="CloseAvatarMenu" type="Button" parent="Vehicle Menu"]

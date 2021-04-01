@@ -350,7 +350,6 @@ frame = 17
 [node name="PositionFix" type="Node2D" parent="."]
 position = Vector2( -11.0138, 95.0559 )
 rotation = -1.49012e-08
-scale = Vector2( 1, 1 )
 script = ExtResource( 3 )
 hookX = -10.726
 hookY = 97.537
@@ -359,12 +358,12 @@ hookY = 97.537
 position = Vector2( -4.75575, 46.8437 )
 rotation = -1.55961
 scale = Vector2( 0.25, 0.25 )
-frame = 13
+frame = 3
 playing = true
 
 [node name="Flare2" parent="PositionFix" instance=ExtResource( 4 )]
 position = Vector2( 9.4758, 46.2705 )
 rotation = -1.55613
 scale = Vector2( 0.25, 0.25 )
-frame = 20
+frame = 10
 playing = true

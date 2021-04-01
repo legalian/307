@@ -18,7 +18,8 @@ var HatLocation = [null,
 var GunLocation = [null, 
 "res://Guns/basicGun.tscn",
 "res://Guns/greenUzi.tscn",
-"res://Guns/purpleDualGun.tscn"]
+"res://Guns/purpleDualGun.tscn",
+"res://Guns/blueBigSniper.tscn"]
 
 var avatars = [
 	"res://Characters/Raccoon.tscn",

@@ -89,7 +89,7 @@ remote func shoot(package):
 	var player_id = get_tree().get_rpc_sender_id()
 	if !ingame.has(player_id): return
 	var playerobj = ingame[player_id]
-	playerobj.gunbar -= {1:0,2:5,3:10}[playerobj.gun]
+	playerobj.gunbar -= {1:0,2:5,3:10,4:25}[playerobj.gun]
 	if playerobj.gunbar<=0: playerobj.gun = 1
 	print("GOING TO TRY CHECKING FOR BULLETS")
 	if package['id'] in bullets: return
@@ -104,14 +104,31 @@ remote func shoot(package):
 	print(str(player_id)+" is shooting.")
 
 
+func _on_explode(avatar):
+	avatar.health -= 0.201
+	rpc_id(avatar.id, "update_health_bar", avatar.health)
+	if avatar.health<=0: _on_die(avatar)
+	for player in players:
+		if player.playerID==debug_id: continue
+		rpc_id(player.playerID,"strike",null,{'type':'player','obj':avatar.pack()})
+
 func _on_strike(bullet,object):
+	if !bullet.simple:
+		var expl = preload("res://BattleRoyale/explosion.tscn").instance()
+		expl.connect("explode",self,"_on_explode")
+		expl.position = bullet.position
+		$World.add_child(expl)
+		for player in players:
+			if player.playerID!=debug_id:
+				rpc_id(player.playerID,"explode",expl.position)
+		
 	if object==null:
 		for player in players:
 			if player.playerID!=debug_id: rpc_id(player.playerID,"strike",bullet.pack(),null)
 	elif object.get('entity_type')=='bullet':
 		for player in players:
 			if player.playerID!=debug_id: rpc_id(player.playerID,"strike",bullet.pack(),{'type':'bullet','obj':object.pack()})
-		bullets.erase(bullet.id)
+		bullets.erase(object.id)
 		$World.remove_child(object)
 		object.queue_free()
 	elif object.get('entity_type')=='player':
@@ -122,6 +139,7 @@ func _on_strike(bullet,object):
 			if (ingame.has(player.playerID)):
 				rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
 		if object.health<=0: _on_die(object)
+		
 	bullets.erase(bullet.id)
 	$World.remove_child(bullet)
 	bullet.queue_free()
@@ -150,8 +168,10 @@ func crown_winner(playerID):
 	syncScores()
 	print("WINNER CROWNED! GO TO NEXT MINIGAME")
 	get_parent().go_to_next_minigame(playerID)
-	
-	
+
+
+
+
 
 
 

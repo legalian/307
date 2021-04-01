@@ -5,10 +5,12 @@ var entity_type = 'bullet'
 
 var id
 var rem = 1500
-var speed = 1500
+var speed = 500
+var simple = true
 	
 func pack():
 	return {
+		'simple':simple,
 		'id':id,
 		'x':position.x,
 		'y':position.y,
@@ -17,6 +19,7 @@ func pack():
 	}
 
 func unpack(package):
+	simple = package['simple']
 	position = Vector2(package['x'],package['y'])
 	rotation = package['r']
 	id = package['id']

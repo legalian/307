@@ -1,17 +1,17 @@
 extends KinematicBody2D
 
 var id
-var body
 var trail
 export(float) var height
-var speed = 1500
+var speed = 500
 var velocity = Vector2()
 var trailLen = 0
 var trailLenMax = 300
-
+var simple = true
 
 func pack():
 	return {
+		'simple':simple,
 		'id':id,
 		'x':position.x,
 		'y':position.y,
@@ -22,12 +22,16 @@ func unpack(package):
 	position = Vector2(package['x'],package['y'])
 	rotation = package['r']
 	velocity = Vector2(-speed, 0).rotated(rotation)
+	simple = package['simple']
+	if not simple:
+		$Body.hide()
+		$MissileBody.show()
+	
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(true)
-	body = get_node("Body")
 	trail = get_node("Body/Trail")
 	velocity = Vector2(-speed, 0).rotated(rotation)
 	
@@ -36,7 +40,8 @@ func _process(_delta):
 	var gt = get_global_transform_with_canvas()
 	gt.origin = Vector2(0,0)
 	var trot = gt.get_rotation()#.scaled(Vector2(1,.44))
-	body.transform = gt.affine_inverse()*Transform2D(trot,Vector2(0,-height))
+	$Body.transform = gt.affine_inverse()*Transform2D(trot,Vector2(0,-height))
+	$MissileBody.transform = gt.affine_inverse()*Transform2D(trot,Vector2(0,-height))
 	trail.scale.x = (trailLen/5)*(.44)/(1+(.44-1)*cos(trot)*cos(trot))
 	trail.scale.y = 1-trailLen/trailLenMax
 

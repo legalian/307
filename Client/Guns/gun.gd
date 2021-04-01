@@ -4,16 +4,10 @@ extends Node2D
 export var sideoffset = 0
 
 var Bullet = preload("res://Guns/BasicRedBullet.tscn")
-var sprite
-var viscontainer
-var posfix
 var server = null
 
 func _ready():
 	set_process(true)
-	sprite = get_node("Visible/Sprite")
-	viscontainer = get_node("Visible")
-	posfix = get_node("PositionFix")
 	
 
 func _process(_delta):
@@ -29,7 +23,7 @@ func _process(_delta):
 	var slr = mobo-gltp
 	
 	gltp = gltp+PI
-	sprite.frame = 63-(int(round(64+64*gltp/(2*PI)))%64);
+	$Visible/Sprite.frame = 63-(int(round(64+64*gltp/(2*PI)))%64);
 	gltp = int(round(64*gltp/(2*PI)))*(2.0*PI/64.0)
 	
 	glt.origin = Vector2(0,0);
@@ -39,25 +33,26 @@ func _process(_delta):
 	var compensator = Transform2D(0,Vector2(sin(gltp)*sideoffset,cos(gltp)*sideoffset*(-0.44)))
 	var additional = Transform2D(slr,Vector2(0,0))
 	
-	viscontainer.transform = glt.affine_inverse()*additional*compensator;
+	$Visible.transform = glt.affine_inverse()*additional*compensator;
 
-	posfix.transform = glt.affine_inverse()*Transform2D(slr,Vector2(0,0))*Transform2D(glt.get_rotation()-slr,Vector2(
-		posfix.hookY*sin(gltp),
-		posfix.hookY*(-0.44)*cos(gltp)+
-		posfix.hookX
+	$PositionFix.transform = glt.affine_inverse()*Transform2D(slr,Vector2(0,0))*Transform2D(glt.get_rotation()-slr,Vector2(
+		$PositionFix.hookY*sin(gltp),
+		$PositionFix.hookY*(-0.44)*cos(gltp)+
+		$PositionFix.hookX
 	))
 
 
 
-func bulletAt(var origpl,var targetpos):
+func bulletAt(var origpl,var targetpos,var simple,var altangle=0):
 	if server==null: server = get_node("/root/Server").get_children()[0]
 	var b = Bullet.instance()
+	b.simple = simple
 	var parent = origpl.get_parent()
 	parent.add_child(b)
 	#b.transform = parent.global_transform.affine_inverse()*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
-	b.position = parent.global_transform.xform_inv(posfix.global_position)#*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
-	b.rotation = (b.position-targetpos.global_position).angle()
-	b.position -= Vector2(0,-90/.44).rotated(origpl.rotation)
+	b.position = parent.global_transform.xform_inv($PositionFix.global_position)#*posfix.global_transform*Transform2D(-PI/2,Vector2(0,0))
+	b.rotation = (b.position-targetpos.global_position).angle()+altangle
+	b.position -= Vector2(0,-90/.44).rotated(origpl.rotation+altangle)
 	
 	#b.start()
 	

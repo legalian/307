@@ -365,3 +365,11 @@ gun = 3
 [node name="Node2D7" parent="World" instance=ExtResource( 2 )]
 position = Vector2( -18.2308, 305.98 )
 gun = 2
+
+[node name="Node2D33" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 1040.23, 300.536 )
+gun = 4
+
+[node name="Node2D34" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 553.144, -269.447 )
+gun = 3

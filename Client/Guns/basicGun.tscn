@@ -339,8 +339,8 @@ script = ExtResource( 2 )
 sideoffset = 45
 
 [node name="Visible" type="Node2D" parent="."]
-position = Vector2( 0.453897, 36.9811 )
-rotation = -1.23654
+position = Vector2( 0.454037, 36.9811 )
+rotation = -1.23655
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
 position = Vector2( 0, -15 )
@@ -348,8 +348,8 @@ frames = SubResource( 65 )
 frame = 22
 
 [node name="PositionFix" type="Node2D" parent="."]
-position = Vector2( -9.14855, 76.6373 )
-rotation = 2.98023e-08
+position = Vector2( -9.14826, 76.6373 )
+rotation = -5.96046e-08
 script = ExtResource( 3 )
 hookX = -10.726
 hookY = 97.537

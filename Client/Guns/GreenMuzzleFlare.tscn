@@ -1,13 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Guns/GreenFlare.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Guns/MuzzleFlare.gd" type="Script" id=2]
 [ext_resource path="res://Guns/FiringAnim.tres" type="Animation" id=3]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Continuous"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 41, 42, 43, 44, 45, 46, 47 ]
+}
+
 [node name="Flare" type="AnimatedSprite"]
 frames = ExtResource( 1 )
-frame = 16
+frame = 47
 script = ExtResource( 2 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
+anims/Continuous = SubResource( 1 )
 anims/FiringAnim = ExtResource( 3 )

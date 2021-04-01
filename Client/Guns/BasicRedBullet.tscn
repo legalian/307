@@ -20,3 +20,9 @@ polygon = PoolVector2Array( -4.99907, 3.21219, -7.20987, 1.16515, -7.29175, -1.3
 show_behind_parent = true
 color = Color( 0.92549, 0.784314, 0.14902, 1 )
 polygon = PoolVector2Array( -0.00430298, -1.7007, -0.0861893, 1.65644, 4.66293, 1.73833, 4.74482, -1.7007 )
+
+[node name="MissileBody" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( 0, -90 )
+color = Color( 0.360784, 0.305882, 0.305882, 1 )
+polygon = PoolVector2Array( -14.8884, -7.76948, -22.2131, -0.444756, -14.3024, 7.46595, 10.8947, 7.17297, 15.8755, 11.5678, 15.2895, -11.5783, 10.6017, -8.06246 )
