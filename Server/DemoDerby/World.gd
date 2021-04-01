@@ -62,10 +62,6 @@ func _ready():
 		
 		
 	if map == "Grass":
-		world = preload("res://RacingGame/World-Grass.tscn").instance()
-	elif map == "Desert":
-		world = preload("res://RacingGame/World-Desert.tscn").instance()
-	if map == "Grass":
 		print("DemoDerby: Loading grass map")
 		for x in range(1000, 6500, 200):
 			for y in range(1000, 4000, 110):
