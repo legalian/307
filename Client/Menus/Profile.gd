@@ -12,7 +12,8 @@ var VehicleMenuOpen = false
 
 var AvatarStyles = ["Raccoon","Shadow Raccoon","Red Raccoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
-var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
+var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Ambulance","Hatchback","Police","Tractor","Garbage","Future","Firetruck"]
+
 #var VehicleRoots = ["res://exported/cars/sedan/diffuse.png","res://exported/cars/van/diffuse.png","res://exported/cars/truck/diffuse.png","res://exported/cars/race/diffuse.png","res://exported/cars/taxi/diffuse.png","res://exported/cars/raceFuture/diffuse.png"] # Sprite Roots
 
 

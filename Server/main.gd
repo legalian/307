@@ -72,6 +72,7 @@ func reassign_party_to_minigame(var party,var minigame):
 		minigame.add_player(player)
 		print("setting ",minigame.name,minigame.get_path())
 	if (party.minigame != null):
+		print("queue_freeing " + str(party.minigame.systemname()))
 		party.minigame.queue_free()
 	else:
 		print("Attempted to null.queue_free() in reassign_party_to_minigame()")
@@ -174,19 +175,17 @@ func _Peer_Disconnected(player_id):
 		var lobbyin = lobbyHandler.get_lobby(party.lobby_code)
 		if lobbyin: unintroduce(player_id,lobbyin.get_player_ids())
 
-		# lets everyone in the lobby know that player_id has left;
-		# does NOT disconnect everyone
-		
-		# Player has left, freeing up space in lobby; matchmake again
-		print("Lobby has " + str(lobbyin.get_occupied()) + " players in it")
-		# Player has left, freeing up space in lobby; matchmake again
 		if lobbyin!=null:
+			print("Lobby has " + str(lobbyin.get_occupied()) + " players in it")
 			if (lobbyin.get_occupied() < lobbyin.min_players_per_lobby):
 				# Lobby does not have enough players.
 				for allparty in lobbyin.get_parties():
 					for playerID in allparty.playerIDs:
 						print("Disconnecting player " + str(playerID) + " from network")
-						network.disconnect_peer(playerID, true)
+						network.disconnect_peer(playerID, false)
+				
+				# Delete the lobby
+				lobbyHandler.delete_lobby(lobbyin.lobby_code)
 	
 	matchmake_pool()
 	print("User " + str(player_id) + " disconnected.")

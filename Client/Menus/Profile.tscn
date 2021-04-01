@@ -203,8 +203,8 @@ position = Vector2( 140.538, 291.552 )
 position = Vector2( 883.592, 192.822 )
 scale = Vector2( 0.404052, 0.404052 )
 frames = ExtResource( 10 )
-animation = "Truck"
-frame = 29
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="Avatar Menu" type="Control" parent="."]
@@ -519,8 +519,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 47
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="Avatar4" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -548,8 +548,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 44
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="Avatar5" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -577,8 +577,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 44
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="Avatar6" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -595,8 +595,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 43
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
@@ -624,8 +624,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 43
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
@@ -653,8 +653,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 46
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
@@ -693,8 +693,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 46
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="Avatar3" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
@@ -722,8 +722,8 @@ __meta__ = {
 position = Vector2( 90, 80 )
 scale = Vector2( 0.309783, 0.318552 )
 frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 45
+animation = "Van"
+frame = 33
 playing = true
 
 [node name="CloseAvatarMenu" type="Button" parent="Vehicle Menu"]
