@@ -10,6 +10,7 @@ var timer
 func _on_timer_timeout():
 	get_parent().get_parent().current = false;
 	get_parent().get_parent().get_parent()._spawnRandom();
+	self.visible = false;
 	
 func _ready():
 	self.visible = false;

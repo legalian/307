@@ -10,12 +10,14 @@ var minigameList = [["Racing", "Race Around the Track, Use Power Ups, and Pass A
 var currentMinigame = 0
 
 func _ready():
-	minigameAnimation.play("SelectMinigameDisplay")
-	_Set_Minigame()
+	pass
 	
 
-remote func _Select_Minigame(minigame):
+func _Select_Minigame(minigame):
 	currentMinigame = minigame;
+	_Set_Minigame();
+	minigameAnimation.play("SelectMinigameDisplay")
+	
 
 func _Set_Minigame():
 	find_node("MinigameTitle").bbcode_text = "[center]" + minigameList[currentMinigame][0]

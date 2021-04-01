@@ -36,7 +36,8 @@ func start():
 	
 	started = true;
 	get_node("camera").current = true;
-	map = get_node("../TileMap");
+	while(map == null):
+		map = get_parent().get_node_or_null("Tilemap")
 	var topleft = Vector2(-24, -17)
 	var bottomright = Vector2(40,40)
 	var topleftworld = map.map_to_world(topleft, false);
@@ -71,5 +72,4 @@ func _process(_delta):
 	if(spawned == true):
 		get_parent().get_parent().dropFinished = true;
 		self.visible = false;
-		
-		queue_free()
+		get_node("camera/CanvasLayer/Timer").visible = false;

@@ -42,15 +42,14 @@ func _ready():
 	if(mapSelect != "nonmap"):
 		if(mapSelect == "grassland"):
 			map = MAPS[0];
-			mapRoll = 450;
-
+			mapRoll = 630
 		else:
 			map = MAPS[1];
-			mapRoll = 630
+			mapRoll = 450
 	else:
 		print("NO MAP SELECTED\n");
 		mapRoll = rng.randi_range(360, 3600);
-		if(mapRoll % 360  <= 180):
+		if(mapRoll % 360  >= 180):
 			map = MAPS[0];
 		else:
 			map = MAPS[1];
