@@ -15,6 +15,7 @@ var player
 var gui
 var object_map = null
 var object_scenes = {}
+var setCamera = false;
 
 func _ready():
 	minigame = "RACINGGAME"
@@ -70,7 +71,8 @@ func _process(delta):
 		get_node("mapselection/World/Camera2D").current = true;
 		get_node("mapselection").visible = true;
 		camera = get_node("mapselection/World/Camera2D")
-	if(get_node("mapselection").done == true):
+	if(get_node("mapselection").done == true && setCamera == false):
+		setCamera = true;
 		world.visible = true;
 		camera = null;
 	if get_node("/root/Server").get_children().size()>0:

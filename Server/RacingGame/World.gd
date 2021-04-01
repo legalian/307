@@ -50,13 +50,15 @@ func _ready():
 		print("MAPSELECT = " + mapSelect)
 	if(mapSelect != "nonmap"):
 		if(mapSelect == "grassland"):
+			mapRoll = 630
 			map = MAPS[0];
 		else:
+			mapRoll = 450
 			map = MAPS[1];
 	else:
 		print("NO MAP SELECTED\n");
 		mapRoll = rng.randi_range(360, 3600);
-		if(mapRoll % 360  <= 180):
+		if(mapRoll % 360  >= 180):
 			map = MAPS[0]
 		else:
 			map = MAPS[1];

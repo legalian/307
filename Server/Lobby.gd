@@ -12,7 +12,6 @@ var podium = preload("res://Podium/World.tscn")
 
 var minigame_order = []
 const MAPS = ["Grass", "Desert"]
-var nextMap = "none"
 
 var minigames_per_match = 3 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
@@ -70,7 +69,7 @@ func add_party(var party):
 	return false
 
 func scramble_minigames():
-	while (minigame_order.size() != minigames_per_match * 2):
+	while (minigame_order.size() != minigames_per_match):
 		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
 		if (minigame_order.find(minigame_list[rand]) == -1):
 			minigame_order.append(minigame_list[rand]) # Keep appending until size is correct
