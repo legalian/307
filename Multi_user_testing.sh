@@ -4,7 +4,7 @@ acceptableTests=('party' 'lobby' 'quickplay' 'podium' 'battleroyale' 'racing' 'd
 associatedCount=('4'     '4'     '4'         '4'      '3'            '3'      '3'         '1'                 '1'           '1'              '1')
 
 #use "nonpowerups", "nonmap" to not make a choice
-powerups=('speed' 'powerup' 'trap', 'nonpowerups')
+powerups=('speed' 'missile' 'trap', 'nonpowerups')
 maps=('desert' 'grassland' 'nonmap')
 
 MAPTEST="nonmap"
