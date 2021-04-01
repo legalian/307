@@ -24,7 +24,8 @@ func _ready():
 	object_scenes[Object_ids.TREE] = preload("res://objects/tree1.tscn")
 	object_scenes[Object_ids.FLAG] = preload("res://minigames/RacingGame/objects/flag.tscn")
 	object_scenes[Object_ids.CACTUS] = preload("res://objects/cactus_tall.tscn")
-	camera = get_node("mapselection/World/Camera2D");
+	camera = get_node("minigameselection/Camera2D");
+	get_node("minigameselection")._Select_Minigame(0);
 	set_process(false)
 	
 
@@ -64,6 +65,11 @@ func load_map(map):
 	set_process(true)
 
 func _process(delta):
+	if(get_node("minigameselection").done == true && get_node("mapselection").done == false):
+		get_node("mapselection").start();
+		get_node("mapselection/World/Camera2D").current = true;
+		get_node("mapselection").visible = true;
+		camera = get_node("mapselection/World/Camera2D")
 	if(get_node("mapselection").done == true):
 		world.visible = true;
 		camera = null;
