@@ -22,7 +22,7 @@ func syncUpdate():
 		var p = gameinstance.players[players[0].playerID]
 		rpc_unreliable_id(1,"syncUpdate",{"input": p.input_dict, "progress": p.lap + p.checkpoint})
 
-remote func frameUpdate(s_players, powerups, projectile_frame):
+remote func frameUpdate(s_players, powerups, projectile_frame, trap_frame):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='demo_derby': gameinstance = null
@@ -55,12 +55,19 @@ remote func frameUpdate(s_players, powerups, projectile_frame):
 	for child in world.get_children(): # Remove all projectiles
 		if (child.name.begins_with("Projectile")):
 			world.remove_child(child)
+		if  (child.name.begins_with("Trap")):
+			world.remove_child(child)
 	
 	for projectile_pkg in projectile_frame: # Add them back in
 		var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
 		proj_node.name = projectile_pkg["name"]
 		proj_node.unpack(projectile_pkg)
 		world.add_child(proj_node)
+	for trap_pkg in trap_frame: # Add them back in
+		var trapNode = preload("res://minigames/RacingGame/objects/trap.tscn").instance()
+		trapNode.name = trap_pkg["name"]
+		world.add_child(trapNode)
+		trapNode.unpack(trap_pkg)
 
 remote func setMap(map):
 	world_map = map
