@@ -84,9 +84,9 @@ func _physics_process(delta):
 			damage(20)
 			collision.collider.get_parent().remove_child(collision.collider)
 		if collision.collider.name.begins_with("Player"):
-			collision.collider.damage(1) # Damage other player with YOUR speed
-			# Currently whenever you collide, speed is 0. Gotta update this later
-			# with possibly a lagged speed var or something
+			if abs(speed) > abs(collision.collider.speed):
+				collision.collider.damage(abs(speed)/100.0)
+				speed = -sign(speed)*800
 			print("Car collided with another car")
 
 func damage(amount):
