@@ -24,6 +24,11 @@ config/git_copy_prot=10
 
 Server="*res://scripts/Singletons/Server.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
+
 [gdnative]
 
 singletons=[  ]
