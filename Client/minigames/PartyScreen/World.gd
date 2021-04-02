@@ -9,7 +9,7 @@ var AvatarMenuOpen = false
 
 var scoreboard = preload("res://minigames/ScoreBoard/ScoreBoard.tscn")
 
-var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Future"]
+var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Ambulance","Hatchback","Police","Tractor","Garbage","Future","Firetruck"]
 
 func _MUT_send_partycode():
 	var partycode = $PartyCode.text
