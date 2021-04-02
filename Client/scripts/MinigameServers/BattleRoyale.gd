@@ -108,9 +108,10 @@ remote func strike(bullet,object):
 		gameinstance.bullets.erase(bullet['id'])
 	if object==null: pass
 	elif object['type']=='bullet':
-		gameinstance.get_node("World").remove_child(gameinstance.bullets[object['obj']['id']])
-		gameinstance.bullets[object['obj']['id']].queue_free()
-		gameinstance.bullets.erase(object['obj']['id'])
+		if gameinstance.bullets.has(object['obj']['id']):
+			gameinstance.get_node("World").remove_child(gameinstance.bullets[object['obj']['id']])
+			gameinstance.bullets[object['obj']['id']].queue_free()
+			gameinstance.bullets.erase(object['obj']['id'])
 	elif object['type']=='player':
 		gameinstance.players[object['obj']['id']].unpack(object['obj'])
 		gameinstance.players[object['obj']['id']].damage()
