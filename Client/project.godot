@@ -18,7 +18,7 @@ _global_script_class_icons={
 config/name="307 Project"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
-config/git_copy_prot=10
+config/git_copy_prot=110
 
 [autoload]
 
