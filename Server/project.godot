@@ -19,11 +19,6 @@ config/name="Server"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
-[debug]
-
-settings/stdout/print_fps=true
-settings/stdout/verbose_stdout=true
-
 [physics]
 
 2d/default_gravity=0

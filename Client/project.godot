@@ -24,11 +24,6 @@ config/git_copy_prot=110
 
 Server="*res://scripts/Singletons/Server.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-settings/stdout/verbose_stdout=true
-
 [gdnative]
 
 singletons=[  ]
@@ -111,8 +106,10 @@ use_powerup={
 
 [physics]
 
+2d/thread_model=2
 2d/default_gravity=0
 
 [rendering]
 
 quality/2d/use_pixel_snap=true
+threads/thread_model=2

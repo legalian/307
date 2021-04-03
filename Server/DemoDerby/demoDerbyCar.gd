@@ -72,7 +72,6 @@ func _physics_process(delta):
 	
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
-		print("Collision with " + str(collision.collider.name))
 		if collision.collider.name.begins_with("Powerup"):
 			collision.collider.pickup(self)
 			break;

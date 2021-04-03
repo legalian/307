@@ -1,13 +1,8 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 var spawned = false;
 var started = false;
+var space_state = null #global variable needed for multithreading
 
 var map
 var minx
@@ -26,7 +21,6 @@ func _spawnRandom():
 		get_parent().get_parent().camera = null;
 		spawned = true;
 	
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	self.visible = false;
 	get_node("camera").current = false;
@@ -48,14 +42,11 @@ func start():
 	maxy = bottomrightworld[1]
 	get_node("camera/CanvasLayer/Timer").start();
 
-
-
-
 func _input(event):
 	if(!spawned && started):
 		if(event is InputEventMouseButton):
 			var pos = get_parent().get_local_mouse_position()
-			var space_state = get_world_2d().direct_space_state
+			if space_state == null: return
 			var collidingWith = space_state.intersect_point(pos);
 			if(collidingWith.empty() || collidingWith[0].shape == 0):
 				if(pos[0] >= minx && pos[0] <= maxx && pos[1] >= miny && pos[1] <= maxy):
@@ -64,12 +55,12 @@ func _input(event):
 					get_parent().get_parent().camera = null; 
 					spawned = true;
 			
-		
-		
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if(spawned == true):
 		get_parent().get_parent().dropFinished = true;
 		self.visible = false;
 		get_node("camera/CanvasLayer/Timer").visible = false;
+
+func _physics_process(delta):
+	if space_state == null:
+		space_state = get_world_2d().direct_space_state
