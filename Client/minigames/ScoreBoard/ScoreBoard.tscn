@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://UI/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Main Menu.tres" type="Theme" id=1]
 [ext_resource path="res://minigames/ScoreBoard/ScoreBoard.gd" type="Script" id=2]
 [ext_resource path="res://minigames/ScoreBoard/PlayerList.gd" type="Script" id=3]
 
@@ -34,35 +34,35 @@ custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
 margin_right = 410.0
-margin_bottom = 23.0
+margin_bottom = 32.0
 text = "SCOREBOARD"
 align = 1
 valign = 1
 uppercase = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
-margin_top = 33.0
+margin_top = 42.0
 margin_right = 410.0
-margin_bottom = 56.0
+margin_bottom = 74.0
 custom_constants/separation = 100
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 92.0
-margin_right = 168.0
-margin_bottom = 23.0
+margin_left = 66.0
+margin_right = 174.0
+margin_bottom = 32.0
 text = "PLAYER ID"
 
 [node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 268.0
-margin_right = 318.0
-margin_bottom = 23.0
+margin_left = 274.0
+margin_right = 344.0
+margin_bottom = 32.0
 text = "SCORE"
 
 [node name="PlayerList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
-margin_top = 66.0
+margin_top = 84.0
 margin_right = 410.0
-margin_bottom = 66.0
+margin_bottom = 84.0
 custom_constants/separation = 10
 alignment = 1
 script = ExtResource( 3 )

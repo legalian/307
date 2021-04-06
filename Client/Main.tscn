@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Menu_Control.gd" type="Script" id=1]
-[ext_resource path="res://UI/Theme.tres" type="Theme" id=2]
-[ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Main Menu.tres" type="Theme" id=2]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Multi_User_Testing_Partyfollow"
 length = 5.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -43,101 +41,11 @@ tracks/0/keys = {
 
 [node name="root" type="Node"]
 
-[node name="Menu_Controller" type="Control" parent="."]
+[node name="Menu_Controller" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_Start" type="Button" parent="Menu_Controller"]
-margin_left = 528.0
-margin_top = 169.0
-margin_right = 721.0
-margin_bottom = 239.0
-theme = ExtResource( 2 )
-text = "QuickPlay"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_Settings" type="Button" parent="Menu_Controller"]
-margin_left = 313.779
-margin_top = 260.336
-margin_right = 493.779
-margin_bottom = 330.336
-rect_pivot_offset = Vector2( 102.633, 49.9475 )
-theme = ExtResource( 2 )
-text = "Settings"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_Profile" type="Button" parent="Menu_Controller"]
-margin_left = 315.781
-margin_top = 168.9
-margin_right = 495.781
-margin_bottom = 238.9
-rect_pivot_offset = Vector2( 102.633, 49.9475 )
-theme = ExtResource( 2 )
-text = "Profile"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_Exit" type="Button" parent="Menu_Controller"]
-margin_left = 311.777
-margin_top = 350.97
-margin_right = 491.777
-margin_bottom = 420.97
-theme = ExtResource( 2 )
-text = "Exit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_Create_Party" type="Button" parent="Menu_Controller"]
-margin_left = 527.0
-margin_top = 259.0
-margin_right = 721.0
-margin_bottom = 329.0
-theme = ExtResource( 2 )
-text = "Create a Party"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_Join_Party" type="Button" parent="Menu_Controller"]
-margin_left = 530.009
-margin_top = 351.776
-margin_right = 722.009
-margin_bottom = 421.776
-theme = ExtResource( 2 )
-text = "Join a Party"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PartyCodeTextEdit" type="TextEdit" parent="Menu_Controller"]
-margin_left = 738.244
-margin_top = 376.348
-margin_right = 976.244
-margin_bottom = 421.348
-theme = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TitleText" type="RichTextLabel" parent="Menu_Controller"]
-margin_left = 318.67
-margin_top = 45.0
-margin_right = 713.67
-margin_bottom = 132.0
-custom_fonts/normal_font = ExtResource( 3 )
-bbcode_enabled = true
-bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Late to the Stage[/rainbow][/wave]"
-text = "Late to the Stage"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,9 +53,119 @@ __meta__ = {
 [node name="MUT_test_flow" type="AnimationPlayer" parent="Menu_Controller"]
 anims/Multi_User_Testing_Partyfollow = SubResource( 1 )
 anims/Multi_User_Testing_Partylead = SubResource( 2 )
-[connection signal="pressed" from="Menu_Controller/Button_Start" to="Menu_Controller" method="_on_Button_Start_pressed"]
-[connection signal="pressed" from="Menu_Controller/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
-[connection signal="pressed" from="Menu_Controller/Button_Profile" to="Menu_Controller" method="_on_Button_Profile_pressed"]
-[connection signal="pressed" from="Menu_Controller/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]
-[connection signal="pressed" from="Menu_Controller/Button_Create_Party" to="Menu_Controller" method="_on_Button_Create_Party_pressed"]
-[connection signal="pressed" from="Menu_Controller/Button_Join_Party" to="Menu_Controller" method="_on_Button_Join_Party_pressed"]
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu_Controller"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu_Controller/CenterContainer"]
+margin_left = 339.0
+margin_top = 126.0
+margin_right = 685.0
+margin_bottom = 474.0
+custom_constants/separation = 60
+
+[node name="TitleText" type="RichTextLabel" parent="Menu_Controller/CenterContainer/VBoxContainer"]
+margin_right = 346.0
+margin_bottom = 33.0
+size_flags_vertical = 15
+bbcode_enabled = true
+bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Late to the Stage[/rainbow][/wave]"
+text = "Late to the Stage"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main Buttons" type="GridContainer" parent="Menu_Controller/CenterContainer/VBoxContainer"]
+margin_top = 93.0
+margin_right = 346.0
+margin_bottom = 252.0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 25
+columns = 2
+
+[node name="Button_Start" type="Button" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_right = 141.0
+margin_bottom = 36.0
+text = "QuickPlay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Create_Party" type="Button" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_left = 166.0
+margin_right = 346.0
+margin_bottom = 36.0
+text = "Create a Party"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Join_Party" type="Button" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_top = 51.0
+margin_right = 141.0
+margin_bottom = 93.0
+text = "Join a Party"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartyCodeTextEdit" type="LineEdit" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_left = 166.0
+margin_top = 51.0
+margin_right = 346.0
+margin_bottom = 93.0
+max_length = 6
+
+[node name="Button_Profile" type="Button" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_top = 108.0
+margin_right = 141.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 102.633, 49.9475 )
+text = "Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Settings" type="Button" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_left = 166.0
+margin_top = 108.0
+margin_right = 346.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 102.633, 49.9475 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left Column" type="VBoxContainer" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_top = 159.0
+margin_right = 141.0
+margin_bottom = 159.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right Column" type="VBoxContainer" parent="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons"]
+margin_left = 166.0
+margin_top = 159.0
+margin_right = 346.0
+margin_bottom = 159.0
+custom_constants/separation = 15
+
+[node name="Button_Exit" type="Button" parent="Menu_Controller/CenterContainer/VBoxContainer"]
+margin_top = 312.0
+margin_right = 346.0
+margin_bottom = 348.0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons/Button_Start" to="Menu_Controller" method="_on_Button_Start_pressed"]
+[connection signal="pressed" from="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons/Button_Create_Party" to="Menu_Controller" method="_on_Button_Create_Party_pressed"]
+[connection signal="pressed" from="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons/Button_Join_Party" to="Menu_Controller" method="_on_Button_Join_Party_pressed"]
+[connection signal="pressed" from="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons/Button_Profile" to="Menu_Controller" method="_on_Button_Profile_pressed"]
+[connection signal="pressed" from="Menu_Controller/CenterContainer/VBoxContainer/Main Buttons/Button_Settings" to="Menu_Controller" method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="Menu_Controller/CenterContainer/VBoxContainer/Button_Exit" to="Menu_Controller" method="_on_Button_Exit_pressed"]

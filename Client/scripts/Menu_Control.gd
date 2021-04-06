@@ -57,7 +57,7 @@ func _on_Button_Create_Party_pressed():
 
 func _on_Button_Join_Party_pressed():
 	var server = get_node("/root/Server")
-	server.join_party(get_node("PartyCodeTextEdit").text)
+	server.join_party(get_node("CenterContainer/VBoxContainer/Main Buttons/PartyCodeTextEdit").text)
 
 func _on_Button_Profile_pressed():
 	var _success = get_tree().change_scene("res://Menus/Profile.tscn")
