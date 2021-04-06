@@ -1,41 +1,59 @@
 extends Node
 
+# Properties
 var lobby_code
-var parties = []
 
-
-var minigame_list = [preload("res://BattleRoyale/World.tscn"),
-					 preload("res://RacingGame/World.tscn"),
-					 preload("res://DemoDerby/World.tscn")]
-
-var podium = preload("res://Podium/World.tscn")
-
-var minigame_order = []
-const MAPS = ["Grass", "Desert"]
-
-var minigames_per_match = 3 # This number CANNOT be greater than minigame_list size!!
 var current_minigame = 0
 
 var can_start = false
 var in_game = false
+
+
+# Constants
+const max_players_per_lobby = 20
+const min_players_per_lobby = 2
+
+# You can add comments in front of the maps you don't want (for debugging)
+# Example to omit racing:
+# var minigame_list = [
+#					preload("res://BattleRoyale/World.tscn"),
+#					#preload("res://RacingGame/World.tscn"),
+#					preload("res://DemoDerby/World.tscn")
+#					]
+const minigame_list = [
+					preload("res://BattleRoyale/World.tscn"),
+					preload("res://RacingGame/World.tscn"),
+					preload("res://DemoDerby/World.tscn")
+					]
+
+const podium = preload("res://Podium/World.tscn")
+const MAPS = ["Grass", "Desert"]
+
+
+# Internal Data Structures
+var parties = []
+var minigame_order = []
+
+
+# Global variables
 var rng
 
-var max_players_per_lobby = 20
-var min_players_per_lobby = 2
-# Change this to 1 for debugging
 
 func _init(var code):
 	lobby_code = code
 	
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
+
+	while (minigame_order.size() != minigame_list.size()):
+		var rand = rng.randi_range(0, minigame_list.size() - 1)
+		# Number generation is inclusive
+		
+		if (minigame_order.find(minigame_list[rand]) == -1):
+			minigame_order.append(minigame_list[rand])
+			# Keep appending until size is correct
 	
-	if (minigames_per_match > minigame_list.size()):
-		print("minigames_per_match > minigame_list.size() in Lobby._init()")
-		return
-	
-	scramble_minigames()
-	# Add one to let get_next_minigame work
+	minigame_order.append(podium)
 
 func get_scoreboard():
 	var scoreboard = []
@@ -45,12 +63,6 @@ func get_scoreboard():
 			scoreboard.append(player.score)
 			
 	return scoreboard
-
-func set_lobby_code(var code):
-	lobby_code = code
-
-func get_lobby_code():
-	return lobby_code
 
 func add_party(var party):
 	print("Adding party " + str(party.code) + " to lobby " + str(lobby_code))
@@ -68,18 +80,6 @@ func add_party(var party):
 	
 	return false
 
-func scramble_minigames():
-	while (minigame_order.size() != minigames_per_match):
-		var rand = rng.randi_range(0, minigames_per_match - 1) # Number generation is inclusive		
-		if (minigame_order.find(minigame_list[rand]) == -1):
-			minigame_order.append(minigame_list[rand]) # Keep appending until size is correct
-	
-	minigame_order.append(podium)
-	minigames_per_match += 1
-
-func get_minigame_order():
-	return minigame_order
-
 func get_current_minigame():
 	return minigame_order[current_minigame]
 
@@ -92,18 +92,15 @@ func go_to_next_minigame():
 	return true
 
 func remove_party(var in_party):
-	
 	for party in parties:
 		if (party.code == in_party.code):
-			print("Removing Party " + str(party.code) + " from lobby " + str(lobby_code))
+			print("Removing Party " + str(party.code) +
+				  " from lobby " + str(lobby_code))
 			parties.erase(party)
 			return true
 	
 	return false
 
-func get_parties():
-	return parties
-	
 func get_player_ids():
 	var players = []
 	for party in parties:
@@ -116,18 +113,8 @@ func get_occupied():
 	
 	for party in parties:
 		occupied += party.size()
-
-	return occupied
-
-func has_player(var playerID):
-	for party in parties:
-		if (party.playerIDs.has(playerID)):
-			return true
 	
-	return false
-
-func has_party(var party_in):
-	return parties.has(party_in)
+	return occupied
 
 func debug_print():
 	print("\n ========= LOBBY DEBUG =========")
@@ -145,4 +132,3 @@ func debug_print():
 			print("\tPlayerID: " + str(playerID))
 	
 	print("\n ========= LOBBY DEBUG =========\n")
-
