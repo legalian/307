@@ -9,7 +9,7 @@ var partycode = "undefined"
 
 const Player = preload("res://scripts/MinigameServers/Player.gd")
 
-const MINIGAMES = ["PartyScreen", "BattleRoyale", "DemoDerby", "RacingGame", "MapSelection", "MinigameSelection", "Podium"]
+const MINIGAMES = ["PartyScreen", "BattleRoyale", "DemoDerby", "RacingGame", "MapSelection", "MinigameSelection", "Podium", "ConfusingCaptcha"]
 var loading_queue
 
 var selfplayer = Player.new({'id':null})
@@ -44,7 +44,7 @@ func _OnConnectionSucceeded():
 	print("Succesfully connected")
 	players[0].playerID = get_tree().get_network_unique_id()
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
-	var scenes_no_shim = ["party", "lobby", "quickplay", "podium", "battleroyale", "racing", "demoderby"]
+	var scenes_no_shim = ["party", "lobby", "quickplay", "podium", "battleroyale", "racing", "demoderby", "confusingcaptcha"]
 	if (scenes_no_shim.has(multi_user_testing)):
 		print("Client has noshim: " + multi_user_testing)
 		var file = File.new()

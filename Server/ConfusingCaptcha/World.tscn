@@ -1,0 +1,375 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://ConfusingCaptcha/World.gd" type="Script" id=1]
+[ext_resource path="res://BattleRoyale/Collectible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BattleRoyale/Circle.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.7979
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 72.3135
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 89.6401
+height = 349.318
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 117.904
+height = 9132.73
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 53.5034
+height = 7603.4
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 60.6762
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 11.7247
+height = 501.606
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 128.184
+height = 107.731
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 145.597
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 187.832
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 204.015
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 82.8818
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 99.5233
+
+[node name="WorldContainer" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Node2D10" type="StaticBody2D" parent="World"]
+position = Vector2( 2902.6, -3629.42 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D10"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D11" type="StaticBody2D" parent="World"]
+position = Vector2( 2159.15, -3424.44 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D11"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D12" type="StaticBody2D" parent="World"]
+position = Vector2( 3280.1, -3034.28 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D12"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D13" type="StaticBody2D" parent="World"]
+position = Vector2( 3887.7, -2640.29 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D13"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D21" type="StaticBody2D" parent="World"]
+position = Vector2( -3986.96, -3577.9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D21"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D22" type="StaticBody2D" parent="World"]
+position = Vector2( -2799.21, -3267.96 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D22"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D23" type="StaticBody2D" parent="World"]
+position = Vector2( -1583.97, -3596.91 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D23"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D24" type="StaticBody2D" parent="World"]
+position = Vector2( -411.57, -3379.75 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D24"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D25" type="StaticBody2D" parent="World"]
+position = Vector2( 1035.72, -3596.91 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D25"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D26" type="StaticBody2D" parent="World"]
+position = Vector2( 4190.08, 756.46 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D26"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D27" type="StaticBody2D" parent="World"]
+position = Vector2( 3907.86, 1542.65 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D27"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D28" type="StaticBody2D" parent="World"]
+position = Vector2( 4169.92, -614.334 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D28"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D29" type="StaticBody2D" parent="World"]
+position = Vector2( 3907.86, 50.9043 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D29"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D30" type="StaticBody2D" parent="World"]
+position = Vector2( 3895.95, -1566.85 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D30"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D31" type="StaticBody2D" parent="World"]
+position = Vector2( 4124.8, -2143.2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D31"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 1 )
+
+[node name="Node2D15" type="StaticBody2D" parent="World"]
+position = Vector2( 248.905, 635.718 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D15"]
+shape = SubResource( 2 )
+
+[node name="Node2D17" type="StaticBody2D" parent="World"]
+position = Vector2( 887.987, 642.445 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D17"]
+shape = SubResource( 2 )
+
+[node name="Node2D18" type="StaticBody2D" parent="World"]
+position = Vector2( 245.542, -10.0908 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D18"]
+shape = SubResource( 2 )
+
+[node name="Node2D19" type="StaticBody2D" parent="World"]
+position = Vector2( 881.259, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D19"]
+shape = SubResource( 2 )
+
+[node name="Node2D20" type="StaticBody2D" parent="World"]
+position = Vector2( 603.348, -1729.95 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D20"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="topborder" type="StaticBody2D" parent="World"]
+position = Vector2( -4317.74, -3850.04 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/topborder"]
+position = Vector2( 3861.6, 6.92871 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="bottomborder" type="StaticBody2D" parent="World"]
+position = Vector2( -4317.74, -3850.04 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/bottomborder"]
+position = Vector2( 4197.43, 7711.14 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="leftborder" type="StaticBody2D" parent="World"]
+position = Vector2( -1640, -668 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/leftborder"]
+position = Vector2( -2637.02, 892.991 )
+shape = SubResource( 5 )
+
+[node name="rightborder" type="StaticBody2D" parent="World"]
+position = Vector2( -1640, -668 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/rightborder"]
+position = Vector2( 5922.98, 620.991 )
+shape = SubResource( 5 )
+
+[node name="Node2D37" type="StaticBody2D" parent="World"]
+position = Vector2( -3611.85, 3166.13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D37"]
+position = Vector2( -1.6817, -10.0907 )
+shape = SubResource( 6 )
+
+[node name="Node2D40" type="StaticBody2D" parent="World"]
+position = Vector2( -3184.22, 2631.59 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D40"]
+position = Vector2( -1.6817, -10.0907 )
+shape = SubResource( 6 )
+
+[node name="Node2D44" type="StaticBody2D" parent="World"]
+position = Vector2( -3971.27, 2187.22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D44"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Node2D45" type="StaticBody2D" parent="World"]
+position = Vector2( -3721.29, 2182.94 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D45"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Node2D46" type="StaticBody2D" parent="World"]
+position = Vector2( -3249.45, 2169.98 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D46"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Node2D48" type="StaticBody2D" parent="World"]
+position = Vector2( -3249.45, 2169.98 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D48"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Node2D47" type="StaticBody2D" parent="World"]
+position = Vector2( -2921.81, 2159.23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D47"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Node2D49" type="StaticBody2D" parent="World"]
+position = Vector2( -2591.25, 2146.52 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D49"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Node2D50" type="StaticBody2D" parent="World"]
+position = Vector2( -2171.71, 2142.28 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D50"]
+position = Vector2( -1.68176, -13.4543 )
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="Node2D61" type="StaticBody2D" parent="World"]
+position = Vector2( -3704, -192 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D61"]
+position = Vector2( 0.563174, -10.0869 )
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="Node2D" type="StaticBody2D" parent="World"]
+position = Vector2( 3066.86, 2492.22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 9 )
+
+[node name="Node2D2" type="StaticBody2D" parent="World"]
+position = Vector2( 3048.47, 3278.08 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D2"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 10 )
+
+[node name="Node2D3" type="StaticBody2D" parent="World"]
+position = Vector2( 3744.84, 2941.56 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D3"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 11 )
+
+[node name="Node2D4" type="StaticBody2D" parent="World"]
+position = Vector2( 560.367, 284.678 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D4"]
+shape = SubResource( 12 )
+
+[node name="Node2D5" type="StaticBody2D" parent="World"]
+position = Vector2( -2749.23, -1923.33 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D5"]
+position = Vector2( -1.68176, -13.4543 )
+shape = SubResource( 11 )
+
+[node name="Node2D6" type="StaticBody2D" parent="World"]
+position = Vector2( -1643.28, -1337.97 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Node2D6"]
+position = Vector2( -3.80066, -7.09752 )
+shape = SubResource( 13 )
+
+[node name="Circle" type="Node2D" parent="World"]
+script = ExtResource( 3 )
+
+[node name="Node2D32" parent="World" instance=ExtResource( 2 )]
+position = Vector2( -2076.95, -1185.42 )
+gun = 3
+
+[node name="Node2D16" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 2628.52, 2361.12 )
+gun = 2
+
+[node name="Node2D14" parent="World" instance=ExtResource( 2 )]
+position = Vector2( -2372.1, 1875.85 )
+gun = 2
+
+[node name="Node2D9" parent="World" instance=ExtResource( 2 )]
+position = Vector2( -2348.31, 2390.67 )
+gun = 3
+
+[node name="Node2D8" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 597.494, -1539.1 )
+gun = 3
+
+[node name="Node2D7" parent="World" instance=ExtResource( 2 )]
+position = Vector2( -18.2308, 305.98 )
+gun = 2
+
+[node name="Node2D33" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 1040.23, 300.536 )
+gun = 4
+
+[node name="Node2D34" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 553.144, -269.447 )
+gun = 3

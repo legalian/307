@@ -51,6 +51,7 @@ func make_new_minigame(var minigame):
 	# Do not call .instance() more than once.
 	var instance = minigame.instance()
 	instance.name = instance.systemname()
+	print("Minigame name from instance: " + instance.systemname())
 	add_child(instance,true)
 	print("\t<<< make_new_minigame()\n")
 	return instance
@@ -258,7 +259,8 @@ func matchmake_pool():
 				"podium":preload("res://Podium/World.tscn"),
 				"battleroyale":preload("res://BattleRoyale/World.tscn"),
 				"racing":preload("res://RacingGame/World.tscn"),
-				"demoderby":preload("res://DemoDerby/World.tscn")
+				"demoderby":preload("res://DemoDerby/World.tscn"),
+				"confusingcaptcha":preload("res://ConfusingCaptcha/World.tscn")
 				}
 			
 			if (scenes_no_shim.has(multi_user_testing) &&
@@ -317,13 +319,14 @@ func debug_print_lobbies():
 	for lobby in lobbyHandler.lobbies.values():
 		lobby.debug_print()
 
-
 var shims = {
-	"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),
-	"racing_shim":preload("res://RacingGame/World.tscn")
-	}#,"demoderby_shim":preload("res://DemoDerby/World.tscn")}
-
-
+		"podium_shim":preload("res://Podium/World.tscn"),
+		"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),
+		"racing_shim":preload("res://RacingGame/World.tscn"),
+		"demoderby_shim":preload("res://DemoDerby/World.tscn"),
+		"confusingcaptcha_shim":preload("res://ConfusingCaptcha/World.tscn")
+		}
+		
 func _Peer_Connected(player_id):
 	print("User " + str(player_id) + " connected.")
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING")
@@ -338,7 +341,8 @@ func _Peer_Connected(player_id):
 		"podium":preload("res://Podium/World.tscn"),
 		"battleroyale":preload("res://BattleRoyale/World.tscn"),
 		"racing":preload("res://RacingGame/World.tscn"),
-		"demoderby":preload("res://DemoDerby/World.tscn")
+		"demoderby":preload("res://DemoDerby/World.tscn"),
+		"confusingcaptcha":preload("res://ConfusingCaptcha/World.tscn")
 		}
 	
 	if (scenes_no_shim.has(multi_user_testing)):
@@ -349,7 +353,8 @@ func _Peer_Connected(player_id):
 		"podium_shim":preload("res://Podium/World.tscn"),
 		"battleroyale_shim":preload("res://BattleRoyale/World.tscn"),
 		"racing_shim":preload("res://RacingGame/World.tscn"),
-		"demoderby_shim":preload("res://DemoDerby/World.tscn")
+		"demoderby_shim":preload("res://DemoDerby/World.tscn"),
+		"confusingcaptcha_shim":preload("res://ConfusingCaptcha/World.tscn")
 		}
 		#,}
 	
@@ -365,6 +370,7 @@ func _Peer_Connected(player_id):
 			[playerobj.pack(),dummyobj.pack(),dummyobj2.pack()])
 		
 		var minigame = make_new_minigame(shims[multi_user_testing]);
+		print("Minigame name from server: " + minigame.systemname())
 		rpc_id(player_id,"setminigame",minigame.systemname(),minigame.name)
 		minigame.add_player(dummyobj)
 		minigame.add_player(dummyobj2)

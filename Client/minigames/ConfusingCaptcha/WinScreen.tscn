@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 362.125
+margin_top = 234.757
+margin_right = 420.125
+margin_bottom = 257.757
+rect_scale = Vector2( 5.38105, 6.27415 )
+text = "You Win!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
