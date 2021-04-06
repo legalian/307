@@ -68,4 +68,3 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource( 1 )
 Label/styles/normal = null
-MarginContainer/colors/ = Color( 0, 0.882353, 1, 1 )
