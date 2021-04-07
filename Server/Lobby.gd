@@ -11,7 +11,7 @@ var in_game = false
 
 # Constants
 const max_players_per_lobby = 20
-const min_players_per_lobby = 2
+const min_players_per_lobby = 3
 
 # You can add comments in front of the maps you don't want (for debugging)
 # Example to omit racing:

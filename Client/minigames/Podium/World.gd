@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var generalserver
 var Playerlist

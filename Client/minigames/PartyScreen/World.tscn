@@ -1,21 +1,13 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Kenney Pixel.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/Main Menu.tres" type="Theme" id=3]
+[ext_resource path="res://Themes/UI.tres" type="Theme" id=3]
 [ext_resource path="res://minigames/PartyScreen/World.gd" type="Script" id=4]
 [ext_resource path="res://minigames/PartyScreen/Partylist.gd" type="Script" id=5]
 [ext_resource path="res://exported/cars/CarSpriteFrames.tres" type="SpriteFrames" id=6]
-
-
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 50
-use_filter = true
-font_data = ExtResource( 1 )
+[ext_resource path="res://Themes/UI_Panel.tres" type="StyleBox" id=7]
+[ext_resource path="res://fonts/Kenney High Square (TITLE).tres" type="DynamicFont" id=8]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Multi_User_Testing_Partyfollow"
@@ -66,154 +58,176 @@ tracks/0/keys = {
 } ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="PartyScreen" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 4 )
-
-[node name="Button_Back" type="Button" parent="."]
-margin_left = 28.6311
-margin_top = 494.631
-margin_right = 231.63
-margin_bottom = 567.631
-rect_pivot_offset = Vector2( 159.38, 30.3461 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_CopyCode" type="Button" parent="."]
-margin_left = 766.4
-margin_top = 375.504
-margin_right = 915.4
-margin_bottom = 428.504
-rect_pivot_offset = Vector2( 159.38, 30.3461 )
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_styles/panel = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 974.0
+margin_bottom = 57.0
+rect_clip_content = false
+hint_tooltip = "FRIENDS :)"
 theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Copy code"
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[rainbow freq=0.1 sat=0.7 val=1]PARTY SCREEN[/rainbow]"
+text = "PARTY SCREEN"
+fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="."]
-margin_left = 413.0
-margin_top = 22.6674
-margin_right = 721.0
-margin_bottom = 99.6674
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 2 )
-text = "Party screen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 974.0
+margin_bottom = 458.0
+custom_constants/margin_top = 75
+custom_constants/margin_left = 250
 
-[node name="CurrentAvatar" type="Label" parent="."]
-margin_left = 246.898
-margin_top = 330.634
-margin_right = 504.898
-margin_bottom = 353.634
-theme = ExtResource( 3 )
-text = "Current Avatar"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+margin_left = 250.0
+margin_top = 75.0
+margin_right = 974.0
+margin_bottom = 397.0
+custom_constants/separation = 100
 
-[node name="CurrentVehicle" type="Label" parent="."]
-margin_left = 537.225
-margin_top = 330.634
-margin_right = 795.225
-margin_bottom = 353.634
-theme = ExtResource( 3 )
-text = "Current Vehicle"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 325.0
+margin_bottom = 322.0
+custom_constants/separation = 200
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 790.0
-margin_top = 89.0
-margin_right = 958.0
-margin_bottom = 112.0
+[node name="UsernameLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 325.0
+margin_bottom = 32.0
+hint_tooltip = "Hey, that's you!"
+mouse_filter = 0
 theme = ExtResource( 3 )
-text = "Party List:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="UsernameLabel" type="Label" parent="."]
-margin_left = 416.161
-margin_top = 121.289
-margin_right = 584.16
-margin_bottom = 144.289
-rect_scale = Vector2( 1.4, 1.4 )
-theme = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.792157, 0.356863, 1 )
 text = "Username goes here"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Raccoon" parent="." instance=ExtResource( 2 )]
-position = Vector2( 376.137, 314.911 )
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 232.0
+margin_right = 325.0
+margin_bottom = 322.0
+custom_constants/separation = 10
 
-[node name="VehicleSprites" type="AnimatedSprite" parent="."]
-position = Vector2( 663.414, 241.606 )
-scale = Vector2( 0.374295, 0.374295 )
-frames = ExtResource( 6 )
-animation = "Future"
-frame = 30
-playing = true
-
-[node name="EnterGameButton" type="Button" parent="."]
-margin_left = 453.76
-margin_top = 485.03
-margin_right = 612.76
-margin_bottom = 529.03
+[node name="EnterGameButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+margin_right = 325.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 325, 40 )
+hint_tooltip = "LETS START!"
 theme = ExtResource( 3 )
 text = "Enter game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PartyCodeLabel" type="Label" parent="."]
-margin_left = 338.604
-margin_top = 384.733
-margin_right = 409.604
-margin_bottom = 398.733
-rect_scale = Vector2( 2.71146, 2.91496 )
-text = "Party code:"
-align = 1
+[node name="Button_Back" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+margin_top = 50.0
+margin_right = 325.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 200, 40 )
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "BACK TO MAIN MENU"
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 425.0
+margin_right = 696.0
+margin_bottom = 322.0
+custom_constants/separation = 10
+
+[node name="Button_CopyCode" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 271.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+hint_tooltip = "COPY CODE TO CLIPBOARD"
+text = "COPY PARTY CODE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PartyCode" type="Label" parent="."]
-margin_left = 543.253
-margin_top = 383.71
-margin_right = 607.253
-margin_bottom = 397.71
-rect_scale = Vector2( 3.00754, 2.93724 )
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 271.0
+margin_bottom = 78.0
+custom_constants/separation = 25
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 120.0
+margin_bottom = 32.0
+size_flags_horizontal = 15
+theme = ExtResource( 3 )
+text = "Party List"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartyCode" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 145.0
+margin_top = 1.0
+margin_right = 271.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.792157, 0.356863, 1 )
 text = "undefined"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MUT_test_flow" type="AnimationPlayer" parent="."]
-anims/Multi_User_Testing_Partyfollow = SubResource( 3 )
-anims/Multi_User_Testing_Partylead = SubResource( 4 )
-
-[node name="Playerlist" type="VBoxContainer" parent="."]
-margin_left = 835.609
-margin_top = 133.073
-margin_right = 877.609
-margin_bottom = 183.073
+[node name="Playerlist" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 271.0
+margin_bottom = 88.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
-[connection signal="pressed" from="Button_CopyCode" to="." method="_on_Button_CopyCode_pressed"]
-[connection signal="pressed" from="EnterGameButton" to="." method="_on_EnterGameButton_pressed"]
+
+[node name="Raccoon" parent="." instance=ExtResource( 2 )]
+position = Vector2( 160.691, 317.431 )
+
+[node name="VehicleSprites" type="AnimatedSprite" parent="."]
+position = Vector2( 160.706, 435.634 )
+scale = Vector2( 0.374295, 0.374295 )
+frames = ExtResource( 6 )
+animation = "Future"
+frame = 30
+playing = true
+
+[node name="MUT_test_flow" type="AnimationPlayer" parent="."]
+anims/Multi_User_Testing_Partyfollow = SubResource( 3 )
+anims/Multi_User_Testing_Partylead = SubResource( 4 )
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/EnterGameButton" to="." method="_on_EnterGameButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/Button_Back" to="." method="_on_Button_Back_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/Button_CopyCode" to="." method="_on_Button_CopyCode_pressed"]

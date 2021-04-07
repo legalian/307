@@ -14,4 +14,5 @@ func update_playerlist():
 	for player in generalserver.players:
 		var player_ID = Label.new()
 		player_ID.text = str(player.username)
+		player_ID.add_color_override("font_color", Color(0, 1, 1, 1))
 		add_child(player_ID)

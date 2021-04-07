@@ -76,10 +76,10 @@ remote func setMapRoll(mapRolls):
 	mapRoll = mapRolls
 
 remote func die():
-	get_tree().change_scene("res://minigames/DemoDerby/dead.tscn")
+	get_tree().change_scene("res://death.tscn")
 
 remote func win():
-	get_tree().change_scene("res://minigames/DemoDerby/win.tscn")
+	get_tree().change_scene("res://win.tscn")
 
 remote func endMatch():
 	if (gameinstance != null):

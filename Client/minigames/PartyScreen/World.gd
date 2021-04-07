@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var SelfUsername
 var AvatarSelected = 0
@@ -12,7 +12,7 @@ var scoreboard = preload("res://minigames/ScoreBoard/ScoreBoard.tscn")
 var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Ambulance","Hatchback","Police","Tractor","Garbage","Future","Firetruck"]
 
 func _MUT_send_partycode():
-	var partycode = $PartyCode.text
+	var partycode = get_node("/root/PartyScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PartyCode").text
 	var file = File.new()
 	file.open("user://saved_partycode.dat", file.WRITE)
 	file.store_string(partycode)
@@ -25,8 +25,8 @@ func _ready():
 	generalserver = get_node("/root/Server")
 	specificserver = generalserver.get_children()[0]
 	SelfUsername = generalserver.selfplayer.username
-	find_node("UsernameLabel").text = SelfUsername
-	$PartyCode.text = str(generalserver.partycode)
+	get_node("/root/PartyScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/UsernameLabel").text = SelfUsername
+	get_node("/root/PartyScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PartyCode").text = str(generalserver.partycode)
 	#if OS.get_environment("MULTI_USER_TESTING")=="party":
 		#if OS.get_environment("ACTIVECORNER")=="1":
 		#	$MUT_test_flow.play("Multi_User_Testing_Partylead")
@@ -53,4 +53,4 @@ func _on_EnterGameButton_pressed():
 	
 	
 func _on_Button_CopyCode_pressed():
-	OS.set_clipboard($PartyCode.text)
+	OS.set_clipboard(get_node("/root/PartyScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PartyCode").text)

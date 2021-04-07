@@ -130,9 +130,9 @@ remote func die(package):
 	
 remote func win(playerID):
 	if playerID==players[0].playerID:
-		get_tree().change_scene("res://minigames/BattleRoyale/WinScreen.tscn")
+		get_tree().change_scene("res://win.tscn")
 	else:
-		get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
+		get_tree().change_scene("res://lose.tscn")
 
 remote func update_radius(var rad: float):
 	if gameinstance == null: return

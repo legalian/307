@@ -189,6 +189,8 @@ func _Peer_Disconnected(player_id):
 			if minigame.player_count()==0:minigame.queue_free()
 		partyHandler.leave_party(player_id)
 		
+		matchmaking_pool.erase(party)
+		
 		var lobbyin = lobbyHandler.get_lobby(party.lobby_code)
 		if lobbyin: unintroduce(player_id,lobbyin.get_player_ids())
 
