@@ -58,7 +58,7 @@ func _ready():
 	if map == "Grass":
 		world = preload("res://ConfusingCaptcha/World-Grass.tscn").instance()
 	elif map == "Desert":
-		world = preload("res://ConfusingCaptcha/World-Desert.tscn").instance()
+		world = preload("res://ConfusingCaptcha/World-Grass.tscn").instance()
 	assert(world != null)
 	add_child(world)
 
@@ -81,24 +81,6 @@ func _send_rpc_update():
 	for p in players:
 		if(p.dummy == 0):
 			rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
-
-
-#func _process(delta):
-#	return
-	for player in players:
-		if player.playerID==debug_id: continue
-		if (player.playerID != 0 && ingame.has(player.playerID)):
-			#print("Calling update radius")
-			var circle = get_node("World/Circle")
-			if(player.dummy == 0):
-				rpc_unreliable_id(player.playerID, "update_radius", circle.radius)
-			if (circle.isInCircle(ingame[player.playerID].position)):
-				if(player.dummy == 0):
-					rpc_id(player.playerID, "update_health_bar", ingame[player.playerID].health)
-				print(str(player.playerID) + " Damaged from server")
-				ingame[player.playerID].health -= .01
-				if (ingame[player.playerID].health <= 0):
-					_on_die(ingame[player.playerID])
 
 func spawn_id(x,y,player_id):
 	if (status.has(player_id)):

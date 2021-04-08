@@ -134,11 +134,7 @@ remote func win(playerID):
 	else:
 		get_tree().change_scene("res://minigames/ConfusingCaptcha/LoseScreen.tscn")
 
-remote func update_radius(var rad: float):
-	if gameinstance == null: return
-	gameinstance.get_node("World/Circle").update_radius(rad)
-	
-	
+
 remote func update_health_bar(var health: float):
 	if gameinstance == null: return
 	gameinstance.get_node("World/Player").get_node("HUD/HealthBar").set_value(health*100)

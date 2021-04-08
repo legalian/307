@@ -24,7 +24,7 @@ func load_map(map):
 	if map == "Grass":
 		world = preload("res://minigames/BattleRoyale/World-Grass.tscn").instance()
 	elif map == "Desert":
-		world = preload("res://minigames/BattleRoyale/World-Desert.tscn").instance()
+		world = preload("res://minigames/BattleRoyale/World-Grass.tscn").instance()
 	assert(world != null)
 	add_child(world)
 	world.visible = false;
@@ -47,8 +47,6 @@ func _process(delta):
 		return
 	if(get_node("minigameselection").done == false):
 		return;
-	if(get_node("World/dropdown").spawned == false): 
-		return;
 	if camera==null:
 		var player = get_node_or_null("World/Player")
 		if player==null: return
@@ -60,6 +58,10 @@ func _process(delta):
 	var yhalf = get_viewport().size.y/2
 	var pret = Transform2D(Vector2(1,0),Vector2(0,.44),Vector2(xhalf,yhalf))*Transform2D(-ctr,Vector2(0,0))
 	var post = Transform2D(Vector2(1,0),Vector2(0,1),Vector2(-xhalf,-yhalf))
-	get_viewport().canvas_transform = pret*get_viewport().canvas_transform*post
+	#get_viewport().canvas_transform = pret*get_viewport().canvas_transform*post
+	#var t = Transform2D()
+	#t.x *= 4
+	#t.y *= 4
+	#get_viewport().canvas_transform = t*get_viewport().canvas_transform
 	rotation = ctr
 	world.rotation = -ctr
