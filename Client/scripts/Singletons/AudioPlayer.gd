@@ -20,11 +20,6 @@ func _ready():
 	add_child(music_player)
 	music_player.bus = "Music"
 
-func _on_stream_finished(stream):
-	# When finished playing a stream, make the player available again.
-	available.append(stream)
-
-
 func play_sfx(path):
 	queue.append(path)
 	
@@ -38,17 +33,54 @@ func pause_music():
 func resume_music():
 	music_player.playing = true
 
+
 func set_master_volume(percent):
-	var vol_db = (100-percent)/100 * -60
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), vol_db)
+	_set_bus_volume("Master", percent)
 
 func set_sfx_volume(percent):
-	var vol_db = (100-percent)/100 * -60
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), vol_db)
+	_set_bus_volume("SFX", percent)
 
 func set_music_volume(percent):
-	var vol_db = (100-percent)/100 * -60
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), vol_db)
+	_set_bus_volume("Music", percent)
+	
+
+func set_master_muted(muted):
+	_set_bus_muted("Master", muted)
+	
+func set_sfx_muted(muted):
+	_set_bus_muted("SFX", muted)
+	
+func set_music_muted(muted):
+	_set_bus_muted("Music", muted)
+	
+
+func is_master_muted():
+	return _is_bus_muted("Master")
+	
+func is_sfx_muted():
+	return _is_bus_muted("SFX")
+	
+func is_music_muted():
+	return _is_bus_muted("Music")
+
+
+func _set_bus_muted(bus_name, muted):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_mute(bus_index, muted)
+	
+func _is_bus_muted(bus_name):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	AudioServer.get_bus_mute(bus_index)
+	
+func _set_bus_volume(bus_name, percent):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	
+	var vol_db = linear2db(percent/100.0)
+	AudioServer.set_bus_volume_db(bus_index, vol_db)
+
+func _on_stream_finished(stream):
+	# When finished playing a stream, make the player available again.
+	available.append(stream)
 
 func _process(delta):
 	if not queue.empty() and not available.empty():
