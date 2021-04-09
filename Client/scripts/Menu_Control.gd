@@ -38,26 +38,29 @@ func _ready():
 			$MUT_test_flow.play(flows_follower[multi_user_testing])
 	
 func _on_Button_Exit_pressed():
-	# Exit the game
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	get_tree().quit()
 
 
 func _on_Button_Start_pressed():
-	pass
-	#get_tree().change_scene("res://minigames/isometric_test/World.tscn")
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 
 func _on_Button_Settings_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	# Show the Option Menu
 	#get_node("Option_Control").show()
 	pass
 
 func _on_Button_Create_Party_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var server = get_node("/root/Server")
 	server.createParty()
 
 func _on_Button_Join_Party_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var server = get_node("/root/Server")
 	server.join_party(get_node("PartyCodeTextEdit").text)
 
 func _on_Button_Profile_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var _success = get_tree().change_scene("res://Menus/Profile.tscn")
