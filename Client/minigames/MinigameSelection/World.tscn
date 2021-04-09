@@ -112,6 +112,7 @@ tracks/6/keys = {
 script = ExtResource( 3 )
 
 [node name="MinigameTitle" type="RichTextLabel" parent="."]
+visible = false
 margin_top = 90.0
 margin_right = 1024.0
 margin_bottom = 156.0
@@ -126,9 +127,9 @@ __meta__ = {
 
 [node name="Loading Bar" type="Control" parent="."]
 show_behind_parent = true
-margin_left = -3316.58
+margin_left = -9821.38
 margin_top = 268.0
-margin_right = 8540.42
+margin_right = 2035.62
 margin_bottom = 308.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -615,7 +616,7 @@ __meta__ = {
 
 [node name="MinigameIcon" type="Sprite" parent="SelectedMinigame"]
 position = Vector2( 506.597, 283.987 )
-scale = Vector2( 0.38, 0.38 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="SelectionTitle" type="RichTextLabel" parent="."]
@@ -631,9 +632,10 @@ __meta__ = {
 }
 
 [node name="MinigameSummaryBox" type="Control" parent="."]
-margin_top = 2.82837
+visible = false
+margin_top = 175.362
 margin_right = 1020.0
-margin_bottom = 601.828
+margin_bottom = 774.362
 __meta__ = {
 "_edit_use_anchors_": false
 }
