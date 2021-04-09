@@ -1,15 +1,18 @@
 extends Node
 
+# Constants
 const Lobby=preload("res://Lobby.gd")
+const max_lobbies = 150
+
+
+# Internal Data Structures
 var lobbies = {}
 
+
+# Global variables
 var rng
 
-var max_lobbies = 150
-
-signal dc_peer(playerID)
-
-func _init(): # Called when LobbyHandler.new() is done
+func _init():
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 
@@ -18,28 +21,29 @@ func get_lobby(var lobby_id):
 		print("get_lobby() is called on the party screen!")
 		# We're on the party screen, return null
 		return null
+	
 	if lobbies.has(lobby_id):
 		return lobbies[lobby_id]
+	
 	return null
-
-func get_lobbies():
-	return lobbies
-
-func delete_lobby(var lobby_id):
-	lobbies.erase(lobby_id)
 
 func create_lobby():	
 	var tempLobby = Lobby.new(rng.randi_range(100000, 999999))
-	while (key_taken(tempLobby.get_lobby_code())): # If taken,
-		rng.randomize() # Randomize the generator
-		tempLobby.set_lobby_code(rng.randi_range(100000, 999999)) # Generate another code
 	
-
+	while (lobbies.has(tempLobby.lobby_code)): # If taken,
+		rng.randomize() # Randomize the generator
+		
+		# Generate another code
+		tempLobby.lobby_code = rng.randi_range(100000, 999999)
+	
 	if (lobbies.size() < max_lobbies):
-		lobbies[tempLobby.get_lobby_code()] = tempLobby
-		return tempLobby.get_lobby_code()
+		lobbies[tempLobby.lobby_code] = tempLobby
+		return tempLobby.lobby_code
 	
 	return null
+
+func delete_lobby(lobbyID):
+	lobbies.erase(lobbyID)
 
 func remove_from_lobby(var party):
 	if (party == null):
@@ -47,7 +51,8 @@ func remove_from_lobby(var party):
 		return false
 	
 	if (str(party.lobby_code) == "defaultCode"):
-		print("Attempting to remove a party with \"defaultCode\" returning false")
+		print("Attempting to remove a party with \"defaultCode\"" + 
+			   "returning false")
 		return false
 	
 	var lobby = get_lobby(party.lobby_code)
@@ -63,12 +68,12 @@ func remove_from_lobby(var party):
 	if (lobby.get_occupied() == 0):
 		print("Lobby has no players. Deleting")
 		delete_lobby(party.lobby_code)
+		return false
 	
 	if (lobby.get_occupied() < lobby.min_players_per_lobby):
 		print("Lobby is detected to not have enough parties. Returning true")
 		# Depending on the situation, we disconnect all players or leave it be
 		# This is handled in main.gd
-		
 		return true
 	
 	print("Some error occurred!")
@@ -77,16 +82,16 @@ func remove_from_lobby(var party):
 func add_to_lobby(var party):
 	for lobby in lobbies.values():
 		# Loop through the lobbies that are created
-		if ((lobby.max_players_per_lobby - lobby.get_occupied()) >= party.size() &&
-			!lobby.in_game):
-			
+		if ((lobby.max_players_per_lobby - lobby.get_occupied()) >= party.size()
+			&& !lobby.in_game):
 			# Checks if adding the party would make the lobby size too big,
 			# and checks if the lobby hasn't started yet.
 			
 			if (lobby.add_party(party)):
 				return true
 	
-	# Lobbies that are already created are all full or started; create a new one
+	# Lobbies that are already created are all full or started
+	# Create a new one
 	var fresh_lobby_code = create_lobby()
 	
 	if (fresh_lobby_code != null): # New lobby was created successfully
@@ -95,18 +100,6 @@ func add_to_lobby(var party):
 	
 	# New lobby was not created successfully; too many lobbies
 	return false
-	
-
-func get_lobby_by_player(var playerID):
-	for lobby in lobbies.values():
-		if lobby.has_player(playerID):
-			return lobby
-	
-	return null
-
-func key_taken(var key):
-	return lobbies.has(key)
-	
 
 func debug_print():
 	print("\n ========= LOBBYHANDLER DEBUG ========= ")

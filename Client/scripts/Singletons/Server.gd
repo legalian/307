@@ -9,11 +9,20 @@ var partycode = "undefined"
 
 const Player = preload("res://scripts/MinigameServers/Player.gd")
 
+const MINIGAMES = ["PartyScreen", "BattleRoyale", "DemoDerby", "RacingGame", "MapSelection", "MinigameSelection", "Podium"]
+var loading_queue
+
 var selfplayer = Player.new({'id':null})
 var players = [selfplayer]
 # players[0] is yourself.
 
 func _ready():
+	loading_queue = preload("res://scripts/Resource_Loader.gd").new()
+	loading_queue.start()
+	for mg in MINIGAMES:
+		loading_queue.queue_resource("res://minigames/"+mg+"/World.tscn")
+		loading_queue.queue_resource("res://scripts/MinigameServers/"+mg+".tscn")
+		
 	ConnectToServer()
 
 func ConnectToServer():
@@ -77,12 +86,17 @@ remote func setminigame(systemname,lobbyname):
 	for ms in get_children():
 		remove_child(ms)
 		ms.queue_free()
+		
+	var server_path = "res://scripts/MinigameServers/"+systemname+".tscn"
+	var scene_path = "res://minigames/"+systemname+"/World.tscn"
 	
-	var instance = load("res://scripts/MinigameServers/"+systemname+".tscn").instance()
+	var server_resource = loading_queue.get_resource(server_path)
+	var instance = server_resource.instance()
 	instance.name = lobbyname
 	print("created associate node: ",lobbyname," ",instance.name)
 	add_child(instance,true)
-	var _success = get_tree().change_scene("res://minigames/"+systemname+"/World.tscn")
+	var scene_resource = loading_queue.get_resource(scene_path)
+	var _success = get_tree().change_scene_to(scene_resource)
 
 remote func receive_party_code(var recPartyID):
 	print("Party created - code: " + str(recPartyID))
