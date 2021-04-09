@@ -15,6 +15,13 @@ func _ready():
 	_timer.set_wait_time(0.02)#50 rpc updates per second
 	_timer.set_one_shot(false) # Make sure it loops
 	_timer.start()
+	
+	
+remote func notifystrike(struckid):
+	if gameinstance==null: return
+	if gameinstance.gui==null: return
+	gameinstance.gui.get_node("Hit").text=str(struckid)+" HIT!"
+	gameinstance.gui.get_node("Hit/HitAnim").play("PlayerHit")
 
 func syncUpdate():
 	if gameinstance==null: return
