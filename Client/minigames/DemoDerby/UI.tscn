@@ -1,22 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/DemoDerby/UI.gd" type="Script" id=2]
-[ext_resource path="res://minigames/DemoDerby/UIobjects/top3.gd" type="Script" id=3]
 [ext_resource path="res://minigames/DemoDerby/UIobjects/Countdown.gd" type="Script" id=4]
 [ext_resource path="res://minigames/RacingGame/UIobjects/racingScoreboard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://minigames/DemoDerby/UIobjects/demoDerbyScoreboard.gd" type="Script" id=6]
 [ext_resource path="res://minigames/DemoDerby/UIobjects/PowerupIcon.gd" type="Script" id=7]
-[ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://minigames/RacingGame/RacingGamePlayerHit.tres" type="Animation" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = ExtResource( 8 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0.392157 )
@@ -45,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -378.054
-margin_top = -400.25
-margin_right = 378.946
-margin_bottom = -137.25
+margin_left = -482.312
+margin_top = -385.999
+margin_right = 274.688
+margin_bottom = -122.999
 custom_fonts/font = SubResource( 1 )
 text = "USER HIT!
 "
@@ -57,7 +51,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hit"]
+[node name="HitAnim" type="AnimationPlayer" parent="Hit"]
 anims/PlayerHit = ExtResource( 9 )
 
 [node name="Countdown" type="Label" parent="."]
@@ -79,39 +73,6 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="Countdown"]
-
-[node name="PanelContainer" type="MarginContainer" parent="."]
-margin_left = -0.711197
-margin_right = 246.289
-margin_bottom = 131.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="first" type="Label" parent="PanelContainer"]
-margin_bottom = 34.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-custom_fonts/font = SubResource( 2 )
-
-[node name="second" type="Label" parent="PanelContainer"]
-margin_top = 48.0
-margin_bottom = 82.0
-size_flags_horizontal = 2
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 2 )
-valign = 1
-
-[node name="third" type="Label" parent="PanelContainer"]
-margin_top = 97.0
-margin_bottom = 131.0
-size_flags_horizontal = 2
-size_flags_vertical = 14
-custom_fonts/font = SubResource( 2 )
-valign = 2
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchor_left = 1.0
