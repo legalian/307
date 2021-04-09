@@ -1074,7 +1074,6 @@ position = Vector2( -55.3807, -79.9719 )
 position = Vector2( 25.0616, -42.356 )
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Char"]
-visible = false
 position = Vector2( -67.2811, -146.538 )
 scale = Vector2( 0.35, 0.35 )
 
@@ -1156,7 +1155,7 @@ rot_max_right = 360
 
 [node name="LeftHand" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/LeftArm"]
 position = Vector2( -0.0841675, 61.3398 )
-rotation = 1.56654
+rotation = 1.56653
 rest = Transform2D( -0.0048137, 0.999988, -0.999988, -0.0048137, -0.0841675, 61.3398 )
 default_length = 58.0
 script = ExtResource( 4 )
