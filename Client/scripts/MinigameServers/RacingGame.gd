@@ -20,7 +20,7 @@ func _ready():
 remote func notifystrike(struckid):
 	if gameinstance==null: return
 	if gameinstance.gui==null: return
-	gameinstance.gui.get_node("Hit").text=str(struckid)+" HIT!"
+	gameinstance.gui.get_node("Hit").text=str(get_player(struckid).username).to_upper()+" HIT!"
 	gameinstance.gui.get_node("Hit/HitAnim").play("PlayerHit")
 
 func syncUpdate():
