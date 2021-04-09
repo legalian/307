@@ -11,7 +11,7 @@ var in_game = false
 
 # Constants
 const max_players_per_lobby = 20
-const min_players_per_lobby = 3
+const min_players_per_lobby = 2
 
 # You can add comments in front of the maps you don't want (for debugging)
 # Example to omit racing:
@@ -22,7 +22,7 @@ const min_players_per_lobby = 3
 #					]
 const minigame_list = [
 					preload("res://BattleRoyale/World.tscn"),
-					preload("res://RacingGame/World.tscn"),
+#					preload("res://RacingGame/World.tscn"),
 					preload("res://DemoDerby/World.tscn")
 					]
 
