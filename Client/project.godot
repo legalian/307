@@ -18,7 +18,7 @@ _global_script_class_icons={
 config/name="307 Project"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
-config/git_copy_prot=10
+config/git_copy_prot=111111110
 
 [autoload]
 
@@ -106,8 +106,10 @@ use_powerup={
 
 [physics]
 
+2d/thread_model=2
 2d/default_gravity=0
 
 [rendering]
 
 quality/2d/use_pixel_snap=true
+threads/thread_model=2
