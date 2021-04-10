@@ -1,7 +1,7 @@
 extends "res://minigame.gd"
 var path = "res://objects"
 
-var world_type = 'battle_royale'
+var world_type = 'captcha'
 
 var players = {}
 var bullets = {}
@@ -15,7 +15,7 @@ var server = null
 var dropFinished = false;
 
 func _ready():
-	minigame = "BATTLEROYALE"
+	minigame = "CAPTCHA"
 	camera = get_node("minigameselection/Camera2D");
 	get_node("minigameselection")._Select_Minigame(1);
 
@@ -31,14 +31,10 @@ func load_map(map):
 					
 	set_process(true)
 
-func load_mapRoll(mapRoll):
-	get_node("mapselection").spin = mapRoll;
 
 func _process(delta):
 	if(get_node("minigameselection").done == true):
-		startedDrop = true;
-		get_node("World/dropdown").start();
-		camera = get_node("World/dropdown/camera")
+		camera = null;
 		world.visible = true;
 	if get_node("/root/Server").get_children().size()>0:
 		server = get_node("/root/Server").get_children()[0]

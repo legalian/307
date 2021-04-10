@@ -63,7 +63,7 @@ func unpack(package):
 
 func _process(delta):
 	lookoffset = get_parent().global_transform.xform_inv(get_global_mouse_position()) - global_position
-	$Target.global_position = get_global_mouse_position()
+	#$Target.global_position = get_global_mouse_position()
 	$Body.set_look_pos(get_global_mouse_position(),velocity)
 	
 func _physics_process(delta):
