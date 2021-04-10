@@ -9,6 +9,8 @@ func _ready():
 	generalserver = get_node("/root/Server")
 	specificserver = generalserver.get_children()[0]
 	
+	matchmaking_label.visible_characters = 11
+	
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "loadingAnim")
@@ -20,7 +22,7 @@ var loadRight = true
 
 func loadingAnim():
 	if (loadRight):
-		if (matchmaking_label.visible_characters == 29):
+		if (matchmaking_label.visible_characters == matchmaking_label.text.length):
 			loadRight = false
 			return
 		matchmaking_label.visible_characters += 1

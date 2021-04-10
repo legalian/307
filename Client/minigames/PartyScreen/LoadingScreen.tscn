@@ -23,10 +23,10 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
-margin_left = 389.0
-margin_top = 216.0
-margin_right = 634.0
-margin_bottom = 384.0
+margin_left = 362.0
+margin_top = 214.0
+margin_right = 662.0
+margin_bottom = 386.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 7
@@ -37,20 +37,21 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
-margin_right = 245.0
+margin_right = 300.0
 margin_bottom = 32.0
-text = "Matchmaking.................."
+text = "Matchmaking............................."
 align = 1
 valign = 1
-percent_visible = 0.37931
+percent_visible = 0.275
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
 margin_top = 132.0
-margin_right = 245.0
-margin_bottom = 168.0
+margin_right = 300.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 300, 40 )
 text = "Cancel Matchmaking"
 __meta__ = {
 "_edit_use_anchors_": false
