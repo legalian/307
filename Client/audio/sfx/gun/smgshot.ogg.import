@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/smgshot.ogg-5bbf96ee2367245b6b51794c7f6fdd6a.oggstr"
+
+[deps]
+
+source_file="res://audio/sfx/smgshot.ogg"
+dest_files=[ "res://.import/smgshot.ogg-5bbf96ee2367245b6b51794c7f6fdd6a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
