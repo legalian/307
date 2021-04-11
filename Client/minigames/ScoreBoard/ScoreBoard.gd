@@ -8,7 +8,7 @@ var pressed
 
 func _ready():
 	set_process(true)
-	player_list = find_node("Playerlist")
+	player_list = find_node("PlayerList")
 	player_list.clear_scoreboard()
 	player_list.hide()
 	
