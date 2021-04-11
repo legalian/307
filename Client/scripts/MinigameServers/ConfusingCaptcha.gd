@@ -34,6 +34,7 @@ remote func frameUpdate(s_players, time):
 	var visited = []
 	if gameinstance.world == null:
 		gameinstance.load_map("Grass")
+		#audio play stuff
 	var playerTime = gameinstance.get_node_or_null("World/Player");
 	if(playerTime != null):
 		playerTime.find_node("RoundTime").setTime(time);
