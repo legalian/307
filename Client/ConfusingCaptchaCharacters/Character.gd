@@ -12,8 +12,8 @@ var rotvel = 0
 var lookoffset = Vector2.ZERO
 
 var server = null
-var gun = null
-var l_gun = -1;
+#var gun = null
+#var l_gun = -1;
 var l_body = 0
 var dying = false
 var setted = false
@@ -28,7 +28,7 @@ func _ready():
 	input_pickable = true
 	set_process_unhandled_input(true)
 	server = get_node("/root/Server").get_children()[0]
-	gun = $Body.find_node("Gun")
+	#gun = $Body.find_node("Gun")
 	
 	
 
@@ -50,16 +50,6 @@ func unpack(package):
 		setted = true;
 		setAvatar(get_node("/root/Server").get_player(package['id']).avatar)
 		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
-	if l_gun!=package['gun']:
-		gun = $Body.set_Gun(package['gun'])
-		l_gun = package['gun']
-	$HUD/PowerBar.visible = package['gun']!=1
-	$HUD/PowerBar.value = package['gunbar']
-	#rotation = package['r']
-	pass#will need up set position or rotation if it's too far away
-	
-	#velocity = Vector2(package['vx'],package['vy'])
-	#rotvel = package['vr']
 
 func _process(delta):
 	lookoffset = get_parent().global_transform.xform_inv(get_global_mouse_position()) - global_position
@@ -95,13 +85,13 @@ func _physics_process(delta):
 		rotvel = rotvel*(1-rotfriction) + rotfriction*0
 	rotate(rotvel*delta)
 	
-func _unhandled_input(event):
-	if dying: return
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == BUTTON_LEFT:
-			if gun!=null: gun.fire(self,$Target)
-		if !event.pressed and event.button_index == BUTTON_LEFT:
-			if gun!=null: gun.unfire()
+# func _unhandled_input(event):
+# 	if dying: return
+# 	if event is InputEventMouseButton:
+# 		if event.pressed and event.button_index == BUTTON_LEFT:
+# 			if gun!=null: gun.fire(self,$Target)
+# 		if !event.pressed and event.button_index == BUTTON_LEFT:
+# 			if gun!=null: gun.unfire()
 
 	
 

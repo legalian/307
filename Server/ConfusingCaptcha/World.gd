@@ -8,7 +8,7 @@ var status = {}
 var ingame = {}
 var curRound = 1
 var totalRounds = 5
-var roundTime
+var roundTime = 20
 var maxRoundTime = 20;
 
 #var bullets = {}

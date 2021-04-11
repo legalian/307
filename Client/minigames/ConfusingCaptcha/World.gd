@@ -45,6 +45,7 @@ func _process(delta):
 		var player = get_node_or_null("World/Player")
 		if player==null: return
 		camera = player.get_node("Camera")
+		player.get_node("Camera").current = true;
 		
 		if camera==null: return
 	
