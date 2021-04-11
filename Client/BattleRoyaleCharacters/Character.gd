@@ -10,6 +10,7 @@ var rotfriction = 0.2
 var rotacceleration = 0.1
 var rotvel = 0
 var lookoffset = Vector2.ZERO
+var clientWalks = 0.0;
 
 var server = null
 var gun = null
@@ -53,6 +54,8 @@ func unpack(package):
 	if l_gun!=package['gun']:
 		gun = $Body.set_Gun(package['gun'])
 		l_gun = package['gun']
+		AudioPlayer.play_sfx("res://audio/sfx/pickup.ogg")
+		
 	$HUD/PowerBar.visible = package['gun']!=1
 	$HUD/PowerBar.value = package['gunbar']
 	#rotation = package['r']
@@ -62,17 +65,33 @@ func unpack(package):
 	#rotvel = package['vr']
 
 func _process(delta):
+
 	lookoffset = get_parent().global_transform.xform_inv(get_global_mouse_position()) - global_position
 	$Target.global_position = get_global_mouse_position()
 	$Body.set_look_pos(get_global_mouse_position(),velocity)
+
+func walk(delta):
+	clientWalks = clientWalks + delta
+	if(clientWalks >= 0.5):
+		clientWalks = clientWalks - 0.5	;
+		AudioPlayer.play_sfx("res://audio/sfx/walking.ogg")
 	
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
-	if Input.is_action_pressed("move_right"):input_velocity.x += 1
-	if Input.is_action_pressed("move_left"):input_velocity.x -= 1
-	if Input.is_action_pressed("move_down"):input_velocity.y += 1
-	if Input.is_action_pressed("move_up"):input_velocity.y -= 1
+	if Input.is_action_pressed("move_right"):
+		input_velocity.x += 1
+		walk(delta)
+	if Input.is_action_pressed("move_left"):
+		input_velocity.x -= 1
+		walk(delta)
+	if Input.is_action_pressed("move_down"):
+		input_velocity.y += 1
+		walk(delta)
+	if Input.is_action_pressed("move_up"):
+		input_velocity.y -= 1
+		walk(delta)
+	
 
 	var input_rotvel = 0
 	if Input.is_action_pressed("rotate_left"):input_rotvel -= 1
@@ -108,8 +127,10 @@ func _unhandled_input(event):
 func damage():
 	$Body.ouch()
 	
+	
 func die():
 	dying = true
+	
 	speed=0
 	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying
 	$Body.rip()

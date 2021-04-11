@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/shotgun.wav-eca4a37453cd6a6578b29043efeee919.sample"
+path="res://.import/spawn.wav-08a39f0ce98b1e2fe4d22fe8e04dbd59.sample"
 
 [deps]
 
-source_file="res://audio/sfx/gun/shotgun.wav"
-dest_files=[ "res://.import/shotgun.wav-eca4a37453cd6a6578b29043efeee919.sample" ]
+source_file="res://audio/sfx/spawn.wav"
+dest_files=[ "res://.import/spawn.wav-08a39f0ce98b1e2fe4d22fe8e04dbd59.sample" ]
 
 [params]
 

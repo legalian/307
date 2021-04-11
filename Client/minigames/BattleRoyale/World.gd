@@ -25,6 +25,7 @@ func load_map(map):
 		world = preload("res://minigames/BattleRoyale/World-Grass.tscn").instance()
 	elif map == "Desert":
 		world = preload("res://minigames/BattleRoyale/World-Desert.tscn").instance()
+		AudioPlayer.play_music("res://audio/music/tomorrow.ogg")
 	assert(world != null)
 	add_child(world)
 	world.visible = false;

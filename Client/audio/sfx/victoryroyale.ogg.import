@@ -11,5 +11,5 @@ dest_files=[ "res://.import/victoryroyale.ogg-e84d2ef93a80623411126cc5b6be1d4b.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

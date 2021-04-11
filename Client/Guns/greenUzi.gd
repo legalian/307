@@ -5,7 +5,7 @@ var ori
 var targ
 
 func _ready():
-	firingSound =  preload("res://audio/sfx/smgshot.ogg")
+	firingSound =  "res://audio/sfx/gun/smgshot.ogg"
 	set_process(true)
 
 func fire(var origpl,var targetpos):

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/gruntdeath.ogg-b51fb46b39d192863e46fef1a74e979e.oggs
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

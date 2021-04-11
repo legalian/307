@@ -2,7 +2,7 @@ tool
 extends "res://Guns/gun.gd"
 
 func _ready():
-	firingSound =  preload("res://audio/sfx/shotgun.ogg")
+	firingSound = "res://audio/sfx/gun/shotgun.ogg"
 	set_process(true)
 
 

@@ -12,7 +12,8 @@ func _ready():
 	
 func fireSound():
 	if(firingSound != null):
-		pass
+		AudioPlayer.play_sfx(firingSound)
+		
 		#audio player fires a sound
 
 func _process(_delta):

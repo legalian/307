@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/dualgun.wav-90747b81b7865a784ba8b015e91ba82b.sample"
+path="res://.import/dualgun.wav-c8f2afa7889fe39eaf12bc063dca08ff.sample"
 
 [deps]
 
-source_file="res://audio/sfx/dualgun.wav"
-dest_files=[ "res://.import/dualgun.wav-90747b81b7865a784ba8b015e91ba82b.sample" ]
+source_file="res://audio/sfx/gun/dualgun.wav"
+dest_files=[ "res://.import/dualgun.wav-c8f2afa7889fe39eaf12bc063dca08ff.sample" ]
 
 [params]
 

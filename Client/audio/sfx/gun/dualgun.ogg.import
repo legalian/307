@@ -2,14 +2,14 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/dualgun.ogg-635bc414ef6e3f99a59de1fae51cec29.oggstr"
+path="res://.import/dualgun.ogg-cd495e3030cd99d35629c81cd05e21f9.oggstr"
 
 [deps]
 
-source_file="res://audio/sfx/dualgun.ogg"
-dest_files=[ "res://.import/dualgun.ogg-635bc414ef6e3f99a59de1fae51cec29.oggstr" ]
+source_file="res://audio/sfx/gun/dualgun.ogg"
+dest_files=[ "res://.import/dualgun.ogg-cd495e3030cd99d35629c81cd05e21f9.oggstr" ]
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/smgshot.wav-8fdf4ac4b5114a3867c3808f00d83f80.sample"
+path="res://.import/smgshot.wav-70e4ea79f27d5dd8b19b9262445b3cb6.sample"
 
 [deps]
 
-source_file="res://audio/sfx/smgshot.wav"
-dest_files=[ "res://.import/smgshot.wav-8fdf4ac4b5114a3867c3808f00d83f80.sample" ]
+source_file="res://audio/sfx/gun/smgshot.wav"
+dest_files=[ "res://.import/smgshot.wav-70e4ea79f27d5dd8b19b9262445b3cb6.sample" ]
 
 [params]
 
