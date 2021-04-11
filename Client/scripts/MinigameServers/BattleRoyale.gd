@@ -129,8 +129,10 @@ remote func die(package):
 	gameinstance.players[package['id']].unpack(package)
 	gameinstance.players[package['id']].die()
 	AudioPlayer.play_sfx("res://audio/sfx/scream.ogg")
+	AudioPlayer.pause_music()
 
 remote func win(playerID):
+	AudioPlayer.pause_music()
 	if playerID==players[0].playerID:
 		AudioPlayer.play_sfx("res://audio/sfx/victoryroyale.ogg")
 		get_tree().change_scene("res://minigames/BattleRoyale/WinScreen.tscn")
