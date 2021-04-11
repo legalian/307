@@ -3,7 +3,7 @@ extends "res://scripts/MinigameServers/MinigameBase.gd"
 var clientstatus = "UNSPAWNED"
 var gameinstance
 
-var world_map = null;
+var world_map = "Grass";
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
@@ -33,9 +33,10 @@ remote func frameUpdate(s_players, time):
 		if gameinstance==null: return
 	var visited = []
 	if gameinstance.world == null:
-		gameinstance.load_map(world_map)
-	var player = gameinstance.get_node_or_null("World/Player");
-	player.find_node("RoundTime").setTime(time);
+		gameinstance.load_map("Grass")
+	var playerTime = gameinstance.get_node_or_null("World/Player");
+	if(playerTime != null):
+		playerTime.find_node("RoundTime").setTime(time);
 	for s_player in s_players:
 		visited.append(s_player['id'])
 		if s_player['id'] in gameinstance.players:
@@ -70,7 +71,7 @@ remote func win(playerID):
 		get_tree().change_scene("res://minigames/ConfusingCaptcha/LoseScreen.tscn")
 	
 remote func setMap(map):
-	world_map = map
+	world_map = "Grass"
 
 func showlose():
 	get_tree().change_scene("res://minigames/ConfusingCaptcha/LoseScreen.tscn")

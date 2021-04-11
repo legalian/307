@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ConfusingCaptchaCharacters/Character.gd" type="Script" id=2]
-[ext_resource path="res://minigames/RacingGame/Countdown.gd" type="Script" id=3]
+[ext_resource path="res://ConfusingCaptchaCharacters/RoundTime.gd" type="Script" id=3]
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://minigames/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=5]
 
@@ -25,7 +25,6 @@ rotation = 1.56123
 shape = SubResource( 1 )
 
 [node name="Camera" type="Camera2D" parent="."]
-current = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

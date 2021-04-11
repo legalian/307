@@ -13,7 +13,8 @@ var maxRoundTime = 20;
 
 #var bullets = {}
 var selected = {}
-enum selectedSquares {11,21,31,12,22,32,13,23,33,NONE}
+
+enum SelectedSquares {R1C1, R2C1, R3C1, R1C2, R2C2, R3C2, R1C3, R2C3, R3C3, NONE}
 #format is column, row.  21 = 2nd row 1st column. NONE represents not currently being in any column. 
 
 var mapSelect = "nonmap";
@@ -27,26 +28,35 @@ var mapRoll;
 var debug_id = 1010101010
 
 func nextRound():
-	curRound++
-	startRound();
+	curRound = curRound + 1
+	startRound()
 
 func startRound():
 	#start timer again, change images, etc. 
 	roundTime = maxRoundTime
+	var roundTimer = Timer.new();
+	add_child(roundTimer);
+	roundTimer.connect("timeout", self, "timeTick");
+	roundTimer.set_wait_time(1);
+	roundTimer.set_one_shot(false)
+	roundTimer.start();
+
 func endRound():
 	pass;
 	#eliminate players who are on wrong selection, end game/crown winner if someone is left. 
 
 func updateSelected(playerID):
 	#use position? or something to calculate which square they should be in within this function
-	selected[playerID] = selectedSquares.11;
+	selected[playerID] = SelectedSquares.R1C1;
 
 func add_player(newplayer):
 	.add_player(newplayer)
 	status[newplayer.playerID] = "UNSPAWNED"
-	selected[newplayer.playerID] = selectedSquares.NONE
+	selected[newplayer.playerID] = SelectedSquares.NONE
 	print("adding player: ",newplayer)
-	rpc_id(newplayer.playerID, "setMap", map)
+	spawn_id(0,0, newplayer.playerID);
+
+	#rpc_id(newplayer.playerID, "setMap", map)
 	#rpc_id(newplayer.playerID, "setMapRoll", mapRoll)
 func remove_player(player_id):
 	.remove_player(player_id)
@@ -57,21 +67,16 @@ func remove_player(player_id):
 		ingame.erase(player_id)
 
 func timeTick():
-	roundTime--;
-	if(roundTime == 0):
-		endRound();
+	if(roundTime != null):
+		roundTime = roundTime - 1;
+		if(roundTime == 0):
+			endRound();
 
 func _ready():
 	world = preload("res://ConfusingCaptcha/World-Grass.tscn").instance()
 	assert(world != null)
 	add_child(world)
 
-	var roundTimer = Timer.new();
-	add_child(roundTimer);
-	roundTimer.connect("timeout", self, "timeTick");
-	roundTimer.set_wait_time(1);
-	roundTimer.set_one_shot(false)
-	roundTimer.start();
 
 	var _timer = Timer.new()
 	add_child(_timer)
@@ -92,7 +97,7 @@ func _send_rpc_update():
 	for p in players:
 		if(p.dummy == 0):
 			#rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
-			rpc_unreliable_id(p.playerID,"frameUpdate",player_frame, roundTime);
+			rpc_unreliable_id(p.playerID,"frameUpdate", player_frame, roundTime);
 
 func spawn_id(x,y,player_id):
 	if (status.has(player_id)):

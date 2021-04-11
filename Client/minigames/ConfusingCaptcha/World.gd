@@ -14,6 +14,7 @@ var world = null
 var server = null
 var dropFinished = false;
 
+
 func _ready():
 	minigame = "CAPTCHA"
 	camera = get_node("minigameselection/Camera2D");
@@ -21,20 +22,17 @@ func _ready():
 
 func load_map(map):
 	print(map)
-	if map == "Grass":
-		world = preload("res://minigames/BattleRoyale/World-Grass.tscn").instance()
-	elif map == "Desert":
-		world = preload("res://minigames/BattleRoyale/World-Grass.tscn").instance()
+	world = preload("res://minigames/ConfusingCaptcha/World-Grass.tscn").instance()
 	assert(world != null)
 	add_child(world)
 	world.visible = false;
-					
 	set_process(true)
 
 
 func _process(delta):
-	if(get_node("minigameselection").done == true):
+	if(get_node("minigameselection").done == true && cameraSet == false):
 		camera = null;
+		cameraSet = true;
 		world.visible = true;
 	if get_node("/root/Server").get_children().size()>0:
 		server = get_node("/root/Server").get_children()[0]
@@ -46,7 +44,8 @@ func _process(delta):
 	if camera==null:
 		var player = get_node_or_null("World/Player")
 		if player==null: return
-		camera = player.find_node("Camera")
+		camera = player.get_node("Camera")
+		
 		if camera==null: return
 	
 	var ctr = camera.global_rotation
