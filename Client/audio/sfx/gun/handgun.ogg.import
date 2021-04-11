@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/handgun.ogg-16bed11fc9bc1ac4868f94a6f39d4536.oggstr"
+
+[deps]
+
+source_file="res://audio/sfx/gun/handgun.ogg"
+dest_files=[ "res://.import/handgun.ogg-16bed11fc9bc1ac4868f94a6f39d4536.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

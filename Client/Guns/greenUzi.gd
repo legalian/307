@@ -4,9 +4,14 @@ extends "res://Guns/gun.gd"
 var ori
 var targ
 
+func _ready():
+	firingSound =  "res://audio/sfx/gun/smgshot.ogg"
+	set_process(true)
+
 func fire(var origpl,var targetpos):
 	ori = origpl
 	targ = targetpos
+	fireSound();
 	$PositionFix/Flare.beginfire()
 	$Timer.start()
 

@@ -118,6 +118,7 @@ remote func strike(bullet,object):
 
 remote func explode(location):
 	print("exploding")
+	AudioPlayer.play_sfx("res://audio/sfx/gun/explosion.ogg")
 	var inst = preload("res://objects/explosion.tscn").instance()
 	inst.position = location
 	gameinstance.get_node("World").add_child(inst)
@@ -127,9 +128,13 @@ remote func die(package):
 	if gameinstance == null: return
 	gameinstance.players[package['id']].unpack(package)
 	gameinstance.players[package['id']].die()
-	
+	AudioPlayer.play_sfx("res://audio/sfx/scream.ogg")
+	AudioPlayer.pause_music()
+
 remote func win(playerID):
+	AudioPlayer.pause_music()
 	if playerID==players[0].playerID:
+		AudioPlayer.play_sfx("res://audio/sfx/victoryroyale.ogg")
 		get_tree().change_scene("res://win.tscn")
 	else:
 		get_tree().change_scene("res://death.tscn")
@@ -142,6 +147,7 @@ remote func update_radius(var rad: float):
 remote func update_health_bar(var health: float):
 	if gameinstance == null: return
 	gameinstance.get_node("World/Player").get_node("HUD/HealthBar").set_value(health*100)
+	AudioPlayer.play_sfx("res://audio/sfx/gruntdeath.ogg")
 	
 remote func setMap(map):
 	world_map = map
