@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -8,8 +8,10 @@
 [ext_resource path="res://minigames/RacingGame/Countdown.gd" type="Script" id=6]
 [ext_resource path="res://minigames/RacingGame/UIobjects/top3.gd" type="Script" id=7]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Themes/UI.tres" type="Theme" id=9]
 [ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
 [ext_resource path="res://minigames/RacingGame/UIobjects/PowerupIcon.gd" type="Script" id=11]
+[ext_resource path="res://fonts/Countdownglphs.tres" type="DynamicFont" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -21,10 +23,6 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 60
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 100
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -42,6 +40,7 @@ border_color = Color( 1, 1, 1, 1 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 9 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -112,9 +111,9 @@ margin_left = -35.809
 margin_top = -49.191
 margin_right = 37.191
 margin_bottom = 213.809
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 1, 0.678431, 0, 1 )
-text = "5!
+text = "5
 "
 script = ExtResource( 6 )
 __meta__ = {

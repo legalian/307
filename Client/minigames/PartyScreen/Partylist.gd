@@ -5,7 +5,6 @@ onready var generalserver = get_node("/root/Server")
 
 func _ready():
 	update_playerlist()
-	print("was just ready-marked")
 
 func update_playerlist():
 	print("updated!")

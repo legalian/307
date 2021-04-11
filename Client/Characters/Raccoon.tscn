@@ -862,7 +862,7 @@ nodes/Direction/position = Vector2( 60, 120 )
 nodes/Speed/node = SubResource( 15 )
 nodes/Speed/position = Vector2( 300, 150 )
 nodes/output/position = Vector2( 480, 170 )
-node_connections = [ "output", 0, "Speed", "Speed", 0, "Direction", "Direction", 0, "Animation", "Direction", 1, "Animation 2" ]
+node_connections = [ "output", 0, "Speed", "Direction", 0, "Animation", "Direction", 1, "Animation 2", "Speed", 0, "Direction" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
@@ -911,7 +911,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 24 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 1130, 210 )
-node_connections = [ "output", 0, "Ouch", "Ouch", 0, "_4", "Ouch", 1, "Animation 5", "_2", 0, "Animation 2", "_4", 0, "StateMachine", "_4", 1, "_3", "_3", 0, "lookX", "_3", 1, "lookY", "lookY", 0, "_2", "lookX", 0, "_1", "_1", 0, "Animation" ]
+node_connections = [ "output", 0, "Ouch", "Ouch", 0, "_4", "Ouch", 1, "Animation 5", "_2", 0, "Animation 2", "lookY", 0, "_2", "_3", 0, "lookX", "_3", 1, "lookY", "_4", 0, "StateMachine", "_4", 1, "_3", "lookX", 0, "_1", "_1", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
