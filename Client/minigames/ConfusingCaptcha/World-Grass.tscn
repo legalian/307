@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://minigames/ConfusingCaptcha/ImageTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://minigames/BattleRoyale/racemap.tres" type="TileSet" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -51,3 +52,39 @@ constant_linear_velocity = Vector2( 500, 500 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightborder"]
 position = Vector2( 5922.98, 620.991 )
 shape = SubResource( 2 )
+
+[node name="R1C3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1203.89, -1235.58 )
+scale = Vector2( 3, 3 )
+
+[node name="R2C1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1473.42, 80.6671 )
+scale = Vector2( 3, 3 )
+
+[node name="R2C2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -132.98, 125.476 )
+scale = Vector2( 3, 3 )
+
+[node name="R2C3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1215.09, 80.6671 )
+scale = Vector2( 3, 3 )
+
+[node name="R3C1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1383.8, 1307.3 )
+scale = Vector2( 3, 3 )
+
+[node name="R3C2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -50.7503, 1318.5 )
+scale = Vector2( 3, 3 )
+
+[node name="R3C3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1203.89, 1329.7 )
+scale = Vector2( 3, 3 )
+
+[node name="R1C2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -73.1539, -1229.98 )
+scale = Vector2( 3, 3 )
+
+[node name="R1C1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1400.61, -1218.78 )
+scale = Vector2( 3, 3 )
