@@ -21,6 +21,7 @@ func _physics_process(delta):
 		if (collided.collider.name.begins_with("Player")):
 			if collided.collider.id == owner_id:
 				return
+			get_parent().get_parent().notifystrike(owner_id,collided.collider.id)
 			collided.collider.interrupt()
 			print("collided with player!")
 		elif (collided.collider.name.begins_with("Projectile")):
@@ -34,6 +35,7 @@ func _physics_process(delta):
 		else:
 			print("did not collide with a player or projectile")
 		
+		get_parent().remove_child(self)
 		queue_free() # Delete self
 	
 

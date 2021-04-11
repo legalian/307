@@ -16,7 +16,10 @@ func _ready():
 func _Select_Minigame(minigame):
 	currentMinigame = minigame;
 	_Set_Minigame();
-	minigameAnimation.play("SelectMinigameDisplay")
+	if OS.get_environment("MULTI_USER_TESTING")!=null and "shim" in OS.get_environment("MULTI_USER_TESTING"):
+		Finished_Animation()
+	else:
+		minigameAnimation.play("SelectMinigameDisplay")
 	
 
 func _Set_Minigame():

@@ -18,11 +18,12 @@ _global_script_class_icons={
 config/name="307 Project"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
-config/git_copy_prot=11110
+config/git_copy_prot=111111110
 
 [autoload]
 
 Server="*res://scripts/Singletons/Server.gd"
+AudioPlayer="*res://scripts/Singletons/AudioPlayer.gd"
 
 [gdnative]
 
