@@ -4,7 +4,6 @@ var radius: float = 6000.0
 	
 func update_radius(var rad: float):
 	radius = rad
-	print(radius)
 	$CircleDrawer.material.set_shader_param("radius", radius)
 
 func _process(delta):

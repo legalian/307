@@ -22,7 +22,7 @@ var loadRight = true
 
 func loadingAnim():
 	if (loadRight):
-		if (matchmaking_label.visible_characters == matchmaking_label.text.length):
+		if (matchmaking_label.visible_characters == matchmaking_label.text.length()):
 			loadRight = false
 			return
 		matchmaking_label.visible_characters += 1

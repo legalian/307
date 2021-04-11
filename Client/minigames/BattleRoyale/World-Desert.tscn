@@ -55,6 +55,7 @@ script = ExtResource( 5 )
 material = SubResource( 2 )
 margin_right = 17000.0
 margin_bottom = 14000.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
