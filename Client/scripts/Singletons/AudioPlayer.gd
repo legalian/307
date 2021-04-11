@@ -30,10 +30,10 @@ func play_music(path):
 	music_player.play()
 
 func pause_music():
-	music_player.playing = false
+	music_player.stream_paused = true
 
 func resume_music():
-	music_player.playing = true
+	music_player.stream_paused = false
 
 
 func set_master_volume(percent):
