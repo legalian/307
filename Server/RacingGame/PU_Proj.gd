@@ -14,6 +14,20 @@ func _ready():
 	velocity = Vector2(0, -speed).rotated(rotation)
 
 func _physics_process(delta):
+	var min_dist = INF
+	var nearest_player = null
+	for player in get_parent().get_parent().ingame.values():
+		if player.id != owner_id:
+			var cur_dist = position.distance_to(player.position)
+			if cur_dist < min_dist:
+				min_dist = cur_dist
+				nearest_player = player
+				
+	if nearest_player != null:
+		print(rotation)
+		var angle = position.angle_to_point(nearest_player.position) - PI
+		rotation = lerp_angle(rotation, angle, 0.20)
+	
 	velocity = Vector2(speed, 0).rotated(rotation)
 	var collided = move_and_collide(velocity * delta)
 	
