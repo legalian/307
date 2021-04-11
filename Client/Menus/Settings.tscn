@@ -89,6 +89,8 @@ margin_right = 382.0
 margin_bottom = 37.0
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[right]100%"
 text = "100%"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -108,6 +110,9 @@ margin_top = 42.0
 margin_right = 429.0
 margin_bottom = 96.0
 text = "Random"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SFX Volume" type="Control" parent="."]
 margin_left = 27.5
@@ -148,6 +153,8 @@ margin_right = 382.0
 margin_bottom = 37.0
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[right]100%"
 text = "100%"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,6 +169,7 @@ __meta__ = {
 }
 
 [node name="Randomize" type="Button" parent="SFX Volume"]
+visible = false
 margin_left = 389.0
 margin_top = 42.0
 margin_right = 429.0
@@ -207,6 +215,8 @@ margin_right = 382.0
 margin_bottom = 37.0
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[right]100%"
 text = "100%"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,9 +231,11 @@ __meta__ = {
 }
 
 [node name="Randomize" type="Button" parent="Music Volume"]
+visible = false
 margin_left = 389.0
 margin_top = 42.0
 margin_right = 429.0
 margin_bottom = 96.0
 text = "Random"
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Master Volume/Randomize" to="." method="_on_MasterRandomize_pressed"]
