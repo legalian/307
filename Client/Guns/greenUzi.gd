@@ -11,9 +11,10 @@ func _ready():
 func fire(var origpl,var targetpos):
 	ori = origpl
 	targ = targetpos
-	fireSound();
+	
 	$PositionFix/Flare.beginfire()
 	$Timer.start()
+	fireSound();
 
 func unfire():
 	$PositionFix/Flare.stop()
