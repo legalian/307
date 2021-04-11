@@ -46,9 +46,7 @@ func _on_Button_Start_pressed():
 
 func _on_Button_Settings_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
-	# Show the Option Menu
-	#get_node("Option_Control").show()
-	pass
+	var _success = get_tree().change_scene("res://Menus/Settings.tscn")
 
 func _on_Button_Create_Party_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
