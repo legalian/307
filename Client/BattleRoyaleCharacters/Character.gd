@@ -18,6 +18,7 @@ var l_gun = -1;
 var l_body = 0
 var dying = false
 var setted = false
+var walked = false;
 
 
 func setAvatar(index):
@@ -72,24 +73,28 @@ func _process(delta):
 
 func walk(delta):
 	clientWalks = clientWalks + delta
-	if(clientWalks >= 0.5):
-		clientWalks = clientWalks - 0.5	;
+	if(clientWalks >= 0.25):
+		clientWalks = clientWalks - 0.25	;
 		AudioPlayer.play_sfx("res://audio/sfx/walking.ogg")
 	
 func _physics_process(delta):
+	walked = false;
+	
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
 	if Input.is_action_pressed("move_right"):
 		input_velocity.x += 1
-		walk(delta)
+		walked = true;
 	if Input.is_action_pressed("move_left"):
 		input_velocity.x -= 1
-		walk(delta)
+		walked = true
 	if Input.is_action_pressed("move_down"):
 		input_velocity.y += 1
-		walk(delta)
+		walked = true
 	if Input.is_action_pressed("move_up"):
 		input_velocity.y -= 1
+		walked = true
+	if(walked):
 		walk(delta)
 	
 
