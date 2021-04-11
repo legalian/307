@@ -23,6 +23,7 @@ func load_map(map):
 	print(map)
 	if map == "Grass":
 		world = preload("res://minigames/BattleRoyale/World-Grass.tscn").instance()
+		AudioPlayer.play_music("res://audio/music/unfoldingsecrets.ogg")
 	elif map == "Desert":
 		world = preload("res://minigames/BattleRoyale/World-Desert.tscn").instance()
 		AudioPlayer.play_music("res://audio/music/tomorrow.ogg")
