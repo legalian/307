@@ -1,18 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Countdownglphs.tres" type="DynamicFont" id=1]
 [ext_resource path="res://minigames/DemoDerby/UI.gd" type="Script" id=2]
+[ext_resource path="res://minigames/DemoDerby/UIobjects/top3.gd" type="Script" id=3]
 [ext_resource path="res://minigames/DemoDerby/UIobjects/Countdown.gd" type="Script" id=4]
 [ext_resource path="res://minigames/RacingGame/UIobjects/racingScoreboard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://minigames/DemoDerby/UIobjects/demoDerbyScoreboard.gd" type="Script" id=6]
 [ext_resource path="res://minigames/DemoDerby/UIobjects/PowerupIcon.gd" type="Script" id=7]
-[ext_resource path="res://minigames/RacingGame/RacingGamePlayerHit.tres" type="Animation" id=9]
+[ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Themes/HealthBar_BG.tres" type="StyleBox" id=9]
+[ext_resource path="res://Themes/HealthBar_FG.tres" type="StyleBox" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 100
-font_data = ExtResource( 1 )
+size = 30
+font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.6, 0.6, 0.6, 0.392157 )
 border_width_left = 5
 border_width_top = 5
@@ -23,8 +26,6 @@ border_color = Color( 1, 1, 1, 1 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.937592
-margin_right = 0.937622
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -34,36 +35,16 @@ __meta__ = {
 position = Vector2( 0, 0.341705 )
 script = ExtResource( 6 )
 
-[node name="Hit" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -482.312
-margin_top = -385.999
-margin_right = 274.688
-margin_bottom = -122.999
-custom_fonts/font = SubResource( 1 )
-text = "USER HIT!
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HitAnim" type="AnimationPlayer" parent="Hit"]
-anims/PlayerHit = ExtResource( 9 )
-
 [node name="Countdown" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -35.809
-margin_top = -49.191
-margin_right = 37.191
-margin_bottom = 213.809
-custom_fonts/font = SubResource( 1 )
+margin_left = -36.0
+margin_top = -49.0
+margin_right = 43.0
+margin_bottom = 197.0
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0.678431, 0, 1 )
 text = "5!
 "
@@ -74,6 +55,39 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="Countdown"]
 
+[node name="PanelContainer" type="MarginContainer" parent="."]
+margin_left = -0.711197
+margin_right = 246.289
+margin_bottom = 131.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="first" type="Label" parent="PanelContainer"]
+margin_bottom = 34.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 1 )
+
+[node name="second" type="Label" parent="PanelContainer"]
+margin_top = 48.0
+margin_bottom = 82.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+valign = 1
+
+[node name="third" type="Label" parent="PanelContainer"]
+margin_top = 97.0
+margin_bottom = 131.0
+size_flags_horizontal = 2
+size_flags_vertical = 14
+custom_fonts/font = SubResource( 1 )
+valign = 2
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -83,6 +97,9 @@ margin_left = -250.93
 margin_top = -66.238
 margin_right = -17.93
 margin_bottom = -18.238
+custom_styles/fg = ExtResource( 10 )
+custom_styles/bg = ExtResource( 9 )
+value = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,7 +111,7 @@ margin_left = 25.0
 margin_top = -125.0
 margin_right = 125.0
 margin_bottom = -25.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -135,10 +135,9 @@ remote func win(playerID):
 	AudioPlayer.pause_music()
 	if playerID==players[0].playerID:
 		AudioPlayer.play_sfx("res://audio/sfx/victoryroyale.ogg")
-		get_tree().change_scene("res://minigames/BattleRoyale/WinScreen.tscn")
-		
+		get_tree().change_scene("res://win.tscn")
 	else:
-		get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
+		get_tree().change_scene("res://death.tscn")
 
 remote func update_radius(var rad: float):
 	if gameinstance == null: return
@@ -157,7 +156,7 @@ remote func setMapRoll(mapRolls):
 	mapRoll = mapRolls
 
 func showlose():
-	get_tree().change_scene("res://minigames/BattleRoyale/LoseScreen.tscn")
+	get_tree().change_scene("res://death.tscn")
 	
 	
 

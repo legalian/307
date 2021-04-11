@@ -29,4 +29,4 @@ func tick():
 		timer.stop()
 		set_visible(false)
 	else:
-		set_text(str(count)+"!")
+		set_text(str(count))

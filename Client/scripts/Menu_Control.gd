@@ -58,7 +58,9 @@ func _on_Button_Create_Party_pressed():
 func _on_Button_Join_Party_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var server = get_node("/root/Server")
-	server.join_party(get_node("PartyCodeTextEdit").text)
+	if (find_node("PartyCodeTextEdit").text == null):
+		return
+	server.join_party(find_node("PartyCodeTextEdit").text)
 
 func _on_Button_Profile_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
