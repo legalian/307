@@ -11,7 +11,7 @@
 code = "shader_type canvas_item;
 render_mode unshaded;
 
-uniform float radius = 10000.0;
+uniform float radius = 6000.0;
 uniform mat4 global_transform;
 
 varying vec2 world_pos;
@@ -33,7 +33,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 render_priority = 127
 shader = SubResource( 1 )
-shader_param/radius = 10000.0
+shader_param/radius = 6000.0
 shader_param/global_transform = null
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -47,14 +47,14 @@ height = 7603.4
 [node name="World" type="YSort"]
 
 [node name="Circle" type="Node2D" parent="."]
-position = Vector2( -4500, -4000 )
+position = Vector2( -8000, -6000 )
 z_index = 4096
 script = ExtResource( 5 )
 
 [node name="CircleDrawer" type="ColorRect" parent="Circle"]
 material = SubResource( 2 )
-margin_right = 9000.0
-margin_bottom = 8000.0
+margin_right = 17000.0
+margin_bottom = 14000.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

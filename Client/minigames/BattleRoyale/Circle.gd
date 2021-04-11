@@ -1,6 +1,6 @@
 extends Node2D
 
-var radius: float = 10000.0
+var radius: float = 6000.0
 	
 func update_radius(var rad: float):
 	radius = rad
