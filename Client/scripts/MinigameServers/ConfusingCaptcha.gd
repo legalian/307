@@ -4,6 +4,8 @@ var clientstatus = "UNSPAWNED"
 var gameinstance
 
 var world_map = "Grass";
+var selfPlayerInstance
+var curQuestion = "TEST QUESTION";
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
@@ -26,18 +28,25 @@ func syncUpdate():
 	if players[0].playerID in gameinstance.players:
 		rpc_unreliable_id(1,"syncUpdate",gameinstance.players[players[0].playerID].pack())
 
+remote func questionText(textOfQuestion):
+		curQuestion = textOfQuestion;
+		
+
 remote func frameUpdate(s_players, time):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='captcha': gameinstance = null
 		if gameinstance==null: return
 	var visited = []
+
 	if gameinstance.world == null:
 		gameinstance.load_map("Grass")
 		#audio play stuff
-	var playerTime = gameinstance.get_node_or_null("World/Player");
-	if(playerTime != null):
-		playerTime.find_node("RoundTime").setTime(time);
+	if(selfPlayerInstance == null):
+		selfPlayerInstance = gameinstance.get_node_or_null("World/Player");
+	else:
+		selfPlayerInstance.find_node("RoundTime").setTime(time);
+		selfPlayerInstance.find_node("Problem").setQuestion(curQuestion)
 	for s_player in s_players:
 		visited.append(s_player['id'])
 		if s_player['id'] in gameinstance.players:

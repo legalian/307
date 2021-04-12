@@ -10,6 +10,7 @@ var curRound = 1
 var totalRounds = 5
 var roundTime = 20
 var maxRoundTime = 20;
+var questionText = "Find the image with cars in it!"
 
 #var bullets = {}
 var selected = {}
@@ -40,6 +41,12 @@ func startRound():
 	roundTimer.set_wait_time(1);
 	roundTimer.set_one_shot(false)
 	roundTimer.start();
+	for p in players:
+		if(p.dummy == 0):
+			#rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
+			rpc_unreliable_id(p.playerID,"questionText", questionText)
+
+
 
 func endRound():
 	pass;
