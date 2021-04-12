@@ -5,7 +5,7 @@ func _MUT_recieve_partycode():
 	file.open("user://saved_partycode.dat", file.READ)
 	var partycode = file.get_as_text()
 	file.close()
-	$PartyCodeTextEdit.text = partycode
+	find_node("PartyCodeTextEdit").text = partycode
 	
 func _ready():
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING");
