@@ -5,16 +5,10 @@ export var sideoffset = 0
 
 var Bullet = preload("res://Guns/BasicRedBullet.tscn")
 var server = null
-var firingSound = null;
 
 func _ready():
 	set_process(true)
 	
-func fireSound():
-	if(firingSound != null):
-		AudioPlayer.play_sfx(firingSound)
-		
-		#audio player fires a sound
 
 func _process(_delta):
 	var glt = get_global_transform_with_canvas()

@@ -3,21 +3,21 @@
 [ext_resource path="res://minigames/RacingGame/objects/Name.gd" type="Script" id=2]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=2]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 3 )
 
 [node name="nameobject" type="Sprite"]
-script = SubResource( 1 )
+script = SubResource( 2 )
 
 [node name="Name" type="Label" parent="."]
 margin_left = -76.9185
 margin_top = -276.756
 margin_right = 72.0815
 margin_bottom = -209.756
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Name"
 script = ExtResource( 2 )
 __meta__ = {

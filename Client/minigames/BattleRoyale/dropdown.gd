@@ -19,7 +19,6 @@ func _spawnRandom():
 		get_parent().get_parent().server.spawn(x,y)
 		get_node("camera").current = false;
 		get_parent().get_parent().camera = null;
-		AudioPlayer.play_sfx("res://audio/sfx/spawn.ogg")
 		spawned = true;
 	
 func _ready():
@@ -55,11 +54,9 @@ func _input(event):
 					get_node("camera").current = false;
 					get_parent().get_parent().camera = null; 
 					spawned = true;
-					AudioPlayer.play_sfx("res://audio/sfx/spawn.ogg")
 			
 func _process(_delta):
 	if(spawned == true):
-		
 		get_parent().get_parent().dropFinished = true;
 		self.visible = false;
 		get_node("camera/CanvasLayer/Timer").visible = false;

@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var generalserver
 var Playerlist
@@ -15,8 +15,6 @@ func _ready():
 	Playerlist = generalserver.players+[]
 	_SortPlayers()
 	_SetScene()
-	
-	get_node("AnimationPlayer").play("CurtainCall")
 
 
 func _SetScene():

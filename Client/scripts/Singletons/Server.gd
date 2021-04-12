@@ -124,7 +124,7 @@ remote func add_players(packed):
 		var pl = get_player(p['id'])
 		if pl!=null: pl.unpack(p)
 		else: players.append(Player.new(p))
-	var node = get_tree().get_root().get_node_or_null("/root/PartyScreen/Control/VBoxContainer/Playerlist")
+	var node = get_tree().get_root().get_node_or_null("/root/Node2D/Playerlist")
 	if node!=null:
 		print("updated playerlist")
 		node.update_playerlist()
@@ -132,7 +132,7 @@ remote func add_players(packed):
 remote func drop_player(player_id):
 	for i in range(players.size()-1,-1,-1):
 		if players[i].playerID==player_id: players.remove(i)
-	var node = get_tree().get_root().get_node_or_null("/root/PartyScreen/Control/VBoxContainer/Playerlist")
+	var node = get_tree().get_root().get_node_or_null("/root/Node2D/Playerlist")
 	if node!=null:
 		print("dropped player")
 		node.update_playerlist()

@@ -18,11 +18,11 @@ func _process(_delta):
 	var players = game.players.values();
 	players.sort_custom(self, "sort_by_place")
 	if (true):
-		var player1 = str(server.get_player(players[0].id).username)
+		var player1 = str(players[0].id)
 		get_node("first").text = "1. " + player1;
 	if (players.size() >= 2):
-		var player2 = str(server.get_player(players[1].id).username);
+		var player2 = str(players[1].id);
 		get_node("second").text = "2. " + player2;
 	if (players.size() >= 3):
-		var player3 = str(server.get_player(players[2].id).username);
+		var player3 = str(players[2].id);
 		get_node("third").text = "3. " + player3;

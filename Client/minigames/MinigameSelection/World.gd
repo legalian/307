@@ -16,15 +16,12 @@ func _ready():
 func _Select_Minigame(minigame):
 	currentMinigame = minigame;
 	_Set_Minigame();
-	if OS.get_environment("MULTI_USER_TESTING")!=null and "shim" in OS.get_environment("MULTI_USER_TESTING"):
-		Finished_Animation()
-	else:
-		minigameAnimation.play("SelectMinigameDisplay")
+	minigameAnimation.play("SelectMinigameDisplay")
 	
 
 func _Set_Minigame():
-	find_node("MinigameTitle").text = minigameList[currentMinigame][0]
-	find_node("MinigameSummary").text = minigameList[currentMinigame][1]
+	find_node("MinigameTitle").bbcode_text = "[center]" + minigameList[currentMinigame][0]
+	find_node("MinigameSummary").bbcode_text = "[center]" + minigameList[currentMinigame][1]
 	find_node("MinigameIcon").texture = load(minigameList[currentMinigame][2])
 
 func Finished_Animation(): # Not Triggering?

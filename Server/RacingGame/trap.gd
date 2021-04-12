@@ -11,7 +11,6 @@ func _physics_process(_delta):
 		if (collided.collider.name.begins_with("Player")):
 			if collided.collider.id == owner_id:
 				return
-			get_parent().get_parent().notifystrike(owner_id,collided.collider.id)
 			collided.collider.stun(3, 400);
 			print("trap collided with player!")
 		else:

@@ -1,5 +1,6 @@
 extends Control
 
+
 func _MUT_recieve_partycode():
 	var file = File.new()
 	file.open("user://saved_partycode.dat", file.READ)
@@ -37,29 +38,26 @@ func _ready():
 			$MUT_test_flow.play(flows_follower[multi_user_testing])
 	
 func _on_Button_Exit_pressed():
-	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
+	# Exit the game
 	get_tree().quit()
 
 
 func _on_Button_Start_pressed():
-	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
+	pass
+	#get_tree().change_scene("res://minigames/isometric_test/World.tscn")
 
 func _on_Button_Settings_pressed():
-	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
-	var _success = get_tree().change_scene("res://Menus/Settings.tscn")
+	# Show the Option Menu
+	#get_node("Option_Control").show()
+	pass
 
 func _on_Button_Create_Party_pressed():
-	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var server = get_node("/root/Server")
 	server.createParty()
 
 func _on_Button_Join_Party_pressed():
-	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var server = get_node("/root/Server")
-	if (find_node("PartyCodeTextEdit").text == null):
-		return
-	server.join_party(find_node("PartyCodeTextEdit").text)
+	server.join_party(get_node("PartyCodeTextEdit").text)
 
 func _on_Button_Profile_pressed():
-	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var _success = get_tree().change_scene("res://Menus/Profile.tscn")

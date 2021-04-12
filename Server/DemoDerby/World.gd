@@ -35,8 +35,6 @@ func add_player(newplayer):
 	.add_player(newplayer)
 	spawn(newplayer.playerID)
 
-func notifystrike(fireplayer,struckplayer):
-	rpc_id(fireplayer,"notifystrike",struckplayer)
 
 func remove_player(player_id):
 	.remove_player(player_id)

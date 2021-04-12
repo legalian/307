@@ -5,6 +5,7 @@ onready var generalserver = get_node("/root/Server")
 
 func _ready():
 	update_playerlist()
+	print("was just ready-marked")
 
 func update_playerlist():
 	print("updated!")
@@ -13,5 +14,4 @@ func update_playerlist():
 	for player in generalserver.players:
 		var player_ID = Label.new()
 		player_ID.text = str(player.username)
-		player_ID.add_color_override("font_color", Color(0, 1, 1, 1))
 		add_child(player_ID)

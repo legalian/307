@@ -1,1283 +1,362 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://minigames/Podium/Stall/spotlight.png" type="Texture" id=2]
+[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://minigames/Podium/World.gd" type="Script" id=3]
-[ext_resource path="res://Themes/UI.tres" type="Theme" id=4]
-[ext_resource path="res://Themes/UI_Panel.tres" type="StyleBox" id=5]
-[ext_resource path="res://minigames/Podium/Stall/curtain_straight.png" type="Texture" id=6]
-[ext_resource path="res://minigames/Podium/Stall/bg_red.png" type="Texture" id=7]
-[ext_resource path="res://fonts/Kenney High Square (TITLE).tres" type="DynamicFont" id=8]
+[ext_resource path="res://UI/Theme.tres" type="Theme" id=4]
 
-[sub_resource type="Animation" id=1]
-resource_name = "CurtainCall"
-length = 20.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Curtain/Control:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 0.34151, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 50 ), Vector2( 0, -1000 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MarginContainer/HBoxContainer/MarginContainer2/Place3/PlayerName:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 2.5, 3.5 ),
-"transitions": PoolRealArray( 1, 5, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("MarginContainer/HBoxContainer/MarginContainer2/Place3/Avatar:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 3, 4 ),
-"transitions": PoolRealArray( 5.85635, 5, 1 ),
-"update": 0,
-"values": [ Vector2( 130.904, 500 ), Vector2( 130.904, 500 ), Vector2( 130.904, 346.347 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("MarginContainer/HBoxContainer/MarginContainer2/Place3/Avatar:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 3.5, 4 ),
-"transitions": PoolRealArray( 1, 3, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("MarginContainer/HBoxContainer/MarginContainer/Place2/PlayerName:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 6, 7 ),
-"transitions": PoolRealArray( 1, 5, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("MarginContainer/HBoxContainer/MarginContainer/Place2/Avatar:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 6, 7 ),
-"transitions": PoolRealArray( 1, 5, 1 ),
-"update": 0,
-"values": [ Vector2( 130.904, 500 ), Vector2( 130.904, 500 ), Vector2( 130.904, 346.347 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("MarginContainer/HBoxContainer/MarginContainer/Place2/Avatar:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 6.5, 7 ),
-"transitions": PoolRealArray( 3, 3, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("PanelContainer2:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 9, 10, 14, 17 ),
-"transitions": PoolRealArray( 1, 1, 1, 5, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Spotlight1:rect_position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 11, 13 ),
-"transitions": PoolRealArray( 1, -7.99999, 1 ),
-"update": 0,
-"values": [ Vector2( 1062.51, 400.162 ), Vector2( 1062.51, 400.162 ), Vector2( 374.424, 102.842 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Spotlight2:rect_position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 11, 13 ),
-"transitions": PoolRealArray( 1, -4.43828, 1 ),
-"update": 0,
-"values": [ Vector2( -268.182, -128.944 ), Vector2( -268.182, -128.944 ), Vector2( 427.611, 125.615 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Spotlight3:rect_position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0, 11, 13 ),
-"transitions": PoolRealArray( 1, -3.86375, 1 ),
-"update": 0,
-"values": [ Vector2( -46.8007, 652.197 ), Vector2( -46.8007, 652.197 ), Vector2( 377.943, 144.393 ) ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("MarginContainer/HBoxContainer/Place1/Avatar:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0, 13, 14 ),
-"transitions": PoolRealArray( 1, 5, 1 ),
-"update": 0,
-"values": [ Vector2( 130.904, 500 ), Vector2( 130.904, 500 ), Vector2( 130.904, 346.347 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("MarginContainer/HBoxContainer/Place1/PlayerName:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0, 14, 15 ),
-"transitions": PoolRealArray( 5, 5, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("MarginContainer/HBoxContainer/Place1/Avatar:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0, 13.5, 14 ),
-"transitions": PoolRealArray( 3, 3, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("Spotlight1:modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0, 15.5, 17 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("Spotlight2:modulate")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0, 15.5, 17 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("Spotlight3:modulate")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0, 15.5, 17 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("CongratsText:modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0, 17, 18 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/18/type = "value"
-tracks/18/path = NodePath("PanelContainer/MarginContainer/HBoxContainer:modulate")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/keys = {
-"times": PoolRealArray( 0, 18, 19 ),
-"transitions": PoolRealArray( 1, 0.148651, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
+[sub_resource type="DynamicFont" id=1]
+size = 25
+use_filter = true
+font_data = ExtResource( 2 )
 
-[node name="Podium" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 4 )
+[sub_resource type="DynamicFont" id=2]
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+margin_left = 260.0
+margin_top = 569.0
+margin_right = 858.0
+margin_bottom = 608.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/panel = ExtResource( 5 )
+[node name="ColorRect7" type="ColorRect" parent="."]
+margin_left = 249.0
+margin_top = 585.0
+margin_right = 869.0
+margin_bottom = 609.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
-custom_constants/margin_top = 156
+[node name="Place1" type="Control" parent="."]
+margin_left = 430.0
+margin_right = 666.0
+margin_bottom = 615.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 156.0
-margin_right = 1024.0
-margin_bottom = 196.0
-size_flags_vertical = 0
-custom_constants/separation = 500
-alignment = 1
+[node name="Avatar" parent="Place1" instance=ExtResource( 1 )]
+position = Vector2( 130.904, 346.347 )
 
-[node name="MainMenu_Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 62.0
+[node name="ColorRect" type="ColorRect" parent="Place1"]
+margin_left = 50.0
+margin_top = 362.0
+margin_right = 212.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Place1"]
+margin_left = 85.0
+margin_top = 362.0
+margin_right = 177.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="Place1"]
+margin_left = 85.0
+margin_top = 371.0
+margin_right = 177.0
+margin_bottom = 389.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.6, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Place1"]
+margin_left = 39.0
+margin_top = 358.0
+margin_right = 222.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Place1"]
+margin_left = 65.0
+margin_top = 358.0
+margin_right = 197.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.615686, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="RichTextLabel" parent="Place1"]
+margin_left = -4.5
+margin_top = 162.5
+margin_right = 265.5
+margin_bottom = 203.5
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Username[/center]"
+text = "Username"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PodiumNumber" type="RichTextLabel" parent="Place1"]
+margin_left = 102.0
+margin_top = 390.0
+margin_right = 165.0
+margin_bottom = 433.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#000000]1st![/color]"
+text = "1st!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Place2" type="Control" parent="."]
+margin_left = 233.5
+margin_top = 80.5
+margin_right = 469.5
+margin_bottom = 695.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar" parent="Place2" instance=ExtResource( 1 )]
+position = Vector2( 130.904, 346.347 )
+
+[node name="ColorRect" type="ColorRect" parent="Place2"]
+margin_left = 50.0
+margin_top = 362.0
+margin_right = 212.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Place2"]
+margin_left = 85.0
+margin_top = 362.0
+margin_right = 177.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="Place2"]
+margin_left = 85.0
+margin_top = 371.0
+margin_right = 177.0
+margin_bottom = 389.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.6, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Place2"]
+margin_left = 39.0
+margin_top = 358.0
+margin_right = 222.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Place2"]
+margin_left = 65.0
+margin_top = 358.0
+margin_right = 197.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.615686, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="RichTextLabel" parent="Place2"]
+margin_left = -8.0
+margin_top = 163.0
 margin_right = 262.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 200, 40 )
+margin_bottom = 204.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Username[/center]"
+text = "Username"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PodiumNumber" type="RichTextLabel" parent="Place2"]
+margin_left = 92.5
+margin_top = 391.5
+margin_right = 172.5
+margin_bottom = 438.5
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#000000]2nd![/color]"
+text = "2nd!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Place3" type="Control" parent="."]
+margin_left = 623.059
+margin_top = 136.024
+margin_right = 859.059
+margin_bottom = 751.024
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar" parent="Place3" instance=ExtResource( 1 )]
+position = Vector2( 130.904, 346.347 )
+
+[node name="ColorRect" type="ColorRect" parent="Place3"]
+margin_left = 50.0
+margin_top = 362.0
+margin_right = 212.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Place3"]
+margin_left = 85.0
+margin_top = 362.0
+margin_right = 177.0
+margin_bottom = 605.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="Place3"]
+margin_left = 85.0
+margin_top = 371.0
+margin_right = 177.0
+margin_bottom = 389.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.6, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Place3"]
+margin_left = 39.0
+margin_top = 358.0
+margin_right = 222.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Place3"]
+margin_left = 65.0
+margin_top = 358.0
+margin_right = 197.0
+margin_bottom = 376.0
+rect_pivot_offset = Vector2( 120.836, 161.881 )
+color = Color( 0.615686, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="RichTextLabel" parent="Place3"]
+margin_left = -5.5
+margin_top = 164.5
+margin_right = 264.5
+margin_bottom = 205.5
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Username[/center]"
+text = "Username"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PodiumNumber" type="RichTextLabel" parent="Place3"]
+margin_left = 97.0
+margin_top = 397.0
+margin_right = 166.0
+margin_bottom = 444.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#000000]3rd![/color]"
+text = "3rd!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CongratsText" type="RichTextLabel" parent="."]
+margin_left = 336.189
+margin_top = 25.6432
+margin_right = 782.189
+margin_bottom = 118.643
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Congratulations[/rainbow][/wave]"
+text = "Congratulations"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu_Button" type="Button" parent="."]
+margin_left = 32.3136
+margin_top = 430.142
+margin_right = 199.314
+margin_bottom = 489.142
 theme = ExtResource( 4 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Matchmake_Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 762.0
-margin_right = 962.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 200, 40 )
+[node name="Matchmake_Button" type="Button" parent="."]
+visible = false
+margin_left = 33.3731
+margin_top = 509.072
+margin_right = 200.373
+margin_bottom = 568.072
 theme = ExtResource( 4 )
 text = "Matchmake"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Spotlight1" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.639216 )
-margin_left = 1062.51
-margin_top = 400.162
-margin_right = 1318.51
-margin_bottom = 656.165
-mouse_filter = 2
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Spotlight2" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.639216 )
-margin_left = -268.182
-margin_top = -128.944
-margin_right = -12.1818
-margin_bottom = 127.057
-mouse_filter = 2
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Spotlight3" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.639216 )
-margin_left = -46.8007
-margin_top = 652.197
-margin_right = 209.199
-margin_bottom = 908.197
-mouse_filter = 2
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -512.0
-margin_top = -604.0
-margin_right = 512.0
-mouse_filter = 2
-custom_constants/margin_right = 250
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 774.0
-margin_bottom = 604.0
-custom_constants/separation = 300
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 87.0
-margin_right = 87.0
-margin_bottom = 604.0
-custom_constants/margin_top = 50
-
-[node name="Place2" type="Control" parent="MarginContainer/HBoxContainer/MarginContainer"]
-margin_top = 50.0
-margin_bottom = 604.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerName" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -8.0
-margin_top = 163.0
-margin_right = 262.0
-margin_bottom = 204.0
-custom_colors/default_color = Color( 0.898039, 0.898039, 0.898039, 1 )
-bbcode_enabled = true
-bbcode_text = "[center]Username[/center]"
-text = "Username"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Avatar" parent="MarginContainer/HBoxContainer/MarginContainer/Place2" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 130.904, 500 )
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
-margin_left = 50.0
-margin_top = 362.0
-margin_right = 212.0
-margin_bottom = 605.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect3" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
-margin_left = 85.0
-margin_top = 362.0
-margin_right = 177.0
-margin_bottom = 605.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect5" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
-margin_left = 85.0
-margin_top = 371.0
-margin_right = 177.0
-margin_bottom = 389.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.6, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
-margin_left = 39.0
-margin_top = 358.0
-margin_right = 222.0
-margin_bottom = 376.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect4" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
-margin_left = 65.0
-margin_top = 358.0
-margin_right = 197.0
-margin_bottom = 376.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.615686, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Place1" type="Control" parent="MarginContainer/HBoxContainer"]
-margin_left = 387.0
-margin_right = 387.0
-margin_bottom = 604.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerName" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Place1"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -4.5
-margin_top = 162.5
-margin_right = 265.5
-margin_bottom = 203.5
-custom_colors/default_color = Color( 0.952941, 0.439216, 0.101961, 1 )
-bbcode_enabled = true
-bbcode_text = "[center]Username[/center]"
-text = "Username"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Avatar" parent="MarginContainer/HBoxContainer/Place1" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 130.904, 500 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Place1"]
-margin_left = -387.0
-margin_top = 578.0
-margin_right = 637.0
-margin_bottom = 608.0
-custom_constants/separation = 0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Place1/VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 10.0
-custom_constants/margin_right = 300
-custom_constants/margin_left = 310
-
-[node name="ColorRect6" type="ColorRect" parent="MarginContainer/HBoxContainer/Place1/VBoxContainer/MarginContainer"]
-margin_left = 310.0
-margin_right = 724.0
-margin_bottom = 10.0
-rect_min_size = Vector2( 0, 10 )
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Place1/VBoxContainer"]
-margin_top = 10.0
-margin_right = 1024.0
-margin_bottom = 30.0
-custom_constants/margin_right = 75
-custom_constants/margin_left = 75
-
-[node name="ColorRect7" type="ColorRect" parent="MarginContainer/HBoxContainer/Place1/VBoxContainer/MarginContainer2"]
-margin_left = 75.0
-margin_right = 949.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Place1"]
-margin_left = 50.0
-margin_top = 362.0
-margin_right = 212.0
-margin_bottom = 605.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect3" type="ColorRect" parent="MarginContainer/HBoxContainer/Place1"]
-margin_left = 85.0
-margin_top = 362.0
-margin_right = 177.0
-margin_bottom = 605.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect5" type="ColorRect" parent="MarginContainer/HBoxContainer/Place1"]
-margin_left = 85.0
-margin_top = 371.0
-margin_right = 177.0
-margin_bottom = 389.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.6, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/Place1"]
-margin_left = 39.0
-margin_top = 358.0
-margin_right = 222.0
-margin_bottom = 376.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect4" type="ColorRect" parent="MarginContainer/HBoxContainer/Place1"]
-margin_left = 65.0
-margin_top = 358.0
-margin_right = 197.0
-margin_bottom = 376.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.615686, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 687.0
-margin_right = 687.0
-margin_bottom = 604.0
-custom_constants/margin_top = 100
-
-[node name="Place3" type="Control" parent="MarginContainer/HBoxContainer/MarginContainer2"]
-margin_top = 100.0
-margin_bottom = 604.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerName" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3"]
-margin_left = -5.5
-margin_top = 164.5
-margin_right = 264.5
-margin_bottom = 205.5
-custom_colors/default_color = Color( 1, 0.772549, 0, 1 )
-bbcode_enabled = true
-bbcode_text = "[center]Username[/center]"
-text = "Username"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Avatar" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0.146257 )
-light_mask = -2147483647
-position = Vector2( 130.904, 460.152 )
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3"]
-margin_left = 50.0
-margin_top = 362.0
-margin_right = 212.0
-margin_bottom = 605.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect3" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3"]
-margin_left = 85.0
-margin_top = 362.0
-margin_right = 177.0
-margin_bottom = 605.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.980392, 0.0196078, 0.0196078, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect5" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3"]
-margin_left = 85.0
-margin_top = 371.0
-margin_right = 177.0
-margin_bottom = 389.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.6, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3"]
-margin_left = 39.0
-margin_top = 358.0
-margin_right = 222.0
-margin_bottom = 376.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect4" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3"]
-margin_left = 65.0
-margin_top = 358.0
-margin_right = 197.0
-margin_bottom = 376.0
-rect_pivot_offset = Vector2( 120.836, 161.881 )
-color = Color( 0.615686, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelContainer2" type="PanelContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Curtain" type="VBoxContainer" parent="."]
-margin_right = 4096.0
-margin_bottom = 80.0
-mouse_filter = 2
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="Control" parent="Curtain"]
-margin_top = -1000.0
-margin_right = 4096.0
-margin_bottom = -1000.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Curtain/Control"]
-margin_right = 40.0
-margin_bottom = 40.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="Curtain/Control/VBoxContainer"]
-margin_right = 4096.0
-margin_bottom = 256.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CurtainWall" type="HBoxContainer" parent="Curtain/Control/VBoxContainer/MarginContainer"]
-margin_right = 4096.0
-margin_bottom = 256.0
-custom_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_right = 256.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect6" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 256.0
-margin_right = 512.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect7" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 512.0
-margin_right = 768.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect8" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 768.0
-margin_right = 1024.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect9" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 1024.0
-margin_right = 1280.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect10" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 1280.0
-margin_right = 1536.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect11" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 1536.0
-margin_right = 1792.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect12" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 1792.0
-margin_right = 2048.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect13" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 2048.0
-margin_right = 2304.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect14" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 2304.0
-margin_right = 2560.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect15" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 2560.0
-margin_right = 2816.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect16" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 2816.0
-margin_right = 3072.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect2" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 3072.0
-margin_right = 3328.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect3" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 3328.0
-margin_right = 3584.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect4" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 3584.0
-margin_right = 3840.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect5" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer/CurtainWall"]
-margin_left = 3840.0
-margin_right = 4096.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="MarginContainer2" type="MarginContainer" parent="Curtain/Control/VBoxContainer"]
-margin_top = 256.0
-margin_right = 4096.0
-margin_bottom = 512.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CurtainWall" type="HBoxContainer" parent="Curtain/Control/VBoxContainer/MarginContainer2"]
-margin_right = 4096.0
-margin_bottom = 256.0
-custom_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_right = 256.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect6" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 256.0
-margin_right = 512.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect7" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 512.0
-margin_right = 768.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect8" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 768.0
-margin_right = 1024.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect9" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 1024.0
-margin_right = 1280.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect10" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 1280.0
-margin_right = 1536.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect11" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 1536.0
-margin_right = 1792.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect12" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 1792.0
-margin_right = 2048.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect13" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 2048.0
-margin_right = 2304.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect14" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 2304.0
-margin_right = 2560.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect15" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 2560.0
-margin_right = 2816.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect16" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 2816.0
-margin_right = 3072.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect2" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 3072.0
-margin_right = 3328.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect3" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 3328.0
-margin_right = 3584.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect4" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 3584.0
-margin_right = 3840.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect5" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer2/CurtainWall"]
-margin_left = 3840.0
-margin_right = 4096.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="MarginContainer3" type="MarginContainer" parent="Curtain/Control/VBoxContainer"]
-margin_top = 512.0
-margin_right = 4096.0
-margin_bottom = 768.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CurtainWall" type="HBoxContainer" parent="Curtain/Control/VBoxContainer/MarginContainer3"]
-margin_right = 4096.0
-margin_bottom = 256.0
-custom_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_right = 256.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect6" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 256.0
-margin_right = 512.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect7" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 512.0
-margin_right = 768.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect8" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 768.0
-margin_right = 1024.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect9" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 1024.0
-margin_right = 1280.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect10" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 1280.0
-margin_right = 1536.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect11" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 1536.0
-margin_right = 1792.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect12" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 1792.0
-margin_right = 2048.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect13" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 2048.0
-margin_right = 2304.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect14" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 2304.0
-margin_right = 2560.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect15" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 2560.0
-margin_right = 2816.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect16" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 2816.0
-margin_right = 3072.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect2" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 3072.0
-margin_right = 3328.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect3" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 3328.0
-margin_right = 3584.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect4" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 3584.0
-margin_right = 3840.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect5" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer3/CurtainWall"]
-margin_left = 3840.0
-margin_right = 4096.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="MarginContainer4" type="MarginContainer" parent="Curtain/Control/VBoxContainer"]
-margin_top = 768.0
-margin_right = 4096.0
-margin_bottom = 1024.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CurtainWall" type="HBoxContainer" parent="Curtain/Control/VBoxContainer/MarginContainer4"]
-margin_right = 4096.0
-margin_bottom = 256.0
-custom_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_right = 256.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect6" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 256.0
-margin_right = 512.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect7" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 512.0
-margin_right = 768.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect8" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 768.0
-margin_right = 1024.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect9" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 1024.0
-margin_right = 1280.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect10" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 1280.0
-margin_right = 1536.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect11" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 1536.0
-margin_right = 1792.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect12" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 1792.0
-margin_right = 2048.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect13" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 2048.0
-margin_right = 2304.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect14" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 2304.0
-margin_right = 2560.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect15" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 2560.0
-margin_right = 2816.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect16" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 2816.0
-margin_right = 3072.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect2" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 3072.0
-margin_right = 3328.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect3" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 3328.0
-margin_right = 3584.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect4" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 3584.0
-margin_right = 3840.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="TextureRect5" type="TextureRect" parent="Curtain/Control/VBoxContainer/MarginContainer4/CurtainWall"]
-margin_left = 3840.0
-margin_right = 4096.0
-margin_bottom = 256.0
-texture = ExtResource( 7 )
-
-[node name="CurtainTop" type="HBoxContainer" parent="Curtain"]
-margin_right = 4096.0
-margin_bottom = 80.0
-custom_constants/separation = 0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_right = 256.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 256.0
-margin_right = 512.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect3" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 512.0
-margin_right = 768.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect4" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 768.0
-margin_right = 1024.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect5" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 1024.0
-margin_right = 1280.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect8" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 1280.0
-margin_right = 1536.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect9" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 1536.0
-margin_right = 1792.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect10" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 1792.0
-margin_right = 2048.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect11" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 2048.0
-margin_right = 2304.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect12" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 2304.0
-margin_right = 2560.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect13" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 2560.0
-margin_right = 2816.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect14" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 2816.0
-margin_right = 3072.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect15" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 3072.0
-margin_right = 3328.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect16" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 3328.0
-margin_right = 3584.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect7" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 3584.0
-margin_right = 3840.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect6" type="TextureRect" parent="Curtain/CurtainTop"]
-margin_left = 3840.0
-margin_right = 4096.0
-margin_bottom = 80.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CongratsText" type="RichTextLabel" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 336.0
-margin_top = 96.0
-margin_right = 688.0
-margin_bottom = 161.0
-rect_clip_content = false
-mouse_filter = 2
-size_flags_horizontal = 7
-size_flags_vertical = 7
-custom_fonts/normal_font = ExtResource( 8 )
-bbcode_enabled = true
-bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Congratulations![/rainbow][/wave]"
-text = "Congratulations!"
-fit_content_height = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/CurtainCall = SubResource( 1 )
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/MainMenu_Button" to="." method="_on_MainMenu_Button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Matchmake_Button" to="." method="_on_Matchmake_Button_pressed"]
+[connection signal="pressed" from="MainMenu_Button" to="." method="_on_MainMenu_Button_pressed"]
+[connection signal="pressed" from="Matchmake_Button" to="." method="_on_Matchmake_Button_pressed"]

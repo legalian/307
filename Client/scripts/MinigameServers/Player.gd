@@ -9,8 +9,6 @@ var avatar = 0
 var hat = 0
 var vehicle = 0
 
-var volume = [100,100,100] #Master, Music, SFX
-
 func _init(var packed):
 	
 	#var rng = RandomNumberGenerator.new() # Random Num Generator
@@ -25,7 +23,6 @@ func _init(var packed):
 	score = packed.get('score',0)
 	hat = packed.get('hat',0)
 	vehicle = packed.get('vehicle',0)
-	volume = packed.get('volume',[100,100,100])
 	#defaults here must match defaults in server PartyPlayer.gd.
 	
 func unpack(packed):
@@ -35,15 +32,13 @@ func unpack(packed):
 	score = packed['score']
 	hat = packed['hat']
 	vehicle = packed['vehicle']
-	volume = packed['volume']
 	
 func pack():
 	return {
 		'avatar':avatar,
 		'hat':hat,
 		'username':username,
-		'vehicle':vehicle,
-		'volume':volume
+		'vehicle':vehicle
 	}
 
 
