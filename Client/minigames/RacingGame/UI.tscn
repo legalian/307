@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -8,23 +8,37 @@
 [ext_resource path="res://minigames/RacingGame/Countdown.gd" type="Script" id=6]
 [ext_resource path="res://minigames/RacingGame/UIobjects/top3.gd" type="Script" id=7]
 [ext_resource path="res://objects/times-new-roman.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Themes/UI.tres" type="Theme" id=9]
 [ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
 [ext_resource path="res://minigames/RacingGame/UIobjects/PowerupIcon.gd" type="Script" id=11]
+[ext_resource path="res://fonts/Countdownglphs.tres" type="DynamicFont" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 100
-font_data = ExtResource( 1 )
+[sub_resource type="Animation" id=2]
+resource_name = "PlayerHit"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 28, -104 ), Vector2( 25.1873, 12.2593 ), Vector2( 25.1873, 12.2593 ), Vector2( 30.8128, -110.563 ) ]
+}
 
 [sub_resource type="DynamicFont" id=3]
-size = 60
+size = 100
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 100
+size = 60
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -42,6 +56,7 @@ border_color = Color( 1, 1, 1, 1 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 9 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,6 +69,8 @@ position = Vector2( 0, 0.341705 )
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -136.0
+margin_bottom = 213.0
+rect_pivot_offset = Vector2( 59.9554, 29.7438 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -64,6 +81,26 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Hit" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -996.0
+margin_top = -104.0
+margin_right = -32.0
+margin_bottom = 109.0
+rect_pivot_offset = Vector2( 59.9554, 29.7438 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "USER HIT!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HitAnim" type="AnimationPlayer" parent="Hit"]
+anims/PlayerHit = SubResource( 2 )
 
 [node name="Control" type="Control" parent="."]
 anchor_left = 1.0
@@ -80,7 +117,7 @@ __meta__ = {
 margin_top = -2.82849
 margin_right = 133.0
 margin_bottom = 102.172
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0.0588235, 0.0588235, 1 )
 text = "1ST"
 align = 2
@@ -93,7 +130,7 @@ __meta__ = {
 [node name="numPlayers" type="Label" parent="Control"]
 margin_left = 130.0
 margin_top = 30.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "/20"
 align = 2
@@ -112,9 +149,9 @@ margin_left = -35.809
 margin_top = -49.191
 margin_right = 37.191
 margin_bottom = 213.809
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 1, 0.678431, 0, 1 )
-text = "5!
+text = "5
 "
 script = ExtResource( 6 )
 __meta__ = {

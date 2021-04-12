@@ -1,6 +1,3 @@
-
-
-
 acceptableTests=('party' 'lobby' 'quickplay' 'podium' 'battleroyale' 'racing' 'demoderby' 'confusingcaptcha' 'battleroyale_shim' 'racing_shim' 'demoderby_shim' 'podium_shim' 'confusingcaptcha_shim')
 associatedCount=('4'     '4'     '4'         '4'      '2'            '2'      '2'         '2'                '1'                 '1'           '1'              '1',           '1')
 
