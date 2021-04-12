@@ -48,7 +48,8 @@ func _process(delta):
 		player.get_node("Camera").current = true;
 		
 		if camera==null: return
-	
+	if(world.visible == false):
+		world.visible = true;
 	var ctr = camera.global_rotation
 	var xhalf = get_viewport().size.x/2
 	var yhalf = get_viewport().size.y/2
