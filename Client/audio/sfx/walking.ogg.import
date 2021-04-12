@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/walking.ogg-9f6e06cf89ef7bac03350497defd5416.oggstr"
+
+[deps]
+
+source_file="res://audio/sfx/walking.ogg"
+dest_files=[ "res://.import/walking.ogg-9f6e06cf89ef7bac03350497defd5416.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

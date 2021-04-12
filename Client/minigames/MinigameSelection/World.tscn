@@ -1,28 +1,17 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Kenney Pixel.tres" type="DynamicFont" id=1]
 [ext_resource path="res://minigames/MinigameSelection/MinigameSprites/RacingThumbnail.png" type="Texture" id=2]
 [ext_resource path="res://minigames/MinigameSelection/World.gd" type="Script" id=3]
+[ext_resource path="res://fonts/Kenney High Square (TITLE).tres" type="DynamicFont" id=4]
+[ext_resource path="res://Themes/UI.tres" type="Theme" id=5]
+[ext_resource path="res://Themes/UI_Panel.tres" type="StyleBox" id=6]
 
-[sub_resource type="DynamicFont" id=1]
-size = 45
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 60
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "SelectMinigameDisplay"
 length = 10.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Loading Bar:rect_position")
+tracks/0/path = NodePath("SelectedMinigame/Loading Bar:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -31,7 +20,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -10880.3, 268 ), Vector2( -3316.58, 268 ) ]
+"values": [ Vector2( -10640, 120 ), Vector2( -3316.58, 120 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MinigameSummaryBox:rect_position")
@@ -40,10 +29,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.5, 5.5 ),
-"transitions": PoolRealArray( 1, 0.267943, 1 ),
+"times": PoolRealArray( -0.1, 5.5, 6.5, 7 ),
+"transitions": PoolRealArray( 1, 0.267943, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 175.362 ), Vector2( 0, 175.362 ), Vector2( 0, 2.82837 ) ]
+"values": [ Vector2( 0, 175.362 ), Vector2( 0, 175.362 ), Vector2( 0, 2.82837 ), Vector2( 0, 15 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("SelectedMinigame/MinigameIcon:scale")
@@ -52,7 +41,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3.5, 4.5 ),
+"times": PoolRealArray( 0, 4.5, 5.5 ),
 "transitions": PoolRealArray( 1, 0.297302, 0.901251 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.38, 0.38 ) ]
@@ -81,25 +70,13 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("MinigameTitle:rect_position")
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 3.5, 5.2 ),
-"transitions": PoolRealArray( 0.297302, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 165.291 ), Vector2( 0, 90 ) ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 10 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -107,34 +84,108 @@ tracks/6/keys = {
 "method": "Finished_Animation"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("SelectedMinigame/ColorRect:color")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5.5, 7 ),
+"transitions": PoolRealArray( 5, -2, 1, -0.5, 1, -2, 1, 15, 1, 0.258817, 1 ),
+"update": 0,
+"values": [ Color( 0.572549, 0.231373, 0.184314, 1 ), Color( 0.713726, 0.266667, 0.0901961, 1 ), Color( 0.615686, 0.572549, 0.0941176, 1 ), Color( 0.317647, 0.454902, 0.0509804, 1 ), Color( 0.203922, 0.623529, 0.0666667, 1 ), Color( 0.0901961, 0.32549, 0.0784314, 1 ), Color( 0.109804, 0.435294, 0.592157, 1 ), Color( 0.231373, 0.231373, 0.231373, 1 ), Color( 0.0980392, 0.603922, 0.831373, 1 ), Color( 0.0980392, 0.603922, 0.831373, 1 ), Color( 0.0392157, 0.266667, 0.368627, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MinigameTitle:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 4, 4.5 ),
+"transitions": PoolRealArray( 0.267943, 0.267943, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
 
 [node name="Node2D" type="YSort"]
 script = ExtResource( 3 )
 
-[node name="MinigameTitle" type="RichTextLabel" parent="."]
-margin_top = 90.0
-margin_right = 1024.0
-margin_bottom = 156.0
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "[center]###########"
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1023.0
+margin_bottom = 598.0
+rect_scale = Vector2( 1.00058, 1.00381 )
+custom_styles/panel = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinigameTitle" type="Label" parent="."]
+visible = false
+margin_left = 376.0
+margin_top = 96.0
+margin_right = 648.0
+margin_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 136, 32 )
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "###########"
-scroll_active = false
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Loading Bar" type="Control" parent="."]
+[node name="SelectedMinigame" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 272.0
+margin_top = 160.0
+margin_right = 755.0
+margin_bottom = 441.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="SelectedMinigame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -209.5
+margin_top = -124.5
+margin_right = 209.5
+margin_bottom = 132.5
+color = Color( 0.572549, 0.231373, 0.184314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinigameIcon" type="Sprite" parent="SelectedMinigame"]
+position = Vector2( 240, 144 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
+
+[node name="Loading Bar" type="Control" parent="SelectedMinigame"]
 show_behind_parent = true
-margin_left = -3316.58
-margin_top = 268.0
-margin_right = 8540.42
-margin_bottom = 308.0
+margin_left = -10640.0
+margin_top = 120.0
+margin_right = -10640.0
+margin_bottom = 120.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect19" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect19" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 3357.68
 margin_right = 3461.68
 margin_bottom = 40.0
@@ -144,7 +195,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect20" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect20" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 3541.2
 margin_right = 3645.2
 margin_bottom = 40.0
@@ -154,7 +205,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect21" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect21" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 3726.51
 margin_right = 3830.51
 margin_bottom = 40.0
@@ -164,7 +215,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect22" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect22" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 3910.03
 margin_right = 4014.04
 margin_bottom = 40.0
@@ -174,7 +225,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect23" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect23" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 4100.69
 margin_right = 4204.69
 margin_bottom = 40.0
@@ -184,7 +235,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect24" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect24" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 4284.21
 margin_right = 4388.21
 margin_bottom = 40.0
@@ -194,7 +245,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect25" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect25" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 4481.99
 margin_right = 4585.99
 margin_bottom = 40.0
@@ -204,7 +255,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect26" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect26" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 4665.52
 margin_right = 4769.52
 margin_bottom = 40.0
@@ -214,7 +265,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect27" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect27" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 4856.17
 margin_right = 4960.17
 margin_bottom = 40.0
@@ -224,7 +275,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect28" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect28" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 5039.69
 margin_right = 5143.69
 margin_bottom = 40.0
@@ -234,7 +285,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect29" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect29" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 5225.0
 margin_right = 5329.0
 margin_bottom = 40.0
@@ -244,7 +295,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect30" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect30" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 5408.53
 margin_right = 5512.53
 margin_bottom = 40.0
@@ -254,7 +305,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect31" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect31" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 5599.18
 margin_right = 5703.18
 margin_bottom = 40.0
@@ -264,7 +315,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect32" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect32" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 5782.7
 margin_right = 5886.7
 margin_bottom = 40.0
@@ -274,7 +325,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect33" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect33" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 5969.82
 margin_right = 6073.82
 margin_bottom = 40.0
@@ -284,7 +335,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect34" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect34" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 6153.34
 margin_right = 6257.34
 margin_bottom = 40.0
@@ -294,7 +345,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect35" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect35" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 6344.0
 margin_right = 6448.0
 margin_bottom = 40.0
@@ -304,7 +355,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect36" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect36" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 6527.52
 margin_right = 6631.52
 margin_bottom = 40.0
@@ -314,7 +365,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect37" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect37" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 6712.83
 margin_right = 6816.83
 margin_bottom = 40.0
@@ -324,7 +375,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect38" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect38" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 6896.35
 margin_right = 7000.35
 margin_bottom = 40.0
@@ -334,7 +385,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect39" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect39" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 7087.01
 margin_right = 7191.01
 margin_bottom = 40.0
@@ -344,7 +395,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect40" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect40" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 7270.53
 margin_right = 7374.53
 margin_bottom = 40.0
@@ -354,7 +405,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect41" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect41" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 7468.31
 margin_right = 7572.31
 margin_bottom = 40.0
@@ -364,7 +415,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect42" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect42" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 7651.83
 margin_right = 7755.83
 margin_bottom = 40.0
@@ -374,7 +425,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect43" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect43" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 7842.49
 margin_right = 7946.49
 margin_bottom = 40.0
@@ -384,7 +435,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect44" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect44" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 8026.01
 margin_right = 8130.01
 margin_bottom = 40.0
@@ -394,7 +445,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect45" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect45" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 8211.32
 margin_right = 8315.32
 margin_bottom = 40.0
@@ -404,7 +455,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect46" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect46" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 8394.84
 margin_right = 8498.84
 margin_bottom = 40.0
@@ -414,7 +465,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect47" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect47" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 8585.5
 margin_right = 8689.5
 margin_bottom = 40.0
@@ -424,7 +475,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect48" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect48" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 8769.02
 margin_right = 8873.02
 margin_bottom = 40.0
@@ -434,7 +485,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect49" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect49" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 8953.32
 margin_right = 9057.32
 margin_bottom = 40.0
@@ -444,7 +495,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect50" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect50" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 9136.84
 margin_right = 9240.84
 margin_bottom = 40.0
@@ -454,7 +505,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect51" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect51" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 9327.5
 margin_right = 9431.5
 margin_bottom = 40.0
@@ -464,7 +515,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect52" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect52" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 9511.02
 margin_right = 9615.02
 margin_bottom = 40.0
@@ -474,7 +525,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect53" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect53" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 9696.33
 margin_right = 9800.33
 margin_bottom = 40.0
@@ -484,7 +535,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect54" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect54" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 9879.85
 margin_right = 9983.85
 margin_bottom = 40.0
@@ -494,7 +545,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect55" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect55" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 10070.5
 margin_right = 10174.5
 margin_bottom = 40.0
@@ -504,7 +555,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect56" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect56" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 10254.0
 margin_right = 10358.0
 margin_bottom = 40.0
@@ -514,7 +565,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect57" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect57" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 10451.8
 margin_right = 10555.8
 margin_bottom = 40.0
@@ -524,7 +575,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect58" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect58" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 10635.3
 margin_right = 10739.3
 margin_bottom = 40.0
@@ -534,7 +585,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect59" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect59" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 10826.0
 margin_right = 10930.0
 margin_bottom = 40.0
@@ -544,7 +595,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect60" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect60" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 11009.5
 margin_right = 11113.5
 margin_bottom = 40.0
@@ -554,7 +605,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect61" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect61" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 11194.8
 margin_right = 11298.8
 margin_bottom = 40.0
@@ -564,7 +615,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect62" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect62" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 11378.3
 margin_right = 11482.3
 margin_bottom = 40.0
@@ -574,7 +625,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect63" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect63" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 11569.0
 margin_right = 11673.0
 margin_bottom = 40.0
@@ -584,7 +635,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadingRect64" type="ColorRect" parent="Loading Bar"]
+[node name="LoadingRect64" type="ColorRect" parent="SelectedMinigame/Loading Bar"]
 margin_left = 11752.5
 margin_right = 11856.5
 margin_bottom = 40.0
@@ -594,75 +645,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectedMinigame" type="Control" parent="."]
-margin_left = -2.0
-margin_top = 1.0
-margin_right = 1024.0
-margin_bottom = 603.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="SelectedMinigame"]
-margin_left = 298.0
-margin_top = 157.0
-margin_right = 717.0
-margin_bottom = 414.0
-color = Color( 0.176471, 0.176471, 0.176471, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MinigameIcon" type="Sprite" parent="SelectedMinigame"]
-position = Vector2( 506.597, 283.987 )
-scale = Vector2( 0.38, 0.38 )
-texture = ExtResource( 2 )
-
 [node name="SelectionTitle" type="RichTextLabel" parent="."]
-margin_right = 1024.0
-margin_bottom = 85.0
-custom_fonts/normal_font = SubResource( 2 )
+margin_left = 320.0
+margin_top = 32.0
+margin_right = 704.0
+margin_bottom = 96.0
+theme = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "[center]Minigame Selection"
+bbcode_text = "[rainbow freq=0.1 sat=0.7 val=1]Minigame Selection[/rainbow]"
 text = "Minigame Selection"
+fit_content_height = true
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MinigameSummaryBox" type="Control" parent="."]
-margin_top = 2.82837
-margin_right = 1020.0
-margin_bottom = 601.828
+visible = false
+margin_top = 175.362
+margin_right = 1024.0
+margin_bottom = 760.362
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="MinigameSummaryBox"]
-margin_left = -795.0
+margin_left = 128.0
 margin_top = 440.0
-margin_right = 1815.0
-margin_bottom = 1395.0
-color = Color( 0.168627, 0.168627, 0.168627, 1 )
+margin_right = 896.0
+margin_bottom = 544.0
+color = Color( 0.0392157, 0.266667, 0.368627, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MinigameSummary" type="RichTextLabel" parent="MinigameSummaryBox"]
-margin_top = 468.385
-margin_right = 1024.0
-margin_bottom = 582.385
-custom_fonts/normal_font = SubResource( 3 )
-bbcode_enabled = true
-bbcode_text = "[center]Race through the track and get to the end first!"
+[node name="MinigameSummary" type="Label" parent="MinigameSummaryBox"]
+margin_left = 128.0
+margin_top = 440.0
+margin_right = 896.0
+margin_bottom = 544.0
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
 text = "Race through the track and get to the end first!"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
+autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/SelectMinigameDisplay = SubResource( 4 )
+anims/SelectMinigameDisplay = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 513.064, 299.702 )

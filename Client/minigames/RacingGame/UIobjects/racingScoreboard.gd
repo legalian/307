@@ -7,7 +7,7 @@ var player_list
 
 func _ready():
 	set_process(true)
-	player_list = find_node("PlayerList")
+	player_list = find_node("Playerlist")
 	self.visible = false;
 
 	

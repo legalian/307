@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var spin
 var curSpin
@@ -7,7 +7,7 @@ var speed;
 var spinSet = 0;
 var spinCount = 0;
 var done = false;
-onready var wheel = get_node("World/WheelContainer/Wheel");
+onready var wheel = find_node("Wheel");
 var player
 var world_type = 'map_selection'
 # Declare member variables here. Examples:
@@ -17,8 +17,6 @@ var world_type = 'map_selection'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("World/Raccoon");
-	get_node("World/Raccoon/Char/Skeleton2D/Hip/Torso/LeftArm/LeftHand/LeftHandPoint/Gun").visible = false;
 	set_process(false)
 	self.visible = false;
 
@@ -39,10 +37,13 @@ func _process(delta):
 			frame = frame + 1
 			if(frame == 360):
 				frame = 0;
-			wheel.rotation_degrees = frame;
+			wheel.rect_rotation = frame;
 			curSpin = curSpin - 1
 			spinCount = spinCount - 1
-	if(spinSet == 1 && curSpin <= 0):
+	
+	var early = OS.get_environment("MULTI_USER_TESTING")!=null and "shim" in OS.get_environment("MULTI_USER_TESTING")
+
+	if early or (spinSet == 1 && curSpin <= 0):
 		done = true;
-		self.get_node("World/Camera2D").current = false;
+		self.find_node("Camera2D").current = false;
 		self.visible = false;
