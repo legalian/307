@@ -1,3 +1,47 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 117.904
+height = 3988.96
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 53.5034
+height = 4189.2
 
 [node name="World" type="Node2D"]
+
+[node name="LowerLeft" type="Position2D" parent="."]
+position = Vector2( -2052.41, -1861.23 )
+
+[node name="UpperRight" type="Position2D" parent="."]
+position = Vector2( 1916.88, 2103.61 )
+
+[node name="topborder" type="StaticBody2D" parent="."]
+position = Vector2( -3546.86, -1880.02 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topborder"]
+position = Vector2( 3420.16, -45.7812 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="bottomborder" type="StaticBody2D" parent="."]
+position = Vector2( -4317.74, -3850.04 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomborder"]
+position = Vector2( 4276.49, 6011.25 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="leftborder" type="StaticBody2D" parent="."]
+position = Vector2( 514.507, -523.048 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftborder"]
+position = Vector2( -2597.49, 741.45 )
+shape = SubResource( 2 )
+
+[node name="rightborder" type="StaticBody2D" parent="."]
+position = Vector2( -3972.4, -457.161 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightborder"]
+position = Vector2( 5922.98, 620.991 )
+shape = SubResource( 2 )

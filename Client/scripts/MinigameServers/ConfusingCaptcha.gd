@@ -5,20 +5,19 @@ var gameinstance
 
 var world_map = "Grass";
 var selfPlayerInstance
-var curQuestion = "TEST QUESTION";
+var curQuestion = -1;
+var curArrangement = [0,1,2,3,4,5,6,7,8];
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 	if gameinstance!=null && gameinstance.get('world_type')!='captcha': gameinstance = null
+	if gameinstance!=null: gameinstance.setArrangement(curQuestion,curArrangement)
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "syncUpdate")
 	_timer.set_wait_time(0.1)#10 rpc updates per second
 	_timer.set_one_shot(false) # Make sure it loops
 	_timer.start()
-
-
-
 
 func spawn(x, y):
 	rpc_id(1,"spawn",x,y)
@@ -28,15 +27,19 @@ func syncUpdate():
 	if players[0].playerID in gameinstance.players:
 		rpc_unreliable_id(1,"syncUpdate",gameinstance.players[players[0].playerID].pack())
 
-remote func questionText(textOfQuestion):
-		curQuestion = textOfQuestion;
-		
+remote func questionText(questionIndex,arrangement):
+	#print("yeah yeah yeah yeah yeah yeah eyah eyah ")
+	assert(gameinstance!=null)
+	curQuestion = questionIndex;
+	curArrangement = arrangement
+	gameinstance.setArrangement(curQuestion,curArrangement)
 
 remote func frameUpdate(s_players, time):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
 		if gameinstance!=null && gameinstance.get('world_type')!='captcha': gameinstance = null
 		if gameinstance==null: return
+		gameinstance.setArrangement(curQuestion,curArrangement)
 	var visited = []
 
 	if gameinstance.world == null:
