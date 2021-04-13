@@ -47,9 +47,10 @@ func _process(delta):
 		if player==null: return
 		camera = player.get_node("Camera")
 		player.get_node("Camera").current = true;
-		
+		AudioPlayer.play_music("res://audio/music/little idea.ogg")
 		if camera==null: return
 	if(world.visible == false):
+		
 		world.visible = true;
 	#var ctr = camera.global_rotation
 	#var xhalf = get_viewport().size.x/2
