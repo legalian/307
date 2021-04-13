@@ -118,7 +118,7 @@ func _send_rpc_update():
 	for p in players:
 		if(p.dummy == 0):
 			#rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
-			rpc_unreliable_id(p.playerID,"frameUpdate", player_frame, roundTime);
+			rpc_unreliable_id(p.playerID,"frameUpdate", player_frame,maxRoundTime if roundTime==null else roundTime);
 
 func spawn_id(x,y,player_id):
 	if (status.has(player_id)):
