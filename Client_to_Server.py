@@ -82,7 +82,7 @@ class Map:
 				if obj['___important'] and '___important' not in propmatches: continue
 				# if obj['___type']=='node': print("blah",{k:v for k,v in obj.items() if k!='___lines'})
 				if all(obj.get(k)==v for k,v in propmatches.items()):
-					# if obj['___type']=='node': print("MATCHED",parentpath,"FOR",{k:v for k,v in obj.items() if k!='___lines'})
+					#if obj['___type']=='node': print("MATCHED",parentpath,"FOR",{k:v for k,v in obj.items() if k!='___lines'})
 					if obj['___type']=='sub_resource':
 						if path not in self.exmaps: self.exmaps[path] = {}
 						if obj['id'] not in self.exmaps[path]:
@@ -132,16 +132,16 @@ class Map:
 		markImportant({'___type':'node','type':'"CollisionShape2D"'})
 		res = None
 		if parentpath!=None: res = props.pop(findMatch({'___type':'node','parent':None}))
-		else:
-			props[findMatch({'___type':'node','parent':None})]['___lines']['script'] = 'ExtResource( 1 )'
-			props.append(ODict([
-				('___type','ext_resource'),
-				('___lines',ODict()),
-				('___important',True),
-				('path','"'+savedir.replace('Server/','res://')+'World.gd"'),
-				('type','"Script"'),
-				('id','1'),
-			]))
+		# else:
+		# 	props[findMatch({'___type':'node','parent':None})]['___lines']['script'] = 'ExtResource( 1 )'
+		# 	props.append(ODict([
+		# 		('___type','ext_resource'),
+		# 		('___lines',ODict()),
+		# 		('___important',True),
+		# 		('path','"'+savedir.replace('Server/','res://')+'World.gd"'),
+		# 		('type','"Script"'),
+		# 		('id','1'),
+		# 	]))
 		inspr = []
 		for obj in props:
 			if obj['___important']:

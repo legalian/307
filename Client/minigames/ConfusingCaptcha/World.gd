@@ -13,7 +13,8 @@ var camera = null
 var world = null
 var server = null
 var dropFinished = false;
-
+var curQuestion = -1;
+var curArrangement = [0,1,2,3,4,5,6,7,8];
 
 func _ready():
 	minigame = "CAPTCHA"
@@ -21,13 +22,32 @@ func _ready():
 	get_node("minigameselection")._Select_Minigame(1);
 
 func load_map(map):
-	print(map)
+	print(map," is the selected map")
 	world = preload("res://minigames/ConfusingCaptcha/World-Grass.tscn").instance()
 	assert(world != null)
 	add_child(world)
 	world.visible = false;
 	set_process(true)
+	setArrangement(curQuestion,curArrangement)
 
+func setArrangement(question_number,arrangement):
+	if question_number==-1: return
+	curQuestion = question_number
+	curArrangement = arrangement
+	if get_node_or_null('World')==null: return
+	var tiles = [
+		$World/R1C1,$World/R1C2,$World/R1C3,
+		$World/R2C1,$World/R2C2,$World/R2C3,
+		$World/R3C1,$World/R3C2,$World/R3C3,
+	]
+	for x in range(9):
+		print(question_number," ",tiles[x].frames.get_animation_names())
+		print(x,tiles[x].frames.get_animation_names()[question_number])
+		print(arrangement[x])
+		#tiles[x].play(tiles[x].frames.get_animation_names()[question_number])
+		tiles[x].animation = tiles[x].frames.get_animation_names()[question_number]
+		tiles[x].set_frame(arrangement[x])
+		#tiles[x].stop()
 
 func _process(delta):
 	if world==null: return;

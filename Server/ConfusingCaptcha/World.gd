@@ -8,15 +8,12 @@ var status = {}
 var ingame = {}
 var curRound = 1
 var totalRounds = 5
-var roundTime = 20
+var roundTime = null;
 var maxRoundTime = 20;
-var questionText = "Find the image with cars in it!"
+var questionIndex = 0;
+var total_questions = 1;
 
-#var bullets = {}
-var selected = {}
-
-enum SelectedSquares {R1C1, R2C1, R3C1, R1C2, R2C2, R3C2, R1C3, R2C3, R3C3, NONE}
-#format is column, row.  21 = 2nd row 1st column. NONE represents not currently being in any column. 
+var arrangement = [0,1,2,3,4,5,6,7,8]
 
 var mapSelect = "nonmap";
 
@@ -28,6 +25,46 @@ var mapRoll;
 
 var debug_id = 1010101010
 
+func shuffleList(list):
+	var shuffledList = [] 
+	var indexList = range(list.size())
+	for i in range(list.size()):
+		var x = randi()%indexList.size()
+		shuffledList.append(list[indexList[x]])
+		indexList.remove(x)
+	return shuffledList
+
+
+func _ready():
+	world = preload("res://ConfusingCaptcha/World-Grass.tscn").instance()
+	assert(world != null)
+	add_child(world)
+	var _timer = Timer.new()
+	add_child(_timer)
+	_timer.connect("timeout", self, "_send_rpc_update")
+	_timer.set_wait_time(0.1)#10 rpc updates per second
+	_timer.set_one_shot(false) # Make sure it loops
+	_timer.start()
+	if "confusingcaptcha_shim" == OS.get_environment("MULTI_USER_TESTING"):
+		spawn_id(0,0,debug_id);
+		
+	var roundTimer = Timer.new();
+	add_child(roundTimer);
+	roundTimer.connect("timeout", self, "timeTick");
+	roundTimer.set_wait_time(1);
+	roundTimer.set_one_shot(false)
+	roundTimer.start();
+
+
+func timeTick():
+	if(roundTime != null):
+		roundTime = roundTime - 1;
+		if(roundTime == 0):
+			endRound();
+	else:
+		roundTime = maxRoundTime
+		startRound()
+
 func nextRound():
 	curRound = curRound + 1
 	startRound()
@@ -35,31 +72,27 @@ func nextRound():
 func startRound():
 	#start timer again, change images, etc. 
 	roundTime = maxRoundTime
-	var roundTimer = Timer.new();
-	add_child(roundTimer);
-	roundTimer.connect("timeout", self, "timeTick");
-	roundTimer.set_wait_time(1);
-	roundTimer.set_one_shot(false)
-	roundTimer.start();
 	for p in players:
 		if(p.dummy == 0):
 			#rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
-			rpc_unreliable_id(p.playerID,"questionText", questionText)
-
-
+			randomize()
+			questionIndex = randi()%total_questions
+			arrangement = shuffleList(arrangement)
+			rpc_id(p.playerID,"questionText",questionIndex,arrangement)
 
 func endRound():
-	pass;
-	#eliminate players who are on wrong selection, end game/crown winner if someone is left. 
+	for player in ingame.values():
+		var ofs = player.position-$World/LowerLeft.position
+		var dis = $World/UpperRight.position-$World/LowerLeft.position
+		var choice = floor(ofs.x/(dis.x/3))+3*floor(ofs.y/(dis.y/3))
+		if arrangement[choice]!=0:
+			_on_die(player)
+	nextRound()
 
-func updateSelected(playerID):
-	#use position? or something to calculate which square they should be in within this function
-	selected[playerID] = SelectedSquares.R1C1;
 
 func add_player(newplayer):
 	.add_player(newplayer)
 	status[newplayer.playerID] = "UNSPAWNED"
-	selected[newplayer.playerID] = SelectedSquares.NONE
 	print("adding player: ",newplayer)
 	spawn_id(0,0, newplayer.playerID);
 
@@ -73,27 +106,8 @@ func remove_player(player_id):
 		ingame[player_id].queue_free()
 		ingame.erase(player_id)
 
-func timeTick():
-	if(roundTime != null):
-		roundTime = roundTime - 1;
-		if(roundTime == 0):
-			endRound();
-
-func _ready():
-	world = preload("res://ConfusingCaptcha/World-Grass.tscn").instance()
-	assert(world != null)
-	add_child(world)
 
 
-	var _timer = Timer.new()
-	add_child(_timer)
-	_timer.connect("timeout", self, "_send_rpc_update")
-	_timer.set_wait_time(0.1)#10 rpc updates per second
-	_timer.set_one_shot(false) # Make sure it loops
-	_timer.start()
-	if "confusingcaptcha_shim" == OS.get_environment("MULTI_USER_TESTING"):
-		spawn_id(0,0,debug_id);
-	
 func _send_rpc_update():
 	var player_frame = []
 	for gg in ingame.values(): player_frame.append(gg.pack())
@@ -115,7 +129,6 @@ func spawn_id(x,y,player_id):
 	ingame[player_id] = CCPlayer.instance()
 	ingame[player_id].id = player_id
 	ingame[player_id].position = Vector2(x,y)
-	updateSelected(player_id);
 	
 	world.add_child(ingame[player_id])
 	
@@ -128,7 +141,6 @@ remote func syncUpdate(package):
 	var player_id = get_tree().get_rpc_sender_id()
 	if (ingame.has(player_id)):
 		ingame[player_id].unpack(package)
-		updateSelected(player_id);
 
 func _on_die(player):
 	for oplayer in players: 
