@@ -6,7 +6,7 @@
 *.cpp text
 *.c text
 *.h text
-*.gd text
+*.gd text linguist-language=GDScript
 *.cs text
 
 # Declare files that will always have CRLF line endings on checkout.
