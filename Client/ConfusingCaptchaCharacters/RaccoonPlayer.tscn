@@ -24,13 +24,12 @@ font_data = ExtResource( 7 )
 script = ExtResource( 2 )
 
 [node name="Body" parent="." instance=ExtResource( 1 )]
+selfscale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.261574, 0.184528 )
 rotation = 1.56123
 shape = SubResource( 1 )
-
-[node name="Camera" type="Camera2D" parent="."]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -82,3 +81,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 3, 3 )

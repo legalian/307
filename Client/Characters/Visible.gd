@@ -9,6 +9,7 @@ var lefthand = null
 var righthand = null
 var playback = null
 var curhatindex = 0
+export var selfscale = 1.0
 var HatLocation = [null, 
 "res://Hats/Tophat.tscn",
 "res://Hats/Whitehat.tscn",
@@ -32,6 +33,7 @@ func hotswap(index):
 	get_parent().remove_child(self)
 	var newinst = load(avatars[index]).instance()
 	newinst.name = name
+	newinst.selfscale = selfscale
 	newinst.position = oldloc
 	newinst.set_Hat(curhatindex)
 	queue_free()
@@ -58,7 +60,22 @@ func _ready():
 func _process(_delta):
 	var glt = get_global_transform_with_canvas()
 	glt.origin = Vector2(0,0)
+	glt = glt.scaled(Vector2(selfscale,selfscale))
 	get_node("Char").transform = glt.affine_inverse()
+
+
+func set_walk_vel(vel):
+	#gpos.y/=.44
+	var offsetrot = -get_viewport().canvas_transform.scaled(Vector2(.44,1)).get_rotation()
+	vel = vel.rotated(-offsetrot)
+	
+	var rot = -vel.angle()
+	
+	animPlayer.set("parameters/lookX/seek_position", .5+.5*cos(rot))
+	animPlayer.set("parameters/lookY/seek_position", .5+.5*sin(rot))
+	animPlayer.set("parameters/StateMachine/WalkCycle/Direction/blend_amount", min(1,max(-1,vel[0])))
+	animPlayer.set("parameters/StateMachine/WalkCycle/Speed/scale", vel.length()/60)
+
 	
 func set_look_pos(gpos,vel):
 	#gpos.y/=.44

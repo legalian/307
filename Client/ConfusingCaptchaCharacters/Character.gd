@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 300
+var speed = 500
 var friction = 0.2
 var acceleration = 0.3
 var velocity = Vector2.ZERO
@@ -52,9 +52,21 @@ func unpack(package):
 		$Body.set_Hat(get_node("/root/Server").get_player(package['id']).hat)
 
 func _process(delta):
-	lookoffset = get_parent().global_transform.xform_inv(get_global_mouse_position()) - global_position
+	#lookoffset = get_parent().global_transform.xform_inv(get_global_mouse_position()) - global_position
 	#$Target.global_position = get_global_mouse_position()
-	$Body.set_look_pos(get_global_mouse_position(),velocity)
+	$Body.set_walk_vel(velocity)
+	var transf = (get_viewport().canvas_transform*Transform2D(0,$Camera.position)).affine_inverse()
+	var ll = transf.xform(Vector2(0,0))
+	var ur = transf.xform(get_viewport().size)
+	var ur_limit = get_node("../UpperRight").global_position
+	var ll_limit = get_node("../LowerLeft").global_position
+	var x = 0
+	var y = 0
+	if ll_limit.x>ll.x: x = ll_limit.x-ll.x
+	if ll_limit.y>ll.y: y = ll_limit.y-ll.y
+	if ur_limit.x<ur.x: x = ur_limit.x-ur.x
+	if ur_limit.y<ur.y: y = ur_limit.y-ur.y
+	$Camera.position = Vector2(x,y)
 	
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
@@ -68,7 +80,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("rotate_left"):input_rotvel -= 1
 	if Input.is_action_pressed("rotate_right"):input_rotvel += 1
 
-	input_velocity = (input_velocity.normalized() * speed).rotated(rotation)
+	input_velocity = (input_velocity.normalized() * speed)#.rotated(rotation)
 	input_rotvel = input_rotvel * rotspeed
 
 	# If there's input, accelerate to the input velocity

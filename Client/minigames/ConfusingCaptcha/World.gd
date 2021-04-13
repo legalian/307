@@ -30,6 +30,7 @@ func load_map(map):
 
 
 func _process(delta):
+	if world==null: return;
 	if(get_node("minigameselection").done == true && cameraSet == false):
 		camera = null;
 		cameraSet = true;
@@ -50,15 +51,15 @@ func _process(delta):
 		if camera==null: return
 	if(world.visible == false):
 		world.visible = true;
-	var ctr = camera.global_rotation
-	var xhalf = get_viewport().size.x/2
-	var yhalf = get_viewport().size.y/2
-	var pret = Transform2D(Vector2(1,0),Vector2(0,.44),Vector2(xhalf,yhalf))*Transform2D(-ctr,Vector2(0,0))
-	var post = Transform2D(Vector2(1,0),Vector2(0,1),Vector2(-xhalf,-yhalf))
+	#var ctr = camera.global_rotation
+	#var xhalf = get_viewport().size.x/2
+	#var yhalf = get_viewport().size.y/2
+	#var pret = Transform2D(Vector2(1,0),Vector2(0,.44),Vector2(xhalf,yhalf))*Transform2D(-ctr,Vector2(0,0))
+	#var post = Transform2D(Vector2(1,0),Vector2(0,1),Vector2(-xhalf,-yhalf))
 	#get_viewport().canvas_transform = pret*get_viewport().canvas_transform*post
 	#var t = Transform2D()
 	#t.x *= 4
 	#t.y *= 4
 	#get_viewport().canvas_transform = t*get_viewport().canvas_transform
-	rotation = ctr
-	world.rotation = -ctr
+	#rotation = ctr
+	#world.rotation = -ctr
