@@ -63,7 +63,12 @@ func _process(delta):
 	if Input.is_action_pressed("move_up"):input_dict["accelerating"] -= 1
 	if Input.is_action_pressed("use_powerup"):input_dict["usingPowerup"] = true
 	
-	progress = path.curve.get_closest_offset(position)/path_length
+	var dist = path.curve.get_closest_offset(position)
+	progress = dist/path_length
+	
+	$Arrowbase.visible = server.players[0].playerID == id
+	$Arrowbase.pathdir = (path.curve.interpolate_baked(dist+6)-path.curve.interpolate_baked(dist-6)).angle()+PI/2
+	
 	var potential_checkpoint = progress - fmod(progress, checkpoint_div)
 	if is_equal_approx(potential_checkpoint, checkpoint + checkpoint_div):
 		checkpoint = potential_checkpoint

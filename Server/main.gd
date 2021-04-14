@@ -357,7 +357,7 @@ func _Peer_Connected(player_id):
 		"racing_shim":preload("res://RacingGame/World.tscn"),
 		"demoderby_shim":preload("res://DemoDerby/World.tscn"),
 		"confusingcaptcha_shim":preload("res://ConfusingCaptcha/World.tscn")
-		}
+	}
 		#,}
 	
 	print("multi_user_testing = " + str(multi_user_testing))
