@@ -120,7 +120,20 @@ remote func create_party(packed):
 	send_party_code_to_client(player_id, newparty.code)
 	print("\t<<< create_party()\n")
 
-remote func join_party(var partyID,packed):
+remote func leave_party(var partyID, packed):
+	print("\n\t>>> leave_party()")
+	var player_id = get_tree().get_rpc_sender_id()
+	var party_id = partyHandler.get_party_by_player(player_id)
+	print("party_id: " + str(party_id))
+	if (party_id != null):
+		print("Sending leave party to partyhandler")
+		var joined_party = partyHandler.get_party_by_player(player_id)
+		joined_party.minigame.remove_player(player_id)
+		partyHandler.leave_party(player_id)
+		print("Updated playerlist: " + str(joined_party.playerIDs))
+		unintroduce(player_id, joined_party.playerIDs)
+
+remote func join_party(var partyID, packed):
 	print("\n\t>>> join_party()")
 	var player_id = get_tree().get_rpc_sender_id()
 	if (partyHandler.parties.has(str(partyID)) &&

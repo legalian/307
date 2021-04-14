@@ -51,6 +51,7 @@ func join_party_by_id(var playerID, var partyID):
 		return parties.get(str(invalid_party_id))
 
 func leave_party(var playerID):
+	print("\n\t>>> leaving party in PartyHandler")
 	if (player_objects.has(playerID)):
 		print("Player " + str(playerID) + " is leaving party " + str(player_objects.get(playerID).party.code))
 		player_objects.get(playerID).on_disconnect()

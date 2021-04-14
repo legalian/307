@@ -47,6 +47,7 @@ func _on_Button_Back_pressed():
 	#generalserver.attemptEnterGame()
 	print("need to implement leave party functionality")
 	get_tree().change_scene("Main.tscn")
+	generalserver.leave_party()
 
 
 func _on_EnterGameButton_pressed():
