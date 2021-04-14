@@ -82,6 +82,8 @@ func join_party(var partyID):
 func leave_party():
 	if (network.get_connection_status() == network.CONNECTION_CONNECTED):
 		if (str(partycode) != "undefined"):
+			players.clear()
+			players.append(selfplayer)
 			rpc_id(1, "leave_party", partycode,selfplayer.pack())
 		else:
 			print("Cannot leave party that is undefined")
