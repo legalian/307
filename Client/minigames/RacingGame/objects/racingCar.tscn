@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/car.tscn" type="PackedScene" id=1]
 [ext_resource path="res://minigames/RacingGame/objects/racingCar.gd" type="Script" id=2]
 [ext_resource path="res://minigames/RacingGame/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://minigames/RacingGame/objects/Arrowbase.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 90.465
@@ -23,7 +24,25 @@ damping = 500.0
 scale = 10.0
 color = Color( 0.945098, 1, 0, 1 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "Flash"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.968627, 0.0705882, 0.0705882, 1 ), Color( 0.960784, 0.498039, 0.0509804, 1 ), Color( 0.968627, 0.0705882, 0.0705882, 1 ) ]
+}
+
 [node name="Player" type="KinematicBody2D"]
+rotation = 6.28832
 script = ExtResource( 2 )
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
@@ -48,3 +67,18 @@ lifetime = 0.7
 visibility_rect = Rect2( -100, -50, 200, 300 )
 local_coords = false
 process_material = SubResource( 2 )
+
+[node name="Arrowbase" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 4 )
+
+[node name="Arrow" type="Polygon2D" parent="Arrowbase"]
+visible = false
+modulate = Color( 0.968627, 0.0705882, 0.0705882, 1 )
+position = Vector2( 0, -300 )
+rotation = -0.00513428
+scale = Vector2( 0.999945, 0.440125 )
+polygon = PoolVector2Array( 3.79486, -78.3473, -55.8672, -36.3629, -31.5605, -36.3629, -31.5605, 47.606, 30.3113, 47.606, 30.3113, -38.5725, 51.3035, -38.5725 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arrowbase/Arrow"]
+anims/Flash = SubResource( 3 )

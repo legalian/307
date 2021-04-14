@@ -36,4 +36,3 @@ animations = [ {
 [node name="AnimatedSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "captcha1"
-frame = 1

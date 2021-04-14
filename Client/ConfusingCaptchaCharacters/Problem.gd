@@ -15,7 +15,7 @@ func _ready():
 
 func setQuestion(question):
 	if question>=0:
-		questionText = questions[questions];
+		questionText = questions[question];
 	self.set_text(questionText)
 
 
