@@ -79,6 +79,15 @@ func join_party(var partyID):
 	else:
 		get_tree().change_scene("res://disc_from_serv.tscn")
 
+func leave_party():
+	if (network.get_connection_status() == network.CONNECTION_CONNECTED):
+		if (str(partycode) != "undefined"):
+			rpc_id(1, "leave_party", partycode,selfplayer.pack())
+		else:
+			print("Cannot leave party that is undefined")
+	else:
+		get_tree().change_scene("res://disc_from_serv.tscn")
+
 func cancel_matchmaking():
 	rpc_id(1, "cancel_matchmaking")
 
