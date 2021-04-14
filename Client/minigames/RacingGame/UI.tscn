@@ -12,12 +12,9 @@
 [ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
 [ext_resource path="res://minigames/RacingGame/UIobjects/PowerupIcon.gd" type="Script" id=11]
 [ext_resource path="res://fonts/Countdownglphs.tres" type="DynamicFont" id=12]
+[ext_resource path="res://minigames/RacingGame/Hitfont.tres" type="DynamicFont" id=13]
 
-[sub_resource type="DynamicFont" id=1]
-size = 100
-font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "PlayerHit"
 length = 1.5
 tracks/0/type = "value"
@@ -33,19 +30,19 @@ tracks/0/keys = {
 "values": [ Vector2( 28, -104 ), Vector2( 25.1873, 12.2593 ), Vector2( 25.1873, 12.2593 ), Vector2( 30.8128, -110.563 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 60
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 30
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.6, 0.6, 0.6, 0.392157 )
 border_width_left = 5
 border_width_top = 5
@@ -73,7 +70,7 @@ margin_bottom = 213.0
 rect_pivot_offset = Vector2( 59.9554, 29.7438 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 13 )
 text = "1/2
 "
 align = 2
@@ -92,7 +89,7 @@ margin_bottom = 109.0
 rect_pivot_offset = Vector2( 59.9554, 29.7438 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 13 )
 text = "USER HIT!"
 align = 1
 __meta__ = {
@@ -100,7 +97,7 @@ __meta__ = {
 }
 
 [node name="HitAnim" type="AnimationPlayer" parent="Hit"]
-anims/PlayerHit = SubResource( 2 )
+anims/PlayerHit = SubResource( 1 )
 
 [node name="Control" type="Control" parent="."]
 anchor_left = 1.0
@@ -117,7 +114,7 @@ __meta__ = {
 margin_top = -2.82849
 margin_right = 133.0
 margin_bottom = 102.172
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.0588235, 0.0588235, 1 )
 text = "1ST"
 align = 2
@@ -130,7 +127,7 @@ __meta__ = {
 [node name="numPlayers" type="Label" parent="Control"]
 margin_left = 130.0
 margin_top = 30.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "/20"
 align = 2
@@ -175,14 +172,14 @@ __meta__ = {
 margin_bottom = 34.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 
 [node name="second" type="Label" parent="PanelContainer"]
 margin_top = 48.0
 margin_bottom = 82.0
 size_flags_horizontal = 2
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 valign = 1
 
 [node name="third" type="Label" parent="PanelContainer"]
@@ -190,7 +187,7 @@ margin_top = 97.0
 margin_bottom = 131.0
 size_flags_horizontal = 2
 size_flags_vertical = 14
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 valign = 2
 
 [node name="PowerupContainer" type="Panel" parent="."]
@@ -200,7 +197,7 @@ margin_left = 25.0
 margin_top = -125.0
 margin_right = 125.0
 margin_bottom = -25.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -36,6 +36,7 @@ current = true
 [node name="Target" type="Sprite" parent="."]
 position = Vector2( 511.694, 319.932 )
 scale = Vector2( 0.232647, 0.220887 )
+z_index = 4
 texture = SubResource( 2 )
 script = ExtResource( 4 )
 
