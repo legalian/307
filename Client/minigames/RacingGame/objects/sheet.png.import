@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sheet.svg-305310d0d995d1b55813261fbd8fb3d7.stex"
+path="res://.import/sheet.png-3e9f229e837591bd2d25d14bb421e947.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/RacingGame/objects/sheet.svg"
-dest_files=[ "res://.import/sheet.svg-305310d0d995d1b55813261fbd8fb3d7.stex" ]
+source_file="res://minigames/RacingGame/objects/sheet.png"
+dest_files=[ "res://.import/sheet.png-3e9f229e837591bd2d25d14bb421e947.stex" ]
 
 [params]
 
