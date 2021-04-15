@@ -48,10 +48,12 @@ func _on_UsernameInput_text_changed(new_username):
 
 
 func _on_Button_Back_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	get_tree().change_scene("Main.tscn")
 
 
 func _on_Button_ConfirmUsername_pressed():
+	
 	#print(UsernameInput)
 	#regex.compile("^[A-Za-z]+$") 
 	#var result = regex.search(UsernameInput)
@@ -60,12 +62,15 @@ func _on_Button_ConfirmUsername_pressed():
 	if (UsernameInput.length() >= 3 and UsernameInput.length() <= 20): #and validCharacters):
 		get_node("CurrentName").text = UsernameInput
 		generalserver.selfplayer.username  = UsernameInput
+		AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	else:
 		find_node("UsernameInput").text = "Username is Invalid"
-		print("Username is Invalid")
+		AudioPlayer.play_sfx("res://audio/sfx/hurt.ogg")
+		#print("Username is Invalid")
 
 
 func _on_ChangeAvatar_pressed(AvatarType):
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(AvatarType)
 	AvatarSelected = AvatarType
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
@@ -75,6 +80,7 @@ func _on_ChangeAvatar_pressed(AvatarType):
 	add_child(av,true)
 
 func _on_ChangeHat_pressed(HatType):
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(HatType)
 	HatSelected = HatType
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
@@ -82,6 +88,7 @@ func _on_ChangeHat_pressed(HatType):
 	generalserver.selfplayer.hat = HatSelected
 
 func _on_ChangeVehicle_pressed(VehicleType):
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(AvatarType)
 	VehicleSelected = VehicleType
 	get_node("CurrentVehicles").text = "Vehicle - " + VehicleStyles[VehicleSelected]
@@ -91,6 +98,7 @@ func _on_ChangeVehicle_pressed(VehicleType):
 	
 
 func _on_Button_ChooseVehicle_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	if (VehicleMenuOpen):
 		#get_node("Button_ChooseCharacter").text = "Change"
 		get_node("Vehicle Menu").hide()
@@ -118,6 +126,7 @@ func _set_Vehicle_Selection():
 			currentNode.hide()
 
 func _on_Button_ChooseHat_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	if (HatMenuOpen):
 		#get_node("Button_ChooseCharacter").text = "Change"
 		get_node("Hat Menu").hide()
@@ -144,6 +153,7 @@ func _set_Hat_Selection():
 			
 
 func _on_Button_ChooseCharacter_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	if (AvatarMenuOpen):
 		#get_node("Button_ChooseCharacter").text = "Change"
 		get_node("Avatar Menu").hide()
