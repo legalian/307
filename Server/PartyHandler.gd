@@ -54,8 +54,12 @@ func leave_party(var playerID):
 	print("\n\t>>> leaving party in PartyHandler")
 	if (player_objects.has(playerID)):
 		print("Player " + str(playerID) + " is leaving party " + str(player_objects.get(playerID).party.code))
+		var party_code = str(player_objects.get(playerID).party.code)
 		player_objects.get(playerID).on_disconnect()
 		player_objects.erase(playerID)
+		if (parties[party_code].size() == 0):
+			parties.erase(party_code)
+			codes_in_use.remove(party_code)
 	pass
 
 func generate_code():
