@@ -72,12 +72,12 @@ func nextRound():
 func startRound():
 	#start timer again, change images, etc. 
 	roundTime = maxRoundTime
+	randomize()
+	questionIndex = randi()%total_questions
+	arrangement = shuffleList(arrangement)
 	for p in players:
 		if(p.dummy == 0):
 			#rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
-			randomize()
-			questionIndex = randi()%total_questions
-			arrangement = shuffleList(arrangement)
 			rpc_id(p.playerID,"questionText",questionIndex,arrangement)
 
 func endRound():
