@@ -32,6 +32,7 @@ remote func questionText(questionIndex,arrangement):
 	assert(gameinstance!=null)
 	curQuestion = questionIndex;
 	curArrangement = arrangement
+	print("SETTING ARRANGEMENT ",questionIndex," ",arrangement)
 	gameinstance.setArrangement(curQuestion,curArrangement)
 
 remote func frameUpdate(s_players, time):
