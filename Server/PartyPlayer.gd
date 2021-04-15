@@ -10,7 +10,7 @@ var hat = 0
 var vehicle = 0
 var dummy = 0
 
-var volume = [100,100,100] #Master, Music, SFX
+#var volume = [100,100,100] #Master, Music, SFX
 
 
 func _init(var thisPlayerID, var thisParty):
@@ -38,7 +38,7 @@ func pack():
 			'avatar':avatar,
 			'hat':hat,
 			'vehicle':vehicle,
-			'volume':volume
+			#'volume':volume
 			
 		}
 
@@ -47,7 +47,7 @@ func unpack(packed):
 	avatar = packed['avatar']
 	hat = packed['hat']
 	vehicle = packed['vehicle']
-	volume = packed['volume']
+	#volume = packed['volume']
 
 func equals(var comparePlayer):
 	return playerID == comparePlayer.playerID
