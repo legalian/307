@@ -46,6 +46,7 @@ rotation = 6.28832
 script = ExtResource( 2 )
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
+position = Vector2( -30.3061, 0.155601 )
 rotation = 3.14159
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -78,7 +79,7 @@ modulate = Color( 0.968627, 0.0705882, 0.0705882, 1 )
 position = Vector2( 0, -300 )
 rotation = -0.00513428
 scale = Vector2( 0.999945, 0.440125 )
-polygon = PoolVector2Array( 3.79486, -78.3473, -55.8672, -36.3629, -31.5605, -36.3629, -31.5605, 47.606, 30.3113, 47.606, 30.3113, -38.5725, 51.3035, -38.5725 )
+polygon = PoolVector2Array( 0.161232, -78.9993, -55.8672, -36.3629, -14.9949, -35.2546, -18.5558, 82.0184, 12.1269, 85.7414, 13.6575, -33.3931, 51.3035, -38.5725 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Arrowbase/Arrow"]
 anims/Flash = SubResource( 3 )
