@@ -34,6 +34,7 @@ shape = SubResource( 1 )
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="RoundTime" type="Label" parent="HUD"]
+visible = false
 anchor_top = -0.25
 anchor_right = 1.0
 anchor_bottom = 0.138
@@ -70,6 +71,7 @@ __meta__ = {
 position = Vector2( 9.97348, -3.17749 )
 
 [node name="Problem" type="Label" parent="HUD"]
+visible = false
 margin_left = 151.0
 margin_top = -1.21692
 margin_right = 1026.0
@@ -83,5 +85,4 @@ __meta__ = {
 }
 
 [node name="Camera" type="Camera2D" parent="."]
-current = true
 zoom = Vector2( 3, 3 )

@@ -35,6 +35,18 @@ remote func questionText(questionIndex,arrangement):
 	print("SETTING ARRANGEMENT ",questionIndex," ",arrangement)
 	gameinstance.setArrangement(curQuestion,curArrangement)
 
+remote func endRound(correctTile):
+		selfPlayerInstance.canMove = false;
+		gameinstance.showCorrectness(correctTile);
+		selfPlayerInstance.find_node("Problem").roundEnd()
+
+		#change colors
+
+remote func startNextRound():
+		selfPlayerInstance.canMove = true
+		gameinstance.resetCorrectness()
+		#undo color change
+
 remote func frameUpdate(s_players, time):
 	if gameinstance==null:
 		gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")

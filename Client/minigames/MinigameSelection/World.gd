@@ -5,7 +5,8 @@ var done = false;
 
 var minigameList = [["Racing", "Race Around the Track, Use Power Ups, and Pass All Other Racers To Win!", "res://minigames/MinigameSelection/MinigameSprites/RacingThumbnail.png"],
 ["Battle Royale", "Drop on A Huge Map, Pick Up Weapons, and Eliminate Other Players to be the Last Remaining!", "res://minigames/MinigameSelection/MinigameSprites/BattleRoyale_Icon.png"], 
-["Demolition Derby", "Use Power Ups and Ram into Other Players to be the Last Remaining!", "res://minigames/MinigameSelection/MinigameSprites/CarSelectionPage.png"]
+["Demolition Derby", "Use Power Ups and Ram into Other Players to be the Last Remaining!", "res://minigames/MinigameSelection/MinigameSprites/CarSelectionPage.png"],
+["Confusing Captcha", "Select the correct image for the given question!", "res://minigames/MinigameSelection/MinigameSprites/captcha.jpeg"]
 ]
 var currentMinigame = 0
 

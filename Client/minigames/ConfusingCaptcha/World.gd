@@ -8,18 +8,17 @@ var bullets = {}
 var powerups = {}
 
 var cameraSet = false;
-var startedDrop = false;
 var camera = null
 var world = null
 var server = null
-var dropFinished = false;
 var curQuestion = -1;
 var curArrangement = [0,1,2,3,4,5,6,7,8];
+var tiles;
 
 func _ready():
 	minigame = "CAPTCHA"
-	camera = get_node("minigameselection/Camera2D");
-	get_node("minigameselection")._Select_Minigame(1);
+	#camera = get_node("minigameselection/Camera2D");
+	get_node("minigameselection")._Select_Minigame(3);
 
 func load_map(map):
 	print(map," is the selected map")
@@ -35,7 +34,7 @@ func setArrangement(question_number,arrangement):
 	curQuestion = question_number
 	curArrangement = arrangement
 	if get_node_or_null('World')==null: return
-	var tiles = [
+	tiles = [
 		$World/R1C1,$World/R1C2,$World/R1C3,
 		$World/R2C1,$World/R2C2,$World/R2C3,
 		$World/R3C1,$World/R3C2,$World/R3C3,
@@ -51,6 +50,18 @@ func setArrangement(question_number,arrangement):
 		var tframe = tiles[x].frames.get_frame(tiles[x].animation,tiles[x].frame).get_size()
 		tiles[x].set_scale(Vector2(original_scale.x/tframe.x,original_scale.y/tframe.y))
 		#tiles[x].stop()
+
+func showCorrectness(correctTile):
+	print("\n CORRECT TILE " + correctTile);
+	$World.get_node(correctTile).correct();
+	for tile in tiles:
+		if tile != $World.get_node(correctTile):
+			tile.wrong()
+
+func resetCorrectness():
+	for tile in tiles:
+		tile.reset()
+
 
 func _process(delta):
 	if world==null: return;
@@ -71,6 +82,7 @@ func _process(delta):
 		camera = player.get_node("Camera")
 		player.get_node("Camera").current = true;
 		AudioPlayer.play_music("res://audio/music/little idea.ogg")
+		player.uivisible();
 		if camera==null: return
 	if(world.visible == false):
 		

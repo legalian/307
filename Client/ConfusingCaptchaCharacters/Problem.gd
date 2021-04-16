@@ -1,14 +1,18 @@
 extends Label
 
 var questions = [
-	"how much or how many",
-	"yeah dude yeah",
-	"if it were greater how much less greater it be",
-	"Gustavo"
+	"Pick the motorcycle",
+	"Which of these programs has 38 file descriptors open at the end of execution, including stdin, stdout, and stderr",
+	"Which hair resembles an exponential equation?",
+	"Which number shows the number, 1?"
 ]
+
 
 var questionText = ""
 
+
+func roundEnd():
+	self.set_text("Round Ended!")
 
 func _ready():
 	self.set_text(questionText)

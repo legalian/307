@@ -11,6 +11,8 @@ var rotacceleration = 0.1
 var rotvel = 0
 var lookoffset = Vector2.ZERO
 
+var canMove = 1;
+
 var server = null
 #var gun = null
 #var l_gun = -1;
@@ -44,6 +46,11 @@ func pack():
 		'ly':lookoffset.y
 	}
 
+func uivisible():
+	self.find_node("RoundTime").visible = true;
+	self.find_node("Problem").visible = true;
+	
+
 func unpack(package):
 	if(!setted):
 		position = Vector2(package['x'],package['y'])
@@ -71,10 +78,11 @@ func _process(delta):
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
-	if Input.is_action_pressed("move_right"):input_velocity.x += 1
-	if Input.is_action_pressed("move_left"):input_velocity.x -= 1
-	if Input.is_action_pressed("move_down"):input_velocity.y += 1
-	if Input.is_action_pressed("move_up"):input_velocity.y -= 1
+	if(canMove):
+		if Input.is_action_pressed("move_right"):input_velocity.x += 1
+		if Input.is_action_pressed("move_left"):input_velocity.x -= 1
+		if Input.is_action_pressed("move_down"):input_velocity.y += 1
+		if Input.is_action_pressed("move_up"):input_velocity.y -= 1
 
 	var input_rotvel = 0
 	if Input.is_action_pressed("rotate_left"):input_rotvel -= 1

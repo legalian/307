@@ -1,17 +1,19 @@
 extends "res://GameBase.gd"
 func systemname():
 	return "ConfusingCaptcha"
-	
+
 var CCPlayer = preload("res://ConfusingCaptcha/CC_Player.tscn")
 	
 var status = {}
 var ingame = {}
 var curRound = 1
-var totalRounds = 5
+var totalRounds = 4;
 var roundTime = null;
-var maxRoundTime = 20;
+var maxRoundTime = 30;
 var questionIndex = 0;
-var total_questions = 1;
+var total_questions = 4;
+var tileCorrespondance = ["R1C1", "R1C2", "R1C3","R2C1", "R2C2", "R2C3", "R3C1", "R3C2", "R3C3"]
+var correctTile = tileCorrespondance[0]
 
 var arrangement = [0,1,2,3,4,5,6,7,8]
 
@@ -32,7 +34,8 @@ func shuffleList(list):
 		var x = randi()%indexList.size()
 		shuffledList.append(list[indexList[x]])
 		indexList.remove(x)
-	return shuffledList
+	return shuffledList;
+
 
 
 func _ready():
@@ -58,9 +61,10 @@ func _ready():
 
 func timeTick():
 	if(roundTime != null):
-		roundTime = roundTime - 1;
+		if(roundTime > 0):
+			roundTime = roundTime - 1;
 		if(roundTime == 0):
-			endRound();
+			processEndedRound();
 	else:
 		roundTime = maxRoundTime
 		startRound()
@@ -79,6 +83,10 @@ func startRound():
 		if(p.dummy == 0):
 			#rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
 			rpc_id(p.playerID,"questionText",questionIndex,arrangement)
+			rpc_id(p.playerID, "startNextRound");
+	for i in range(0, arrangement.size()):
+		if arrangement[i] == 0:
+			correctTile = tileCorrespondance[i];
 
 func endRound():
 	for player in ingame.values():
@@ -88,6 +96,17 @@ func endRound():
 		if arrangement[choice]!=0:
 			_on_die(player)
 	nextRound()
+
+func processEndedRound():
+	for p in players:
+		if p.dummy == 0:
+			rpc_id(p.playerID, "endRound", correctTile)
+	var endRoundTimer = Timer.new();
+	endRoundTimer.connect("timeout", self, "endRound")
+	endRoundTimer.one_shot = true;
+	add_child(endRoundTimer);
+	endRoundTimer.start(5.0)
+	
 
 
 func add_player(newplayer):
