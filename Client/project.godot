@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="307 Project"
+config/name="Late to the Stage"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 config/git_copy_prot=111111110
