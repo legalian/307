@@ -1,16 +1,13 @@
 extends Node
 
-var generalserver
-var specificserver
-
-onready var matchmaking_label = get_node("PanelContainer/CenterContainer/VBoxContainer/Label")
+var matchmaking_label
+var loadRight
 
 func _ready():
-	generalserver = get_node("/root/Server")
-	specificserver = generalserver.get_children()[0]
-	
+	matchmaking_label = get_node("PanelContainer/CenterContainer/VBoxContainer/Label")
 	matchmaking_label.visible_characters = 11
 	
+	loadRight = true
 	var _timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "loadingAnim")
@@ -18,7 +15,6 @@ func _ready():
 	_timer.set_one_shot(false)
 	_timer.start()
 
-var loadRight = true
 
 func loadingAnim():
 	if (loadRight):
@@ -35,8 +31,11 @@ func loadingAnim():
 
 func _on_Button_pressed():
 	# Cancel matchmaking on server side
-	generalserver.cancel_matchmaking()
+	Server.cancel_matchmaking()
 	# Kick player back to beginning
-	get_tree().change_scene("res://minigames/PartyScreen/World.tscn")
+	if Server.get_child_count() > 0:
+		get_tree().change_scene("res://minigames/PartyScreen/World.tscn")
+	else:
+		get_tree().change_scene("res://Main.tscn")
 	# Still need to cancel server-side matchmaking.
 	pass # Replace with function body.

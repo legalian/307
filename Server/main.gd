@@ -166,6 +166,18 @@ remote func join_party(var partyID, packed):
 		return
 	
 	print("\t<<< join_party()\n")
+	
+remote func quickplay(packed):
+	print("\n\t>>> quickplay()")
+	var player_id = get_tree().get_rpc_sender_id()
+	print("Creating solo party...")
+	var newparty = partyHandler.new_party(player_id)
+	partyHandler.player_objects.get(player_id).unpack(packed)
+	
+	matchmaking_pool.append(newparty)
+	matchmake_pool()
+	
+	print("\t<<< quickplay()\n")
 
 func send_party_code_to_client(var clientID, var partyID):
 	print("\n\t>>> send_party_code_to_client()")

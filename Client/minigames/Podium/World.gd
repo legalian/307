@@ -1,6 +1,5 @@
 extends Node
 
-var generalserver
 var Playerlist
 var SelfPlayer
 var TopPlayers
@@ -10,9 +9,8 @@ var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generalserver = get_node("/root/Server")
-	SelfPlayer = generalserver.selfplayer
-	Playerlist = generalserver.players+[]
+	SelfPlayer = Server.selfplayer
+	Playerlist = Server.players+[]
 	_SortPlayers()
 	_SetScene()
 	

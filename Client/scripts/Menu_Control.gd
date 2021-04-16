@@ -43,6 +43,8 @@ func _on_Button_Exit_pressed():
 
 func _on_Button_Start_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
+	Server.quickplay()
+	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
 
 func _on_Button_Settings_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
