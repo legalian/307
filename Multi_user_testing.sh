@@ -3,7 +3,7 @@ associatedCount=('4'     '4'     '4'         '4'      '2'            '2'      '2
 
 #use "nonpowerups", "nonmap" to not make a choice
 powerups=('speed' 'missile' 'trap', 'nonpowerups')
-maps=('desert' 'grassland' 'nonmap')
+maps=('desert' 'grassland' 'candy' 'nonmap')
 
 MAPTEST="nonmap"
 POWERUPTEST="nonpowerups"

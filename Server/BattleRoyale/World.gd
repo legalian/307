@@ -39,7 +39,7 @@ func _ready():
 	if(OS.has_environment("MAPTEST")):
 		mapSelect = OS.get_environment("MAPTEST");
 		print("MAPSELECT = " + mapSelect)
-	if(mapSelect != "nonmap"):
+	if(mapSelect != "nonmap" && mapSelect != "candy"):
 		if(mapSelect == "grassland"):
 			map = MAPS[0];
 			mapRoll = 630

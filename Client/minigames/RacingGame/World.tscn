@@ -8,5 +8,6 @@
 script = ExtResource( 2 )
 
 [node name="mapselection" parent="." instance=ExtResource( 1 )]
+maps = "racing"
 
 [node name="minigameselection" parent="." instance=ExtResource( 3 )]

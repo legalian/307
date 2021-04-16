@@ -19,7 +19,7 @@ var round_limit = 120; # 120s will forcibly end the round
 var force_finish = false;
 var mapRoll;
 
-const MAPS = ["Grass", "Desert"]
+const MAPS = ["Grass", "Desert", "Candy"]
 
 var map = null
 var world = null
@@ -52,23 +52,30 @@ func _ready():
 		print("MAPSELECT = " + mapSelect)
 	if(mapSelect != "nonmap"):
 		if(mapSelect == "grassland"):
-			mapRoll = 630
+			mapRoll = 420
 			map = MAPS[0];
-		else:
-			mapRoll = 450
+		else if(mapSelect == "desert"):
+			mapRoll = 660
 			map = MAPS[1];
+		else if(mapSelect == "candy"):
+			mapRoll = 540
+			map = MAPS[2]
 	else:
 		print("NO MAP SELECTED\n");
 		mapRoll = rng.randi_range(360, 3600);
-		if(mapRoll % 360  >= 180):
+		if(mapRoll % 360  <= 120):
 			map = MAPS[0]
+		else if(mapRoll %360 <= 240):
+			map = MAPS[2];
 		else:
-			map = MAPS[1];
+			map = MAPS[1]
 
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
 		world = preload("res://RacingGame/World-Desert.tscn").instance()
+	else:
+		world = preload("res://racingGame/World-Candy.tscn").instance()
 	assert(world != null)
 	add_child(world)
 	
