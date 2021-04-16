@@ -69,13 +69,13 @@ func attemptEnterGame():
 
 func createParty():
 	if (network.get_connection_status() == network.CONNECTION_CONNECTED):
-		rpc_id(1, "create_party",selfplayer.pack())
+		rpc_id(1, "create_party", selfplayer.pack())
 	else:
 		get_tree().change_scene("res://disc_from_serv.tscn")
 
 func join_party(var partyID):
 	if (network.get_connection_status() == network.CONNECTION_CONNECTED):
-		rpc_id(1, "join_party", partyID,selfplayer.pack())
+		rpc_id(1, "join_party", partyID, selfplayer.pack())
 	else:
 		get_tree().change_scene("res://disc_from_serv.tscn")
 
@@ -84,9 +84,15 @@ func leave_party():
 		if (str(partycode) != "undefined"):
 			players.clear()
 			players.append(selfplayer)
-			rpc_id(1, "leave_party", partycode,selfplayer.pack())
+			rpc_id(1, "leave_party", partycode, selfplayer.pack())
 		else:
 			print("Cannot leave party that is undefined")
+	else:
+		get_tree().change_scene("res://disc_from_serv.tscn")
+		
+func quickplay():
+	if (network.get_connection_status() == network.CONNECTION_CONNECTED):
+		rpc_id(1, "quickplay", selfplayer.pack())
 	else:
 		get_tree().change_scene("res://disc_from_serv.tscn")
 
