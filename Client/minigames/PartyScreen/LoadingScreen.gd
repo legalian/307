@@ -1,13 +1,9 @@
 extends Node
 
-var generalserver
-
 var matchmaking_label
 var loadRight
 
 func _ready():
-	generalserver = get_node("/root/Server")
-	
 	matchmaking_label = get_node("PanelContainer/CenterContainer/VBoxContainer/Label")
 	matchmaking_label.visible_characters = 11
 	
@@ -35,9 +31,9 @@ func loadingAnim():
 
 func _on_Button_pressed():
 	# Cancel matchmaking on server side
-	generalserver.cancel_matchmaking()
+	Server.cancel_matchmaking()
 	# Kick player back to beginning
-	if generalserver.get_child_count() > 0:
+	if Server.get_child_count() > 0:
 		get_tree().change_scene("res://minigames/PartyScreen/World.tscn")
 	else:
 		get_tree().change_scene("res://Main.tscn")

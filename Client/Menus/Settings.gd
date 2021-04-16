@@ -1,7 +1,5 @@
 extends Node
 
-onready var generalserver = get_node("/root/Server")
-
 var MasterVolume
 var MusicVolume
 var SFXVolume

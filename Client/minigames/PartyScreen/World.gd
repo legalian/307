@@ -3,7 +3,6 @@ extends Node
 var SelfUsername
 var AvatarSelected = 0
 
-onready var generalserver = get_node("/root/Server")
 var specificserver = null
 var AvatarMenuOpen = false
 
@@ -22,11 +21,11 @@ func _MUT_set_username():
 	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
 func _ready():
-	specificserver = generalserver.get_children()[0]
-	SelfUsername = generalserver.selfplayer.username
-	find_node("PartyCode").text = str(generalserver.partycode)
+	specificserver = Server.get_children()[0]
+	SelfUsername = Server.selfplayer.username
+	find_node("PartyCode").text = str(Server.partycode)
 	print(">>>_ready() PartyScreen/World.gd()")
-	print("generalserver.partycode = " + str(generalserver.partycode))
+	print("Server.partycode = " + str(Server.partycode))
 	print("<<<_ready() PartyScreen/World.gd()")
 	find_node("UsernameLabel").text = SelfUsername
 	#if OS.get_environment("MULTI_USER_TESTING")=="party":
@@ -35,25 +34,23 @@ func _ready():
 		#else:
 		#	$MUT_test_flow.play("Multi_User_Testing_Partyfollow")
 		
-	add_child($Raccoon.hotswap(generalserver.selfplayer.avatar),true)
-	$Raccoon.set_Hat(generalserver.selfplayer.hat)
-	var VehicleSelected = generalserver.selfplayer.vehicle
+	add_child($Raccoon.hotswap(Server.selfplayer.avatar),true)
+	$Raccoon.set_Hat(Server.selfplayer.hat)
+	var VehicleSelected = Server.selfplayer.vehicle
 	var CurrentVehicle = find_node("VehicleSprites")
 	CurrentVehicle.animation = VehicleStyles[VehicleSelected]
 
 #may 2
 
 func _on_Button_Back_pressed():
-	#generalserver.attemptEnterGame()
-	
 	get_tree().change_scene("Main.tscn")
-	generalserver.leave_party()
+	Server.leave_party()
 
 
 func _on_EnterGameButton_pressed():
 	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
-	generalserver.attemptEnterGame()
+	Server.attemptEnterGame()
 	
 	
 func _on_Button_CopyCode_pressed():
-	OS.set_clipboard(str(generalserver.partycode))
+	OS.set_clipboard(str(Server.partycode))

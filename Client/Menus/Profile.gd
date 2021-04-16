@@ -5,7 +5,6 @@ var AvatarSelected = 0
 var HatSelected = 0
 var VehicleSelected = 0
 
-onready var generalserver = get_node("/root/Server")
 var AvatarMenuOpen = false
 var HatMenuOpen = false
 var VehicleMenuOpen = false
@@ -28,11 +27,10 @@ func _MUT_set_username():
 	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
 func _ready():
-	generalserver = get_node("/root/Server")
-	UsernameInput = generalserver.selfplayer.username
-	AvatarSelected = generalserver.selfplayer.avatar
-	HatSelected = generalserver.selfplayer.hat
-	VehicleSelected = generalserver.selfplayer.vehicle
+	UsernameInput = Server.selfplayer.username
+	AvatarSelected = Server.selfplayer.avatar
+	HatSelected = Server.selfplayer.hat
+	VehicleSelected = Server.selfplayer.vehicle
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	get_node("CurrentName").text = UsernameInput
@@ -61,7 +59,7 @@ func _on_Button_ConfirmUsername_pressed():
 	
 	if (UsernameInput.length() >= 3 and UsernameInput.length() <= 20): #and validCharacters):
 		get_node("CurrentName").text = UsernameInput
-		generalserver.selfplayer.username  = UsernameInput
+		Server.selfplayer.username  = UsernameInput
 		AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	else:
 		find_node("UsernameInput").text = "Username is Invalid"
@@ -74,7 +72,7 @@ func _on_ChangeAvatar_pressed(AvatarType):
 	#print(AvatarType)
 	AvatarSelected = AvatarType
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
-	generalserver.selfplayer.avatar = AvatarSelected
+	Server.selfplayer.avatar = AvatarSelected
 	var av = $Avatar.hotswap(AvatarType)
 	av.z_index = -1
 	add_child(av,true)
@@ -85,14 +83,14 @@ func _on_ChangeHat_pressed(HatType):
 	HatSelected = HatType
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	$Avatar.set_Hat(HatType)
-	generalserver.selfplayer.hat = HatSelected
+	Server.selfplayer.hat = HatSelected
 
 func _on_ChangeVehicle_pressed(VehicleType):
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(AvatarType)
 	VehicleSelected = VehicleType
 	get_node("CurrentVehicles").text = "Vehicle - " + VehicleStyles[VehicleSelected]
-	generalserver.selfplayer.vehicle = VehicleSelected #Set Vechicle
+	Server.selfplayer.vehicle = VehicleSelected #Set Vechicle
 	var CurrentVehicle = find_node("VehicleSprites")
 	CurrentVehicle.play(VehicleStyles[VehicleSelected])
 	
@@ -182,4 +180,4 @@ func _set_Avatar_Selection():
 
 func _on_EnterGameButton_pressed():
 	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
-	generalserver.attemptEnterGame()
+	Server.attemptEnterGame()

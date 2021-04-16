@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func add_scoreboard(var players):	
 	self.visible = true

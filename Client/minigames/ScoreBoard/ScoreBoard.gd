@@ -1,7 +1,5 @@
 extends Node
 
-onready var generalserver = get_node("/root/Server")
-
 var player_list
 
 var pressed
@@ -27,7 +25,7 @@ func sort_by_score(var playerA, var playerB):
 
 func _open_player_list():
 	if (!pressed): # First press
-		var scores = generalserver.players + []
+		var scores = Server.players + []
 		
 		scores.sort_custom(self, "sort_by_score")
 		
