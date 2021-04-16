@@ -24,7 +24,6 @@ func _physics_process(delta):
 				nearest_player = player
 				
 	if nearest_player != null:
-		print(rotation)
 		var angle = position.angle_to_point(nearest_player.position) - PI
 		rotation = lerp_angle(rotation, angle, 0.20)
 	
