@@ -54,10 +54,10 @@ func _ready():
 		if(mapSelect == "grassland"):
 			mapRoll = 420
 			map = MAPS[0];
-		else if(mapSelect == "desert"):
+		elif(mapSelect == "desert"):
 			mapRoll = 660
 			map = MAPS[1];
-		else if(mapSelect == "candy"):
+		elif(mapSelect == "candy"):
 			mapRoll = 540
 			map = MAPS[2]
 	else:
