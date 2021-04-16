@@ -119,6 +119,7 @@ func damage():
 	$Body.ouch()
 	
 func die():
+	AudioPlayer.play_sfx("res://audio/sfx/wrong.ogg")
 	dying = true
 	speed=0
 	get_node("CollisionShape2D").disabled = true#disable collisions and begin dying

@@ -17,7 +17,7 @@ size = 100
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 50
+size = 35
 font_data = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -71,16 +71,15 @@ position = Vector2( 9.97348, -3.17749 )
 [node name="Problem" type="Label" parent="HUD"]
 visible = false
 margin_left = 151.0
-margin_top = -1.21692
-margin_right = 1026.0
-margin_bottom = 129.783
+margin_top = -1.0
+margin_right = 998.0
+margin_bottom = 159.0
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Question text goes here"
+autowrap = true
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2( 3, 3 )
