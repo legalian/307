@@ -3,20 +3,24 @@ associatedCount=('4'     '4'     '4'         '4'      '2'            '2'      '2
 
 powerups=('speed' 'missile' 'trap', 'nonpowerups')
 maps=('desert' 'grassland' 'nonmap')
+captcharoutines=('standardized' 'randomized')
 
 MAPTEST="nonmap"
 POWERUPTEST="nonpowerups"
+CAPTCHAROUTINE="randomized"
 
 DESIREDSCREEN=1
 
 print_usage () {
-	echo "Usage: Multi_user_testing.sh test [desiredmap] [desiredpowerup] [desiredscreen]"
+	echo "Usage: Multi_user_testing.sh test [desiredmap] [desiredpowerup] [desiredscreen] [captcharoutine]"
 	echo "test must be one of:"
 	echo "	${acceptableTests[*]}"
 	echo "desiredmap must be one of:"
 	echo "	${maps[*]}"
 	echo "desiredpowerup must be one of:"
 	echo "	${powerups[*]}"
+	echo "captcharoutine must be one of:"
+	echo "  ${captcharoutines[*]}"
 	exit 1
 }
 
@@ -30,8 +34,11 @@ fi
 if [[ $# -ge 3 ]]; then
 	POWERUPTEST=$3
 fi
-if [[ $# == 4 ]]; then
-	DESIREDSCREEN=$4
+if [[ $# -ge 4 ]]; then
+	CAPTCHAROUTINE=$4
+fi
+if [[ $# == 5 ]]; then
+	DESIREDSCREEN=$5
 fi
 if ! printf '%s\n' "${acceptableTests[@]}" | grep -q "^$1$"; then
 	echo "Invalid test"
@@ -45,6 +52,10 @@ if ! printf '%s\n' "${powerups[@]}" | grep -q "^$POWERUPTEST$"; then
 	echo "Invalid powerup"
 	print_usage
 fi
+if ! printf '%s\n' "${captcharoutines[@]}" | grep -q "^$CAPTCHAROUTINE$"; then
+	echo "Invalid powerup"
+	print_usage
+fi
 
 if [[ -f /Applications/Godot.app/Contents/MacOS/Godot ]]
 then
@@ -55,7 +66,7 @@ fi
 
 
 cd Server
-MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" POWERUPTEST=$POWERUPTEST MAPTEST=$MAPTEST $gdpath &
+MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" POWERUPTEST=$POWERUPTEST MAPTEST=$MAPTEST CAPTCHAROUTINE=$CAPTCHAROUTINE $gdpath &
 cd ..
 sleep 2
 for i in "${!acceptableTests[@]}"; do

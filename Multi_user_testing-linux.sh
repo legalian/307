@@ -3,9 +3,11 @@ associatedCount=('4'     '4'     '4'         '4'      '2'            '2'      '2
 
 powerups=('speed' 'missile' 'trap', 'nonpowerups')
 maps=('desert' 'grassland' 'nonmap')
+captcharoutines=('standardized' 'randomized')
 
 MAPTEST="nonmap"
 POWERUPTEST="nonpowerups"
+CAPTCHAROUTINE="randomized"
 
 DESIREDSCREEN=1
 if [[ $# == 0 ]]; then
@@ -35,8 +37,12 @@ if [[ $# -ge 3 ]]; then
 	POWERUPTEST=$3;
 	echo $POWERUPTEST
 fi
+if [[ $# -ge 4 ]]; then
+	CAPTCHAROUTINE=$4
+	echo $CAPTCHAROUTINE
+fi
 
-MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" POWERUPTEST=$POWERUPTEST MAPTEST=$MAPTEST godot &
+MULTI_USER_TESTING=$1 DESIREDSCREEN="$DESIREDSCREEN" POWERUPTEST=$POWERUPTEST MAPTEST=$MAPTEST CAPTCHAROUTINE=$CAPTCHAROUTINE godot &
 cd ..
 sleep 2
 for i in "${!acceptableTests[@]}"; do

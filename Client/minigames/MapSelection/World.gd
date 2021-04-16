@@ -10,6 +10,7 @@ var done = false;
 onready var wheel = find_node("Wheel");
 var player
 var world_type = 'map_selection'
+export var maps = "default"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -19,6 +20,10 @@ var world_type = 'map_selection'
 func _ready():
 	set_process(false)
 	self.visible = false;
+	if(maps == "racing"):
+		get_node("Wheel").texture = load("res://minigames/MapSelection/mapsprites/wheelWithCandy.png")
+
+
 
 
 func start():
