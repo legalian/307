@@ -54,10 +54,10 @@ func _ready():
 		if(mapSelect == "grassland"):
 			mapRoll = 420
 			map = MAPS[0];
-		else if(mapSelect == "desert"):
+		elif(mapSelect == "desert"):
 			mapRoll = 660
 			map = MAPS[1];
-		else if(mapSelect == "candy"):
+		elif(mapSelect == "candy"):
 			mapRoll = 540
 			map = MAPS[2]
 	else:
@@ -65,7 +65,7 @@ func _ready():
 		mapRoll = rng.randi_range(360, 3600);
 		if(mapRoll % 360  <= 120):
 			map = MAPS[0]
-		else if(mapRoll %360 <= 240):
+		elif(mapRoll %360 <= 240):
 			map = MAPS[2];
 		else:
 			map = MAPS[1]
@@ -83,9 +83,14 @@ func _ready():
 		if node.name.begins_with("Powerup"):
 			powerups[node.name] = node
 
-	for x in range(1400, 1800, 200):
-		for y in range(1400, 2500, 110):
-			spawn_positions.append(Vector2(x,y))
+	if (map != "Candy"):
+		for x in range(1400, 1800, 200):
+			for y in range(1400, 2500, 110):
+				spawn_positions.append(Vector2(x,y))
+	elif (map == "Candy"):
+		for x in range(9728, 10496, 200):
+			for y in range(256, 856, 110):
+				spawn_positions.append(Vector2(x,y))
 	
 	spawn_positions.shuffle()
 	
