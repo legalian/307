@@ -39,12 +39,12 @@ remote func endRound(correctTile):
 		selfPlayerInstance.canMove = false;
 		gameinstance.showCorrectness(correctTile);
 		selfPlayerInstance.find_node("Problem").roundEnd()
-
 		#change colors
 
 remote func startNextRound():
 		selfPlayerInstance.canMove = true
 		gameinstance.resetCorrectness()
+		selfPlayerInstance.find_node("Problem").roundStart()
 		#undo color change
 
 remote func frameUpdate(s_players, time):
@@ -91,6 +91,7 @@ remote func die(package):
 	gameinstance.players[package['id']].die()
 	
 remote func win(playerID):
+	AudioPlayer.pause_music()
 	if playerID==players[0].playerID:
 		get_tree().change_scene("res://minigames/ConfusingCaptcha/WinScreen.tscn")
 	else:
@@ -100,6 +101,7 @@ remote func setMap(map):
 	world_map = "Grass"
 
 func showlose():
+	AudioPlayer.pause_music()
 	get_tree().change_scene("res://minigames/ConfusingCaptcha/LoseScreen.tscn")
 	
 	

@@ -6,7 +6,7 @@ var CCPlayer = preload("res://ConfusingCaptcha/CC_Player.tscn")
 	
 var status = {}
 var ingame = {}
-var curRound = 1
+var curRound = 0
 var totalRounds = 4;
 var roundTime = null;
 var maxRoundTime = 30;
@@ -14,6 +14,7 @@ var questionIndex = 0;
 var total_questions = 4;
 var tileCorrespondance = ["R1C1", "R1C2", "R1C3","R2C1", "R2C2", "R2C3", "R3C1", "R3C2", "R3C3"]
 var correctTile = tileCorrespondance[0]
+var questions = [0,1,2,3]
 
 var arrangement = [0,1,2,3,4,5,6,7,8]
 
@@ -39,6 +40,7 @@ func shuffleList(list):
 
 
 func _ready():
+	randomize()
 	world = preload("res://ConfusingCaptcha/World-Grass.tscn").instance()
 	assert(world != null)
 	add_child(world)
@@ -50,6 +52,7 @@ func _ready():
 	_timer.start()
 	if "confusingcaptcha_shim" == OS.get_environment("MULTI_USER_TESTING"):
 		spawn_id(0,0,debug_id);
+
 		
 	var roundTimer = Timer.new();
 	add_child(roundTimer);
@@ -57,12 +60,13 @@ func _ready():
 	roundTimer.set_wait_time(1);
 	roundTimer.set_one_shot(false)
 	roundTimer.start();
+	if(OS.get_environment("CAPTCHAROUTINE") == "randomized"):
+		questions = shuffleList(questions)
 
 
 func timeTick():
 	if(roundTime != null):
-		if(roundTime > 0):
-			roundTime = roundTime - 1;
+		roundTime = roundTime - 1;
 		if(roundTime == 0):
 			processEndedRound();
 	else:
@@ -77,7 +81,7 @@ func startRound():
 	#start timer again, change images, etc. 
 	roundTime = maxRoundTime
 	randomize()
-	questionIndex = randi()%total_questions
+	questionIndex = questions[curRound]
 	arrangement = shuffleList(arrangement)
 	for p in players:
 		if(p.dummy == 0):
@@ -89,6 +93,7 @@ func startRound():
 			correctTile = tileCorrespondance[i];
 
 func endRound():
+	print("Ended Round!")
 	for player in ingame.values():
 		var ofs = player.position-$World/LowerLeft.position
 		var dis = $World/UpperRight.position-$World/LowerLeft.position
@@ -98,6 +103,7 @@ func endRound():
 	nextRound()
 
 func processEndedRound():
+
 	for p in players:
 		if p.dummy == 0:
 			rpc_id(p.playerID, "endRound", correctTile)

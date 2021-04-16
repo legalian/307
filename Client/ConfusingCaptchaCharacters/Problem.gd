@@ -6,19 +6,24 @@ var questions = [
 	"Which hair resembles an exponential equation?",
 	"Which number shows the number, 1?"
 ]
+var roundEnded = false;
 
 
 var questionText = ""
 
 
 func roundEnd():
-	self.set_text("Round Ended!")
+	questionText = "Round Ended!"
+	roundEnded = true;
+
+func roundStart():
+	roundEnded = false;
 
 func _ready():
 	self.set_text(questionText)
 
 func setQuestion(question):
-	if question>=0:
+	if question>=0 && roundEnded != true:
 		questionText = questions[question];
 	self.set_text(questionText)
 
