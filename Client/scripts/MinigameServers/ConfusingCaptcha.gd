@@ -7,6 +7,7 @@ var world_map = "Grass";
 var selfPlayerInstance
 var curQuestion = -1;
 var curArrangement = [0,1,2,3,4,5,6,7,8];
+var not0thRound = false;
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
@@ -42,6 +43,10 @@ remote func endRound(correctTile):
 		#change colors
 
 remote func startNextRound():
+		if(not0thRound == false):
+			not0thRound = true
+		else:
+			AudioPlayer.play_sfx("res://audio/sfx/correct.ogg")
 		selfPlayerInstance.canMove = true
 		gameinstance.resetCorrectness()
 		selfPlayerInstance.find_node("Problem").roundStart()
@@ -93,6 +98,7 @@ remote func die(package):
 remote func win(playerID):
 	AudioPlayer.pause_music()
 	if playerID==players[0].playerID:
+		AudioPlayer.play_sfx("res://audio/sfx/victoryroyale.ogg")
 		get_tree().change_scene("res://minigames/ConfusingCaptcha/WinScreen.tscn")
 	else:
 		get_tree().change_scene("res://minigames/ConfusingCaptcha/LoseScreen.tscn")
