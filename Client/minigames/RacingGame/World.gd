@@ -39,6 +39,8 @@ func load_map(map):
 		world = preload("res://minigames/RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
 		world = preload("res://minigames/RacingGame/World-Desert.tscn").instance()
+	elif map == "Candy":
+		world = preload("res://minigames/RacingGame/World-Candy.tscn").instance();
 	assert(world != null)
 	add_child(world)
 	world.visible = false;

@@ -19,7 +19,7 @@ var round_limit = 120; # 120s will forcibly end the round
 var force_finish = false;
 var mapRoll;
 
-const MAPS = ["Grass", "Desert"]
+const MAPS = ["Grass", "Desert", "Candy"]
 
 var map = null
 var world = null
@@ -52,23 +52,30 @@ func _ready():
 		print("MAPSELECT = " + mapSelect)
 	if(mapSelect != "nonmap"):
 		if(mapSelect == "grassland"):
-			mapRoll = 630
+			mapRoll = 420
 			map = MAPS[0];
-		else:
-			mapRoll = 450
+		elif(mapSelect == "desert"):
+			mapRoll = 660
 			map = MAPS[1];
+		elif(mapSelect == "candy"):
+			mapRoll = 540
+			map = MAPS[2]
 	else:
 		print("NO MAP SELECTED\n");
 		mapRoll = rng.randi_range(360, 3600);
-		if(mapRoll % 360  >= 180):
+		if(mapRoll % 360  <= 120):
 			map = MAPS[0]
+		elif(mapRoll %360 <= 240):
+			map = MAPS[2];
 		else:
-			map = MAPS[1];
+			map = MAPS[1]
 
 	if map == "Grass":
 		world = preload("res://RacingGame/World-Grass.tscn").instance()
 	elif map == "Desert":
 		world = preload("res://RacingGame/World-Desert.tscn").instance()
+	else:
+		world = preload("res://racingGame/World-Candy.tscn").instance()
 	assert(world != null)
 	add_child(world)
 	
@@ -76,9 +83,14 @@ func _ready():
 		if node.name.begins_with("Powerup"):
 			powerups[node.name] = node
 
-	for x in range(1400, 1800, 200):
-		for y in range(1400, 2500, 110):
-			spawn_positions.append(Vector2(x,y))
+	if (map != "Candy"):
+		for x in range(1400, 1800, 200):
+			for y in range(1400, 2500, 110):
+				spawn_positions.append(Vector2(x,y))
+	elif (map == "Candy"):
+		for x in range(9728, 10496, 200):
+			for y in range(256, 856, 110):
+				spawn_positions.append(Vector2(x,y))
 	
 	spawn_positions.shuffle()
 	

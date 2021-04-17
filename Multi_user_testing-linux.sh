@@ -2,7 +2,7 @@ acceptableTests=('party' 'lobby' 'quickplay' 'podium' 'battleroyale' 'racing' 'd
 associatedCount=('4'     '4'     '4'         '4'      '2'            '2'      '2'         '2'                '1'                 '1'           '1'              '1',           '1')
 
 powerups=('speed' 'missile' 'trap', 'nonpowerups')
-maps=('desert' 'grassland' 'nonmap')
+maps=('desert' 'grassland' 'candy' 'nonmap')
 captcharoutines=('standardized' 'randomized')
 
 MAPTEST="nonmap"
