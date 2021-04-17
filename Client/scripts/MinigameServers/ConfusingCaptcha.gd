@@ -8,6 +8,7 @@ var selfPlayerInstance
 var curQuestion = -1;
 var curArrangement = [0,1,2,3,4,5,6,7,8];
 var not0thRound = false;
+var curRound = 0;
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
@@ -50,6 +51,7 @@ remote func startNextRound():
 		selfPlayerInstance.canMove = true
 		gameinstance.resetCorrectness()
 		selfPlayerInstance.find_node("Problem").roundStart()
+		curRound = curRound + 1
 		#undo color change
 
 remote func frameUpdate(s_players, time):
@@ -67,6 +69,7 @@ remote func frameUpdate(s_players, time):
 		selfPlayerInstance = gameinstance.get_node_or_null("World/Player");
 	else:
 		selfPlayerInstance.find_node("RoundTime").setTime(time);
+		selfPlayerInstance.find_node("RoundNum").setRound(curRound);
 		selfPlayerInstance.find_node("Problem").setQuestion(curQuestion)
 	for s_player in s_players:
 		visited.append(s_player['id'])
