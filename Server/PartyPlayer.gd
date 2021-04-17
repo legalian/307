@@ -7,10 +7,8 @@ var score = 0
 var username
 var avatar = 0
 var hat = 0
-var vehicle = 0
+var vehicle = "Sedan"
 var dummy = 0
-
-#var volume = [100,100,100] #Master, Music, SFX
 
 
 func _init(var thisPlayerID, var thisParty):

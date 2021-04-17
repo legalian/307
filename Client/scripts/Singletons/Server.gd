@@ -1,9 +1,6 @@
 extends Node
 
 var network = NetworkedMultiplayerENet.new()
-var ip = "127.0.0.1"
-#var ip = "64.227.13.167"
-var port = 1909
 
 var partycode = "undefined"
 
@@ -12,11 +9,14 @@ const Player = preload("res://scripts/MinigameServers/Player.gd")
 const MINIGAMES = ["PartyScreen", "BattleRoyale", "DemoDerby", "RacingGame", "MapSelection", "MinigameSelection", "Podium", "ConfusingCaptcha"]
 var loading_queue
 
-var selfplayer = Player.new({'id':null})
-var players = [selfplayer]
+onready var selfplayer = Player.new({'id':null,'username':Config.username,'avatar':Config.avatar,'hat':Config.hat,'vehicle':Config.vehicle})
+onready var players = [selfplayer]
 # players[0] is yourself.
 
 func _ready():
+	if selfplayer.username == "Default" or selfplayer.randomNameList.has(selfplayer.username):
+		selfplayer.username = selfplayer.randomUsername()
+	
 	loading_queue = preload("res://scripts/Resource_Loader.gd").new()
 	loading_queue.start()
 	for mg in MINIGAMES:
@@ -26,7 +26,7 @@ func _ready():
 	ConnectToServer()
 
 func ConnectToServer():
-	network.create_client(ip,port)
+	network.create_client(Config.ip, Config.port)
 	get_tree().set_network_peer(network)
 	
 	network.connect("connection_failed",self,"_OnConnectionFailed")
