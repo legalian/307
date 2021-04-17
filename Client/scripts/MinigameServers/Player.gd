@@ -7,7 +7,7 @@ var score = 0
 var username = "" 
 var avatar = 0
 var hat = 0
-var vehicle = 0
+var vehicle = "Sedan"
 
 #var volume = [100,100,100] #Master, Music, SFX
 
@@ -24,7 +24,7 @@ func _init(var packed):
 	avatar = packed.get('avatar',0)
 	score = packed.get('score',0)
 	hat = packed.get('hat',0)
-	vehicle = packed.get('vehicle',0)
+	vehicle = packed.get('vehicle',"Sedan")
 	#volume = packed.get('volume',[100,100,100])
 	#defaults here must match defaults in server PartyPlayer.gd.
 	

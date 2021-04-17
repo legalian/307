@@ -38,7 +38,7 @@ func _ready():
 	$Raccoon.set_Hat(Server.selfplayer.hat)
 	var VehicleSelected = Server.selfplayer.vehicle
 	var CurrentVehicle = find_node("VehicleSprites")
-	CurrentVehicle.animation = VehicleStyles[VehicleSelected]
+	CurrentVehicle.animation = VehicleSelected
 
 #may 2
 

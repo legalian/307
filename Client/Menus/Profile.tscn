@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
@@ -32,6 +32,9 @@ font_data = ExtResource( 1 )
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -473,258 +476,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonSelection" type="ColorRect" parent="Vehicle Menu/ColorRect"]
+[node name="Choose Avatar Text" type="RichTextLabel" parent="Vehicle Menu/ColorRect"]
 margin_left = 34.0
 margin_top = 81.0
-margin_right = 950.0
-margin_bottom = 517.0
-color = Color( 0.172549, 0.172549, 0.172549, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Choose Avatar Text" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 261.658
-margin_top = -79.3416
-margin_right = 620.658
-margin_bottom = -2.34161
+margin_right = 34.0
+margin_bottom = 95.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Avatar0" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 20.0
-margin_top = 42.0
-margin_right = 200.0
-margin_bottom = 202.0
-custom_styles/normal = SubResource( 3 )
+[node name="ButtonSelection" type="ScrollContainer" parent="Vehicle Menu/ColorRect"]
+margin_left = 34.0
+margin_top = 81.0
+margin_right = 956.0
+margin_bottom = 551.0
+custom_styles/bg = SubResource( 7 )
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar0"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MarginContainer" type="MarginContainer" parent="Vehicle Menu/ColorRect/ButtonSelection"]
+margin_right = 100.0
+margin_bottom = 100.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
 
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar0"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 40
-playing = true
-
-[node name="Avatar4" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 20.0
-margin_top = 260.0
-margin_right = 200.0
-margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar4"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar4"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 37
-playing = true
-
-[node name="Avatar5" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 250.0
-margin_top = 260.0
-margin_right = 430.0
-margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar5"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar5"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 37
-playing = true
-
-[node name="Avatar6" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 485.0
-margin_top = 260.0
-margin_right = 665.0
-margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 36
-playing = true
-
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar6"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Avatar7" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 715.0
-margin_top = 260.0
-margin_right = 895.0
-margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 36
-playing = true
-
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar7"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Avatar1" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 250.0
-margin_top = 42.0
-margin_right = 430.0
-margin_bottom = 202.0
-custom_styles/normal = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 39
-playing = true
-
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar1"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Avatar2" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 485.0
-margin_top = 42.0
-margin_right = 665.0
-margin_bottom = 202.0
-custom_styles/normal = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar2"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar2"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 39
-playing = true
-
-[node name="Avatar3" type="Button" parent="Vehicle Menu/ColorRect/ButtonSelection"]
-margin_left = 715.0
-margin_top = 42.0
-margin_right = 895.0
-margin_bottom = 202.0
-custom_styles/normal = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AvatarType" type="RichTextLabel" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar3"]
-margin_left = 1.33258
-margin_top = -39.6696
-margin_right = 188.333
-margin_bottom = 0.330353
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VehicleDisplay" type="AnimatedSprite" parent="Vehicle Menu/ColorRect/ButtonSelection/Avatar3"]
-position = Vector2( 90, 80 )
-scale = Vector2( 0.309783, 0.318552 )
-frames = ExtResource( 10 )
-animation = "Sedan"
-frame = 38
-playing = true
+[node name="GridContainer" type="GridContainer" parent="Vehicle Menu/ColorRect/ButtonSelection/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 50.0
+margin_bottom = 50.0
+custom_constants/vseparation = 50
+custom_constants/hseparation = 25
+columns = 4
 
 [node name="CloseAvatarMenu" type="Button" parent="Vehicle Menu"]
 margin_left = 893.989
@@ -990,14 +779,6 @@ __meta__ = {
 [connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar2" to="." method="_on_ChangeAvatar_pressed" binds= [ 2 ]]
 [connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar3" to="." method="_on_ChangeAvatar_pressed" binds= [ 3 ]]
 [connection signal="pressed" from="Avatar Menu/CloseAvatarMenu" to="." method="_on_Button_ChooseCharacter_pressed"]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar0" to="." method="_on_ChangeVehicle_pressed" binds= [ 0 ]]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar4" to="." method="_on_ChangeVehicle_pressed" binds= [ 4 ]]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar5" to="." method="_on_ChangeVehicle_pressed" binds= [ 5 ]]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar6" to="." method="_on_ChangeVehicle_pressed" binds= [ 6 ]]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar7" to="." method="_on_ChangeVehicle_pressed" binds= [ 7 ]]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar1" to="." method="_on_ChangeVehicle_pressed" binds= [ 1 ]]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar2" to="." method="_on_ChangeVehicle_pressed" binds= [ 2 ]]
-[connection signal="pressed" from="Vehicle Menu/ColorRect/ButtonSelection/Avatar3" to="." method="_on_ChangeVehicle_pressed" binds= [ 3 ]]
 [connection signal="pressed" from="Vehicle Menu/CloseAvatarMenu" to="." method="_on_Button_ChooseVehicle_pressed"]
 [connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar0" to="." method="_on_ChangeHat_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="Hat Menu/ColorRect/ButtonSelection/Avatar4" to="." method="_on_ChangeHat_pressed" binds= [ 4 ]]

@@ -22,12 +22,9 @@ config/git_copy_prot=1
 
 [autoload]
 
-Server="*res://scripts/Singletons/Server.gd"
 AudioPlayer="*res://scripts/Singletons/AudioPlayer.gd"
-
-[debug]
-
-settings/stdout/print_fps=true
+Config="*res://scripts/Singletons/Config.gd"
+Server="*res://scripts/Singletons/Server.gd"
 
 [gdnative]
 

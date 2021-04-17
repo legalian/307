@@ -75,9 +75,9 @@ script = ExtResource( 4 )
 
 [node name="Arrow" type="Polygon2D" parent="Arrowbase"]
 visible = false
-modulate = Color( 0.968627, 0.0705882, 0.0705882, 1 )
+modulate = Color( 0.961718, 0.447153, 0.0533146, 1 )
 position = Vector2( 0, -300 )
-rotation = -0.00513428
+rotation = -0.00513476
 scale = Vector2( 0.999945, 0.440125 )
 polygon = PoolVector2Array( 0.161232, -78.9993, -55.8672, -36.3629, -14.9949, -35.2546, -18.5558, 82.0184, 12.1269, 85.7414, 13.6575, -33.3931, 51.3035, -38.5725 )
 

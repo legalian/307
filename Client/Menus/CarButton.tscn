@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Themes/UI.tres" type="Theme" id=1]
+[ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://exported/cars/CarSpriteFrames.tres" type="SpriteFrames" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Sedan" type="Button"]
+margin_right = 180.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 180, 180 )
+custom_styles/normal = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarType" type="RichTextLabel" parent="."]
+margin_left = 1.33258
+margin_top = -39.6696
+margin_right = 188.333
+margin_bottom = 0.330353
+theme = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VehicleDisplay" type="AnimatedSprite" parent="."]
+position = Vector2( 90, 80 )
+scale = Vector2( 0.309783, 0.318552 )
+frames = ExtResource( 3 )
+animation = "Sedan"
+frame = 25
+playing = true

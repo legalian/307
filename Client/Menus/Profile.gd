@@ -11,7 +11,7 @@ var VehicleMenuOpen = false
 
 var AvatarStyles = ["Raccoon","Shadow Raccoon","Red Raccoon"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
-var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Ambulance","Hatchback","Police","Tractor","Garbage","Future","Firetruck"]
+var VehicleStyles
 
 #var VehicleRoots = ["res://exported/cars/sedan/diffuse.png","res://exported/cars/van/diffuse.png","res://exported/cars/truck/diffuse.png","res://exported/cars/race/diffuse.png","res://exported/cars/taxi/diffuse.png","res://exported/cars/raceFuture/diffuse.png"] # Sprite Roots
 
@@ -27,10 +27,12 @@ func _MUT_set_username():
 	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
 func _ready():
+	VehicleStyles = load("res://exported/cars/CarSpriteFrames.tres").get_animation_names()
 	UsernameInput = Server.selfplayer.username
 	AvatarSelected = Server.selfplayer.avatar
 	HatSelected = Server.selfplayer.hat
 	VehicleSelected = Server.selfplayer.vehicle
+	print(VehicleSelected)
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	get_node("CurrentName").text = UsernameInput
@@ -39,6 +41,7 @@ func _ready():
 	hotsw.z_index = -1;
 	add_child(hotsw,true)
 	_on_ChangeVehicle_pressed(VehicleSelected)
+	_set_Vehicle_Selection()
 	
 
 func _on_UsernameInput_text_changed(new_username):
@@ -89,10 +92,10 @@ func _on_ChangeVehicle_pressed(VehicleType):
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(AvatarType)
 	VehicleSelected = VehicleType
-	get_node("CurrentVehicles").text = "Vehicle - " + VehicleStyles[VehicleSelected]
+	get_node("CurrentVehicles").text = "Vehicle - " + VehicleSelected
 	Server.selfplayer.vehicle = VehicleSelected #Set Vechicle
 	var CurrentVehicle = find_node("VehicleSprites")
-	CurrentVehicle.play(VehicleStyles[VehicleSelected])
+	CurrentVehicle.play(VehicleSelected)
 	
 
 func _on_Button_ChooseVehicle_pressed():
@@ -106,22 +109,17 @@ func _on_Button_ChooseVehicle_pressed():
 		#get_node("Button_ChooseCharacter").text = "Close"
 		get_node("Vehicle Menu").show()
 		find_node("SelectedVehicle").hide()
-		_set_Vehicle_Selection()
 		VehicleMenuOpen = true
 
 func _set_Vehicle_Selection():
-	var VehicleSelection = get_node("Vehicle Menu").get_node("ColorRect").get_node("ButtonSelection")
-	var currentNode = VehicleSelection
-	for i in 8:
-		currentNode = VehicleSelection.get_node("Avatar" + str(i))
-		var VehicleDisplay = currentNode.get_node("VehicleDisplay")
-		if(i < VehicleStyles.size()):
-			currentNode.get_node("AvatarType").text = VehicleStyles[i]
-			VehicleDisplay.animation = VehicleStyles[i]
-			currentNode.show()
-		else:
-			currentNode.get_node("AvatarType").text = "Null"
-			currentNode.hide()
+	var VehicleSelection = get_node("Vehicle Menu/ColorRect/ButtonSelection/MarginContainer/GridContainer")
+	for vehicle_name in VehicleStyles:
+		var car_button = preload("res://Menus/CarButton.tscn").instance()
+		car_button.connect("pressed", self, "_on_ChangeVehicle_pressed", [vehicle_name])
+		var VehicleDisplay = car_button.get_node("VehicleDisplay")
+		car_button.get_node("AvatarType").bbcode_text = "[center]"+vehicle_name+"[/center]"
+		VehicleDisplay.animation = vehicle_name
+		VehicleSelection.add_child(car_button)
 
 func _on_Button_ChooseHat_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")

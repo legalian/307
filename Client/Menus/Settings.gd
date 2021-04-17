@@ -47,6 +47,7 @@ func _SetVolumeText():
 
 func _on_BackButton_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
+	Config.save_config()
 	var _success = get_tree().change_scene("res://Main.tscn")
 
 func _on_MasterVolume_changed(newValue):
