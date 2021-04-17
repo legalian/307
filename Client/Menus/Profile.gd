@@ -50,6 +50,7 @@ func _on_UsernameInput_text_changed(new_username):
 
 func _on_Button_Back_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
+	Config.save_config()
 	get_tree().change_scene("Main.tscn")
 
 
