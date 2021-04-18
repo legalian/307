@@ -8,7 +8,7 @@ var questions = [
 	"Reverse the following SHA-256 hash: 2c0f0f4581aa813bfe2ea2128451ab86cee6b7442e17879e939751c9aa893859",
 	"Find the surface area of the parametric surface r(u,v)=(2u+3v, 3u+v, 2), 0<=u<=2, 0<=v<=1",
 	"I’d just like to interject for a moment. What you’re refering to as Linux, is in fact...",
-	"Which image is on the homepage of Professor Turkstra's website?"
+	""
 ]
 var roundEnded = false;
 
