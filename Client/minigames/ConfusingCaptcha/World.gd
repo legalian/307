@@ -48,7 +48,7 @@ func setArrangement(question_number,arrangement):
 		tiles[x].animation = tiles[x].frames.get_animation_names()[question_number]
 		tiles[x].set_frame(arrangement[x])
 		var tframe = tiles[x].frames.get_frame(tiles[x].animation,tiles[x].frame).get_size()
-		tiles[x].set_scale(Vector2(original_scale.x/tframe.x,original_scale.y/tframe.y))
+		tiles[x].set_scale(Vector2(2*original_scale.x/tframe.x,2*original_scale.y/tframe.y))
 		#tiles[x].stop()
 
 func showCorrectness(correctTile):

@@ -50,6 +50,7 @@ func uivisible():
 	self.find_node("RoundTime").visible = true;
 	self.find_node("RoundNum").visible = true;
 	self.find_node("Problem").visible = true;
+	self.find_node("Lives").visible = true;
 	
 
 func unpack(package):

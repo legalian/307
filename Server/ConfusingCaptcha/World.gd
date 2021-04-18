@@ -5,16 +5,17 @@ func systemname():
 var CCPlayer = preload("res://ConfusingCaptcha/CC_Player.tscn")
 	
 var status = {}
+var lives = {}
 var ingame = {}
 var curRound = 0
 var totalRounds = 4;
 var roundTime = null;
 var maxRoundTime = 30;
 var questionIndex = 0;
-var total_questions = 4;
+var total_questions = 7;
 var tileCorrespondance = ["R1C1", "R1C2", "R1C3","R2C1", "R2C2", "R2C3", "R3C1", "R3C2", "R3C3"]
 var correctTile = tileCorrespondance[0]
-var questions = [0,1,2,3]
+var questions = [4,5,6,0,1,2,3]
 
 var arrangement = [0,1,2,3,4,5,6,7,8]
 

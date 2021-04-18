@@ -23,4 +23,4 @@ func setRound(num):
 		roundNumber = num
 	else:
 		roundNumber = 0;
-	set_text(str(roundNumber))
+	set_text("Round " + str(roundNumber))

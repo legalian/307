@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ConfusingCaptchaCharacters/Character.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ConfusingCaptchaCharacters/Problem.gd" type="Script" id=6]
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://ConfusingCaptchaCharacters/RoundNum.gd" type="Script" id=8]
+[ext_resource path="res://ConfusingCaptchaCharacters/Lives.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 28.4847
@@ -57,14 +58,31 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 0.138
 margin_left = 1.0
-margin_top = 149.0
-margin_right = -950.0
-margin_bottom = 129.2
+margin_top = 502.0
+margin_right = -927.0
+margin_bottom = 632.2
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 1, 0.662745, 1 )
+custom_colors/font_color = Color( 0, 0.741176, 1, 1 )
 text = "20
 "
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lives" type="Label" parent="HUD"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 0.138
+margin_left = 911.0
+margin_top = 502.0
+margin_right = -17.0
+margin_bottom = 632.2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "20
+"
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -84,7 +102,7 @@ __meta__ = {
 }
 
 [node name="ScoreBoard" parent="HUD/CenterContainer" instance=ExtResource( 5 )]
-position = Vector2( 9.97348, -3.17749 )
+position = Vector2( 8.01642, -4.15607 )
 
 [node name="Problem" type="Label" parent="HUD"]
 visible = false
