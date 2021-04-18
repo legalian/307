@@ -30,6 +30,7 @@ func loadingAnim():
 	
 
 func _on_Button_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	# Cancel matchmaking on server side
 	Server.cancel_matchmaking()
 	# Kick player back to beginning

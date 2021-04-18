@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var UsernameInput = ""
 var AvatarSelected = 0
@@ -17,14 +17,14 @@ var VehicleStyles
 
 
 func _MUT_send_partycode():
-	var partycode = $PartyCode.text
+	var partycode = find_node("PartyCode").text
 	var file = File.new()
 	file.open("user://saved_partycode.dat", file.WRITE)
 	file.store_string(partycode)
 	file.close()
 
 func _MUT_set_username():
-	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
+	find_node("UsernameInput").text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
 func _ready():
 	VehicleStyles = load("res://exported/cars/CarSpriteFrames.tres").get_animation_names()
@@ -33,10 +33,10 @@ func _ready():
 	HatSelected = Server.selfplayer.hat
 	VehicleSelected = Server.selfplayer.vehicle
 	#print(VehicleSelected)
-	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
-	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
-	get_node("CurrentName").text = UsernameInput
-	$Avatar.set_Hat(HatSelected)
+	find_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
+	find_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
+	find_node("CurrentName").text = UsernameInput
+	find_node("Avatar").set_Hat(HatSelected)
 	var hotsw = $Avatar.hotswap(AvatarSelected)
 	hotsw.z_index = -1;
 	add_child(hotsw,true)
@@ -62,7 +62,7 @@ func _on_Button_ConfirmUsername_pressed():
 	#var validCharacters = (result.get_string() == UsernameInput)
 	
 	if (UsernameInput.length() >= 3 and UsernameInput.length() <= 20): #and validCharacters):
-		get_node("CurrentName").text = UsernameInput
+		find_node("CurrentName").text = UsernameInput
 		Server.selfplayer.username  = UsernameInput
 		AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	else:
@@ -75,7 +75,7 @@ func _on_ChangeAvatar_pressed(AvatarType):
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(AvatarType)
 	AvatarSelected = AvatarType
-	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
+	find_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	Server.selfplayer.avatar = AvatarSelected
 	var av = $Avatar.hotswap(AvatarType)
 	av.z_index = -1
@@ -85,7 +85,7 @@ func _on_ChangeHat_pressed(HatType):
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(HatType)
 	HatSelected = HatType
-	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
+	find_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	$Avatar.set_Hat(HatType)
 	Server.selfplayer.hat = HatSelected
 
@@ -93,7 +93,7 @@ func _on_ChangeVehicle_pressed(VehicleType):
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	#print(AvatarType)
 	VehicleSelected = VehicleType
-	get_node("CurrentVehicles").text = "Vehicle - " + VehicleSelected
+	find_node("CurrentVehicles").text = "Vehicle - " + VehicleSelected
 	Server.selfplayer.vehicle = VehicleSelected #Set Vechicle
 	var CurrentVehicle = find_node("VehicleSprites")
 	CurrentVehicle.play(VehicleSelected)
@@ -104,12 +104,10 @@ func _on_Button_ChooseVehicle_pressed():
 	if (VehicleMenuOpen):
 		#get_node("Button_ChooseCharacter").text = "Change"
 		get_node("Vehicle Menu").hide()
-		find_node("SelectedVehicle").show()
 		VehicleMenuOpen = false
 	else:
 		#get_node("Button_ChooseCharacter").text = "Close"
 		get_node("Vehicle Menu").show()
-		find_node("SelectedVehicle").hide()
 		VehicleMenuOpen = true
 
 func _set_Vehicle_Selection():
@@ -117,7 +115,7 @@ func _set_Vehicle_Selection():
 	for vehicle_name in VehicleStyles:
 		var car_button = preload("res://Menus/CarButton.tscn").instance()
 		car_button.connect("pressed", self, "_on_ChangeVehicle_pressed", [vehicle_name])
-		var VehicleDisplay = car_button.get_node("VehicleDisplay")
+		var VehicleDisplay = car_button.find_node("VehicleDisplay")
 		car_button.get_node("AvatarType").bbcode_text = "[center]"+vehicle_name+"[/center]"
 		VehicleDisplay.animation = vehicle_name
 		VehicleSelection.add_child(car_button)
@@ -126,26 +124,24 @@ func _on_Button_ChooseHat_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	if (HatMenuOpen):
 		#get_node("Button_ChooseCharacter").text = "Change"
-		get_node("Hat Menu").hide()
-		find_node("SelectedVehicle").show()
+		find_node("Hat Menu").hide()
 		HatMenuOpen = false
 	else:
 		#get_node("Button_ChooseCharacter").text = "Close"
-		get_node("Hat Menu").show()
-		find_node("SelectedVehicle").hide()
+		find_node("Hat Menu").show()
 		_set_Hat_Selection()
 		HatMenuOpen = true
 
 func _set_Hat_Selection():
-	var HatSelection = get_node("Hat Menu").get_node("ColorRect").get_node("ButtonSelection")
+	var HatSelection = find_node("Hat Menu").find_node("ColorRect").find_node("ButtonSelection")
 	var currentNode = HatSelection
 	for i in 8:
-		currentNode = HatSelection.get_node("Avatar" + str(i))
+		currentNode = HatSelection.find_node("Avatar" + str(i))
 		if(i < HatStyles.size()):
-			currentNode.get_node("AvatarType").text = HatStyles[i]
+			currentNode.find_node("AvatarType").text = HatStyles[i]
 			currentNode.show()
 		else:
-			currentNode.get_node("AvatarType").text = "Null"
+			currentNode.find_node("AvatarType").text = "Null"
 			currentNode.hide()
 			
 
@@ -153,26 +149,24 @@ func _on_Button_ChooseCharacter_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	if (AvatarMenuOpen):
 		#get_node("Button_ChooseCharacter").text = "Change"
-		get_node("Avatar Menu").hide()
-		find_node("SelectedVehicle").show()
+		find_node("Avatar Menu").hide()
 		AvatarMenuOpen = false
 	else:
 		#get_node("Button_ChooseCharacter").text = "Close"
-		get_node("Avatar Menu").show()
-		find_node("SelectedVehicle").hide()
+		find_node("Avatar Menu").show()
 		_set_Avatar_Selection()
 		AvatarMenuOpen = true
 
 func _set_Avatar_Selection():
-	var AvatarSelection = get_node("Avatar Menu").get_node("ColorRect").get_node("ButtonSelection")
+	var AvatarSelection = find_node("Avatar Menu").find_node("ColorRect").find_node("ButtonSelection")
 	var currentNode = AvatarSelection
 	for i in 8:
-		currentNode = AvatarSelection.get_node("Avatar" + str(i))
+		currentNode = AvatarSelection.find_node("Avatar" + str(i))
 		if(i < AvatarStyles.size()):
-			currentNode.get_node("AvatarType").text = AvatarStyles[i]
+			currentNode.find_node("AvatarType").text = AvatarStyles[i]
 			currentNode.show()
 		else:
-			currentNode.get_node("AvatarType").text = "Null"
+			currentNode.find_node("AvatarType").text = "Null"
 			currentNode.hide()
 			
 		

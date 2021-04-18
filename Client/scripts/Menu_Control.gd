@@ -8,6 +8,17 @@ func _MUT_recieve_partycode():
 	find_node("PartyCodeTextEdit").text = partycode
 	
 func _ready():
+	if (Server.first_launch):
+		Server.first_launch = false
+		find_node("IntroAnim").play("Intro")
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		AudioPlayer.play_music("res://audio/music/mainmenu" + str(rng.randi_range(1,2)) + ".ogg")
+	else:
+		find_node("Overlay").visible = false
+		find_node("VideoPlayer").visible = false
+		find_node("TitleCreds").visible = false
+	
 	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING");
 	var active_corner = OS.get_environment("ACTIVECORNER");
 	var desired_screen = OS.get_environment("DESIREDSCREEN");

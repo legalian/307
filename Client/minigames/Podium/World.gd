@@ -43,9 +43,9 @@ func sort_by_score(var playerA, var playerB):
 
 
 func _on_MainMenu_Button_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	get_tree().quit()
 
-
-
 func _on_Matchmake_Button_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	pass # Replace with function body.

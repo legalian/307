@@ -43,14 +43,17 @@ func _ready():
 #may 2
 
 func _on_Button_Back_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	get_tree().change_scene("Main.tscn")
 	Server.leave_party()
 
 
 func _on_EnterGameButton_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
 	Server.attemptEnterGame()
 	
 	
 func _on_Button_CopyCode_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	OS.set_clipboard(str(Server.partycode))

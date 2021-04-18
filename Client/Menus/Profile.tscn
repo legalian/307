@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
@@ -12,136 +12,92 @@
 [ext_resource path="res://exported/cars/CarSpriteFrames.tres" type="SpriteFrames" id=10]
 [ext_resource path="res://Characters/RaccoonShadow.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Characters/RaccoonRed.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Themes/UI_Panel.tres" type="StyleBox" id=13]
+[ext_resource path="res://fonts/Kenney High Square (TITLE).tres" type="DynamicFont" id=14]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 50
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 18
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxEmpty" id=4]
+
 [sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Profile" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 4 )
-
-[node name="SelectedVehicle" type="Control" parent="."]
-margin_left = 879.0
-margin_top = 198.0
-margin_right = 887.0
-margin_bottom = 207.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_Back" type="Button" parent="."]
-margin_left = 803.505
-margin_top = 509.314
-margin_right = 1006.5
-margin_bottom = 582.314
-rect_pivot_offset = Vector2( 159.38, 30.3461 )
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_styles/panel = ExtResource( 13 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 99.0
+margin_right = 924.0
+margin_bottom = 600.0
+size_flags_horizontal = 4
+custom_constants/separation = 50
+
+[node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+margin_left = 260.0
+margin_right = 564.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 304, 0 )
+hint_tooltip = "Reinvent Yourself!"
+size_flags_horizontal = 4
 theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Back"
+custom_fonts/normal_font = ExtResource( 14 )
+bbcode_enabled = true
+bbcode_text = "[rainbow freq=0.2
+ sat=0.7 val=1]PROFILE SCREEN[/rainbow]"
+text = "PROFILE SCREEN"
+fit_content_height = true
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_ConfirmUsername" type="Button" parent="."]
-margin_left = 416.638
-margin_top = 387.049
-margin_right = 602.638
-margin_bottom = 433.049
-rect_pivot_offset = Vector2( 159.38, 30.3461 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Confirm"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 825.0
+margin_bottom = 223.0
 
-[node name="MainPartyCreationScreenLabel" type="RichTextLabel" parent="."]
-margin_left = 363.0
-margin_top = 22.0
-margin_right = 721.0
-margin_bottom = 99.0
-theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 2 )
-text = "Profile screen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+margin_right = 825.0
+margin_bottom = 32.0
+alignment = 1
 
-[node name="Button_ChooseCharacter" type="Button" parent="."]
-margin_left = 33.9662
-margin_top = 309.0
-margin_right = 258.966
-margin_bottom = 355.0
-rect_pivot_offset = Vector2( 196.333, 32.0074 )
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 210.0
+margin_right = 392.0
+margin_bottom = 32.0
 theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Select Animal"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_ChooseVehicle" type="Button" parent="."]
-margin_left = 769.462
-margin_top = 304.01
-margin_right = 994.462
-margin_bottom = 350.01
-rect_pivot_offset = Vector2( 196.333, 32.0074 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Select Vehicles"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button_ChooseHat" type="Button" parent="."]
-margin_left = 33.9662
-margin_top = 373.74
-margin_right = 258.966
-margin_bottom = 419.74
-rect_pivot_offset = Vector2( 196.333, 32.0074 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Select Hat"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_left = 309.0
-margin_top = 255.265
-margin_right = 714.0
-margin_bottom = 287.265
-theme = ExtResource( 3 )
-text = "Username"
+text = "Your Username:"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentName" type="Label" parent="."]
-margin_left = 311.0
-margin_top = 287.704
-margin_right = 713.0
-margin_bottom = 319.704
+[node name="CurrentName" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 396.0
+margin_right = 614.0
+margin_bottom = 32.0
 theme = ExtResource( 3 )
 text = "Current Username"
 align = 1
@@ -149,11 +105,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentAvatar" type="Label" parent="."]
-margin_left = 9.96389
-margin_top = 64.182
-margin_right = 267.964
-margin_bottom = 96.182
+[node name="UsernameInput" type="LineEdit" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 825.0
+margin_bottom = 78.0
+theme = ExtResource( 3 )
+align = 1
+max_length = 20
+clear_button_enabled = true
+placeholder_text = "YOUR USERNAME HERE"
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_ConfirmUsername" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 825.0
+margin_bottom = 116.0
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+theme = ExtResource( 3 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 273.0
+margin_right = 825.0
+margin_bottom = 495.0
+custom_constants/separation = 75
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 225.0
+margin_bottom = 222.0
+custom_constants/separation = 150
+alignment = 2
+
+[node name="CurrentAvatar" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 225.0
+margin_bottom = 32.0
 rect_pivot_offset = Vector2( 170.506, 30.3965 )
 theme = ExtResource( 3 )
 text = "Current Avatar"
@@ -162,11 +155,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentVehicles" type="Label" parent="."]
-margin_left = 747.0
-margin_top = 81.0
-margin_right = 1005.0
-margin_bottom = 104.0
+[node name="Button_ChooseCharacter" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 182.0
+margin_right = 225.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 225, 40 )
+rect_pivot_offset = Vector2( 196.333, 32.0074 )
+theme = ExtResource( 3 )
+text = "Select Animal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 300.0
+margin_right = 525.0
+margin_bottom = 222.0
+custom_constants/separation = 150
+alignment = 2
+
+[node name="CurrentVehicles" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+margin_right = 225.0
+margin_bottom = 32.0
 rect_pivot_offset = Vector2( 170.506, 30.3965 )
 theme = ExtResource( 3 )
 text = "Current Vehicles"
@@ -175,11 +185,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentHat" type="Label" parent="."]
-margin_left = 10.9662
-margin_top = 99.2653
-margin_right = 268.966
-margin_bottom = 131.265
+[node name="Button_ChooseVehicle" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 182.0
+margin_right = 225.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 225, 40 )
+rect_pivot_offset = Vector2( 196.333, 32.0074 )
+theme = ExtResource( 3 )
+text = "Select Vehicles"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 600.0
+margin_right = 825.0
+margin_bottom = 222.0
+
+[node name="CurrentHat" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 225.0
+margin_bottom = 32.0
 rect_pivot_offset = Vector2( 170.506, 30.3965 )
 theme = ExtResource( 3 )
 text = "Current Hat"
@@ -188,23 +213,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UsernameInput" type="LineEdit" parent="."]
-margin_left = 310.876
-margin_top = 326.33
-margin_right = 713.876
-margin_bottom = 376.33
+[node name="Button_ChooseHat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 225.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 225, 40 )
+rect_pivot_offset = Vector2( 196.333, 32.0074 )
 theme = ExtResource( 3 )
-max_length = 20
-clear_button_enabled = true
+text = "Select Hat"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Back" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 545.0
+margin_right = 825.0
+margin_bottom = 579.0
+rect_pivot_offset = Vector2( 159.38, 30.3461 )
+theme = ExtResource( 3 )
+text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Avatar" parent="." instance=ExtResource( 2 )]
-position = Vector2( 140.538, 291.552 )
+position = Vector2( 208.831, 440.494 )
 
 [node name="VehicleSprites" type="AnimatedSprite" parent="."]
-position = Vector2( 883.592, 192.822 )
+position = Vector2( 512.425, 374.688 )
 scale = Vector2( 0.404052, 0.404052 )
 frames = ExtResource( 10 )
 animation = "Truck"
@@ -212,6 +248,8 @@ frame = 43
 
 [node name="Avatar Menu" type="Control" parent="."]
 visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -242,7 +280,7 @@ margin_top = -79.3416
 margin_right = 620.658
 margin_bottom = -2.34161
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "Choose Avatar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -253,7 +291,7 @@ margin_left = 20.0
 margin_top = 42.0
 margin_right = 200.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -267,7 +305,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Racoon"
 scroll_active = false
 __meta__ = {
@@ -279,7 +317,7 @@ margin_left = 20.0
 margin_top = 260.0
 margin_right = 200.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -293,7 +331,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Racoon 2"
 scroll_active = false
 __meta__ = {
@@ -305,7 +343,7 @@ margin_left = 250.0
 margin_top = 260.0
 margin_right = 430.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -319,7 +357,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -330,7 +368,7 @@ margin_left = 485.0
 margin_top = 260.0
 margin_right = 665.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -344,7 +382,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -355,7 +393,7 @@ margin_left = 715.0
 margin_top = 260.0
 margin_right = 895.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -369,7 +407,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -380,7 +418,7 @@ margin_left = 250.0
 margin_top = 42.0
 margin_right = 430.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -394,7 +432,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -405,7 +443,7 @@ margin_left = 485.0
 margin_top = 42.0
 margin_right = 665.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -419,7 +457,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -430,7 +468,7 @@ margin_left = 715.0
 margin_top = 42.0
 margin_right = 895.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -444,7 +482,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -462,6 +500,8 @@ __meta__ = {
 
 [node name="Vehicle Menu" type="Control" parent="."]
 visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -482,7 +522,7 @@ margin_top = 81.0
 margin_right = 34.0
 margin_bottom = 95.0
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -492,7 +532,7 @@ margin_left = 34.0
 margin_top = 81.0
 margin_right = 956.0
 margin_bottom = 551.0
-custom_styles/bg = SubResource( 7 )
+custom_styles/bg = SubResource( 6 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -527,6 +567,8 @@ __meta__ = {
 
 [node name="Hat Menu" type="Control" parent="."]
 visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -557,7 +599,7 @@ margin_top = -79.3416
 margin_right = 620.658
 margin_bottom = -2.34161
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -567,7 +609,7 @@ margin_left = 20.0
 margin_top = 42.0
 margin_right = 200.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -582,7 +624,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -592,7 +634,7 @@ margin_left = 20.0
 margin_top = 260.0
 margin_right = 200.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -603,7 +645,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -616,7 +658,7 @@ margin_left = 250.0
 margin_top = 260.0
 margin_right = 430.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -627,7 +669,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -640,7 +682,7 @@ margin_left = 485.0
 margin_top = 260.0
 margin_right = 665.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -654,7 +696,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -664,7 +706,7 @@ margin_left = 715.0
 margin_top = 260.0
 margin_right = 895.0
 margin_bottom = 420.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -678,7 +720,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -688,7 +730,7 @@ margin_left = 250.0
 margin_top = 42.0
 margin_right = 430.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -699,7 +741,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -712,7 +754,7 @@ margin_left = 485.0
 margin_top = 42.0
 margin_right = 665.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -723,7 +765,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -736,7 +778,7 @@ margin_left = 715.0
 margin_top = 42.0
 margin_right = 895.0
 margin_bottom = 202.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -747,7 +789,7 @@ margin_top = -39.6696
 margin_right = 188.333
 margin_bottom = 0.330353
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -764,12 +806,12 @@ text = "Close"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button_Back" to="." method="_on_Button_Back_pressed"]
-[connection signal="pressed" from="Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
-[connection signal="pressed" from="Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
-[connection signal="pressed" from="Button_ChooseVehicle" to="." method="_on_Button_ChooseVehicle_pressed"]
-[connection signal="pressed" from="Button_ChooseHat" to="." method="_on_Button_ChooseHat_pressed"]
-[connection signal="text_changed" from="UsernameInput" to="." method="_on_UsernameInput_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/VBoxContainer/UsernameInput" to="." method="_on_UsernameInput_text_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Button_ConfirmUsername" to="." method="_on_Button_ConfirmUsername_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_ChooseCharacter" to="." method="_on_Button_ChooseCharacter_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Button_ChooseVehicle" to="." method="_on_Button_ChooseVehicle_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_ChooseHat" to="." method="_on_Button_ChooseHat_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button_Back" to="." method="_on_Button_Back_pressed"]
 [connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar0" to="." method="_on_ChangeAvatar_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar4" to="." method="_on_ChangeAvatar_pressed" binds= [ 4 ]]
 [connection signal="pressed" from="Avatar Menu/ColorRect/ButtonSelection/Avatar5" to="." method="_on_ChangeAvatar_pressed" binds= [ 5 ]]
