@@ -60,7 +60,7 @@
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/GNUslashLinux.png" type="Texture" id=58]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/linuxslashgnu.png" type="Texture" id=59]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/GNU plus linux.png" type="Texture" id=60]
-[ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/gnu:Linux.png" type="Texture" id=61]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/gnuLinux2.png" type="Texture" id=61]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/gnupluslinux.png" type="Texture" id=62]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/GNUslashlinux2.png" type="Texture" id=63]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/GNUSLASHLINUX3.png" type="Texture" id=64]
@@ -87,6 +87,11 @@ animations = [ {
 "name": "captcha1",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 58 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "captcha7",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 52 ), ExtResource( 38 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 40 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 41 ), ExtResource( 51 ) ],
 "loop": true,
 "name": "captcha5",
@@ -95,11 +100,6 @@ animations = [ {
 "frames": [ ExtResource( 50 ), ExtResource( 45 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 55 ), ExtResource( 49 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "captcha6",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 58 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "captcha7",
 "speed": 5.0
 } ]
 
