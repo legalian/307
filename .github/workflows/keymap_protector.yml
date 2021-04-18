@@ -44,8 +44,8 @@ jobs:
               ver_master=$ver1
             fi
             echo "master ver $ver_master"
-            sed -i -e "s:config/git_copy_prot=.:config/git_copy_prot=$((ver_master+1)):" Client/project.godot
-            sed -i -e "s:config/git_copy_prot=.:config/git_copy_prot=$((ver_master+1)):" Client/project.godot_prot
+            sed -i -e "s:config/git_copy_prot=.+:config/git_copy_prot=$((ver_master+1)):" Client/project.godot
+            sed -i -e "s:config/git_copy_prot=.+:config/git_copy_prot=$((ver_master+1)):" Client/project.godot_prot
           fi
           
       - name: Push changes
