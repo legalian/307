@@ -60,37 +60,37 @@ position = Vector2( 5922.98, 620.991 )
 shape = SubResource( 2 )
 
 [node name="R1C1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1400.61, -1218.78 )
-scale = Vector2( 3, 3 )
+position = Vector2( -1345.97, -1148.2 )
+scale = Vector2( 5, 5 )
 
 [node name="R1C2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -73.1539, -1229.98 )
-scale = Vector2( 3, 3 )
+position = Vector2( -75.4301, -1143.47 )
+scale = Vector2( 5, 5 )
 
 [node name="R1C3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1210.2, -1226.41 )
-scale = Vector2( 3, 3 )
+position = Vector2( 1219.31, -1153.56 )
+scale = Vector2( 5, 5 )
 
 [node name="R2C1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1364.39, 101.254 )
-scale = Vector2( 3, 3 )
+position = Vector2( -1350.73, 110.36 )
+scale = Vector2( 5, 5 )
 
 [node name="R2C2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -132.98, 125.476 )
-scale = Vector2( 3, 3 )
+position = Vector2( -64.6814, 125.476 )
+scale = Vector2( 5, 5 )
 
 [node name="R2C3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1215.09, 80.6671 )
-scale = Vector2( 3, 3 )
+position = Vector2( 1210.54, 126.199 )
+scale = Vector2( 5, 5 )
 
 [node name="R3C1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1383.8, 1307.3 )
-scale = Vector2( 3, 3 )
+position = Vector2( -1347.37, 1398.36 )
+scale = Vector2( 5, 5 )
 
 [node name="R3C2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -50.7503, 1318.5 )
-scale = Vector2( 3, 3 )
+position = Vector2( -68.9634, 1405.01 )
+scale = Vector2( 5, 5 )
 
 [node name="R3C3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1203.89, 1329.7 )
-scale = Vector2( 3, 3 )
+position = Vector2( 1208.44, 1402.55 )
+scale = Vector2( 5, 5 )
