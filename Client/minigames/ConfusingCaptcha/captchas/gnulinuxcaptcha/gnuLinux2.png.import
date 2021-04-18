@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gnu:Linux.png-2afb14b0aac63b4b522f10ad75105b86.stex"
+path="res://.import/gnuLinux2.png-c5e6d2a7541990ccc1eb8d7c729e6239.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/gnu:Linux.png"
-dest_files=[ "res://.import/gnu:Linux.png-2afb14b0aac63b4b522f10ad75105b86.stex" ]
+source_file="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/gnuLinux2.png"
+dest_files=[ "res://.import/gnuLinux2.png-c5e6d2a7541990ccc1eb8d7c729e6239.stex" ]
 
 [params]
 

@@ -13,6 +13,7 @@ var roundTime = null;
 var maxRoundTime = 30;
 var questionIndex = 0;
 var total_questions = 7;
+var startLives = 3;
 var tileCorrespondance = ["R1C1", "R1C2", "R1C3","R2C1", "R2C2", "R2C3", "R3C1", "R3C2", "R3C3"]
 var correctTile = tileCorrespondance[0]
 var questions = [4,5,6,0,1,2,3]
@@ -89,6 +90,7 @@ func startRound():
 			#rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
 			rpc_id(p.playerID,"questionText",questionIndex,arrangement)
 			rpc_id(p.playerID, "startNextRound");
+			rpc_id(p.playerID, "setLives", lives[p.playerID]);
 	for i in range(0, arrangement.size()):
 		if arrangement[i] == 0:
 			correctTile = tileCorrespondance[i];
@@ -100,8 +102,13 @@ func endRound():
 		var dis = $World/UpperRight.position-$World/LowerLeft.position
 		var choice = floor(ofs.x/(dis.x/3))+3*floor(ofs.y/(dis.y/3))
 		if arrangement[choice]!=0:
-			_on_die(player)
+			decreaseHealth(player)
 	nextRound()
+
+func decreaseHealth(player):
+	lives[player.playerID] = lives[player.playerID] - 1;
+	if(lives[player.playerID] == 0):
+		_on_die(player);
 
 func processEndedRound():
 
@@ -155,6 +162,7 @@ func spawn_id(x,y,player_id):
 	ingame[player_id] = CCPlayer.instance()
 	ingame[player_id].id = player_id
 	ingame[player_id].position = Vector2(x,y)
+	lives[player_id] = startLives;
 	
 	world.add_child(ingame[player_id])
 	

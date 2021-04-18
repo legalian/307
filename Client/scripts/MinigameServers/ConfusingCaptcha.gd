@@ -29,6 +29,10 @@ func syncUpdate():
 	if players[0].playerID in gameinstance.players:
 		rpc_unreliable_id(1,"syncUpdate",gameinstance.players[players[0].playerID].pack())
 
+remote func setLives(lives):
+	selfPlayerInstance.find_node("Lives").setLlivesives(lives)
+
+
 remote func questionText(questionIndex,arrangement):
 	#print("yeah yeah yeah yeah yeah yeah eyah eyah ")
 	assert(gameinstance!=null)
