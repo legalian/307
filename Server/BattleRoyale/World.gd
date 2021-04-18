@@ -15,6 +15,7 @@ const MAPS = ["Grass", "Desert"]
 
 var map = null
 var world = null
+var circle
 var mapRoll;
 
 var debug_id = 1010101010
@@ -62,6 +63,9 @@ func _ready():
 		world = preload("res://BattleRoyale/World-Desert.tscn").instance()
 	assert(world != null)
 	add_child(world)
+	
+	circle = preload("res://BattleRoyale/Circle.tscn").instance()
+	world.add_child(circle)
 
 	var _timer = Timer.new()
 	add_child(_timer)
@@ -79,7 +83,7 @@ func _send_rpc_update():
 	for gg in bullets.values(): bullet_frame.append(gg.pack())
 	var powerup_frame = []
 	
-	for child in $World.get_children():
+	for child in world.get_children():
 		if child.get('entity_type') == 'collectible':
 			powerup_frame.append(child.pack())
 		
@@ -87,14 +91,10 @@ func _send_rpc_update():
 		if(p.dummy == 0):
 			rpc_unreliable_id(p.playerID,"frameUpdate",player_frame,bullet_frame,powerup_frame)
 
-
-#func _process(delta):
-#	return
 	for player in players:
 		if player.playerID==debug_id: continue
 		if (player.playerID != 0 && ingame.has(player.playerID)):
 			#print("Calling update radius")
-			var circle = get_node("World/Circle")
 			if(player.dummy == 0):
 				rpc_unreliable_id(player.playerID, "update_radius", circle.radius)
 			if (circle.isInCircle(ingame[player.playerID].position)):
@@ -159,7 +159,7 @@ func _on_strike(bullet,object):
 		var expl = preload("res://BattleRoyale/explosion.tscn").instance()
 		expl.connect("explode",self,"_on_explode")
 		expl.position = bullet.position
-		$World.add_child(expl)
+		world.add_child(expl)
 		for player in players:
 			if player.playerID!=debug_id:
 				rpc_id(player.playerID,"explode",expl.position)
@@ -171,7 +171,7 @@ func _on_strike(bullet,object):
 		for player in players:
 			if player.playerID!=debug_id: rpc_id(player.playerID,"strike",bullet.pack(),{'type':'bullet','obj':object.pack()})
 		bullets.erase(object.id)
-		$World.remove_child(object)
+		world.remove_child(object)
 		object.queue_free()
 	elif object.get('entity_type')=='player':
 		object.health -= 0.101
@@ -183,7 +183,7 @@ func _on_strike(bullet,object):
 		if object.health<=0: _on_die(object)
 		
 	bullets.erase(bullet.id)
-	$World.remove_child(bullet)
+	world.remove_child(bullet)
 	bullet.queue_free()
 
 func _on_die(player):
@@ -193,7 +193,7 @@ func _on_die(player):
 		if oplayer.playerID==debug_id: continue
 		rpc_id(oplayer.playerID,"die",player.pack())
 	status[player.id] = "DEAD"
-	$World.remove_child(ingame[player.id])
+	world.remove_child(ingame[player.id])
 	ingame[player.id].queue_free()
 	ingame.erase(player.id)
 	if ingame.size()==1:

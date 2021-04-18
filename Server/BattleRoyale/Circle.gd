@@ -11,6 +11,4 @@ func isInCircle(var location: Vector2):
 		return false
 
 func _process(delta):
-	#Don't do any drawing on the serverside
 	radius = radius - 40 * delta
-	pass

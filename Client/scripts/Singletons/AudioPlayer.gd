@@ -26,8 +26,11 @@ func play_sfx(path):
 	queue.append(path)
 	
 func play_music(path):
-	music_player.stream = load(path)
-	music_player.play()
+	var stream = load(path)
+	if stream != music_player.stream:
+		music_player.stream = stream
+		music_player.play()
+		resume_music()
 
 func pause_music():
 	music_player.stream_paused = true
