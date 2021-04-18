@@ -32,7 +32,7 @@ func _ready():
 	AvatarSelected = Server.selfplayer.avatar
 	HatSelected = Server.selfplayer.hat
 	VehicleSelected = Server.selfplayer.vehicle
-	print(VehicleSelected)
+	#print(VehicleSelected)
 	get_node("CurrentAvatar").text = "Avatar - " + AvatarStyles[AvatarSelected]
 	get_node("CurrentHat").text = "Hat - " + HatStyles[HatSelected]
 	get_node("CurrentName").text = UsernameInput
