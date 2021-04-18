@@ -18,13 +18,16 @@ _global_script_class_icons={
 config/name="Late to the Stage"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
-config/git_copy_prot=2
+config/git_copy_prot=1
 
 [autoload]
 
-AudioPlayer="*res://scripts/Singletons/AudioPlayer.gd"
-Config="*res://scripts/Singletons/Config.gd"
 Server="*res://scripts/Singletons/Server.gd"
+AudioPlayer="*res://scripts/Singletons/AudioPlayer.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [gdnative]
 
