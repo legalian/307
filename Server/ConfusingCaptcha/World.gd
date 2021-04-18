@@ -8,7 +8,7 @@ var status = {}
 var lives = {}
 var ingame = {}
 var curRound = 0
-var totalRounds = 4;
+var totalRounds = 5;
 var roundTime = null;
 var maxRoundTime = 30;
 var questionIndex = 0;
@@ -106,9 +106,11 @@ func endRound():
 	nextRound()
 
 func decreaseHealth(player):
-	lives[player.playerID] = lives[player.playerID] - 1;
-	if(lives[player.playerID] == 0):
+	print("Decreasing health of " + str(player.id));
+	lives[player.id] = lives[player.id] - 1;
+	if(lives[player.id] == 0):
 		_on_die(player);
+		print("Player " + str(player.id) + " dies!");
 
 func processEndedRound():
 

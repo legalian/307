@@ -39,11 +39,11 @@ func setArrangement(question_number,arrangement):
 		$World/R2C1,$World/R2C2,$World/R2C3,
 		$World/R3C1,$World/R3C2,$World/R3C3,
 	]
-	var original_scale = 4*tiles[0].frames.get_frame(tiles[0].frames.get_animation_names()[0],0).get_size()
+	var original_scale = 3*tiles[0].frames.get_frame(tiles[0].frames.get_animation_names()[0],0).get_size()
 	for x in range(9):
-		print(question_number," ",tiles[x].frames.get_animation_names())
-		print(x,tiles[x].frames.get_animation_names()[question_number])
-		print(arrangement[x])
+		#print(question_number," ",tiles[x].frames.get_animation_names())
+		#print(x,tiles[x].frames.get_animation_names()[question_number])
+		#print(arrangement[x])
 		#tiles[x].play(tiles[x].frames.get_animation_names()[question_number])
 		tiles[x].animation = tiles[x].frames.get_animation_names()[question_number]
 		tiles[x].set_frame(arrangement[x])

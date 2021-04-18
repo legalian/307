@@ -23,4 +23,4 @@ func setTime(times):
 		time = times
 	else:
 		time = 0;
-	set_text(str(time)+"!")
+	set_text(str(time))
