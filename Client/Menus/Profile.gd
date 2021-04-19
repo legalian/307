@@ -38,7 +38,7 @@ func _ready():
 	find_node("CurrentName").text = UsernameInput
 	find_node("Avatar").set_Hat(HatSelected)
 	var hotsw = $Avatar.hotswap(AvatarSelected)
-	hotsw.z_index = -1;
+	#hotsw.z_index = 1;
 	add_child(hotsw,true)
 	_on_ChangeVehicle_pressed(VehicleSelected)
 	_set_Vehicle_Selection()
@@ -105,10 +105,16 @@ func _on_Button_ChooseVehicle_pressed():
 		#get_node("Button_ChooseCharacter").text = "Change"
 		get_node("Vehicle Menu").hide()
 		VehicleMenuOpen = false
+		var av = $Avatar.hotswap(Server.selfplayer.avatar)
+		av.z_index = 1
+		add_child(av,true)
 	else:
 		#get_node("Button_ChooseCharacter").text = "Close"
 		get_node("Vehicle Menu").show()
 		VehicleMenuOpen = true
+		var av = $Avatar.hotswap(Server.selfplayer.avatar)
+		av.z_index = -1
+		add_child(av,true)
 
 func _set_Vehicle_Selection():
 	var VehicleSelection = get_node("Vehicle Menu/ColorRect/ButtonSelection/MarginContainer/GridContainer")
@@ -126,11 +132,17 @@ func _on_Button_ChooseHat_pressed():
 		#get_node("Button_ChooseCharacter").text = "Change"
 		find_node("Hat Menu").hide()
 		HatMenuOpen = false
+		var av = $Avatar.hotswap(Server.selfplayer.avatar)
+		av.z_index = 1
+		add_child(av,true)
 	else:
 		#get_node("Button_ChooseCharacter").text = "Close"
 		find_node("Hat Menu").show()
 		_set_Hat_Selection()
 		HatMenuOpen = true
+		var av = $Avatar.hotswap(Server.selfplayer.avatar)
+		av.z_index = -1
+		add_child(av,true)
 
 func _set_Hat_Selection():
 	var HatSelection = find_node("Hat Menu").find_node("ColorRect").find_node("ButtonSelection")
@@ -143,7 +155,9 @@ func _set_Hat_Selection():
 		else:
 			currentNode.find_node("AvatarType").text = "Null"
 			currentNode.hide()
-			
+	var av = $Avatar.hotswap(Server.selfplayer.avatar)
+	av.z_index = 1
+	add_child(av,true)
 
 func _on_Button_ChooseCharacter_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
@@ -151,13 +165,20 @@ func _on_Button_ChooseCharacter_pressed():
 		#get_node("Button_ChooseCharacter").text = "Change"
 		find_node("Avatar Menu").hide()
 		AvatarMenuOpen = false
+		var av = $Avatar.hotswap(Server.selfplayer.avatar)
+		av.z_index = 1
+		add_child(av,true)
 	else:
 		#get_node("Button_ChooseCharacter").text = "Close"
 		find_node("Avatar Menu").show()
 		_set_Avatar_Selection()
 		AvatarMenuOpen = true
+		var av = $Avatar.hotswap(Server.selfplayer.avatar)
+		av.z_index = -1
+		add_child(av,true)
 
 func _set_Avatar_Selection():
+	
 	var AvatarSelection = find_node("Avatar Menu").find_node("ColorRect").find_node("ButtonSelection")
 	var currentNode = AvatarSelection
 	for i in 8:
@@ -169,7 +190,6 @@ func _set_Avatar_Selection():
 			currentNode.find_node("AvatarType").text = "Null"
 			currentNode.hide()
 			
-		
 
 func _on_EnterGameButton_pressed():
 	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
