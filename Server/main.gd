@@ -128,7 +128,10 @@ remote func leave_party(var partyID, packed):
 	if (party_id != null):
 		print("Sending leave party to partyhandler")
 		var joined_party = partyHandler.get_party_by_player(player_id)
-		joined_party.minigame.remove_player(player_id)
+		if (joined_party.minigame):
+			joined_party.minigame.remove_player(player_id)
+		else:
+			print("Attempted to remove player from nonexistant party")
 		partyHandler.leave_party(player_id)
 		print("Updated playerlist: " + str(joined_party.playerIDs))
 		unintroduce(player_id, joined_party.playerIDs)
