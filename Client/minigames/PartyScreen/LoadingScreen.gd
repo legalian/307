@@ -36,6 +36,7 @@ func _on_Button_pressed():
 	if Server.get_child_count() > 0:
 		get_tree().change_scene("res://minigames/PartyScreen/World.tscn")
 	else:
+		Server.leave_party()
 		get_tree().change_scene("res://Main.tscn")
 	# Still need to cancel server-side matchmaking.
 	pass # Replace with function body.
