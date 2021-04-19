@@ -349,7 +349,7 @@ text = "EVAN DUNNING"
 margin_top = 285.0
 margin_right = 213.0
 margin_bottom = 317.0
-text = "WILLIAM LAWRENCE"
+text = "WILLIAM GARNER"
 
 [node name="Label7" type="Label" parent="Menu_Controller/TitleCreds/VBoxContainer"]
 margin_top = 337.0

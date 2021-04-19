@@ -75,7 +75,7 @@ func _ready():
 	elif map == "Desert":
 		world = preload("res://RacingGame/World-Desert.tscn").instance()
 	else:
-		world = preload("res://racingGame/World-Candy.tscn").instance()
+		world = preload("res://RacingGame/World-Candy.tscn").instance()
 	assert(world != null)
 	add_child(world)
 	
