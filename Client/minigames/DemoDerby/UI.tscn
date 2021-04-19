@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://fonts/Countdownglphs.tres" type="DynamicFont" id=1]
 [ext_resource path="res://minigames/DemoDerby/UI.gd" type="Script" id=2]
 [ext_resource path="res://minigames/RacingGame/RacingGamePlayerHit.tres" type="Animation" id=3]
 [ext_resource path="res://minigames/DemoDerby/UIobjects/Countdown.gd" type="Script" id=4]
@@ -30,26 +29,6 @@ __meta__ = {
 [node name="scoreboard" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 0.341705 )
 script = ExtResource( 6 )
-
-[node name="Countdown" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -36.0
-margin_top = -49.0
-margin_right = 43.0
-margin_bottom = 197.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 0.678431, 0, 1 )
-text = "5!
-"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tween" type="Tween" parent="Countdown"]
 
 [node name="Hit" type="Label" parent="."]
 anchor_left = 0.5
