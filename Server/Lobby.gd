@@ -21,10 +21,10 @@ const min_players_per_lobby = 2
 #					preload("res://DemoDerby/World.tscn")
 #					]
 const minigame_list = [
-					#preload("res://BattleRoyale/World.tscn"),
+					preload("res://BattleRoyale/World.tscn"),
 					preload("res://RacingGame/World.tscn"),
-					#preload("res://DemoDerby/World.tscn"),
-					#preload("res://ConfusingCaptcha/World.tscn")
+					preload("res://DemoDerby/World.tscn"),
+					preload("res://ConfusingCaptcha/World.tscn")
 					]
 
 const podium = preload("res://Podium/World.tscn")
