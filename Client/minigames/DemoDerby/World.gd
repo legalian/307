@@ -17,6 +17,7 @@ var map = "Grass"
 var setCamera = false;
 
 func _ready():
+	AudioPlayer.play_music("res://audio/music/demoderby.ogg")
 	minigame = "DEMODERBY"
 	world = get_node("World" + map);
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/DemoDerby/assets/entities/fence.tscn")
