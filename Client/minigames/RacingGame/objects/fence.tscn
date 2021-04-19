@@ -341,7 +341,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
 position = Vector2( -1.45483, -149.859 )
-scale = Vector2( 2.3, 2.3 )
+scale = Vector2( 3, 3 )
 frames = SubResource( 65 )
 frame = 63
 
