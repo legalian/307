@@ -200,8 +200,13 @@ func crown_winner(playerID):
 		if oplayer.playerID==debug_id: continue
 		rpc_id(oplayer.playerID,"win",playerID)
 	syncScores()
-	print("WINNER CROWNED! GO TO NEXT MINIGAME")
-	get_parent().go_to_next_minigame(playerID)
+	
+	var end_timer = Timer.new()
+	add_child(end_timer)
+	end_timer.connect("timeout", get_parent(), "go_to_next_minigame", [playerID])
+	end_timer.set_wait_time(5)
+	end_timer.set_one_shot(true)
+	end_timer.start()
 
 
 
