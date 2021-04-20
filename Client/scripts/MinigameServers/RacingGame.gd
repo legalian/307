@@ -84,4 +84,5 @@ remote func setMapRoll(mapRolls):
 	mapRoll = mapRolls;
 
 remote func endMatch():
+	AudioPlayer.pause_music()
 	gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()

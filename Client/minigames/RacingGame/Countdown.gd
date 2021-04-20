@@ -21,15 +21,15 @@ func _ready():
 
 func tick():
 	count -= 1
+
 	if count == 0:
-		AudioPlayer.play_sfx("res://audio/sfx/countdown_go.ogg")
 		set_text("GO!")
+		AudioPlayer.play_sfx("res://audio/sfx/countdown_go.ogg")
 		timer.stop()
 		set_visible(false)
 	elif count < 0:
 		timer.stop()
 		set_visible(false)
-	elif count > 0 and count < 4:
+	elif count > 0:
 		AudioPlayer.play_sfx("res://audio/sfx/countdown_beep.ogg")
-	else:
 		set_text(str(count))

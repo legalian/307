@@ -11,5 +11,5 @@ dest_files=[ "res://.import/countdown_beep.ogg-056e30034d3279247f0405871d0eefe4.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

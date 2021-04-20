@@ -13,7 +13,7 @@ func add_scoreboard(var players):
 		player_row.set_alignment(ALIGN_CENTER)
 		
 		var player_ID = Label.new()
-		player_ID.text = str(player.playerID)
+		player_ID.text = str(player.username)
 		player_row.add_child(player_ID)
 		
 		var player_score = Label.new()

@@ -183,6 +183,6 @@ func _process(delta):
 		var end_match = Timer.new()
 		add_child(end_match)
 		end_match.connect("timeout", get_parent(), "go_to_next_minigame", [players[0].playerID])
-		end_match.set_wait_time(3)
+		end_match.set_wait_time(5)
 		end_match.set_one_shot(true)
 		end_match.start()
