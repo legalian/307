@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/battleroyale.ogg-a86c3c653fa412832570e63365837d74.oggstr"
+
+[deps]
+
+source_file="res://audio/music/battleroyale.ogg"
+dest_files=[ "res://.import/battleroyale.ogg-a86c3c653fa412832570e63365837d74.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

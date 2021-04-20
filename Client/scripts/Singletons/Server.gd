@@ -2,6 +2,8 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 
+var first_launch = true
+
 var partycode = "undefined"
 
 const Player = preload("res://scripts/MinigameServers/Player.gd")

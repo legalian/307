@@ -30,9 +30,15 @@ func loadingAnim():
 	
 
 func _on_Button_pressed():
+	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	# Cancel matchmaking on server side
 	Server.cancel_matchmaking()
 	# Kick player back to beginning
+	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	AudioPlayer.resume_music()
+	
 	if Server.get_child_count() > 0:
 		get_tree().change_scene("res://minigames/PartyScreen/World.tscn")
 	else:

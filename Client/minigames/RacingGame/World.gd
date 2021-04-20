@@ -18,6 +18,8 @@ var object_scenes = {}
 var setCamera = false;
 
 func _ready():
+	AudioPlayer.play_music("res://audio/music/racing.ogg")
+	
 	minigame = "RACINGGAME"
 	
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/RacingGame/objects/fence.tscn")
