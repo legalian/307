@@ -24,6 +24,8 @@ func tick():
 	if count == 0:
 		AudioPlayer.play_sfx("res://audio/sfx/countdown_go.ogg")
 		set_text("GO!")
+		timer.stop()
+		set_visible(false)
 	elif count < 0:
 		timer.stop()
 		set_visible(false)
