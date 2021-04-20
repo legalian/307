@@ -67,6 +67,7 @@ func _on_Button_Create_Party_pressed():
 	server.createParty()
 
 func _on_Button_Join_Party_pressed():
+	AudioPlayer.pause_music()
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	var server = get_node("/root/Server")
 	if (find_node("PartyCodeTextEdit").text == null):
