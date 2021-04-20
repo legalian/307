@@ -17,8 +17,11 @@ func add_scoreboard(var players):
 		player_row.add_child(player_score)
 		
 		var player_ID = Label.new()
-		player_ID.text = str(player.id)
-		player_row.add_child(player_ID)
 		
+		for p in Server.players:
+			if p.playerID == player.id:
+				player_ID.text = str(p.username)
+		
+		player_row.add_child(player_ID)
 		
 		add_child(player_row)

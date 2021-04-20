@@ -134,7 +134,6 @@ remote func die(package):
 remote func win(playerID):
 	AudioPlayer.pause_music()
 	if playerID==players[0].playerID:
-		AudioPlayer.play_sfx("res://audio/sfx/victoryroyale.ogg")
 		get_tree().change_scene("res://win.tscn")
 	else:
 		get_tree().change_scene("res://death.tscn")

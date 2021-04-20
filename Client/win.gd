@@ -2,8 +2,12 @@ extends MarginContainer
 
 func _ready():
 	AudioPlayer.pause_music()
+	AudioPlayer.play_sfx("res://audio/sfx/victoryroyale.ogg")
 
 func _on_LeaveGame_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_022.ogg")
 	Server.leave_party()
-	pass # Replace with function body.
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	AudioPlayer.play_music("res://audio/music/mainmenu" + str(rng.randi_range(1,2)) + ".ogg")
+	get_tree().change_scene("res://Main.tscn")

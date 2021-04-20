@@ -14,6 +14,7 @@ func fire(var origpl,var targetpos):
 	
 	$PositionFix/Flare.beginfire()
 	$Timer.start()
+	bulletAt(ori,targ,true)
 	fireSound();
 
 func unfire():
@@ -23,3 +24,4 @@ func unfire():
 
 func _on_Timer_timeout():
 	bulletAt(ori,targ,true)
+	fireSound();

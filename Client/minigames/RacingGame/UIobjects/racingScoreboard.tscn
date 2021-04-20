@@ -49,16 +49,16 @@ custom_constants/separation = 100
 alignment = 1
 
 [node name="Position" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 61.0
-margin_right = 154.0
+margin_left = 57.0
+margin_right = 150.0
 margin_bottom = 32.0
 text = "Position"
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 254.0
-margin_right = 362.0
+margin_left = 250.0
+margin_right = 366.0
 margin_bottom = 32.0
-text = "PLAYER ID"
+text = "USERNAME"
 
 [node name="PlayerList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 margin_top = 84.0

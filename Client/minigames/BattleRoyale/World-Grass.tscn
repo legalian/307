@@ -17,7 +17,7 @@
 [ext_resource path="res://objects/tree4.tscn" type="PackedScene" id=15]
 [ext_resource path="res://minigames/BattleRoyale/Circle.gd" type="Script" id=16]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -40,17 +40,17 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=2]
 render_priority = 127
-shader = SubResource( 3 )
+shader = SubResource( 1 )
 shader_param/radius = 6000.0
 shader_param/global_transform = null
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 117.904
 height = 9132.73
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 53.5034
 height = 7603.4
 
@@ -62,7 +62,7 @@ z_index = 4096
 script = ExtResource( 16 )
 
 [node name="CircleDrawer" type="ColorRect" parent="Circle"]
-material = SubResource( 4 )
+material = SubResource( 2 )
 margin_right = 17000.0
 margin_bottom = 14000.0
 mouse_filter = 2
@@ -169,7 +169,7 @@ position = Vector2( -4317.74, -3850.04 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="topborder"]
 position = Vector2( 3861.6, 6.92871 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="bottomborder" type="StaticBody2D" parent="."]
 position = Vector2( -4317.74, -3850.04 )
@@ -177,7 +177,7 @@ position = Vector2( -4317.74, -3850.04 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottomborder"]
 position = Vector2( 4197.43, 7711.14 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="leftborder" type="StaticBody2D" parent="."]
 position = Vector2( -1640, -668 )
@@ -185,7 +185,7 @@ constant_linear_velocity = Vector2( 500, 500 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftborder"]
 position = Vector2( -2637.02, 892.991 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="rightborder" type="StaticBody2D" parent="."]
 position = Vector2( -1640, -668 )
@@ -193,7 +193,7 @@ constant_linear_velocity = Vector2( 500, 500 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightborder"]
 position = Vector2( 5922.98, 620.991 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Node2D37" parent="." instance=ExtResource( 11 )]
 position = Vector2( -3611.85, 3166.13 )

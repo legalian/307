@@ -358,7 +358,7 @@ hookY = 101.0
 position = Vector2( 1.9548, 72.5256 )
 rotation = -1.5708
 scale = Vector2( 0.4, 0.4 )
-frame = 3
+frame = 8
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

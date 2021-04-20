@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D
 
 var id
 var trail
@@ -36,7 +36,7 @@ func _ready():
 	velocity = Vector2(-speed, 0).rotated(rotation)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	var gt = get_global_transform_with_canvas()
 	gt.origin = Vector2(0,0)
 	var trot = gt.get_rotation()#.scaled(Vector2(1,.44))
@@ -45,7 +45,6 @@ func _process(_delta):
 	trail.scale.x = (trailLen/5)*(.44)/(1+(.44-1)*cos(trot)*cos(trot))
 	trail.scale.y = 1-trailLen/trailLenMax
 
-func _physics_process(delta):
 	position = position + velocity*delta
 	#var collision = move_and_collide(velocity * delta)
 	#if collision:
