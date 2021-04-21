@@ -128,8 +128,8 @@ remote func die(package):
 	if gameinstance == null: return
 	gameinstance.players[package['id']].unpack(package)
 	gameinstance.players[package['id']].die()
-	AudioPlayer.play_sfx("res://audio/sfx/scream.ogg")
 	AudioPlayer.pause_music()
+	AudioPlayer.play_sfx("res://audio/sfx/scream.ogg")
 
 remote func win(playerID):
 	AudioPlayer.pause_music()
