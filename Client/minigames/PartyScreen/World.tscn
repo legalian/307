@@ -234,7 +234,7 @@ position = Vector2( 160.706, 435.634 )
 scale = Vector2( 0.374295, 0.374295 )
 frames = ExtResource( 6 )
 animation = "Future"
-frame = 7
+frame = 25
 playing = true
 
 [node name="MUT_test_flow" type="AnimationPlayer" parent="."]

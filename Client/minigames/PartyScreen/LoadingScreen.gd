@@ -4,6 +4,8 @@ var matchmaking_label
 var loadRight
 
 func _ready():
+	AudioPlayer.pause_music()
+	
 	matchmaking_label = get_node("PanelContainer/CenterContainer/VBoxContainer/Label")
 	matchmaking_label.visible_characters = 11
 	
@@ -35,14 +37,12 @@ func _on_Button_pressed():
 	Server.cancel_matchmaking()
 	# Kick player back to beginning
 	
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	AudioPlayer.resume_music()
+	print("CANCEL MATCHMAKING")
+
 	
 	if Server.get_child_count() > 0:
 		get_tree().change_scene("res://minigames/PartyScreen/World.tscn")
 	else:
 		Server.leave_party()
+		AudioPlayer.resume_music()
 		get_tree().change_scene("res://Main.tscn")
-	# Still need to cancel server-side matchmaking.
-	pass # Replace with function body.

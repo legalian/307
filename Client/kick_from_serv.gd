@@ -8,4 +8,5 @@ func _on_Button_pressed():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	AudioPlayer.play_music("res://audio/music/mainmenu" + str(rng.randi_range(1,2)) + ".ogg")
+	AudioPlayer.resume_music()
 	get_tree().change_scene("res://Main.tscn")

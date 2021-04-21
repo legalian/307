@@ -17,10 +17,7 @@ var object_map = null
 var object_scenes = {}
 var setCamera = false;
 
-func _ready():
-	AudioPlayer.play_music("res://audio/music/racing.ogg")
-	
-	
+func _ready():	
 	minigame = "RACINGGAME"
 	
 	object_scenes[Object_ids.FENCE] = preload("res://minigames/RacingGame/objects/fence.tscn")
@@ -96,6 +93,7 @@ func _process(delta):
 		if player==null: return
 		camera = player.find_node("Camera")
 		camera.current = true
+		AudioPlayer.play_music("res://audio/music/racing.ogg")
 		if camera==null: return
 	
 	if gui==null && player != null:

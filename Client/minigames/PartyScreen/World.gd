@@ -21,6 +21,7 @@ func _MUT_set_username():
 	$UsernameInput.text = ["Corge","Grault","Garply","Waldo"][int(OS.get_environment("ACTIVECORNER"))-1]
 
 func _ready():
+	AudioPlayer.pause_music()
 	specificserver = Server.get_children()[0]
 	SelfUsername = Server.selfplayer.username
 	find_node("PartyCode").text = str(Server.partycode)
@@ -41,19 +42,25 @@ func _ready():
 	CurrentVehicle.animation = VehicleSelected
 
 #may 2
+func removePartyScreenMinigame():
+	for child in Server.get_children():
+		Server.remove_child(child)
+		child.queue_free()
 
 func _on_Button_Back_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	Server.leave_party()
+	AudioPlayer.resume_music()
+	removePartyScreenMinigame()
 	get_tree().change_scene("Main.tscn")
 
 
 func _on_EnterGameButton_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
-	AudioPlayer.pause_music()
+	removePartyScreenMinigame()
 	Server.attemptEnterGame()
 	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
-
+	
 	
 	
 func _on_Button_CopyCode_pressed():
