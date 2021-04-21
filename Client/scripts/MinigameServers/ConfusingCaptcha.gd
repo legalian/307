@@ -50,7 +50,7 @@ remote func questionText(questionIndex,arrangement):
 	#print("yeah yeah yeah yeah yeah yeah eyah eyah ")
 	assert(gameinstance!=null)
 	curQuestion = questionIndex;
-	if(curQuestion == 10):
+	if(curQuestion == 8):
 		audioCaptcha();
 	curArrangement = arrangement
 
