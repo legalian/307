@@ -22,6 +22,8 @@ func _MUT_set_username():
 
 func _ready():
 	AudioPlayer.pause_music()
+	AudioPlayer.play_music("res://audio/music/lobby.ogg")
+	AudioPlayer.resume_music()
 	specificserver = Server.get_children()[0]
 	SelfUsername = Server.selfplayer.username
 	find_node("PartyCode").text = str(Server.partycode)
@@ -50,18 +52,16 @@ func removePartyScreenMinigame():
 func _on_Button_Back_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	Server.leave_party()
-	AudioPlayer.resume_music()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	AudioPlayer.play_music("res://audio/music/mainmenu" + str(rng.randi_range(1,2)) + ".ogg")
 	removePartyScreenMinigame()
 	get_tree().change_scene("Main.tscn")
 
-
 func _on_EnterGameButton_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
-	removePartyScreenMinigame()
 	Server.attemptEnterGame()
-	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")
-	
-	
+	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")	
 	
 func _on_Button_CopyCode_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
