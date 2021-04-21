@@ -1,4 +1,4 @@
-extends MarginContainer
+extends VBoxContainer
 
 onready var game = get_tree().get_current_scene();
 # Declare member variables here. Examples:

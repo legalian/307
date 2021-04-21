@@ -135,6 +135,23 @@ remote func leave_party(var partyID, packed):
 		partyHandler.leave_party(player_id)
 		print("Updated playerlist: " + str(joined_party.playerIDs))
 		unintroduce(player_id, joined_party.playerIDs)
+		
+		# Check if lobby can continue.
+		var lobby = lobbyHandler.get_lobby(joined_party.lobby_code)
+		if (lobby != null):
+			print("Lobby is not null in leave_party() on server")
+			
+			if (lobby.get_occupied() < lobby.min_players_per_lobby):
+				# Lobby does not have enough players.
+				for allparty in lobby.parties:
+					for playerID in allparty.playerIDs:
+						print("Disconnecting player " + str(playerID) +
+							  " from network")
+						network.disconnect_peer(playerID, false)
+				
+				# Delete the lobby
+				lobbyHandler.delete_lobby(lobby.lobby_code)
+		
 
 remote func join_party(var partyID, packed):
 	print("\n\t>>> join_party()")
