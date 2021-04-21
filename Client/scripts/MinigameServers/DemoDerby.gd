@@ -89,5 +89,6 @@ remote func win():
 	get_tree().change_scene("res://win.tscn")
 
 remote func endMatch():
+	AudioPlayer.pause_music();
 	if (gameinstance != null):
 		gameinstance.players[get_tree().get_network_unique_id()].scoreboard._open_player_list()
