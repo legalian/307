@@ -60,13 +60,13 @@ func _process(delta):
 		return;
 	if(get_node("World/dropdown").spawned == false): 
 		return;
+	for p in players:
+		players.get(p).visible = true;
 	if camera==null:
 		var player = get_node_or_null("World/Player")
 		if player==null: return
 		camera = player.find_node("Camera")
 		if camera==null: return
-		for p in players:
-			players.get(p).visible = true;
 		if(theMap == "Grass"):
 			AudioPlayer.play_music("res://audio/music/unfoldingsecrets.ogg")
 		else: 
