@@ -7,10 +7,20 @@ func _MUT_recieve_partycode():
 	file.close()
 	find_node("PartyCodeTextEdit").text = partycode
 	
+var gameTests = ["battleroyale", "racing", "demoderby", "confusingcaptcha", "battleroyale_shim", "racing_shim", "demoderby_shim", "podium_shim", "confusingcaptcha_shim"]
+
 func _ready():
+	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING");
+	var active_corner = OS.get_environment("ACTIVECORNER");
+	var desired_screen = OS.get_environment("DESIREDSCREEN");
 	if (Server.first_launch):
 		Server.first_launch = false
-		find_node("IntroAnim").play("Intro")
+		if(!gameTests.has(multi_user_testing)):
+			find_node("IntroAnim").play("Intro")
+		else:
+			find_node("Overlay").visible = false
+			find_node("VideoPlayer").visible = false
+			find_node("TitleCreds").visible = false
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		AudioPlayer.play_music("res://audio/music/mainmenu" + str(rng.randi_range(1,2)) + ".ogg")
@@ -18,10 +28,6 @@ func _ready():
 		find_node("Overlay").visible = false
 		find_node("VideoPlayer").visible = false
 		find_node("TitleCreds").visible = false
-	
-	var multi_user_testing = OS.get_environment("MULTI_USER_TESTING");
-	var active_corner = OS.get_environment("ACTIVECORNER");
-	var desired_screen = OS.get_environment("DESIREDSCREEN");
 	var flows_leader = {"party":"Multi_User_Testing_Partylead"}#,"lobby":"","quickplay":""}
 	var flows_follower = {"party":"Multi_User_Testing_Partyfollow"}#,"lobby":"","quickplay":""}
 	if flows_leader.has(multi_user_testing):
