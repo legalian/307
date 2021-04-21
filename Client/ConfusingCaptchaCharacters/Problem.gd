@@ -9,7 +9,9 @@ var questions = [
 	"Find the surface area of the parametric surface r(u,v)=(2u+3v, 3u+v, 2), 0<=u<=2, 0<=v<=1",
 	"I’d just like to interject for a moment. What you’re refering to as Linux, is in fact...",
 	"What was the magic word for Quiz 9 of CS 240, Spring 2020?",
-	"Which of the following represents the equation: -3x^2 + 4?"
+	"Which of the following hairstyles represents the equation: -3x^2 + 4?",
+	"Dear Student/Faculty/Staff, You have a message from the Financial Department. Rev, Danny Stephens is downsizing and looking to give away her piano to a loving home. The piano is a...",
+	"Type the text that you hear"
 ]
 var roundEnded = false;
 

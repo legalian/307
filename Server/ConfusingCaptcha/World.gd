@@ -12,11 +12,12 @@ var totalRounds = 5;
 var roundTime = null;
 var maxRoundTime = 30;
 var questionIndex = 0;
-var total_questions = 9;
+var total_questions = 11;
 var startLives = 3;
+var roundTimer;
 var tileCorrespondance = ["R1C1", "R1C2", "R1C3","R2C1", "R2C2", "R2C3", "R3C1", "R3C2", "R3C3"]
 var correctTile = tileCorrespondance[0]
-var questions = [8,7,4,5,6,0,1,2,3]
+var questions = [10,9,8,7,4,5,6,0,1,2,3]
 
 var arrangement = [0,1,2,3,4,5,6,7,8]
 
@@ -56,14 +57,22 @@ func _ready():
 		spawn_id(0,0,debug_id);
 
 		
-	var roundTimer = Timer.new();
+	roundTimer = Timer.new();
 	add_child(roundTimer);
 	roundTimer.connect("timeout", self, "timeTick");
 	roundTimer.set_wait_time(1);
 	roundTimer.set_one_shot(false)
-	roundTimer.start();
+	var waitTimer = Timer.new();
+	add_child(waitTimer)
+	waitTimer.connect("timeout", self, "startGame")
+	waitTimer.set_wait_time(20)
+	waitTimer.set_one_shot(true)
+	waitTimer.start()
 	if(OS.get_environment("CAPTCHAROUTINE") == "randomized"):
 		questions = shuffleList(questions)
+
+func startGame():
+	roundTimer.start();
 
 
 func timeTick():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/defaultcaptcha/6.jpeg" type="Texture" id=1]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/defaultcaptcha/8.png" type="Texture" id=2]
@@ -73,6 +73,24 @@
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/ASLR.png" type="Texture" id=71]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/BoilerUp.png" type="Texture" id=72]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/Coffee.png" type="Texture" id=73]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/clavinova.jpeg" type="Texture" id=74]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/bosendorfer.jpg" type="Texture" id=75]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/kawai.jpeg" type="Texture" id=76]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/steinwan.jpeg" type="Texture" id=77]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/medeli.jpeg" type="Texture" id=78]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/model d.jpeg" type="Texture" id=79]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/roland.jpeg" type="Texture" id=80]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/otheryamaha.webp" type="Texture" id=81]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/pianocaptcha/yamahababygrand.jpeg" type="Texture" id=82]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/36893.png" type="Texture" id=83]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/56893.png" type="Texture" id=84]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/59693.png" type="Texture" id=85]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/59695.png" type="Texture" id=86]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/59863.png" type="Texture" id=87]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/59893.png" type="Texture" id=88]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/65693.png" type="Texture" id=89]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/39863.png" type="Texture" id=90]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/audiocaptcha/56593.png" type="Texture" id=91]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -111,6 +129,11 @@ animations = [ {
 "name": "captcha6",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 82 ), ExtResource( 75 ), ExtResource( 74 ), ExtResource( 76 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 81 ), ExtResource( 80 ), ExtResource( 77 ) ],
+"loop": true,
+"name": "captcha10",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 69 ), ExtResource( 71 ), ExtResource( 65 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 70 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 66 ) ],
 "loop": true,
 "name": "captcha8",
@@ -120,9 +143,14 @@ animations = [ {
 "loop": true,
 "name": "captcha9",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 87 ), ExtResource( 83 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 88 ), ExtResource( 89 ) ],
+"loop": true,
+"name": "captcha11",
+"speed": 5.0
 } ]
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
-animation = "captcha9"
+animation = "captcha11"
 script = ExtResource( 28 )

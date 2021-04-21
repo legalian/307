@@ -9,6 +9,7 @@ var curQuestion = -1;
 var curArrangement = [0,1,2,3,4,5,6,7,8];
 var not0thRound = false;
 var curRound = 0;
+var audioPlayed = false;
 
 func _ready():
 	gameinstance = get_tree().get_root().get_node_or_null("/root/WorldContainer")
@@ -32,12 +33,30 @@ func syncUpdate():
 remote func setLives(lives):
 	selfPlayerInstance.find_node("Lives").setLives(lives)
 
+func audioCaptcha():
+	AudioPlayer.play_sfx("res://audio/sfx/audiocaptcha.ogg")
+	audioPlayed = true;
+	AudioPlayer.pause_music();
+	var timer = Timer.new();
+	timer.one_shot = true;
+	timer.connect("timeout", self, "resumeMusic")
+	add_child(timer)
+	timer.start(16)
+
+func resumeMusic():
+	AudioPlayer.resume_music()
 
 remote func questionText(questionIndex,arrangement):
 	#print("yeah yeah yeah yeah yeah yeah eyah eyah ")
 	assert(gameinstance!=null)
 	curQuestion = questionIndex;
+	if(curQuestion == 10):
+		audioCaptcha();
 	curArrangement = arrangement
+
+		
+
+		
 	print("SETTING ARRANGEMENT ",questionIndex," ",arrangement)
 	gameinstance.setArrangement(curQuestion,curArrangement)
 

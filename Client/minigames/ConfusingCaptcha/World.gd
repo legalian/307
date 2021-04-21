@@ -45,7 +45,10 @@ func setArrangement(question_number,arrangement):
 		#print(x,tiles[x].frames.get_animation_names()[question_number])
 		#print(arrangement[x])
 		#tiles[x].play(tiles[x].frames.get_animation_names()[question_number])
-		tiles[x].animation = tiles[x].frames.get_animation_names()[question_number]
+		
+		var captchaName = "captcha" + str(question_number+1)
+		#tiles[x].animation = tiles[x].frames.get_animation_names()[question_number]
+		tiles[x].animation = captchaName
 		tiles[x].set_frame(arrangement[x])
 		var tframe = tiles[x].frames.get_frame(tiles[x].animation,tiles[x].frame).get_size()
 		tiles[x].set_scale(Vector2(original_scale.x/tframe.x,original_scale.y/tframe.y))
