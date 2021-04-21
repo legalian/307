@@ -65,6 +65,8 @@ func _process(delta):
 		if player==null: return
 		camera = player.find_node("Camera")
 		if camera==null: return
+		for p in players:
+			players.get(p).visible = true;
 		if(theMap == "Grass"):
 			AudioPlayer.play_music("res://audio/music/unfoldingsecrets.ogg")
 		else: 

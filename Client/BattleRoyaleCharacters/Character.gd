@@ -31,6 +31,7 @@ func _ready():
 	set_process_unhandled_input(true)
 	server = get_node("/root/Server").get_children()[0]
 	gun = $Body.find_node("Gun")
+	self.visible = false;
 	
 	
 

@@ -14,6 +14,7 @@ var l_body = 0
 
 func _ready():
 	server = get_node("/root/Server").get_children()[0]
+	self.visible = false;
 
 
 func setAvatar(index):
