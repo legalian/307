@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/defaultcaptcha/6.jpeg" type="Texture" id=1]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/defaultcaptcha/8.png" type="Texture" id=2]
@@ -64,6 +64,15 @@
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/gnupluslinux.png" type="Texture" id=62]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/GNUslashlinux2.png" type="Texture" id=63]
 [ext_resource path="res://minigames/ConfusingCaptcha/captchas/gnulinuxcaptcha/GNUSLASHLINUX3.png" type="Texture" id=64]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/Bicycle.png" type="Texture" id=65]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/wombat.png" type="Texture" id=66]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/Minecraft.png" type="Texture" id=67]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/Squirrel.png" type="Texture" id=68]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/flapjacks.png" type="Texture" id=69]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/Frog.png" type="Texture" id=70]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/ASLR.png" type="Texture" id=71]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/BoilerUp.png" type="Texture" id=72]
+[ext_resource path="res://minigames/ConfusingCaptcha/captchas/magicwordcaptcha/Coffee.png" type="Texture" id=73]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -101,9 +110,19 @@ animations = [ {
 "loop": true,
 "name": "captcha6",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 69 ), ExtResource( 71 ), ExtResource( 65 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 70 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 66 ) ],
+"loop": true,
+"name": "captcha8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "captcha9",
+"speed": 5.0
 } ]
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
-animation = "captcha7"
+animation = "captcha9"
 script = ExtResource( 28 )

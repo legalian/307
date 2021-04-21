@@ -12,11 +12,11 @@ var totalRounds = 5;
 var roundTime = null;
 var maxRoundTime = 30;
 var questionIndex = 0;
-var total_questions = 7;
+var total_questions = 9;
 var startLives = 3;
 var tileCorrespondance = ["R1C1", "R1C2", "R1C3","R2C1", "R2C2", "R2C3", "R3C1", "R3C2", "R3C3"]
 var correctTile = tileCorrespondance[0]
-var questions = [4,5,6,0,1,2,3]
+var questions = [8,7,4,5,6,0,1,2,3]
 
 var arrangement = [0,1,2,3,4,5,6,7,8]
 
