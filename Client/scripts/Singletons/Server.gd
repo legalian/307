@@ -35,6 +35,11 @@ func ConnectToServer():
 	network.connect("connection_succeeded",self,"_OnConnectionSucceeded")
 	network.connect("server_disconnected", self, "_OnServerDisconnect")
 
+func clearMS():
+	for child in get_children():
+		remove_child(child)
+		child.queue_free()
+
 func _OnServerDisconnect():
 	# This will fire when the server disconnects.
 	get_tree().change_scene("res://kick_from_serv.tscn")

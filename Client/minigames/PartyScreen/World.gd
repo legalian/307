@@ -44,10 +44,6 @@ func _ready():
 	CurrentVehicle.animation = VehicleSelected
 
 #may 2
-func removePartyScreenMinigame():
-	for child in Server.get_children():
-		Server.remove_child(child)
-		child.queue_free()
 
 func _on_Button_Back_pressed():
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
@@ -55,7 +51,7 @@ func _on_Button_Back_pressed():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	AudioPlayer.play_music("res://audio/music/mainmenu" + str(rng.randi_range(1,2)) + ".ogg")
-	removePartyScreenMinigame()
+	Server.clearMS()
 	get_tree().change_scene("Main.tscn")
 
 func _on_EnterGameButton_pressed():

@@ -11,7 +11,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "CurtainCall"
-length = 20.0
+length = 28.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Curtain/Control:rect_position")
 tracks/0/interp = 1
@@ -31,7 +31,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.5, 3.5 ),
+"times": PoolRealArray( 0, 6, 7 ),
 "transitions": PoolRealArray( 1, 5, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -43,7 +43,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3, 4 ),
+"times": PoolRealArray( 0, 6, 7 ),
 "transitions": PoolRealArray( 5.85635, 5, 1 ),
 "update": 0,
 "values": [ Vector2( 130.904, 500 ), Vector2( 130.904, 500 ), Vector2( 130.904, 346.347 ) ]
@@ -55,7 +55,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 3.5, 4 ),
+"times": PoolRealArray( 0, 6.5, 7 ),
 "transitions": PoolRealArray( 1, 3, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -67,7 +67,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 6, 7 ),
+"times": PoolRealArray( 0, 11, 12 ),
 "transitions": PoolRealArray( 1, 5, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -79,7 +79,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 6, 7 ),
+"times": PoolRealArray( 0, 11, 12 ),
 "transitions": PoolRealArray( 1, 5, 1 ),
 "update": 0,
 "values": [ Vector2( 130.904, 500 ), Vector2( 130.904, 500 ), Vector2( 130.904, 346.347 ) ]
@@ -91,7 +91,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 6.5, 7 ),
+"times": PoolRealArray( 0, 11.5, 12 ),
 "transitions": PoolRealArray( 3, 3, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -103,7 +103,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 9, 10, 14, 17 ),
+"times": PoolRealArray( 0, 16, 17, 23, 26 ),
 "transitions": PoolRealArray( 1, 1, 1, 5, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
@@ -115,7 +115,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 11, 13 ),
+"times": PoolRealArray( 0, 18, 20 ),
 "transitions": PoolRealArray( 1, -7.99999, 1 ),
 "update": 0,
 "values": [ Vector2( 1062.51, 400.162 ), Vector2( 1062.51, 400.162 ), Vector2( 374.424, 102.842 ) ]
@@ -127,7 +127,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 11, 13 ),
+"times": PoolRealArray( 0, 18, 20 ),
 "transitions": PoolRealArray( 1, -4.43828, 1 ),
 "update": 0,
 "values": [ Vector2( -268.182, -128.944 ), Vector2( -268.182, -128.944 ), Vector2( 427.611, 125.615 ) ]
@@ -139,7 +139,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 11, 13 ),
+"times": PoolRealArray( 0, 18, 20 ),
 "transitions": PoolRealArray( 1, -3.86375, 1 ),
 "update": 0,
 "values": [ Vector2( -46.8007, 652.197 ), Vector2( -46.8007, 652.197 ), Vector2( 377.943, 144.393 ) ]
@@ -151,7 +151,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 13, 14 ),
+"times": PoolRealArray( 0, 22, 23 ),
 "transitions": PoolRealArray( 1, 5, 1 ),
 "update": 0,
 "values": [ Vector2( 130.904, 500 ), Vector2( 130.904, 500 ), Vector2( 130.904, 346.347 ) ]
@@ -163,7 +163,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 14, 15 ),
+"times": PoolRealArray( 0, 23, 24 ),
 "transitions": PoolRealArray( 5, 5, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -175,7 +175,7 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 13.5, 14 ),
+"times": PoolRealArray( 0, 22.5, 23 ),
 "transitions": PoolRealArray( 3, 3, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -187,7 +187,7 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 15.5, 17 ),
+"times": PoolRealArray( 0, 24.5, 26 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0 ) ]
@@ -199,7 +199,7 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 15.5, 17 ),
+"times": PoolRealArray( 0, 24.5, 26 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0 ) ]
@@ -211,34 +211,34 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 15.5, 17 ),
+"times": PoolRealArray( 0, 24.5, 26 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("CongratsText:modulate")
+tracks/17/path = NodePath("PanelContainer/CenterContainer/MarginContainer/HBoxContainer/CongratsText:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0, 17, 18 ),
+"times": PoolRealArray( 0, 26, 27 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("PanelContainer/MarginContainer/HBoxContainer:modulate")
+tracks/18/path = NodePath("PanelContainer/CenterContainer/MarginContainer/HBoxContainer/MainMenu_Button:modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"times": PoolRealArray( 0, 18, 19 ),
-"transitions": PoolRealArray( 1, 0.148651, 1 ),
+"times": PoolRealArray( 26, 27 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Podium" type="Control"]
@@ -258,48 +258,63 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
 margin_right = 1024.0
 margin_bottom = 600.0
-custom_constants/margin_top = 156
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 156.0
-margin_right = 1024.0
-margin_bottom = 196.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer"]
+margin_left = 24.0
+margin_top = 121.0
+margin_right = 999.0
+margin_bottom = 478.0
+custom_constants/margin_bottom = 300
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/MarginContainer"]
+margin_right = 975.0
+margin_bottom = 57.0
+size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_constants/separation = 500
-alignment = 1
+custom_constants/separation = 400
+alignment = 2
 
-[node name="MainMenu_Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 62.0
-margin_right = 262.0
-margin_bottom = 40.0
+[node name="MainMenu_Button" type="Button" parent="PanelContainer/CenterContainer/MarginContainer/HBoxContainer"]
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 200, 40 )
+rect_pivot_offset = Vector2( 200, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource( 4 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Matchmake_Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 762.0
-margin_right = 962.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 200, 40 )
-theme = ExtResource( 4 )
-text = "Matchmake"
+[node name="CongratsText" type="RichTextLabel" parent="PanelContainer/CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 599.0
+margin_right = 974.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 375, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Congratulations![/rainbow][/wave]"
+text = "Congratulations!"
+fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Spotlight1" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.639216 )
-margin_left = 1062.51
-margin_top = 400.162
-margin_right = 1318.51
-margin_bottom = 656.165
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 374.424
+margin_top = 102.842
+margin_right = 630.424
+margin_bottom = 358.845
 mouse_filter = 2
 texture = ExtResource( 2 )
 __meta__ = {
@@ -307,11 +322,11 @@ __meta__ = {
 }
 
 [node name="Spotlight2" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.639216 )
-margin_left = -268.182
-margin_top = -128.944
-margin_right = -12.1818
-margin_bottom = 127.057
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 427.611
+margin_top = 125.615
+margin_right = 683.611
+margin_bottom = 381.616
 mouse_filter = 2
 texture = ExtResource( 2 )
 __meta__ = {
@@ -319,11 +334,11 @@ __meta__ = {
 }
 
 [node name="Spotlight3" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.639216 )
-margin_left = -46.8007
-margin_top = 652.197
-margin_right = 209.199
-margin_bottom = 908.197
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 377.943
+margin_top = 144.393
+margin_right = 633.943
+margin_bottom = 400.393
 mouse_filter = 2
 texture = ExtResource( 2 )
 __meta__ = {
@@ -347,6 +362,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_right = 774.0
 margin_bottom = 604.0
+mouse_filter = 2
 custom_constants/separation = 300
 alignment = 1
 
@@ -354,17 +370,18 @@ alignment = 1
 margin_left = 87.0
 margin_right = 87.0
 margin_bottom = 604.0
+mouse_filter = 2
 custom_constants/margin_top = 50
 
 [node name="Place2" type="Control" parent="MarginContainer/HBoxContainer/MarginContainer"]
 margin_top = 50.0
 margin_bottom = 604.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayerName" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = -8.0
 margin_top = 163.0
 margin_right = 262.0
@@ -379,8 +396,7 @@ __meta__ = {
 }
 
 [node name="Avatar" parent="MarginContainer/HBoxContainer/MarginContainer/Place2" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 130.904, 500 )
+position = Vector2( 130.904, 346.347 )
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer/Place2"]
 margin_left = 50.0
@@ -444,7 +460,6 @@ __meta__ = {
 }
 
 [node name="PlayerName" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Place1"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = -4.5
 margin_top = 162.5
 margin_right = 265.5
@@ -459,8 +474,7 @@ __meta__ = {
 }
 
 [node name="Avatar" parent="MarginContainer/HBoxContainer/Place1" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 130.904, 500 )
+position = Vector2( 130.904, 346.347 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Place1"]
 margin_left = -387.0
@@ -587,9 +601,8 @@ __meta__ = {
 }
 
 [node name="Avatar" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0.146257 )
 light_mask = -2147483647
-position = Vector2( 130.904, 460.152 )
+position = Vector2( 130.904, 346.347 )
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer2/Place3"]
 margin_left = 50.0
@@ -663,7 +676,10 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="Curtain"]
+margin_top = -1000.0
 margin_right = 4096.0
+margin_bottom = -1000.0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Curtain/Control"]
 margin_right = 40.0
@@ -1256,26 +1272,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CongratsText" type="RichTextLabel" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 336.0
-margin_top = 96.0
-margin_right = 688.0
-margin_bottom = 161.0
-rect_clip_content = false
-mouse_filter = 2
-size_flags_horizontal = 7
-size_flags_vertical = 7
-custom_fonts/normal_font = ExtResource( 8 )
-bbcode_enabled = true
-bbcode_text = "[wave amp=150 freq=4][rainbow freq=0.4 sat=1.3 val=1]Congratulations![/rainbow][/wave]"
-text = "Congratulations!"
-fit_content_height = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CurtainCall = SubResource( 1 )
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/MainMenu_Button" to="." method="_on_MainMenu_Button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Matchmake_Button" to="." method="_on_Matchmake_Button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/MarginContainer/HBoxContainer/MainMenu_Button" to="." method="_on_MainMenu_Button_pressed"]
