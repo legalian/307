@@ -13,8 +13,10 @@ var progress = 0.0
 var lap = 1
 #var lap = 2
 var place = 1
+var finished = false
 
-var VehicleStyles = ["Sedan","Van","Truck","Race","Taxi","Ambulance","Hatchback","Police","Tractor","Garbage","Future","Firetruck"]
+var playCollisionSFX = true
+var collisionTimer
 
 var path
 var path_length
@@ -39,6 +41,12 @@ func _ready():
 	particles = $Particles2D
 	car_material = find_node("Sprite").get_material()
 	
+	collisionTimer = Timer.new()
+	add_child(collisionTimer)
+	collisionTimer.connect("timeout", self, "set", ["playCollisionSFX", true])
+	collisionTimer.set_wait_time(1)
+	collisionTimer.set_one_shot(true)
+	
 
 func unpack(package):
 	position = Vector2(package['x'],package['y'])
@@ -49,6 +57,8 @@ func unpack(package):
 	if cur_powerup != package['powerup'] and powerup_icon != null:
 		cur_powerup = package['powerup']
 		powerup_icon.changePowerup(cur_powerup)
+		if package['powerup'] != null:
+			AudioPlayer.play_sfx("res://audio/sfx/powerup.ogg")
 	if get_node_or_null("/root/Server") != null:
 		if get_node("/root/Server").get_player(package['id']) != null:
 			var VehicleSelected = get_node("/root/Server").get_player(package['id']).vehicle
@@ -81,6 +91,24 @@ func _process(delta):
 	laps_label.currentLap = int(clamp(lap, 1, 2))
 	place_label.rank = place
 	
+	if lap == 3 and !finished:
+		finished = true
+		if id == Server.selfplayer.playerID:
+			AudioPlayer.play_sfx("res://audio/sfx/victoryroyale.ogg")
+	
 	particles.emitting = hasSpeedPowerup
 	car_material.set_shader_param("hasSpeedPowerup", hasSpeedPowerup)
+	
+func _physics_process(delta):
+	if id != Server.selfplayer.playerID: return
+	var col = move_and_collide(Vector2.ZERO, true, true, true)
+	if col == null: return
+	if col.collider.name.begins_with("Player"):
+		playCollideSFX()
+
+func playCollideSFX():
+	if playCollisionSFX:
+		AudioPlayer.play_sfx("res://audio/sfx/carcrash.ogg")
+		playCollisionSFX = false
+		collisionTimer.start()
 	

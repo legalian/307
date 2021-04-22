@@ -15,6 +15,9 @@ var lap = 1
 var place = 1
 var health = 100
 
+var playCollisionSFX = true
+var collisionTimer
+
 var path
 var path_length
 var gui
@@ -31,6 +34,12 @@ func _ready():
 	powerup_icon = gui.find_node("PowerupIcon")
 	particles = $Particles2D
 	car_material = find_node("Sprite").get_material()
+	
+	collisionTimer = Timer.new()
+	add_child(collisionTimer)
+	collisionTimer.connect("timeout", self, "set", ["playCollisionSFX", true])
+	collisionTimer.set_wait_time(1)
+	collisionTimer.set_one_shot(true)
 
 func unpack(package):
 	position = Vector2(package['x'],package['y'])
@@ -41,6 +50,8 @@ func unpack(package):
 	if cur_powerup != package['powerup'] and powerup_icon != null:
 		cur_powerup = package['powerup']
 		powerup_icon.changePowerup(cur_powerup)
+		if package['powerup'] != null:
+			AudioPlayer.play_sfx("res://audio/sfx/powerup.ogg")
 	health = package['health']
 	get_node("Camera/CanvasLayer/GUI/HealthBar").set_value(health)
 	
@@ -61,3 +72,15 @@ func _process(delta):
 	particles.emitting = hasSpeedPowerup
 	car_material.set_shader_param("hasSpeedPowerup", hasSpeedPowerup)
 	
+func _physics_process(delta):
+	if id != Server.selfplayer.playerID: return
+	var col = move_and_collide(Vector2.ZERO, true, true, true)
+	if col == null: return
+	if col.collider.name.begins_with("Player"):
+		playCollideSFX()
+
+func playCollideSFX():
+	if playCollisionSFX:
+		AudioPlayer.play_sfx("res://audio/sfx/carcrash.ogg")
+		playCollisionSFX = false
+		collisionTimer.start()

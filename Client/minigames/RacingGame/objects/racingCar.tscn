@@ -6,8 +6,8 @@
 [ext_resource path="res://minigames/RacingGame/objects/Arrowbase.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 90.465
-height = 81.321
+radius = 65.0
+height = 60.0
 
 [sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 2
@@ -42,11 +42,9 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-rotation = 6.28832
 script = ExtResource( 2 )
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
-position = Vector2( -30.3061, 0.155601 )
 rotation = 3.14159
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -57,8 +55,7 @@ rotation = 3.14159
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.513, -16.106 )
-rotation = -0.0191986
+position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
@@ -75,10 +72,9 @@ script = ExtResource( 4 )
 
 [node name="Arrow" type="Polygon2D" parent="Arrowbase"]
 visible = false
-modulate = Color( 0.961718, 0.447153, 0.0533146, 1 )
+modulate = Color( 0.962075, 0.427697, 0.0542071, 1 )
 position = Vector2( 0, -300 )
-rotation = -0.00513476
-scale = Vector2( 0.999945, 0.440125 )
+scale = Vector2( 1, 0.44 )
 polygon = PoolVector2Array( 0.161232, -78.9993, -55.8672, -36.3629, -14.9949, -35.2546, -18.5558, 82.0184, 12.1269, 85.7414, 13.6575, -33.3931, 51.3035, -38.5725 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Arrowbase/Arrow"]
