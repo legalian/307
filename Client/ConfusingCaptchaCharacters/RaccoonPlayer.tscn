@@ -23,6 +23,7 @@ size = 35
 font_data = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Body" parent="." instance=ExtResource( 1 )]
@@ -37,13 +38,7 @@ shape = SubResource( 1 )
 
 [node name="RoundTime" type="Label" parent="HUD"]
 visible = false
-anchor_top = -0.25
-anchor_right = 1.0
-anchor_bottom = 0.138
-margin_left = 1.0
-margin_top = 149.0
-margin_right = -950.0
-margin_bottom = 129.2
+margin_top = 10.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.662745, 1 )
 text = "20
@@ -55,12 +50,10 @@ __meta__ = {
 
 [node name="RoundNum" type="Label" parent="HUD"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 0.138
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 1.0
-margin_top = 468.0
-margin_right = -909.0
-margin_bottom = 662.2
+margin_top = -160.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0.741176, 1, 1 )
 text = "Round 3"
@@ -68,20 +61,6 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Lives" type="Node2D" parent="HUD"]
-visible = false
-position = Vector2( 776, 532 )
-script = ExtResource( 9 )
-
-[node name="Life1" parent="HUD/Lives" instance=ExtResource( 4 )]
-position = Vector2( -0.542542, -0.542572 )
-
-[node name="Life2" parent="HUD/Lives" instance=ExtResource( 4 )]
-position = Vector2( 100.457, -0.542572 )
-
-[node name="Life3" parent="HUD/Lives" instance=ExtResource( 4 )]
-position = Vector2( 198.457, -0.542572 )
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD"]
 anchor_left = 0.5
@@ -112,6 +91,32 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Question text goes here"
 autowrap = true
 script = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HUD"]
+
+[node name="Control" type="Control" parent="HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -275.0
+margin_top = -75.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lives" type="Node2D" parent="HUD/Control"]
+visible = false
+script = ExtResource( 9 )
+
+[node name="Life1" parent="HUD/Control/Lives" instance=ExtResource( 4 )]
+position = Vector2( -0.542542, -0.542572 )
+
+[node name="Life2" parent="HUD/Control/Lives" instance=ExtResource( 4 )]
+position = Vector2( 100.457, -0.542572 )
+
+[node name="Life3" parent="HUD/Control/Lives" instance=ExtResource( 4 )]
+position = Vector2( 198.457, -0.542572 )
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2( 3, 3 )

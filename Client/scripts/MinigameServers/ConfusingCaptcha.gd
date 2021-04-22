@@ -133,7 +133,7 @@ remote func setMap(map):
 
 func showlose():
 	AudioPlayer.pause_music()
-	get_tree().change_scene("res://minigames/ConfusingCaptcha/LoseScreen.tscn")
+	get_tree().change_scene("res://lose.tscn")
 	
 	
 

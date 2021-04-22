@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -13,36 +13,27 @@
 [ext_resource path="res://fonts/Countdownglphs.tres" type="DynamicFont" id=12]
 [ext_resource path="res://minigames/RacingGame/Hitfont.tres" type="DynamicFont" id=13]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 60
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.6, 0.6, 0.6, 0.392157 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="Animation" id=1]
-resource_name = "PlayerHit"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:rect_position")
+tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 100 ), Vector2( 0, 100 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 28, -104 ), Vector2( 25.1873, 12.2593 ), Vector2( 25.1873, 12.2593 ), Vector2( 30.8128, -110.563 ) ]
 }
 
 [node name="Control" type="MarginContainer"]
@@ -54,11 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="scoreboard" parent="." instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 600.0
+[node name="racingscoreboard" parent="." instance=ExtResource( 5 )]
 
 [node name="laps" type="Label" parent="."]
 margin_left = 893.0
@@ -107,7 +94,7 @@ __meta__ = {
 [node name="place" type="Label" parent="HBoxContainer"]
 margin_right = 133.0
 margin_bottom = 105.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.0588235, 0.0588235, 1 )
 text = "1ST"
 align = 2
@@ -122,7 +109,7 @@ margin_left = 137.0
 margin_top = 20.0
 margin_right = 219.0
 margin_bottom = 84.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "/20"
 align = 2
@@ -167,7 +154,6 @@ margin_bottom = 600.0
 rect_min_size = Vector2( 150, 150 )
 size_flags_horizontal = 0
 size_flags_vertical = 8
-custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -205,4 +191,4 @@ __meta__ = {
 }
 
 [node name="HitAnim" type="AnimationPlayer" parent="MarginContainer/Hit"]
-anims/PlayerHit = SubResource( 1 )
+anims/PlayerHit = SubResource( 3 )
