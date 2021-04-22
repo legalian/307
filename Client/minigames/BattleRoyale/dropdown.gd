@@ -9,20 +9,23 @@ var minx
 var miny
 var maxx
 var maxy
+var spawnX = 0;
+var spawnY = 0;
 
 func _spawnRandom():
 	if(!spawned) :
-		var rng = RandomNumberGenerator.new();
-		rng.randomize()
+		#var rng = RandomNumberGenerator.new();
+		#rng.randomize()
 		#var x = rng.randf_range(-100.0, 100.0)
 		#var y = rng.randf_range(-100.0, 100.0)
 		var x = 0;
 		var y = 0
-		get_parent().get_parent().server.spawn(x,y)
-		get_node("camera").current = false;
-		get_parent().get_parent().camera = null;
-		AudioPlayer.play_sfx("res://audio/sfx/spawn.ogg")
-		spawned = true;
+		#get_parent().get_parent().server.spawn(x,y)
+		
+		#get_node("camera").current = false;
+		#get_parent().get_parent().camera = null;
+		#AudioPlayer.play_sfx("res://audio/sfx/spawn.ogg")
+		#spawned = true;
 	
 func _ready():
 	self.visible = false;
@@ -53,18 +56,27 @@ func _input(event):
 			var collidingWith = space_state.intersect_point(pos);
 			if(collidingWith.empty() || collidingWith[0].shape == 0):
 				if(pos[0] >= minx && pos[0] <= maxx && pos[1] >= miny && pos[1] <= maxy):
-					get_parent().get_parent().server.spawn(pos[0], pos[1]);
-					get_node("camera").current = false;
-					get_parent().get_parent().camera = null; 
-					spawned = true;
-					AudioPlayer.play_sfx("res://audio/sfx/spawn.ogg")
+					spawnX = pos[0]
+					spawnY = pos[1]
+					#get_parent().get_parent().server.spawn(pos[0], pos[1]);
+					#get_node("camera").current = false;
+					#get_parent().get_parent().camera = null; 
+					#spawned = true;
+					#AudioPlayer.play_sfx("res://audio/sfx/spawn.ogg")
 			
 func _process(_delta):
-	if(spawned == true):
+	if(find_node("Timer").done == true && !spawned):
+		get_parent().get_parent().server.spawn(spawnX, spawnY);
+		get_node("camera").current = false;
+		get_parent().get_parent().camera = null;
+		AudioPlayer.play_sfx("res://audio/sfx/spawn.ogg")
+		spawned = true;
 		
+	if(spawned == true):
 		get_parent().get_parent().dropFinished = true;
 		self.visible = false;
 		get_node("camera/CanvasLayer/Timer").visible = false;
+	
 
 func _physics_process(delta):
 	if space_state == null:
