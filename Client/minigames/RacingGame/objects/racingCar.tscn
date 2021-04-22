@@ -6,8 +6,8 @@
 [ext_resource path="res://minigames/RacingGame/objects/Arrowbase.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 65.0
-height = 60.0
+radius = 54.0
+height = 50.0
 
 [sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 2
@@ -72,7 +72,7 @@ script = ExtResource( 4 )
 
 [node name="Arrow" type="Polygon2D" parent="Arrowbase"]
 visible = false
-modulate = Color( 0.962075, 0.427697, 0.0542071, 1 )
+modulate = Color( 0.968339, 0.0862776, 0.0698685, 1 )
 position = Vector2( 0, -300 )
 scale = Vector2( 1, 0.44 )
 polygon = PoolVector2Array( 0.161232, -78.9993, -55.8672, -36.3629, -14.9949, -35.2546, -18.5558, 82.0184, 12.1269, 85.7414, 13.6575, -33.3931, 51.3035, -38.5725 )
