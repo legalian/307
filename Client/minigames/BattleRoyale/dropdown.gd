@@ -14,8 +14,10 @@ func _spawnRandom():
 	if(!spawned) :
 		var rng = RandomNumberGenerator.new();
 		rng.randomize()
-		var x = rng.randf_range(-100.0, 100.0)
-		var y = rng.randf_range(-100.0, 100.0)
+		#var x = rng.randf_range(-100.0, 100.0)
+		#var y = rng.randf_range(-100.0, 100.0)
+		var x = 0;
+		var y = 0
 		get_parent().get_parent().server.spawn(x,y)
 		get_node("camera").current = false;
 		get_parent().get_parent().camera = null;
