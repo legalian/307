@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://minigames/RacingGame/UIobjects/Youtube Star.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://minigames/RacingGame/UIobjects/place.gd" type="Script" id=2]
@@ -7,13 +7,14 @@
 [ext_resource path="res://minigames/RacingGame/UIobjects/racingScoreboard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://minigames/RacingGame/Countdown.gd" type="Script" id=6]
 [ext_resource path="res://minigames/RacingGame/UIobjects/top3.gd" type="Script" id=7]
+[ext_resource path="res://minigames/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Themes/UI.tres" type="Theme" id=9]
 [ext_resource path="res://minigames/RacingGame/UI.gd" type="Script" id=10]
 [ext_resource path="res://minigames/RacingGame/UIobjects/PowerupIcon.gd" type="Script" id=11]
 [ext_resource path="res://fonts/Countdownglphs.tres" type="DynamicFont" id=12]
 [ext_resource path="res://minigames/RacingGame/Hitfont.tres" type="DynamicFont" id=13]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
 size = 100
 font_data = ExtResource( 1 )
 
@@ -44,6 +45,8 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="scoreboard" parent="." instance=ExtResource( 8 )]
 
 [node name="racingscoreboard" parent="." instance=ExtResource( 5 )]
 
@@ -94,7 +97,7 @@ __meta__ = {
 [node name="place" type="Label" parent="HBoxContainer"]
 margin_right = 133.0
 margin_bottom = 105.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 0.0588235, 0.0588235, 1 )
 text = "1ST"
 align = 2
