@@ -29,6 +29,7 @@ tile_data = PoolIntArray( 0, 3, 786432, 1, 3, 720896, 2, 3, 720896, 3, 3, 720896
 
 [node name="topborder" type="StaticBody2D" parent="."]
 position = Vector2( -3546.86, -1880.02 )
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="topborder"]
 position = Vector2( 3420.16, -45.7812 )

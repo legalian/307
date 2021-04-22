@@ -23,6 +23,7 @@ size = 35
 font_data = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Body" parent="." instance=ExtResource( 1 )]
