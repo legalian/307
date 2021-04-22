@@ -55,6 +55,7 @@ func _on_Button_Back_pressed():
 	get_tree().change_scene("Main.tscn")
 
 func _on_EnterGameButton_pressed():
+	AudioPlayer.pause_music()
 	AudioPlayer.play_sfx("res://audio/sfx/click_002.ogg")
 	Server.attemptEnterGame()
 	get_tree().change_scene("res://minigames/PartyScreen/LoadingScreen.tscn")	
