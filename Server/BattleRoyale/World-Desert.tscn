@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[sub_resource type="CapsuleShape2D" id=6]
+[ext_resource path="res://BattleRoyale/Collectible.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 117.904
 height = 9132.73
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 53.5034
 height = 7603.4
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=3]
 radius = 23.701
 
 [sub_resource type="CircleShape2D" id=4]
@@ -25,7 +27,7 @@ position = Vector2( -4317.74, -3850.04 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="topborder"]
 position = Vector2( 3861.6, 6.92871 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="bottomborder" type="StaticBody2D" parent="."]
 position = Vector2( -4317.74, -3850.04 )
@@ -33,21 +35,21 @@ position = Vector2( -4317.74, -3850.04 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottomborder"]
 position = Vector2( 4197.43, 7711.14 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="leftborder" type="StaticBody2D" parent="."]
 position = Vector2( -1640, -668 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftborder"]
 position = Vector2( -2637.02, 892.991 )
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="rightborder" type="StaticBody2D" parent="."]
 position = Vector2( -1640, -668 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightborder"]
 position = Vector2( 5922.98, 620.991 )
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="cacti" type="Node2D" parent="."]
 
@@ -55,229 +57,229 @@ shape = SubResource( 7 )
 position = Vector2( -3407.36, -1610.08 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus2" type="StaticBody2D" parent="cacti"]
 position = Vector2( -3807.36, -3243.14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus2"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus3" type="StaticBody2D" parent="cacti"]
 position = Vector2( -1217.52, -3194.81 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus3"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus4" type="StaticBody2D" parent="cacti"]
 position = Vector2( -1749.4, -2406.65 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus4"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus5" type="StaticBody2D" parent="cacti"]
 position = Vector2( -1008.01, -1610.08 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus5"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus6" type="StaticBody2D" parent="cacti"]
 position = Vector2( 980.71, -3333.61 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus6"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus7" type="StaticBody2D" parent="cacti"]
 position = Vector2( 1576.83, -2550.37 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus7"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus8" type="StaticBody2D" parent="cacti"]
 position = Vector2( 1176.83, -2090.52 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus8"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus9" type="StaticBody2D" parent="cacti"]
 position = Vector2( 2415.21, -1775.85 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus9"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus10" type="StaticBody2D" parent="cacti"]
 position = Vector2( 3732.68, -2828.91 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus10"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus11" type="StaticBody2D" parent="cacti"]
 position = Vector2( 3732.68, -1932.97 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus11"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus12" type="StaticBody2D" parent="cacti"]
 position = Vector2( 0, -3182.55 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus12"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus13" type="StaticBody2D" parent="cacti"]
 position = Vector2( -716.341, -2594.1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus13"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus17" type="StaticBody2D" parent="cacti"]
 position = Vector2( -2057.84, -119.473 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus17"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus18" type="StaticBody2D" parent="cacti"]
 position = Vector2( -1116.34, 416.53 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus18"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus19" type="StaticBody2D" parent="cacti"]
 position = Vector2( -620.546, -119.473 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus19"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus20" type="StaticBody2D" parent="cacti"]
 position = Vector2( 337.142, 66.7463 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus20"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus25" type="StaticBody2D" parent="cacti"]
 position = Vector2( -1217.52, 1908.7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus25"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus26" type="StaticBody2D" parent="cacti"]
 position = Vector2( -223.643, 2338.33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus26"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus27" type="StaticBody2D" parent="cacti"]
 position = Vector2( 1424.91, 2301.85 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus27"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus28" type="StaticBody2D" parent="cacti"]
 position = Vector2( 534.161, 1961.24 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus28"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus29" type="StaticBody2D" parent="cacti"]
 position = Vector2( 534.161, 2420.7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus29"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus30" type="StaticBody2D" parent="cacti"]
 position = Vector2( 1130.6, 2954.14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus30"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus31" type="StaticBody2D" parent="cacti"]
 position = Vector2( 2466.55, 2097.33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus31"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus32" type="StaticBody2D" parent="cacti"]
 position = Vector2( 3673.45, 1838.45 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus32"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus33" type="StaticBody2D" parent="cacti"]
 position = Vector2( 2314.63, 2954.14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus33"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus34" type="StaticBody2D" parent="cacti"]
 position = Vector2( -108.546, 2954.14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus34"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus35" type="StaticBody2D" parent="cacti"]
 position = Vector2( -1159.93, 2686.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus35"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus36" type="StaticBody2D" parent="cacti"]
 position = Vector2( -3314.74, 2285.79 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus36"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus37" type="StaticBody2D" parent="cacti"]
 position = Vector2( -3652.08, 2821.16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus37"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus38" type="StaticBody2D" parent="cacti"]
 position = Vector2( -2504.21, 3354.14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus38"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus21" type="StaticBody2D" parent="cacti"]
 position = Vector2( 980.71, 157.655 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus21"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus22" type="StaticBody2D" parent="cacti"]
 position = Vector2( 1732.11, -119.473 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus22"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus23" type="StaticBody2D" parent="cacti"]
 position = Vector2( 2367.37, 66.7463 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus23"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus24" type="StaticBody2D" parent="cacti"]
 position = Vector2( 3569.97, 209 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus24"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus14" type="StaticBody2D" parent="cacti"]
 position = Vector2( -3162.82, 66.7463 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus14"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus15" type="StaticBody2D" parent="cacti"]
 position = Vector2( -2197.25, -1532.97 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus15"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Cactus16" type="StaticBody2D" parent="cacti"]
 position = Vector2( -2518.7, -3502.01 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cacti/Cactus16"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="palm trees" type="Node2D" parent="."]
 
@@ -673,3 +675,51 @@ rotation = 2.58588
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cars/Car13"]
 position = Vector2( 0, 25.5764 )
 shape = SubResource( 5 )
+
+[node name="powerup" parent="." instance=ExtResource( 1 )]
+position = Vector2( -2408.17, -2027.01 )
+gun = 2
+
+[node name="powerup2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -577.431, -2045 )
+gun = 3
+
+[node name="powerup3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1431.17, -1630.53 )
+gun = 4
+
+[node name="powerup4" parent="." instance=ExtResource( 1 )]
+position = Vector2( -2370.97, -1160.87 )
+gun = 2
+
+[node name="powerup5" parent="." instance=ExtResource( 1 )]
+position = Vector2( -295.801, -610.286 )
+gun = 3
+
+[node name="powerup6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1986.31, -411.626 )
+gun = 4
+
+[node name="powerup7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2701.16, 319.622 )
+gun = 2
+
+[node name="powerup8" parent="." instance=ExtResource( 1 )]
+position = Vector2( -2142.48, 799.91 )
+gun = 3
+
+[node name="powerup9" parent="." instance=ExtResource( 1 )]
+position = Vector2( -444.586, 1578.98 )
+gun = 4
+
+[node name="powerup10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1104.22, 1852.03 )
+gun = 2
+
+[node name="powerup11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2175.1, 2360.1 )
+gun = 3
+
+[node name="powerup12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3059.69, 1687.31 )
+gun = 4
