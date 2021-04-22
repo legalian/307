@@ -16,11 +16,15 @@ func _SetVolumeText():
 		find_node("Master Volume").find_node("MuteButton").text = "Unmute"
 		find_node("Master Volume").find_node("ProgressBar").value = 0
 		find_node("Master Volume").find_node("VolumeSlider").value = 0
+		find_node("Music Volume").find_node("MuteButton").disabled = true
+		find_node("SFX Volume").find_node("MuteButton").disabled = true
 	else:
 		find_node("Master Volume").find_node("MuteButton").text = "Mute"
 		find_node("Master Volume").find_node("VolumeSlider").editable = true
 		find_node("Master Volume").find_node("ProgressBar").value = MasterVolume
 		find_node("Master Volume").find_node("VolumeSlider").value = MasterVolume
+		find_node("Music Volume").find_node("MuteButton").disabled = false
+		find_node("SFX Volume").find_node("MuteButton").disabled = false
 	
 	
 	if AudioPlayer.is_music_muted() or AudioPlayer.is_master_muted():
