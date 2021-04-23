@@ -76,9 +76,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 52 ), ExtResource( 38 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 40 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 41 ), ExtResource( 51 ) ],
+"frames": [ ExtResource( 87 ), ExtResource( 83 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 88 ), ExtResource( 89 ) ],
 "loop": true,
-"name": "captcha3",
+"name": "captcha9",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 69 ), ExtResource( 71 ), ExtResource( 65 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 70 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 66 ) ],
@@ -86,14 +86,24 @@ animations = [ {
 "name": "captcha6",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "captcha7",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 50 ), ExtResource( 45 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 55 ), ExtResource( 49 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "captcha4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 52 ), ExtResource( 38 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 40 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 41 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "captcha3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "captcha1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "captcha7",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 82 ), ExtResource( 75 ), ExtResource( 74 ), ExtResource( 76 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 81 ), ExtResource( 80 ), ExtResource( 77 ) ],
@@ -101,24 +111,14 @@ animations = [ {
 "name": "captcha8",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "captcha2",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 87 ), ExtResource( 83 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 88 ), ExtResource( 89 ) ],
-"loop": true,
-"name": "captcha9",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 58 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 59 ) ],
 "loop": true,
 "name": "captcha5",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 1 ) ],
 "loop": true,
-"name": "captcha1",
+"name": "captcha2",
 "speed": 5.0
 } ]
 

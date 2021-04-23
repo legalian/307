@@ -113,10 +113,11 @@ tracks/7/keys = {
 script = ExtResource( 3 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1023.0
-margin_bottom = 598.0
+margin_left = -1837.0
+margin_top = -1148.0
+margin_right = 3037.0
+margin_bottom = 1876.0
+rect_rotation = 0.00644162
 rect_scale = Vector2( 1.00058, 1.00381 )
 custom_styles/panel = ExtResource( 6 )
 __meta__ = {

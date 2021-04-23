@@ -20,8 +20,10 @@ drag_margin_v_enabled = true
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = -3024.0
+margin_top = -1744.0
+margin_right = 4288.0
+margin_bottom = 2736.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = ExtResource( 5 )
@@ -30,8 +32,8 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="PanelContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 7312.0
+margin_bottom = 4480.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
