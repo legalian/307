@@ -1,3 +1,4 @@
+tool
 extends Bone2D
 
 var rotation_offsets

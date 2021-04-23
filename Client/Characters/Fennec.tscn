@@ -1147,6 +1147,10 @@ script = ExtResource( 4 )
 targetpath = NodePath("../../../../LeftArmTarget")
 ikpath = NodePath("LeftHand/LeftHandPoint")
 body = NodePath("../../../..")
+rot_min_left = -360
+rot_max_left = 360
+rot_min_right = -360
+rot_max_right = 360
 
 [node name="LeftHand" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/LeftArm"]
 position = Vector2( -0.0841675, 61.3398 )
