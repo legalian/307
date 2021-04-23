@@ -68,6 +68,10 @@ func load_map(map):
 					else:
 						if flipx and flipy:
 							instance.rotate(PI)
+						elif flipx and map == "Desert":
+							instance.rotate(PI/4.0)
+						elif flipy and map == "Desert":
+							instance.rotate(3.0*PI/4.0)
 						else:
 							instance.translate(Vector2(0,object_map.cell_size.y))
 					
