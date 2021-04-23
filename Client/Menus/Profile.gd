@@ -9,7 +9,7 @@ var AvatarMenuOpen = false
 var HatMenuOpen = false
 var VehicleMenuOpen = false
 
-var AvatarStyles = ["Raccoon","Shadow Raccoon","Red Raccoon"]
+var AvatarStyles = ["Raccoon","Shadow Raccoon","Red Raccoon","Fennec", "Golden Fennec"]
 var HatStyles = ["None","Tophat","Smallhat","Viking","Paperhat","Headphones"]
 var VehicleStyles
 

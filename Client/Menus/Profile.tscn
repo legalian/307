@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Raccoon.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Characters/RaccoonRed.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Themes/UI_Panel.tres" type="StyleBox" id=13]
 [ext_resource path="res://fonts/Kenney High Square (TITLE).tres" type="DynamicFont" id=14]
+[ext_resource path="res://Characters/Fennec.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Characters/FennecGolden.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -322,9 +324,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar4" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
-
 [node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar4"]
 margin_left = 1.33258
 margin_top = -39.6696
@@ -337,6 +336,9 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar4" instance=ExtResource( 16 )]
+position = Vector2( 97.0928, 141.43 )
 
 [node name="Avatar5" type="Button" parent="Avatar Menu/ColorRect/ButtonSelection"]
 margin_left = 250.0
@@ -473,8 +475,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AvatarDisplay" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar3" instance=ExtResource( 2 )]
-position = Vector2( 95.5964, 140.234 )
+[node name="Raccoon" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar3" instance=ExtResource( 15 )]
+position = Vector2( 102.705, 143.675 )
 
 [node name="AvatarType" type="RichTextLabel" parent="Avatar Menu/ColorRect/ButtonSelection/Avatar3"]
 margin_left = 1.33258
