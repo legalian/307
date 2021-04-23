@@ -861,7 +861,7 @@ nodes/Direction/position = Vector2( 60, 120 )
 nodes/Speed/node = SubResource( 15 )
 nodes/Speed/position = Vector2( 300, 150 )
 nodes/output/position = Vector2( 480, 170 )
-node_connections = [ "output", 0, "Speed", "Speed", 0, "Direction", "Direction", 0, "Animation", "Direction", 1, "Animation 2" ]
+node_connections = [ "Direction", 0, "Animation", "Direction", 1, "Animation 2", "Speed", 0, "Direction", "output", 0, "Speed" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
@@ -910,7 +910,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 24 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 1130, 210 )
-node_connections = [ "output", 0, "Ouch", "Ouch", 0, "_4", "Ouch", 1, "Animation 5", "_1", 0, "Animation", "_2", 0, "Animation 2", "_3", 0, "lookX", "_3", 1, "lookY", "_4", 0, "StateMachine", "_4", 1, "_3", "lookX", 0, "_1", "lookY", 0, "_2" ]
+node_connections = [ "Ouch", 0, "_4", "Ouch", 1, "Animation 5", "_1", 0, "Animation", "_2", 0, "Animation 2", "_3", 0, "lookX", "_3", 1, "lookY", "_4", 0, "StateMachine", "_4", 1, "_3", "lookX", 0, "_1", "lookY", 0, "_2", "output", 0, "Ouch" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
@@ -1079,7 +1079,6 @@ scale = Vector2( 0.35, 0.35 )
 [node name="Hip" type="Bone2D" parent="Char/Skeleton2D"]
 position = Vector2( 195.232, 305.367 )
 rotation = -1.59149
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.0206922, -0.999786, 0.999786, -0.0206922, 195.232, 305.367 )
 
 [node name="Tailroot" type="Bone2D" parent="Char/Skeleton2D/Hip"]
@@ -1089,7 +1088,6 @@ rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="Tail" type="Bone2D" parent="Char/Skeleton2D/Hip/Tailroot"]
 position = Vector2( 1.80133, 53.8025 )
 rotation = 1.57315
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.00235371, 0.999997, -0.999997, -0.00235371, 1.80133, 53.8025 )
 
 [node name="TailSeg2" type="Bone2D" parent="Char/Skeleton2D/Hip/Tailroot/Tail"]
@@ -1130,7 +1128,6 @@ rot_max_right = 360
 [node name="RightHand" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/RightArm"]
 position = Vector2( -0.476807, 61.8062 )
 rotation = 2.20619
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.0101635, 0.999948, -0.999948, -0.0101635, -0.476807, 61.8062 )
 default_length = 58.0
 script = ExtResource( 5 )
@@ -1145,14 +1142,15 @@ position = Vector2( 57.2537, -0.0868835 )
 [node name="LeftArm" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso"]
 position = Vector2( 57.1985, -35.5191 )
 rotation = 3.13902
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.999997, 0.00257269, -0.00257269, -0.999997, 57.1985, -35.5191 )
 script = ExtResource( 4 )
+targetpath = NodePath("../../../../LeftArmTarget")
+ikpath = NodePath("LeftHand/LeftHandPoint")
+body = NodePath("../../../..")
 
 [node name="LeftHand" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/LeftArm"]
 position = Vector2( -0.0841675, 61.3398 )
 rotation = 1.57561
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.0048137, 0.999988, -0.999988, -0.0048137, -0.0841675, 61.3398 )
 default_length = 58.0
 script = ExtResource( 5 )
@@ -1193,7 +1191,6 @@ rest = Transform2D( 1, 0, 0, 1, 50.3848, 29.7126 )
 [node name="RightEar" type="Bone2D" parent="Char/Skeleton2D/Hip/Torso/Head"]
 position = Vector2( 106.729, 53.199 )
 rotation = 0.60912
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.820152, 0.572146, -0.572146, 0.820152, 106.729, 53.199 )
 default_length = 38.0
 
@@ -1215,13 +1212,11 @@ position = Vector2( 62.6189, 0.0917816 )
 [node name="RightLeg" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 position = Vector2( -18.2717, 30.7892 )
 rotation = 2.39596
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.73466, 0.678436, -0.678436, -0.73466, -18.2717, 30.7892 )
 
 [node name="RightShin" type="Bone2D" parent="Char/Skeleton2D/Hip/RightLeg"]
 position = Vector2( 37.1874, 34.8864 )
 rotation = 0.750492
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.731354, 0.681999, -0.681999, 0.731354, 37.1874, 34.8864 )
 default_length = 49.0
 
@@ -1231,7 +1226,6 @@ position = Vector2( 50.1374, -0.0209656 )
 [node name="LeftLeg" type="Bone2D" parent="Char/Skeleton2D/Hip"]
 position = Vector2( -17.903, -33.9398 )
 rotation = 2.39483
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.733891, 0.679267, -0.679267, -0.733891, -17.903, -33.9398 )
 
 [node name="LeftShin" type="Bone2D" parent="Char/Skeleton2D/Hip/LeftLeg"]
