@@ -56,25 +56,39 @@ remote func frameUpdate(s_players, powerups, projectile_frame, trap_frame):
 			world.add_child(p_node)
 			p_node.unpack(powerup)
 	
-	# Special case for projectiles; not sure how to remove specific ones from client, so im just
-	# removing all and adding them back regardless
-	
-	for child in world.get_children(): # Remove all projectiles
-		if (child.name.begins_with("Projectile")):
-			world.remove_child(child)
-		if  (child.name.begins_with("Trap")):
-			world.remove_child(child)
-	
-	for projectile_pkg in projectile_frame: # Add them back in
-		var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
-		proj_node.name = projectile_pkg["name"]
-		world.add_child(proj_node)
-		proj_node.unpack(projectile_pkg)
-	for trap_pkg in trap_frame: # Add them back in
-		var trapNode = preload("res://minigames/RacingGame/objects/trap.tscn").instance()
-		trapNode.name = trap_pkg["name"]
-		world.add_child(trapNode)
-		trapNode.unpack(trap_pkg)
+	for projectile_pkg in projectile_frame:
+		if world.has_node(projectile_pkg["name"]):
+			world.get_node(projectile_pkg["name"]).unpack(projectile_pkg)
+		else:
+			var proj_node = preload("res://minigames/RacingGame/objects/PU_Proj.tscn").instance()
+			proj_node.name = projectile_pkg["name"]
+			proj_node.unpack(projectile_pkg)
+			world.add_child(proj_node)
+	for trap_pkg in trap_frame:
+		if world.has_node(trap_pkg["name"]):
+			world.get_node(trap_pkg["name"]).unpack(trap_pkg)
+		else:
+			var trapNode = preload("res://minigames/RacingGame/objects/trap.tscn").instance()
+			trapNode.name = trap_pkg["name"]
+			trapNode.unpack(trap_pkg)
+			world.add_child(trapNode)
+		
+	for child in world.get_children():
+		if child.name.begins_with("Projectile"):
+			var found = false
+			for projectile_pkg in projectile_frame:
+				if child.name == projectile_pkg["name"]:
+					found = true
+			if !found:
+				world.remove_child(child)
+		if child.name.begins_with("Trap"):
+			var found = false
+			for trap_pkg in trap_frame:
+				if child.name == trap_pkg["name"]:
+					found = true
+			if !found:
+				world.remove_child(child)
+
 	
 
 remote func setMap(map):
