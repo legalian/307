@@ -23,7 +23,7 @@ func rotclamp(amt):
 	return amt
 
 func glob_rot(node):
-	return (leftbody.get_global_transform_with_canvas().affine_inverse()*node.get_global_transform_with_canvas()).get_rotation()
+	return (leftbody.get_global_transform_with_canvas().affine_inverse()*node.get_global_transform_with_canvas()).get_rotation() #issue?
 	#return rotclamp(node.global_rotation-leftbody.global_rotation)
 	
 func glob_pos(node):

@@ -910,7 +910,7 @@ nodes/lookX/position = Vector2( 340, 160 )
 nodes/lookY/node = SubResource( 24 )
 nodes/lookY/position = Vector2( 360, 300 )
 nodes/output/position = Vector2( 1130, 210 )
-node_connections = [ "output", 0, "Ouch", "lookY", 0, "_2", "_4", 0, "StateMachine", "_4", 1, "_3", "_1", 0, "Animation", "_2", 0, "Animation 2", "lookX", 0, "_1", "_3", 0, "lookX", "_3", 1, "lookY", "Ouch", 0, "_4", "Ouch", 1, "Animation 5" ]
+node_connections = [ "output", 0, "Ouch", "Ouch", 0, "_4", "Ouch", 1, "Animation 5", "lookY", 0, "_2", "_1", 0, "Animation", "_4", 0, "StateMachine", "_4", 1, "_3", "lookX", 0, "_1", "_2", 0, "Animation 2", "_3", 0, "lookX", "_3", 1, "lookY" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
