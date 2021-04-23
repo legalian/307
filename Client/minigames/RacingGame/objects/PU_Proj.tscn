@@ -343,9 +343,9 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Visible"]
 position = Vector2( -1.19053, 7.60138 )
-scale = Vector2( 0.24492, 0.245681 )
+scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 65 )
-frame = 15
+frame = 63
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.53695, 15.3506 )
